@@ -8,11 +8,18 @@ public class CoinText : MonoBehaviour
 {
     public Text Text;
 
-    private void Awake()
+    private void Start()
     {
-        SaveMoney.SendCoinText.AddListener(coins =>
-        {
-            Text.text = $"Монеты: {coins}";
-        });
+        SaveMoney.SendCoinText.AddListener(UpdateText);
+    }
+
+    private void OnDestroy()
+    {
+        SaveMoney.SendCoinText.RemoveListener(UpdateText);
+    }
+
+    void UpdateText(int coins)
+    {
+        Text.text = $"Монеты: {coins}";
     }
 }

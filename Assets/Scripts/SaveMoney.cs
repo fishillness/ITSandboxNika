@@ -5,6 +5,7 @@ public class SaveMoney : MonoBehaviour
 {
     private int countCoin;
     public static UnityEvent<int> SendCoinText = new UnityEvent<int>();
+    private bool send;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +19,11 @@ public class SaveMoney : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
             AddCoin(1);
 
-        if(Input.GetMouseButtonDown(1))
-            DeleteCoin(1);
+        if (Input.GetMouseButtonDown(1))
+        {
+            send = DeleteCoin(1);
+            Debug.Log(send.ToString());
+        }
     }
 
     void AddCoin(int coins)
@@ -28,9 +32,15 @@ public class SaveMoney : MonoBehaviour
         SendCoinText.Invoke(countCoin);
     }
 
-    void DeleteCoin(int coins)
+    bool DeleteCoin(int coins)
     {
-        countCoin -= coins;
-        SendCoinText.Invoke(countCoin);
+        if (countCoin - coins >= 0)
+        {
+            countCoin -= coins;
+            SendCoinText.Invoke(countCoin);
+            return true;
+        }
+
+        return false;
     }
 }
