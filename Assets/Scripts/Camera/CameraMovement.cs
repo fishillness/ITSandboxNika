@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -6,6 +7,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Vector2 xBounds;
     [SerializeField] private Vector2 yBounds;
     [SerializeField] private float speed;
+    [SerializeField] private float scrollSpeed;
 
     private Camera cam;
     private Vector2 startPosition;
@@ -20,6 +22,7 @@ public class CameraMovement : MonoBehaviour
     private void Update()
     {
         Move();
+        Scroll();
     }
 
     private void Move()
@@ -36,5 +39,13 @@ public class CameraMovement : MonoBehaviour
         }
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, xTargetPos, speed * Time.deltaTime),
             Mathf.Lerp(transform.position.y, yTargetPos, speed * Time.deltaTime), transform.position.z);
+    }
+
+    private void Scroll()
+    {
+        if(cam.orthographic)
+            cam.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+        else
+            cam.fieldOfView += Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
     }
 }
