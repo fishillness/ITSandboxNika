@@ -9,6 +9,7 @@ public class FieldController : MonoBehaviour
     [SerializeField] private Tilemap field;
     [SerializeField] private PiecePrefab[] piecePrefabs;
     [SerializeField] private Bound[] boundsElement;
+    [SerializeField] private PieceColorDictionary colorDictionary;
 
     [Serializable, SerializeField]
     private struct PiecePrefab
@@ -77,6 +78,14 @@ public class FieldController : MonoBehaviour
         newPiece.transform.parent = transform;
         newPiece.name = $"Piece [{x}, {y}]";
         newPiece.Init(x, y, type);
+
+        if (newPiece.Colorable != null)
+        {
+            if (!newPiece.Colorable.IsColorDictionarySet)
+                newPiece.Colorable.SetColorDictionary(colorDictionary);
+
+            newPiece.Colorable.SetColor((ColorType)UnityEngine.Random.Range(0, colorDictionary.NumberColors));
+        }
 
         return newPiece;
     }
