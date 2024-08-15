@@ -1,3 +1,4 @@
+using System.Drawing;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -7,16 +8,20 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Vector2 xBounds;
     [SerializeField] private Vector2 yBounds;
     [SerializeField] private float speed;
-    [SerializeField] private float scrollSpeed;
+    [SerializeField] private float zoomSpeed, minZoom, maxZoom, velocity, smoothTime;
+    [SerializeField] private float startZoom;
 
     private Camera cam;
     private Vector2 startPosition;
     private float xTargetPos;
     private float yTargetPos;
+    private float zoomTarget;
 
     void Start()
     {
         cam = GetComponent<Camera>();
+        cam.orthographicSize = startZoom;
+        zoomTarget = cam.orthographicSize;
     }
 
     private void Update()
@@ -43,9 +48,15 @@ public class CameraMovement : MonoBehaviour
 
     private void Scroll()
     {
-        if(cam.orthographic)
-            cam.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+        if (cam.orthographic)
+        {
+            zoomTarget -= inputController.Scroll.y * zoomSpeed;
+            zoomTarget = Mathf.Clamp(zoomTarget, minZoom, maxZoom);
+            cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoomTarget, ref velocity, smoothTime);
+        }
         else
-            cam.fieldOfView += Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+        {
+            
+        }
     }
 }
