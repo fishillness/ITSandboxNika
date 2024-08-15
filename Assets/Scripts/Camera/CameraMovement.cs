@@ -8,7 +8,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Vector2 xBounds;
     [SerializeField] private Vector2 yBounds;
     [SerializeField] private float speed;
-    [SerializeField] private float zoomSpeed, minZoom, maxZoom, velocity, smoothTime;
+    [SerializeField] private float zoomSpeed, minZoom, maxZoom, smoothTime;
     [SerializeField] private float startZoom;
 
     private Camera cam;
@@ -16,6 +16,7 @@ public class CameraMovement : MonoBehaviour
     private float xTargetPos;
     private float yTargetPos;
     private float zoomTarget;
+    private float velocity;
 
     void Start()
     {
