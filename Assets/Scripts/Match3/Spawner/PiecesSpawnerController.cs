@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -14,6 +15,7 @@ public class PiecesSpawnerController : MonoBehaviour
     private BoundsInt bounds;
     private int xDim;
     private int yDim;
+    private Coroutine coroutine;
 
     private void Start()
     {
@@ -21,11 +23,6 @@ public class PiecesSpawnerController : MonoBehaviour
 
         SetBounds();
         CreateSpawners();
-    }
-
-    private void Update()
-    {
-
     }
 
     private void SetBounds()
@@ -72,7 +69,7 @@ public class PiecesSpawnerController : MonoBehaviour
         return (bounds.yMax - y);
     }
 
-    private void CheckNeedOfSpawnPiece()
+    public void CheckNeedOfSpawnPiece()
     {
         foreach (var spawner in piecesSpawners)
         {
@@ -82,5 +79,19 @@ public class PiecesSpawnerController : MonoBehaviour
                 gridController.SpawnNewPiece(spawner.X, spawner.Y, PieceType.Normal);
             }
         }
+    }
+
+    public void CheckNeedOfSpawnPieceAfterTime(float time)
+    {
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+
+        coroutine = StartCoroutine(WaitingTimeBeforeChecking(time));
+    }
+
+    private IEnumerator WaitingTimeBeforeChecking(float time)
+    {
+        yield return new WaitForSeconds(time);
+        CheckNeedOfSpawnPiece();
     }
 }

@@ -1070,7 +1070,6 @@ MonoBehaviour:
   - {fileID: 1803377593}
   gridController: {fileID: 1376921984}
   spawnerPrefab: {fileID: 8406461318224951459, guid: e2ce7c92ac0258b459466a4ac03b04c5, type: 3}
-  TEST: 0
 --- !u!1 &1376921982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1125,8 @@ MonoBehaviour:
   - {fileID: 440907854}
   - {fileID: 1803377593}
   colorDictionary: {fileID: 819809155}
+  spawnerController: {fileID: 1068661531}
+  droppingTime: 0.5
 --- !u!1 &1524829650
 GameObject:
   m_ObjectHideFlags: 0

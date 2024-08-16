@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -10,6 +11,8 @@ public class FieldController : MonoBehaviour
     [SerializeField] private PiecePrefab[] piecePrefabs;
     [SerializeField] private Bound[] boundsElement;
     [SerializeField] private PieceColorDictionary colorDictionary;
+    [SerializeField] private PiecesSpawnerController spawnerController;
+    [SerializeField] private float droppingTime;
 
     [Serializable, SerializeField]
     private struct PiecePrefab
@@ -24,7 +27,7 @@ public class FieldController : MonoBehaviour
     private int xDim;
     private int yDim;
 
-    private void Start()
+    private void Awake()
     {
         piecePrefabDict = new Dictionary<PieceType, Piece>();
         for (int i = 0; i < piecePrefabs.Length; i++)
@@ -39,6 +42,12 @@ public class FieldController : MonoBehaviour
 
         pieces = new Piece[xDim, yDim];
         FillEmptyField();
+    }
+
+    private void Start()
+    {
+        spawnerController.CheckNeedOfSpawnPiece();
+        StartCoroutine(DroppingPieces());
     }
 
     private void SetBounds()
@@ -62,21 +71,20 @@ public class FieldController : MonoBehaviour
             {
                 if (field.GetTile(new Vector3Int(GetXInGridPos(x), GetYInGridPos(y), 0)) != null)
                 {
-                    pieces[x, y] = SpawnNewPiece(x, y, PieceType.Empty);
+                    SpawnNewPiece(x, y, PieceType.Empty);
                 }
+                else
+                    pieces[x, y] = null;
             }
         }
     }
 
-    public Piece SpawnNewPiece(int x, int y, PieceType type)
+    public void SpawnNewPiece(int x, int y, PieceType type)
     {
-        Vector3 pos = field.CellToWorld(new Vector3Int(GetXInGridPos(x), GetYInGridPos(y), 0));
-        pos.x += grid.cellSize.x / 2;
-        pos.y += grid.cellSize.y / 2;
         Piece newPiece = Instantiate(piecePrefabDict[type],
-            pos, Quaternion.identity);
+            GetPiecePositionOnWorld(x, y), Quaternion.identity);
         newPiece.transform.parent = transform;
-        newPiece.name = $"Piece [{x}, {y}]";
+        newPiece.name = $"{type} Piece [{x}, {y}]";
         newPiece.Init(x, y, type);
 
         if (newPiece.Colorable != null)
@@ -87,7 +95,7 @@ public class FieldController : MonoBehaviour
             newPiece.Colorable.SetColor((ColorType)UnityEngine.Random.Range(0, colorDictionary.NumberColors));
         }
 
-        return newPiece;
+        pieces[x, y] = newPiece;
     }
 
     private int GetXInGridPos(int x)
@@ -112,12 +120,62 @@ public class FieldController : MonoBehaviour
     {
         PieceType type = pieces[x, y].Type;
 
-        Destroy(pieces[x, y]);
+        Destroy(pieces[x, y].gameObject);
         pieces[x, y] = null;
 
         if (type != PieceType.Empty)
         {
-            pieces[x, y] = SpawnNewPiece(x, y, PieceType.Empty);
+            SpawnNewPiece(x, y, PieceType.Empty);
         }
+    }
+
+    private IEnumerator DroppingPieces()
+    {
+        while (DropPieces())
+        {
+            yield return new WaitForSeconds(droppingTime);
+        }
+    }
+
+    private bool DropPieces()
+    {
+        bool isPieceDrop = false;
+
+        for (int y = yDim - 2; y >= 0; y--)
+        {
+            for (int x = 0; x < xDim; x++)
+            {
+                if (pieces[x, y] == null)
+                    continue;
+
+                if (pieces[x, y].IsMovable)
+                {
+                    Piece pieceBelow = pieces[x, y + 1];
+
+                    if (pieceBelow.Type == PieceType.Empty)
+                    {
+                        DeletePiece(x, y + 1);
+                        pieces[x, y].Movable.Move(x, y + 1, GetPiecePositionOnWorld(x, y + 1), droppingTime);
+                        pieces[x, y + 1] = pieces[x, y];
+                        pieces[x, y + 1].name = $"{pieces[x, y + 1].Type} Piece [{x}, {y + 1}]";
+
+                        SpawnNewPiece(x, y, PieceType.Empty);
+                        spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
+                        isPieceDrop = true;
+                    }
+                }
+            }
+        }
+        
+        return isPieceDrop;
+    }
+
+    private Vector2 GetPiecePositionOnWorld(int x, int y)
+    {
+        Vector3 pos = field.CellToWorld(new Vector3Int(GetXInGridPos(x), GetYInGridPos(y), 0));
+        pos.x += grid.cellSize.x / 2;
+        pos.y += grid.cellSize.y / 2;
+
+        return pos;
     }
 }
