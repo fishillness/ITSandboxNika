@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Piece : MonoBehaviour
@@ -27,6 +28,7 @@ public class Piece : MonoBehaviour
         this.x = x;
         this.y = y;
         this.type = type;
+        UpdateName();
     }
 
     public void SetX(int x)
@@ -36,5 +38,10 @@ public class Piece : MonoBehaviour
     public void SetY(int y)
     {
         this.y = y;
+    }
+
+    public void UpdateName()
+    {
+        gameObject.name = $"{type} Piece [{x}, {y}]"; ;
     }
 }

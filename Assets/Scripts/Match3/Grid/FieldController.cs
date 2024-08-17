@@ -84,7 +84,6 @@ public class FieldController : MonoBehaviour
         Piece newPiece = Instantiate(piecePrefabDict[type],
             GetPiecePositionOnWorld(x, y), Quaternion.identity);
         newPiece.transform.parent = transform;
-        newPiece.name = $"{type} Piece [{x}, {y}]";
         newPiece.Init(x, y, type);
 
         if (newPiece.Colorable != null)
@@ -152,16 +151,54 @@ public class FieldController : MonoBehaviour
                 {
                     Piece pieceBelow = pieces[x, y + 1];
 
-                    if (pieceBelow.Type == PieceType.Empty)
+                    if (pieceBelow != null)
                     {
-                        DeletePiece(x, y + 1);
-                        pieces[x, y].Movable.Move(x, y + 1, GetPiecePositionOnWorld(x, y + 1), droppingTime);
-                        pieces[x, y + 1] = pieces[x, y];
-                        pieces[x, y + 1].name = $"{pieces[x, y + 1].Type} Piece [{x}, {y + 1}]";
+                        if (pieceBelow.Type == PieceType.Empty)
+                        {
+                            SwapEmptyPieceWithNonEmpty(x, y + 1, x, y);
+                            spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
+                            isPieceDrop = true;
+                        }
+                    }
+                    
+                    if (isPieceDrop == false)
+                    {
+                        Piece pieceBelowRight = null;
+                        Piece pieceBelowLeft = null;
+                        Piece piece = null;
 
-                        SpawnNewPiece(x, y, PieceType.Empty);
-                        spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
-                        isPieceDrop = true;
+                        if (x + 1 < xDim && pieces[x + 1, y + 1] != null)
+                        {
+                            if (pieces[x + 1, y + 1].Type == PieceType.Empty)
+                                pieceBelowRight = pieces[x + 1, y + 1];
+                        }
+                        
+                        if (x - 1 >= 0 && pieces[x - 1, y + 1] != null)
+                        {
+                            if (pieces[x - 1, y + 1].Type == PieceType.Empty)
+                                pieceBelowLeft = pieces[x - 1, y + 1];
+                        }
+
+                        if (pieceBelowRight != null && pieceBelowLeft == null)
+                            piece = pieceBelowRight;
+                        else if (pieceBelowLeft != null && pieceBelowRight == null)
+                            piece = pieceBelowLeft;
+                        else if (pieceBelowLeft != null && pieceBelowRight != null)
+                        {
+                            int random = UnityEngine.Random.Range(0, 2);
+
+                            if (random == 0)
+                                piece = pieceBelowRight;
+                            else 
+                                piece = pieceBelowLeft;
+                        }
+
+                        if (piece != null)
+                        {
+                            SwapEmptyPieceWithNonEmpty(piece.X, piece.Y, x, y);
+                            spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
+                            isPieceDrop = true;
+                        }
                     }
                 }
             }
@@ -177,5 +214,14 @@ public class FieldController : MonoBehaviour
         pos.y += grid.cellSize.y / 2;
 
         return pos;
+    }
+
+    private void SwapEmptyPieceWithNonEmpty(int xEmpty, int yEmpty, int xNonEmpty, int yNonEmpty)
+    {
+        DeletePiece(xEmpty, yEmpty);
+        pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, GetPiecePositionOnWorld(xEmpty, yEmpty), droppingTime);
+        pieces[xEmpty, yEmpty] = pieces[xNonEmpty, yNonEmpty];
+
+        SpawnNewPiece(xNonEmpty, yNonEmpty, PieceType.Empty);
     }
 }

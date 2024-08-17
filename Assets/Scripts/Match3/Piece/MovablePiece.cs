@@ -15,6 +15,7 @@ public class MovablePiece : MonoBehaviour
     {
         piece.SetX(newX);
         piece.SetY(newY);
+        piece.UpdateName();
 
         if (coroutine != null)
             StopCoroutine(coroutine);

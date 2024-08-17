@@ -1126,7 +1126,7 @@ MonoBehaviour:
   - {fileID: 1803377593}
   colorDictionary: {fileID: 819809155}
   spawnerController: {fileID: 1068661531}
-  droppingTime: 0.5
+  droppingTime: 0.2
 --- !u!1 &1524829650
 GameObject:
   m_ObjectHideFlags: 0
