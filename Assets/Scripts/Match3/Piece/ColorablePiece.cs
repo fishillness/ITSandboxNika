@@ -22,6 +22,7 @@ public class ColorablePiece : MonoBehaviour
     public void SetColor(ColorType color)
     {
         var sprite = colorDictionary.GetSpriteByColor(color);
+        this.color = color;
 
         if (sprite != null)
             spriteRenderer.sprite = sprite;

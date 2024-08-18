@@ -84,7 +84,7 @@ public class FieldController : MonoBehaviour
         Piece newPiece = Instantiate(piecePrefabDict[type],
             GetPiecePositionOnWorld(x, y), Quaternion.identity);
         newPiece.transform.parent = transform;
-        newPiece.Init(x, y, type);
+        newPiece.Init(x, y, type, this);
 
         if (newPiece.Colorable != null)
         {
@@ -130,10 +130,20 @@ public class FieldController : MonoBehaviour
 
     private IEnumerator DroppingPieces()
     {
-        while (DropPieces())
+        bool continueDropping = true;
+
+        while (continueDropping)
         {
             yield return new WaitForSeconds(droppingTime);
+
+            while (DropPieces())
+            {
+                yield return new WaitForSeconds(droppingTime);
+            }
+
+            continueDropping = ClearAllMatches();
         }
+
     }
 
     private bool DropPieces()
@@ -223,5 +233,135 @@ public class FieldController : MonoBehaviour
         pieces[xEmpty, yEmpty] = pieces[xNonEmpty, yNonEmpty];
 
         SpawnNewPiece(xNonEmpty, yNonEmpty, PieceType.Empty);
+    }
+
+    private List<Piece> FindMatch(Piece piece)
+    {
+        if (piece == null)
+            return null;
+        if (piece.IsColorable == false)
+            return null;
+
+
+        ColorType color = piece.Colorable.Color;
+        List<Piece> horizontelPieces = new List<Piece>();
+        List<Piece> verticalPieces = new List<Piece>();
+        List<Piece> matchingPieces = new List<Piece>();
+
+        for (int x = piece.X + 1; x < xDim; x++)
+        {
+            Piece horPiece = pieces[x, piece.Y];
+            if (horPiece == null)
+                break;
+            if (!horPiece.IsColorable)
+                break;
+
+            if (horPiece.Colorable.Color == color)
+                horizontelPieces.Add(horPiece);
+            else
+                break;
+        }
+
+        for (int x = piece.X - 1; x >= 0; x--)
+        {
+            Piece horPiece = pieces[x, piece.Y];
+            if (horPiece == null)
+                break;
+            if (!horPiece.IsColorable)
+                break;
+
+            if (horPiece.Colorable.Color == color)
+                horizontelPieces.Add(horPiece);
+            else
+                break;
+        }
+
+        for (int y = piece.Y + 1; y < yDim; y++)
+        {
+            Piece verPiece = pieces[piece.X, y];
+            if (verPiece == null)
+                break;
+            if (!verPiece.IsColorable)
+                break;
+
+
+            if (verPiece.Colorable.Color == color)
+                verticalPieces.Add(verPiece);
+            else
+                break;
+        }
+
+        for (int y = piece.Y - 1; y >= 0; y--)
+        {
+            Piece verPiece = pieces[piece.X, y];
+            if (verPiece == null)
+                break;
+            if (!verPiece.IsColorable)
+                break;
+
+            if (verPiece.Colorable.Color == color)
+                verticalPieces.Add(verPiece);
+            else
+                break;
+        }
+
+        matchingPieces.Add(piece);
+
+        if (horizontelPieces.Count < 2)
+            horizontelPieces.Clear();
+        else
+        {
+            foreach(Piece horPiece in horizontelPieces)
+            {
+                matchingPieces.Add(horPiece);
+            }
+        }
+
+        if (verticalPieces.Count < 2)
+            verticalPieces.Clear();
+        else
+        {
+            foreach (Piece verPiece in verticalPieces)
+            {
+                matchingPieces.Add(verPiece);
+            }
+        }
+
+        if (matchingPieces.Count < 3)
+            matchingPieces.Clear();
+
+        return matchingPieces;
+    }
+
+    private bool ClearAllMatches()
+    {
+        bool isMatchFound = false;
+
+
+        for (int y = 0; y < yDim; y++)
+        {
+            for (int x = 0; x < xDim; x++)
+            {
+                if (pieces[x, y] == null)
+                    continue;
+
+                if (!pieces[x, y].IsMovable)
+                    continue;
+
+                List<Piece> matchPPieces = new List<Piece>();
+                matchPPieces = FindMatch(pieces[x, y]);
+
+                if (matchPPieces.Count > 0)
+                {
+                    foreach(Piece piece in matchPPieces)
+                    {
+                        piece.Clerable.ClearPiece();
+                    }
+
+                    isMatchFound = true;
+                }
+            }
+        }
+        return isMatchFound;
     }
 }
