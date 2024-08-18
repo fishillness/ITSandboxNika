@@ -30,7 +30,6 @@ public class ClerablePiece : MonoBehaviour
     public void OnClearAnimationEnd()
     {
         OnPieceClear?.Invoke(piece);
-        piece.Field.DeletePiece(piece.X, piece.Y);
-        //Destroy(piece.gameObject);
+        Destroy(piece.gameObject);
     }
 }

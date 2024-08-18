@@ -84,7 +84,7 @@ public class FieldController : MonoBehaviour
         Piece newPiece = Instantiate(piecePrefabDict[type],
             GetPiecePositionOnWorld(x, y), Quaternion.identity);
         newPiece.transform.parent = transform;
-        newPiece.Init(x, y, type, this);
+        newPiece.Init(x, y, type);
 
         if (newPiece.Colorable != null)
         {
@@ -119,9 +119,12 @@ public class FieldController : MonoBehaviour
     {
         PieceType type = pieces[x, y].Type;
 
-        Destroy(pieces[x, y].gameObject);
-        pieces[x, y] = null;
+        if (pieces[x, y].Clerable == null)
+            Destroy(pieces[x, y].gameObject);
+        else
+            pieces[x, y].Clerable.ClearPiece();
 
+        pieces[x, y] = null;
         if (type != PieceType.Empty)
         {
             SpawnNewPiece(x, y, PieceType.Empty);
@@ -144,6 +147,7 @@ public class FieldController : MonoBehaviour
             continueDropping = ClearAllMatches();
         }
 
+        spawnerController.CheckNeedOfSpawnPiece();
     }
 
     private bool DropPieces()
@@ -355,7 +359,7 @@ public class FieldController : MonoBehaviour
                 {
                     foreach(Piece piece in matchPPieces)
                     {
-                        piece.Clerable.ClearPiece();
+                        DeletePiece(piece.X, piece.Y);
                     }
 
                     isMatchFound = true;
