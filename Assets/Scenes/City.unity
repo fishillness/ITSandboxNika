@@ -3527,6 +3527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BuildModeUI: {fileID: 574608010}
   m_Indicator: {fileID: 1783100684932307380}
+  m_Grid: {fileID: 1972449874}
 --- !u!4 &1378102635
 Transform:
   m_ObjectHideFlags: 0
@@ -4985,6 +4986,7 @@ MonoBehaviour:
   m_Grid: {fileID: 1972449874}
   m_InputManager: {fileID: 972092063}
   m_SpriteRenderer: {fileID: 322035183}
+  m_StartPosition: {x: 1, y: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

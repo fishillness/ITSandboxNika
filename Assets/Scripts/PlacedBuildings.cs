@@ -1,8 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class PlacedBuildings : MonoBehaviour
+public class PlacedBuildings
 {
-    
+    private List<int> buildings = new List<int>();
+
+    public int AddBuilding(int buildingID)
+    {
+        buildings.Add(buildingID);
+        return buildings.Count - 1;
+    }
 }

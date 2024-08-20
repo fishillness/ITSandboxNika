@@ -8,8 +8,23 @@ public class PlacementSystem : MonoBehaviour
     [SerializeField] private Indicator m_Indicator;
     [SerializeField] private BuildingGrid m_Grid;
 
+    PlacedBuildings placedBuildings;
     private Building currentBuilding;
     private Vector2 currentCellLocalPosition;
+
+    private void Awake()
+    {
+        if (placedBuildings == null)
+        {
+            placedBuildings = new PlacedBuildings();
+        }
+        m_Indicator.CellSelected += OnCellSelected;
+    }
+    private void OnDestroy()
+    {
+        m_Indicator.CellSelected -= OnCellSelected;
+    }
+
     public void StartPlacement(Building building)
     {
         if (currentBuilding != null)
@@ -18,24 +33,33 @@ public class PlacementSystem : MonoBehaviour
         }
         currentBuilding = Instantiate(building, m_Indicator.transform.position, Quaternion.identity);
         m_BuildModeUI.StartPlacement();
-
-        m_Indicator.CellSelected += OnCellSelected;
+        CheckingPossibilityOfBuildingPlacement();
     }
 
     private void OnCellSelected(Vector2 cellLocalPosition)
     {
-        currentBuilding.transform.position = m_Indicator.transform.position;
         currentCellLocalPosition = cellLocalPosition;
-        CheckingPossibilityOfBuildingPlacement(currentCellLocalPosition);
+
+        if (currentBuilding == null)
+        {
+            return;
+        }
+
+        currentBuilding.transform.position = m_Indicator.transform.position;        
+        CheckingPossibilityOfBuildingPlacement();
     }
 
-    private void CheckingPossibilityOfBuildingPlacement(Vector2 cellLocalPosition)
+    private void CheckingPossibilityOfBuildingPlacement()
     {
+        if (currentBuilding == null)
+        {
+            return;
+        }
         for (int x = 0; x < currentBuilding.Size.x; x++)
         {
             for (int y = 0; y < currentBuilding.Size.y; y++)
             {
-                if (m_Grid.CheckingCellOccupancy(new Vector2(cellLocalPosition.x + x, cellLocalPosition.y + y)) == true)
+                if (m_Grid.CheckingCellOccupancy(new Vector2(currentCellLocalPosition.x + x, currentCellLocalPosition.y + y)) == true)
                 {
                     DisablingPlacement();
                     return;
@@ -61,7 +85,7 @@ public class PlacementSystem : MonoBehaviour
         {
             for (int y = 0; y < currentBuilding.Size.y; y++)
             {
-                m_Grid.OccupyACell(new Vector2(currentCellLocalPosition.x + x, currentCellLocalPosition.y + y), currentBuilding.BuildingID, );
+                m_Grid.OccupyACell(new Vector2(currentCellLocalPosition.x + x, currentCellLocalPosition.y + y), currentBuilding.BuildingID, placedBuildings.AddBuilding(currentBuilding.BuildingID));
             }
         }
         EndPlacement();
@@ -75,8 +99,7 @@ public class PlacementSystem : MonoBehaviour
     }
 
     private void EndPlacement()
-    {
-        m_Indicator.CellSelected -= OnCellSelected;
+    {        
         m_BuildModeUI.EndPlacement();
         currentBuilding = null;
     }

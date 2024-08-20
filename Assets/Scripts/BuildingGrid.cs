@@ -52,9 +52,9 @@ public class BuildingGrid : MonoBehaviour
     public Vector3 ConvertCellLocalPositionToCellWorldPosition(Vector2 cellLocallPosition)
     {
         Vector3 cellWorldPosition = new Vector3(cellLocallPosition.x, transform.position.y, cellLocallPosition.y);
-        cellWorldPosition.x = Mathf.CeilToInt(cellWorldPosition.x / m_CellSize) * m_CellSize - (m_CellSize / 2);
-        cellWorldPosition.z = Mathf.CeilToInt(cellWorldPosition.z / m_CellSize) * m_CellSize - (m_CellSize / 2);
-        cellWorldPosition = transform.TransformPoint(cellLocallPosition);
+        cellWorldPosition.x = cellWorldPosition.x * m_CellSize - (m_CellSize / 2);
+        cellWorldPosition.z =cellWorldPosition.z * m_CellSize - (m_CellSize / 2);
+        cellWorldPosition = transform.TransformPoint(cellWorldPosition);
 
         return cellWorldPosition;
     }
