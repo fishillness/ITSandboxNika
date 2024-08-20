@@ -1,76 +1,95 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingGrid : MonoBehaviour
 {
+    [Serializable]
+    public class CellArray
+    {
+        public Cell[] Array;
+    }
+
     public float CellSize => m_CellSize;
 
-    [Serializable]
-    private class Line
-    {
-        public bool[] CellsActive;
-    }
-
-    [SerializeField] private Line[] m_Lines;
+    [SerializeField] private Vector2Int m_GridSize;
     [SerializeField] private float m_CellSize;
-    [SerializeField] private SpriteRenderer m_CellPrefab;    
+    [SerializeField] private Cell m_CellPrefab;
 
-    private bool[,] grid;
+    [SerializeField] private CellArray[] grid;
 
-    private void Start()
+
+    [ContextMenu(nameof(CellSpawn))]
+    public void CellSpawn()
     {
-        grid = new bool[m_Lines[0].CellsActive.Length, m_Lines.Length];
-
-        for (int i = 0; i < m_Lines.Length; i++)
-        {
-            if (i >= grid.GetLength(1)) return;
-            for (int j = 0; j < m_Lines[i].CellsActive.Length; j++)
-            {
-                if (j >= grid.GetLength(0)) continue;
-                grid[j, i] = m_Lines[i].CellsActive[j];
-            }
-        }
-
-        for (int i = 0; i < grid.GetLength(0); i++)
-        {
-            for (int j = 0; j < grid.GetLength(1); j++)
-            {
-                if (grid[i, j] == true)
-                {
-                    SpriteRenderer Cell = Instantiate(m_CellPrefab, transform);
-                    Cell.transform.position = new Vector3(transform.position.x + (m_CellSize / 2) + i * m_CellSize, transform.position.y, transform.position.z + (m_CellSize / 2) + j * m_CellSize);
-                    Cell.transform.localScale = Vector3.one * m_CellSize;
-                }
-                
-            }
-        }
+        grid = new CellArray[m_GridSize.x];
         
-    }
+        for (int i = 0; i < grid.Length; i++)
+        {
+            grid[i] = new CellArray();
+            grid[i].Array = new Cell[m_GridSize.y];
+            
+            for (int j = 0; j < grid[i].Array.Length; j++)
+            {                
+                Cell Cell = Instantiate(m_CellPrefab, transform);
+                Cell.transform.position = new Vector3(transform.position.x + (m_CellSize / 2) + i * m_CellSize, transform.position.y, transform.position.z + (m_CellSize / 2) + j * m_CellSize);
+                Cell.transform.localScale = Vector3.one * m_CellSize;
+                grid[i].Array[j] = Cell; 
+            }
+        }
+    }    
 
-    public Vector3 GetCellPosition(Vector3 mousePosition)
+    public Vector3 ConvertMousePositionToCellWorldPosition(Vector3 mousePosition)
     {    
-        mousePosition = transform.InverseTransformPoint(mousePosition);
-        mousePosition.x = Mathf.CeilToInt(mousePosition.x / m_CellSize) * m_CellSize - m_CellSize/2;
-        mousePosition.y = transform.position.y;
-        mousePosition.z = Mathf.CeilToInt(mousePosition.z / m_CellSize) * m_CellSize - m_CellSize / 2;
-        mousePosition = transform.TransformPoint(mousePosition);
+        Vector3 cellWorldPosition = transform.InverseTransformPoint(mousePosition);
+        cellWorldPosition.x = Mathf.CeilToInt(cellWorldPosition.x / m_CellSize) * m_CellSize - (m_CellSize / 2);
+        cellWorldPosition.y = transform.position.y;
+        cellWorldPosition.z = Mathf.CeilToInt(cellWorldPosition.z / m_CellSize) * m_CellSize - (m_CellSize / 2);
+        cellWorldPosition = transform.TransformPoint(cellWorldPosition);
 
-        return mousePosition;
+        return cellWorldPosition;
     }
 
-    public bool CheckCell(Vector3 mousePosition)
+    public Vector3 ConvertCellLocalPositionToCellWorldPosition(Vector2 cellLocallPosition)
+    {
+        Vector3 cellWorldPosition = new Vector3(cellLocallPosition.x, transform.position.y, cellLocallPosition.y);
+        cellWorldPosition.x = Mathf.CeilToInt(cellWorldPosition.x / m_CellSize) * m_CellSize - (m_CellSize / 2);
+        cellWorldPosition.z = Mathf.CeilToInt(cellWorldPosition.z / m_CellSize) * m_CellSize - (m_CellSize / 2);
+        cellWorldPosition = transform.TransformPoint(cellLocallPosition);
+
+        return cellWorldPosition;
+    }
+
+    public Vector2 ConvertMousePositionToLocalCellPosition(Vector3 mousePosition)
     {
         mousePosition = transform.InverseTransformPoint(mousePosition);
-        mousePosition.x = Mathf.CeilToInt(mousePosition.x / m_CellSize);
-        mousePosition.z = Mathf.CeilToInt(mousePosition.z / m_CellSize);
-        Debug.Log(mousePosition);
+        Vector2 cellLocalPosition = new Vector2(mousePosition.x, mousePosition.z);
+        cellLocalPosition.x = Mathf.CeilToInt(mousePosition.x / m_CellSize);
+        cellLocalPosition.y = Mathf.CeilToInt(mousePosition.z / m_CellSize);
 
-        if (mousePosition.x - 1 < 0 || mousePosition.z - 1 < 0 || mousePosition.x - 1 >= grid.GetLength(0) || mousePosition.z - 1 >= grid.GetLength(1))
+        return cellLocalPosition;
+    }
+
+    public bool CheckingCellActivity(Vector2 cellLocallPosition)
+    {
+        if (cellLocallPosition.x - 1 < 0 || cellLocallPosition.y - 1 < 0 || cellLocallPosition.x - 1 >= m_GridSize.x || cellLocallPosition.y - 1 >= m_GridSize.y)
         {
             return false;
         }
-        return grid[(int)mousePosition.x - 1, (int)mousePosition.z - 1];
+        return grid[(int)cellLocallPosition.x - 1].Array[(int)cellLocallPosition.y - 1].gameObject.activeSelf;
+    }
+
+    public bool CheckingCellOccupancy(Vector2 cellLocallPosition)
+    {
+        if (CheckingCellActivity(cellLocallPosition) == false)
+        {
+            return true;
+        }
+
+        return grid[(int)cellLocallPosition.x - 1].Array[(int)cellLocallPosition.y - 1].IsEmployed;
+    }
+
+    public void OccupyACell(Vector2 cellLocalPosition, int buildingID, int buildingIndex)
+    {   
+        grid[(int)cellLocalPosition.x - 1].Array[(int)cellLocalPosition.y - 1].BuildingPlacement(buildingID, buildingIndex);
     }
 }
