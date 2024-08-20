@@ -4,6 +4,7 @@ using UnityEngine.Events;
 [RequireComponent (typeof(Animator), typeof(Piece))]
 public class ClerablePiece : MonoBehaviour
 {
+    [HideInInspector]
     public UnityEvent<Piece> OnPieceClear;
 
     private Animator animator;

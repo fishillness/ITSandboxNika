@@ -9,6 +9,7 @@ public class Piece : MonoBehaviour
     private ColorablePiece colorable;
     private MovablePiece movable;
     private ClerablePiece clerable;
+    private ClickablePiece clickable;
 
     public int X => x;
     public int Y => y;
@@ -19,12 +20,15 @@ public class Piece : MonoBehaviour
     public bool IsMovable => movable != null;
     public ClerablePiece Clerable => clerable;
     public bool IsClerable => clerable != null;
+    public ClickablePiece Clickable => clickable;
+    public bool IsClickable => clickable != null;
 
     private void Awake()
     {
         colorable = GetComponent<ColorablePiece>();
         movable = GetComponent<MovablePiece>();
         clerable = GetComponent<ClerablePiece>();
+        clickable = GetComponent<ClickablePiece>();
     }
 
     public void Init(int x, int y, PieceType type)

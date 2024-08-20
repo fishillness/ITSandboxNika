@@ -246,7 +246,6 @@ public class FieldController : MonoBehaviour
         if (piece.IsColorable == false)
             return null;
 
-
         ColorType color = piece.Colorable.Color;
         List<Piece> horizontelPieces = new List<Piece>();
         List<Piece> verticalPieces = new List<Piece>();
@@ -259,6 +258,8 @@ public class FieldController : MonoBehaviour
                 break;
             if (!horPiece.IsColorable)
                 break;
+            if (horPiece == piece)
+                continue;
 
             if (horPiece.Colorable.Color == color)
                 horizontelPieces.Add(horPiece);
@@ -273,6 +274,8 @@ public class FieldController : MonoBehaviour
                 break;
             if (!horPiece.IsColorable)
                 break;
+            if (horPiece == piece)
+                continue;
 
             if (horPiece.Colorable.Color == color)
                 horizontelPieces.Add(horPiece);
@@ -287,7 +290,8 @@ public class FieldController : MonoBehaviour
                 break;
             if (!verPiece.IsColorable)
                 break;
-
+            if (verPiece == piece)
+                continue;
 
             if (verPiece.Colorable.Color == color)
                 verticalPieces.Add(verPiece);
@@ -300,8 +304,11 @@ public class FieldController : MonoBehaviour
             Piece verPiece = pieces[piece.X, y];
             if (verPiece == null)
                 break;
+
             if (!verPiece.IsColorable)
                 break;
+            if (verPiece == piece)
+                continue;
 
             if (verPiece.Colorable.Color == color)
                 verticalPieces.Add(verPiece);
@@ -367,5 +374,63 @@ public class FieldController : MonoBehaviour
             }
         }
         return isMatchFound;
+    }
+
+    public bool IsAdjacent(Piece piece1, Piece piece2)
+    {
+        return (piece1.X == piece2.X && (int)Mathf.Abs(piece1.Y - piece2.Y) == 1)
+            || (piece1.Y == piece2.Y && (int)Mathf.Abs(piece1.X - piece2.X) == 1);
+    }
+
+    public bool SwapPieces(Piece piece1, Piece piece2)
+    {
+        if (piece1 == null || piece2 == null)
+        {
+            Debug.Log($"Кто-то нуловьй. piece1: {piece1}, piece2: {piece2}");
+            return false;
+        }
+        if (piece1.IsMovable == false || piece2.IsMovable == false)
+        {
+            Debug.Log($"Кто-то не мувобал. piece1: {piece1.IsMovable}, piece2: {piece2.IsMovable}");
+            return false;
+        }
+        if (IsAdjacent(piece1, piece2) == false)
+        {
+            Debug.Log("Не р9дом");
+            return false;
+        }
+
+        pieces[piece1.X, piece1.Y] = piece2;
+        pieces[piece2.X, piece2.Y] = piece1;
+
+        Vector2Int piece1XY = new Vector2Int(piece1.X, piece1.Y);
+        Vector2Int piece2XY = new Vector2Int(piece2.X, piece2.Y);
+
+        piece1.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), droppingTime);
+        piece2.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), droppingTime);
+
+        List<Piece> matchPiece1 = new List<Piece>();
+        matchPiece1 = FindMatch(pieces[piece1.X, piece1.Y]);
+
+        List<Piece> matchPiece2 = new List<Piece>();
+        matchPiece2 = FindMatch(pieces[piece2.X, piece2.Y]);
+
+
+        if (matchPiece1.Count >= 3 || matchPiece2.Count >= 3)
+        {
+            StartCoroutine(DroppingPieces());
+
+            return true;
+        }
+        else
+        {
+            pieces[piece1.X, piece1.Y] = piece2;
+            pieces[piece2.X, piece2.Y] = piece1;
+
+            piece1.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), droppingTime);
+            piece2.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), droppingTime);
+
+            return false;
+        }
     }
 }
