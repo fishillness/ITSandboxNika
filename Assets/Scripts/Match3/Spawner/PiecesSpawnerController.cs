@@ -69,16 +69,22 @@ public class PiecesSpawnerController : MonoBehaviour
         return (bounds.yMax - y);
     }
 
-    public void CheckNeedOfSpawnPiece()
+    public bool CheckNeedOfSpawnPiece()
     {
+        bool somethingSpawned = false;
+
         foreach (var spawner in piecesSpawners)
         {
             if (gridController.CheckTypeOfPieceInGrid(spawner.X, spawner.Y, PieceType.Empty))
             {
                 gridController.DeletePiece(spawner.X, spawner.Y);
                 gridController.SpawnNewPiece(spawner.X, spawner.Y, PieceType.Normal);
+
+                somethingSpawned = true;
             }
         }
+
+        return somethingSpawned;
     }
 
     public void CheckNeedOfSpawnPieceAfterTime(float time)

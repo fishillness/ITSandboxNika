@@ -2,10 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public class FieldController : MonoBehaviour
 {
+    [HideInInspector] 
+    public UnityEvent OnMove;
+    [HideInInspector]
+    public UnityEvent OnDropEnd;
+
     [SerializeField] private Grid grid;
     [SerializeField] private Tilemap field;
     [SerializeField] private PiecePrefab[] piecePrefabs;
@@ -13,9 +19,11 @@ public class FieldController : MonoBehaviour
     [SerializeField] private PieceColorDictionary colorDictionary;
     [SerializeField] private PiecesSpawnerController spawnerController;
     [SerializeField] private float droppingTime;
+    [SerializeField] private PieceCounter pieceCounter;
+    [SerializeField] private Match3Level level;
 
     [Serializable, SerializeField]
-    private struct PiecePrefab
+    public struct PiecePrefab
     {
         public PieceType type;
         public Piece prefab;
@@ -26,6 +34,10 @@ public class FieldController : MonoBehaviour
     private BoundsInt bounds;
     private int xDim;
     private int yDim;
+    private bool areMovesAllowed = true;
+    private bool continueDropping;
+
+    public bool IsDroppingContinue => continueDropping;
 
     private void Awake()
     {
@@ -37,6 +49,7 @@ public class FieldController : MonoBehaviour
                 piecePrefabDict.Add(piecePrefabs[i].type, piecePrefabs[i].prefab);
             }
         }
+        pieceCounter.InitDictionery(piecePrefabs);
 
         SetBounds();
 
@@ -48,6 +61,17 @@ public class FieldController : MonoBehaviour
     {
         spawnerController.CheckNeedOfSpawnPiece();
         StartCoroutine(DroppingPieces());
+        level.OnLevelEnd.AddListener(OnLevelEnd);
+    }
+
+    private void OnDestroy()
+    {
+        level.OnLevelEnd.RemoveListener(OnLevelEnd);
+    }
+
+    private void OnLevelEnd()
+    {
+        areMovesAllowed = false;
     }
 
     private void SetBounds()
@@ -95,6 +119,7 @@ public class FieldController : MonoBehaviour
         }
 
         pieces[x, y] = newPiece;
+        pieceCounter.AddPiece(newPiece);
     }
 
     private int GetXInGridPos(int x)
@@ -133,7 +158,7 @@ public class FieldController : MonoBehaviour
 
     private IEnumerator DroppingPieces()
     {
-        bool continueDropping = true;
+        continueDropping = true;
 
         while (continueDropping)
         {
@@ -145,9 +170,11 @@ public class FieldController : MonoBehaviour
             }
 
             continueDropping = ClearAllMatches();
+            if (spawnerController.CheckNeedOfSpawnPiece())
+                continueDropping = true;
         }
 
-        spawnerController.CheckNeedOfSpawnPiece();
+        OnDropEnd?.Invoke();
     }
 
     private bool DropPieces()
@@ -384,6 +411,7 @@ public class FieldController : MonoBehaviour
 
     public bool SwapPieces(Piece piece1, Piece piece2)
     {
+        if (!areMovesAllowed) return false;
         if (piece1 == null || piece2 == null)
         {
             Debug.Log($"Кто-то нуловьй. piece1: {piece1}, piece2: {piece2}");
@@ -419,6 +447,7 @@ public class FieldController : MonoBehaviour
         if (matchPiece1.Count >= 3 || matchPiece2.Count >= 3)
         {
             StartCoroutine(DroppingPieces());
+            OnMove?.Invoke();
 
             return true;
         }
