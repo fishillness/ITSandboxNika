@@ -61,12 +61,12 @@ public class FieldController : MonoBehaviour
     {
         spawnerController.CheckNeedOfSpawnPiece();
         StartCoroutine(DroppingPieces());
-        level.OnLevelEnd.AddListener(OnLevelEnd);
+        level.OnStopMoves.AddListener(OnLevelEnd);
     }
 
     private void OnDestroy()
     {
-        level.OnLevelEnd.RemoveListener(OnLevelEnd);
+        level.OnStopMoves.RemoveListener(OnLevelEnd);
     }
 
     private void OnLevelEnd()

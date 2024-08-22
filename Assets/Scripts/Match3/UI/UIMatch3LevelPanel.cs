@@ -11,7 +11,7 @@ public class UIMatch3LevelPanel : MonoBehaviour
     public void SetProperties(int levelNumber, int startMoves)
     {
         textLevelNumber.text = levelNumber.ToString();
-        textMoves.text = levelNumber.ToString();
+        textMoves.text = startMoves.ToString();
 
 
     }

@@ -4,7 +4,9 @@ using UnityEngine.Events;
 public class Match3Level : MonoBehaviour
 {
     [HideInInspector]
-    public UnityEvent OnLevelEnd;
+    public UnityEvent OnStopMoves;
+    [HideInInspector]
+    public UnityEvent<bool> OnLevelResult;
 
     [SerializeField] private int moves;
     [SerializeField] private TaskInfo[] taskInfos;
@@ -67,16 +69,18 @@ public class Match3Level : MonoBehaviour
     private void Lose()
     {
         Debug.Log("Lose");
+        OnLevelResult?.Invoke(false);
     }
 
     private void Win()
     {
         Debug.Log("Win");
+        OnLevelResult?.Invoke(true);
     }
 
     private void DetermineWinOrLose()
     {
-        OnLevelEnd?.Invoke();
+        OnStopMoves?.Invoke();
 
         if (field.IsDroppingContinue == true) return;
 
