@@ -6,9 +6,9 @@ using static FieldController;
 public class PieceCounter : MonoBehaviour
 {
     [HideInInspector]
-    public UnityEvent<PieceType> OnPieceAdded;
+    public UnityEvent<Piece> OnPieceAdded;
     [HideInInspector]
-    public UnityEvent<PieceType> OnPieceRemoved;
+    public UnityEvent<Piece> OnPieceRemoved;
 
     private Dictionary<PieceType, int> pieceCount;
 
@@ -31,7 +31,7 @@ public class PieceCounter : MonoBehaviour
         {
             pieceCount[piece.Type] += 1;
             piece.Clerable.OnPieceClear.AddListener(RemovePiece);
-            OnPieceAdded?.Invoke(piece.Type);
+            OnPieceAdded?.Invoke(piece);
         }
     }
 
@@ -40,6 +40,6 @@ public class PieceCounter : MonoBehaviour
         PieceType type = piece.Type;
         piece.Clerable.OnPieceClear.RemoveListener(RemovePiece);
         pieceCount[type] -= 1;
-        OnPieceRemoved?.Invoke(type);
+        OnPieceRemoved?.Invoke(piece);
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,8 +7,9 @@ public class TaskInfoCounter : MonoBehaviour
     public UnityEvent OnAllTaskComplite;
 
     [SerializeField] private PieceCounter pieceCounter;
+    [SerializeField] private UIMatch3LevelPanel levelPanel;
 
-    private Dictionary<PieceType, int> pieceCount;
+    private TaskInfo[] taskInfos;
     private int taskCount;
     private bool isAllTaskComplite = false;
 
@@ -25,35 +25,51 @@ public class TaskInfoCounter : MonoBehaviour
 
     public void InitTasks(TaskInfo[] taskInfos)
     {
-        pieceCount = new Dictionary<PieceType, int>();
+        this.taskInfos = taskInfos;
+
+        foreach (var taskInfo in this.taskInfos)
+        {
+            taskInfo.SetProperties();
+            levelPanel.AddTaskInfo(taskInfo);
+        }
+
+        taskCount = this.taskInfos.Length;
+    }
+
+    private void OnPieceRemoved(Piece piece)
+    {
+        if (isAllTaskComplite) return;
 
         foreach (var taskInfo in taskInfos)
         {
-            if (!pieceCount.ContainsKey(taskInfo.type))
+            if (taskInfo.Type == piece.Type && taskInfo.TaskType == TaskInfoType.ByType)
             {
-                pieceCount.Add(taskInfo.type, taskInfo.count);
+                RemovePiece(taskInfo);
+            }
+            else if (taskInfo.Type == piece.Type && taskInfo.TaskType == TaskInfoType.ByColor
+                && piece.IsColorable)
+            {
+                if (piece.Colorable.Color == taskInfo.ColorType)
+                {
+                    RemovePiece(taskInfo);
+                }
             }
         }
-
-        taskCount = pieceCount.Count;
-    }
-
-    private void OnPieceRemoved(PieceType type)
-    {
-        if (isAllTaskComplite) return;
-        if (!pieceCount.ContainsKey(type)) return;
-        if (pieceCount[type] == 0) return;
-
-        pieceCount[type] -= 1;
-
-        if (pieceCount[type] == 0)
-            taskCount--;
-
 
         if (taskCount == 0)
         {
             isAllTaskComplite = true;
             OnAllTaskComplite?.Invoke();
         }
+
+    }
+
+    private void RemovePiece(TaskInfo taskInfo)
+    {
+        bool isLastPiece = taskInfo.RemovePiece();
+        levelPanel.UpdateTaskInfo(taskInfo);
+
+        if (isLastPiece)
+            taskCount--;
     }
 }
