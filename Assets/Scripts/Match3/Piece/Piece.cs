@@ -9,6 +9,7 @@ public class Piece : MonoBehaviour
     private MovablePiece movable;
     private ClerablePiece clerable;
     private ClickablePiece clickable;
+    private Booster booster;
 
     public int X => x;
     public int Y => y;
@@ -21,6 +22,8 @@ public class Piece : MonoBehaviour
     public bool IsClerable => clerable != null;
     public ClickablePiece Clickable => clickable;
     public bool IsClickable => clickable != null;
+    public Booster Booster => booster;
+    public bool IsBooster => booster != null;
 
     private void Awake()
     {
@@ -28,6 +31,7 @@ public class Piece : MonoBehaviour
         movable = GetComponent<MovablePiece>();
         clerable = GetComponent<ClerablePiece>();
         clickable = GetComponent<ClickablePiece>();
+        booster = GetComponent<Booster>();
     }
 
     public void Init(int x, int y, PieceType type)

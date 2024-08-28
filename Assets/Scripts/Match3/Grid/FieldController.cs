@@ -17,6 +17,7 @@ public class FieldController : MonoBehaviour
     [SerializeField] private PiecePrefab[] piecePrefabs;
     [SerializeField] private Bound[] boundsElement;
     [SerializeField] private PieceColorDictionary colorDictionary;
+    [SerializeField] private BoosterDictionary boosterDictionary;
     [SerializeField] private PiecesSpawnerController spawnerController;
     [SerializeField] private float droppingTime;
     [SerializeField] private PieceCounter pieceCounter;
@@ -29,6 +30,12 @@ public class FieldController : MonoBehaviour
         public Piece prefab;
     }
 
+    public struct MatchingPieces
+    {
+        public List<Piece> matchPieces;
+        public BoosterType boosterType;
+    }
+
     private Dictionary<PieceType, Piece> piecePrefabDict;
     private Piece[,] pieces;
     private BoundsInt bounds;
@@ -36,7 +43,7 @@ public class FieldController : MonoBehaviour
     private int yDim;
     private bool areMovesAllowed = true;
     private bool continueDropping;
-
+    
     public bool IsDroppingContinue => continueDropping;
 
     private void Awake()
@@ -103,7 +110,7 @@ public class FieldController : MonoBehaviour
         }
     }
 
-    public void SpawnNewPiece(int x, int y, PieceType type)
+    public Piece SpawnNewPiece(int x, int y, PieceType type)
     {
         Piece newPiece = Instantiate(piecePrefabDict[type],
             GetPiecePositionOnWorld(x, y), Quaternion.identity);
@@ -120,6 +127,19 @@ public class FieldController : MonoBehaviour
 
         pieces[x, y] = newPiece;
         pieceCounter.AddPiece(newPiece);
+        return newPiece;
+    }
+
+    private void SpawnNewBooster(int x, int y, BoosterType type)
+    {
+        if (pieces[x, y] != null)
+            DeletePiece(x, y);
+
+        Piece boosterPiece = SpawnNewPiece(x, y, PieceType.Booster);
+        Booster booster = boosterPiece.GetComponent<Booster>();
+
+        booster.SetBoosterType(type);
+        booster.SetBoosterSprite(boosterDictionary.GetSpriteByT(type));
     }
 
     private int GetXInGridPos(int x)
@@ -266,12 +286,20 @@ public class FieldController : MonoBehaviour
         SpawnNewPiece(xNonEmpty, yNonEmpty, PieceType.Empty);
     }
 
-    private List<Piece> FindMatch(Piece piece)
+    private MatchingPieces FindMatch(Piece piece)
     {
+        MatchingPieces matching = new MatchingPieces();
+        matching.boosterType = BoosterType.None;
         if (piece == null)
-            return null;
+        {
+            matching.matchPieces = null;
+            return matching;
+        }
         if (piece.IsColorable == false)
-            return null;
+        {
+            matching.matchPieces = null;
+            return matching;
+        }
 
         ColorType color = piece.Colorable.Color;
         List<Piece> horizontelPieces = new List<Piece>();
@@ -345,30 +373,34 @@ public class FieldController : MonoBehaviour
 
         matchingPieces.Add(piece);
 
-        if (horizontelPieces.Count < 2)
-            horizontelPieces.Clear();
-        else
+        matching.boosterType = IdentifyBooster(piece, ref horizontelPieces, verticalPieces);
+
+        if (matching.boosterType != BoosterType.MiniBomb)
         {
-            foreach(Piece horPiece in horizontelPieces)
-            {
-                matchingPieces.Add(horPiece);
-            }
+            if (horizontelPieces.Count < 2)
+                horizontelPieces.Clear();
+
+            if (verticalPieces.Count < 2)
+                verticalPieces.Clear();
         }
 
-        if (verticalPieces.Count < 2)
-            verticalPieces.Clear();
-        else
+
+        foreach (Piece horPiece in horizontelPieces)
         {
-            foreach (Piece verPiece in verticalPieces)
-            {
-                matchingPieces.Add(verPiece);
-            }
+            matchingPieces.Add(horPiece);
         }
+
+        foreach (Piece verPiece in verticalPieces)
+        {
+            matchingPieces.Add(verPiece);
+        }
+
 
         if (matchingPieces.Count < 3)
             matchingPieces.Clear();
 
-        return matchingPieces;
+        matching.matchPieces = matchingPieces;
+        return matching;
     }
 
     private bool ClearAllMatches()
@@ -386,17 +418,23 @@ public class FieldController : MonoBehaviour
                 if (!pieces[x, y].IsMovable)
                     continue;
 
-                List<Piece> matchPPieces = new List<Piece>();
-                matchPPieces = FindMatch(pieces[x, y]);
+                MatchingPieces matchPieces = new MatchingPieces();
+                matchPieces = FindMatch(pieces[x, y]);
 
-                if (matchPPieces.Count > 0)
+                if (matchPieces.matchPieces != null
+                    && matchPieces.matchPieces.Count > 0)
                 {
-                    foreach(Piece piece in matchPPieces)
+                    foreach(Piece piece in matchPieces.matchPieces)
                     {
                         DeletePiece(piece.X, piece.Y);
                     }
 
                     isMatchFound = true;
+                }
+
+                if (matchPieces.boosterType != BoosterType.None)
+                {
+                    SpawnNewBooster(matchPieces.matchPieces[0].X, matchPieces.matchPieces[0].Y, matchPieces.boosterType);
                 }
             }
         }
@@ -437,15 +475,34 @@ public class FieldController : MonoBehaviour
         piece1.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), droppingTime);
         piece2.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), droppingTime);
 
-        List<Piece> matchPiece1 = new List<Piece>();
+        MatchingPieces matchPiece1 = new MatchingPieces();
         matchPiece1 = FindMatch(pieces[piece1.X, piece1.Y]);
 
-        List<Piece> matchPiece2 = new List<Piece>();
+        MatchingPieces matchPiece2 = new MatchingPieces();
         matchPiece2 = FindMatch(pieces[piece2.X, piece2.Y]);
 
 
-        if (matchPiece1.Count >= 3 || matchPiece2.Count >= 3)
+
+        if (matchPiece1.matchPieces.Count >= 3 || matchPiece2.matchPieces.Count >= 3)
         {
+            foreach (Piece piece in matchPiece1.matchPieces)
+            {
+                DeletePiece(piece.X, piece.Y);
+            }
+            foreach (Piece piece in matchPiece2.matchPieces)
+            {
+                DeletePiece(piece.X, piece.Y);
+            }
+
+            if (matchPiece1.boosterType != BoosterType.None)
+            {
+                SpawnNewBooster(matchPiece1.matchPieces[0].X, matchPiece1.matchPieces[0].Y, matchPiece1.boosterType);
+            }
+            else if (matchPiece2.boosterType != BoosterType.None)
+            {
+                SpawnNewBooster(matchPiece2.matchPieces[0].X, matchPiece2.matchPieces[0].Y, matchPiece2.boosterType);
+            }
+
             StartCoroutine(DroppingPieces());
             OnMove?.Invoke();
 
@@ -462,4 +519,113 @@ public class FieldController : MonoBehaviour
             return false;
         }
     }
+    
+    private BoosterType IdentifyBooster(Piece piece, ref List<Piece> horizontelPieces, List<Piece> verticalPieces)
+    {
+        BoosterType boosterType = BoosterType.None;
+
+        /*
+        // Check the box
+        for (int i = 0; i < horizontelPieces.Count; i++)
+        {
+            for (int j = 0; j < verticalPieces.Count; j++)
+            {
+                Piece diagPiece;
+                if (piece.X + 1 < xDim && piece.Y + 1 < yDim)
+                {
+                    diagPiece = pieces[piece.X + 1, piece.Y + 1];
+                    if (horizontelPieces[i].X == piece.X + 1 && verticalPieces[j].Y == piece.Y + 1
+                        && diagPiece != null)
+                    {
+                        if (diagPiece.IsColorable)
+                        {
+                            if (diagPiece.Colorable.Color == piece.Colorable.Color)
+                            {
+                                boosterType = BoosterType.MiniBomb;
+                                horizontelPieces.Add(diagPiece);
+                            }
+                        }
+                    }
+                }
+
+                if (piece.X - 1 >= 0 && piece.Y + 1 < yDim)
+                {
+                    diagPiece = pieces[piece.X - 1, piece.Y + 1];
+                    if (horizontelPieces[i].X == piece.X - 1 && verticalPieces[j].Y == piece.Y + 1
+                        && diagPiece != null)
+                    {
+                        if (diagPiece.IsColorable)
+                        {
+                            if (diagPiece.Colorable.Color == piece.Colorable.Color)
+                            {
+                                boosterType = BoosterType.MiniBomb;
+                                horizontelPieces.Add(diagPiece);
+                            }
+                        }
+                    }
+                }
+
+                if (piece.X + 1 < xDim && piece.Y - 1 >= 0)
+                {
+                    diagPiece = pieces[piece.X + 1, piece.Y - 1];
+                    if (horizontelPieces[i].X == piece.X + 1 && verticalPieces[j].Y == piece.Y - 1
+                        && diagPiece != null)
+                    {
+                        if (diagPiece.IsColorable)
+                        {
+                            if (diagPiece.Colorable.Color == piece.Colorable.Color)
+                            {
+                                boosterType = BoosterType.MiniBomb;
+                                horizontelPieces.Add(diagPiece);
+                            }
+                        }
+                    }
+                }
+
+                if (piece.X - 1 >= 0 && piece.Y - 1 >= 0)
+                {
+                    diagPiece = pieces[piece.X - 1, piece.Y - 1];
+                    if (horizontelPieces[i].X == piece.X - 1 && verticalPieces[j].Y == piece.Y - 1
+                        && diagPiece != null)
+                    {
+                        if (diagPiece.IsColorable)
+                        {
+                            if (diagPiece.Colorable.Color == piece.Colorable.Color)
+                            {
+                                boosterType = BoosterType.MiniBomb;
+                                horizontelPieces.Add(diagPiece);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        */
+        
+        // Check the line of four
+        if (verticalPieces.Count == 3 && horizontelPieces.Count < 1)
+        {
+            boosterType = BoosterType.VerticalRocket;
+        }
+
+        if (horizontelPieces.Count == 3 && verticalPieces.Count < 1)
+        {
+            boosterType = BoosterType.HorizontalRocket;
+        }
+
+        // Check the T or L shape
+        if (verticalPieces.Count >= 2 && horizontelPieces.Count >= 2)
+        {
+            boosterType = BoosterType.MaxiBomb;
+        }
+
+        // Check the line of five
+        if (verticalPieces.Count == 4 || horizontelPieces.Count == 4)
+        {
+            boosterType = BoosterType.Rainbow;
+        }
+
+        return boosterType;
+    }
+    
 }
