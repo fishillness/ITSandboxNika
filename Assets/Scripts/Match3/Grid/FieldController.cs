@@ -122,7 +122,7 @@ public class FieldController : MonoBehaviour
             if (!newPiece.Colorable.IsColorDictionarySet)
                 newPiece.Colorable.SetColorDictionary(colorDictionary);
 
-            newPiece.Colorable.SetColor((ColorType)UnityEngine.Random.Range(0, colorDictionary.NumberColors));
+            newPiece.Colorable.SetColor((ColorType)UnityEngine.Random.Range(0, colorDictionary.NumberTypes));
         }
 
         pieces[x, y] = newPiece;
