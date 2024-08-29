@@ -9,11 +9,16 @@ public class PieceMatrixController : MonoBehaviour
     [SerializeField] private FieldController field;
 
     private Piece[,] pieces;
+    private int xDim;
+    private int yDim;
 
     public Piece[,] Pieces => pieces;
 
     public void InitMatrix(int xDim, int yDim)
     {
+        this.xDim = xDim;
+        this.yDim = yDim;
+
         pieces = new Piece[xDim, yDim];
     }
 
@@ -45,13 +50,15 @@ public class PieceMatrixController : MonoBehaviour
         Piece boosterPiece = SpawnNewPiece(x, y, PieceType.Booster);
         Booster booster = boosterPiece.GetComponent<Booster>();
 
-        booster.SetBoosterType(type);
+        booster.SetProperties(type, this);
         booster.SetBoosterSprite(boosterDictionary.GetSpriteByT(type));
     }
 
 
     public void DeletePiece(int x, int y)
     {
+        if (!pieces[x, y].IsClerable && pieces[x, y].Type != PieceType.Empty) return;
+
         PieceType type = pieces[x, y].Type;
 
         if (pieces[x, y].Clerable == null)
@@ -99,6 +106,120 @@ public class PieceMatrixController : MonoBehaviour
         foreach (Piece piece in pieces)
         {
             DeletePiece(piece.X, piece.Y);
+        }
+    }
+
+    public void DeleteRow(int x, int y)
+    {
+        int xLeft = x - 1;
+        int xRight = x + 1;
+
+        DeletePiece(x, y);
+
+        while (xLeft >= 0 || xRight < xDim)
+        {
+            if (xLeft >= 0 && pieces[xLeft, y] != null && pieces[xLeft, y].IsClerable)
+            {
+                DeletePiece(xLeft, y);
+                xLeft--;
+            }
+
+            if (xRight < xDim && pieces[xRight, y] != null && pieces[xRight, y].IsClerable)
+            {
+                DeletePiece(xRight, y);
+                xRight++;
+            }
+        }
+    }
+
+    public void DeleteColumn(int x, int y)
+    {
+        int yAbove = y - 1;
+        int yBelow = y + 1;
+
+        DeletePiece(x, y);
+
+        while (yAbove >= 0 || yBelow < yDim)
+        {
+            if (yAbove >= 0 && pieces[x, yAbove] != null && pieces[x, yAbove].IsClerable)
+            {
+                DeletePiece(x, yAbove);
+                yAbove--;
+            }
+
+            if (yBelow < yDim && pieces[x, yBelow] != null && pieces[x, yBelow].IsClerable)
+            {
+                DeletePiece(x, yBelow);
+                yBelow++;
+            }
+        }
+    }
+
+    public void DeleteNearPiece(int x, int y)
+    {
+        DeletePiece(x, y);
+
+        if (pieces[x, y - 1] != null && pieces[x, y - 1].IsClerable) 
+            DeletePiece(x, y - 1);
+
+        if (pieces[x + 1, y] != null && pieces[x + 1, y].IsClerable)
+            DeletePiece(x + 1, y);
+
+        if (pieces[x, y + 1] != null && pieces[x, y + 1].IsClerable)
+            DeletePiece(x, y + 1);
+
+        if (pieces[x - 1, y] != null && pieces[x - 1, y].IsClerable)
+            DeletePiece(x - 1, y);
+    }
+
+    public void DeleteManyNearPieces(int x, int y)
+    {
+        int xMin = x - 2;
+        int xMax = x + 2;
+
+        int yMin = y - 2;
+        int yMax = y + 2;
+
+        DeletePiece(x, y);
+
+        for (int i = xMin; i <= xMax; i++)
+        {
+            for (int j = yMin; j <= yMax; j++)
+            {
+                if (i == xMin && j == yMin) continue;
+                if (i == xMax && j == yMax) continue;
+                if (i == xMin && j == yMax) continue;
+                if (i == xMax && j == yMin) continue;
+                if (i < 0 || i >= xDim) continue;
+                if (j < 0 || j >= yDim) continue;
+                if (i == x && j == y) continue;
+
+                if (pieces[i, j] != null && pieces[i, j].IsClerable)
+                {
+                    DeletePiece(i, j);
+                }
+            }
+        }
+    }
+
+    public void DeleteAllPiecesByColor(int x, int y, Piece swapPiece)
+    {
+        ColorType color;
+        if (!swapPiece.IsColorable)
+            color = (ColorType)UnityEngine.Random.Range(0, colorDictionary.NumberTypes);
+        else
+            color = swapPiece.Colorable.Color;
+
+        DeletePiece(x, y);
+
+        foreach(Piece piece in pieces)
+        {
+            if (piece == null) continue;
+
+            if (piece.IsColorable && piece.IsClerable && piece.Colorable.Color == color)
+            {
+                DeletePiece(piece.X, piece.Y);
+            }
         }
     }
 }

@@ -6,6 +6,8 @@ public class ClerablePiece : MonoBehaviour
 {
     [HideInInspector]
     public UnityEvent<Piece> OnPieceClear;
+    [HideInInspector]
+    public UnityEvent<Piece> OnPieceStartClear;
 
     private Animator animator;
     private Piece piece;
@@ -26,6 +28,7 @@ public class ClerablePiece : MonoBehaviour
 
         isClearing = true;
         animator.SetTrigger(clearTriggerName);
+        OnPieceStartClear?.Invoke(piece);
     }
 
     public void OnClearAnimationEnd()

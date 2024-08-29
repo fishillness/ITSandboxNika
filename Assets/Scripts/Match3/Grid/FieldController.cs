@@ -415,7 +415,8 @@ public class FieldController : MonoBehaviour
 
 
         if ((matchPiece1.matchPieces != null && matchPiece1.matchPieces.Count >= 3) 
-            || (matchPiece2.matchPieces != null && matchPiece2.matchPieces.Count >= 3))
+            || (matchPiece2.matchPieces != null && matchPiece2.matchPieces.Count >= 3)
+            || piece1.IsBooster || piece2.IsBooster)
         {
             if (matchPiece1.matchPieces != null)
             {
@@ -434,6 +435,11 @@ public class FieldController : MonoBehaviour
             {
                 matrixController.SpawnNewBooster(matchPiece2.matchPieces[0].X, matchPiece2.matchPieces[0].Y, matchPiece2.boosterType);
             }
+
+            if (piece1.IsBooster)
+                piece1.Booster.Activate(piece2);
+            if (piece2.IsBooster) 
+                piece2.Booster.Activate(piece1);
 
             StartCoroutine(DroppingPieces());
             OnMove?.Invoke();
