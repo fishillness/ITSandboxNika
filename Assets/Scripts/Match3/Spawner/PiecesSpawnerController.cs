@@ -8,8 +8,9 @@ public class PiecesSpawnerController : MonoBehaviour
     [SerializeField] private Grid grid;
     [SerializeField] private Tilemap piecesSpawnersTilemap;
     [SerializeField] private Bound[] boundsElement;
-    [SerializeField] private FieldController gridController;
+    //[SerializeField] private FieldController gridController;
     [SerializeField] private PiecesSpawner spawnerPrefab;
+    [SerializeField] private PieceMatrixController matrixController;
 
     private List<PiecesSpawner> piecesSpawners;
     private BoundsInt bounds;
@@ -75,10 +76,10 @@ public class PiecesSpawnerController : MonoBehaviour
 
         foreach (var spawner in piecesSpawners)
         {
-            if (gridController.CheckTypeOfPieceInGrid(spawner.X, spawner.Y, PieceType.Empty))
+            if (matrixController.CheckTypeOfPieceInGrid(spawner.X, spawner.Y, PieceType.Empty))
             {
-                gridController.DeletePiece(spawner.X, spawner.Y);
-                gridController.SpawnNewPiece(spawner.X, spawner.Y, PieceType.Normal);
+                matrixController.DeletePiece(spawner.X, spawner.Y);
+                matrixController.SpawnNewPiece(spawner.X, spawner.Y, PieceType.Normal);
 
                 somethingSpawned = true;
             }

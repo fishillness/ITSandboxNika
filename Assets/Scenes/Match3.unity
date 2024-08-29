@@ -1532,6 +1532,7 @@ Transform:
   - {fileID: 105580525}
   - {fileID: 1963941976}
   - {fileID: 827893238}
+  - {fileID: 426143280}
   - {fileID: 533588526}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1722,6 +1723,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209012730}
   m_CullTransparentMesh: 1
+--- !u!1 &426143279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 426143280}
+  - component: {fileID: 426143281}
+  m_Layer: 0
+  m_Name: PieceMatrixController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &426143280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426143279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 165489634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &426143281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426143279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29af03c21196f30408cee57c6b9e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorDictionary: {fileID: 819809155}
+  boosterDictionary: {fileID: 749067932}
+  pieceCounter: {fileID: 105580526}
+  field: {fileID: 1376921984}
 --- !u!1 &440907853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,8 +2503,8 @@ MonoBehaviour:
   boundsElement:
   - {fileID: 440907854}
   - {fileID: 1803377593}
-  gridController: {fileID: 1376921984}
   spawnerPrefab: {fileID: 8406461318224951459, guid: e2ce7c92ac0258b459466a4ac03b04c5, type: 3}
+  matrixController: {fileID: 426143281}
 --- !u!1 &1124539277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2668,6 +2717,7 @@ MonoBehaviour:
   droppingTime: 0.2
   pieceCounter: {fileID: 105580526}
   level: {fileID: 827893239}
+  matrixController: {fileID: 426143281}
 --- !u!1 &1474567828
 GameObject:
   m_ObjectHideFlags: 0

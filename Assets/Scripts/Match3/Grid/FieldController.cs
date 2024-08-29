@@ -16,12 +16,11 @@ public class FieldController : MonoBehaviour
     [SerializeField] private Tilemap field;
     [SerializeField] private PiecePrefab[] piecePrefabs;
     [SerializeField] private Bound[] boundsElement;
-    [SerializeField] private PieceColorDictionary colorDictionary;
-    [SerializeField] private BoosterDictionary boosterDictionary;
     [SerializeField] private PiecesSpawnerController spawnerController;
     [SerializeField] private float droppingTime;
-    [SerializeField] private PieceCounter pieceCounter;
+    [SerializeField] private PieceCounter pieceCounter; //
     [SerializeField] private Match3Level level;
+    [SerializeField] private PieceMatrixController matrixController;
 
     [Serializable, SerializeField]
     public struct PiecePrefab
@@ -37,7 +36,6 @@ public class FieldController : MonoBehaviour
     }
 
     private Dictionary<PieceType, Piece> piecePrefabDict;
-    private Piece[,] pieces;
     private BoundsInt bounds;
     private int xDim;
     private int yDim;
@@ -45,6 +43,8 @@ public class FieldController : MonoBehaviour
     private bool continueDropping;
     
     public bool IsDroppingContinue => continueDropping;
+    public Dictionary<PieceType, Piece>  PiecePrefabDict => piecePrefabDict;
+    public float DroppingTime => droppingTime;  
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class FieldController : MonoBehaviour
 
         SetBounds();
 
-        pieces = new Piece[xDim, yDim];
+        matrixController.InitMatrix(xDim, yDim);
         FillEmptyField();
     }
 
@@ -93,7 +93,7 @@ public class FieldController : MonoBehaviour
         xDim = bounds.xMax - bounds.xMin + 1;
         yDim = bounds.yMax - bounds.yMin + 1;
     }
-
+    
     private void FillEmptyField()
     {
         for (int x = 0; x < xDim; x++)
@@ -102,46 +102,14 @@ public class FieldController : MonoBehaviour
             {
                 if (field.GetTile(new Vector3Int(GetXInGridPos(x), GetYInGridPos(y), 0)) != null)
                 {
-                    SpawnNewPiece(x, y, PieceType.Empty);
+                    matrixController.SpawnNewPiece(x, y, PieceType.Empty);
                 }
                 else
-                    pieces[x, y] = null;
+                    matrixController.SetPieceNull(x, y);
             }
         }
     }
-
-    public Piece SpawnNewPiece(int x, int y, PieceType type)
-    {
-        Piece newPiece = Instantiate(piecePrefabDict[type],
-            GetPiecePositionOnWorld(x, y), Quaternion.identity);
-        newPiece.transform.parent = transform;
-        newPiece.Init(x, y, type);
-
-        if (newPiece.Colorable != null)
-        {
-            if (!newPiece.Colorable.IsColorDictionarySet)
-                newPiece.Colorable.SetColorDictionary(colorDictionary);
-
-            newPiece.Colorable.SetColor((ColorType)UnityEngine.Random.Range(0, colorDictionary.NumberTypes));
-        }
-
-        pieces[x, y] = newPiece;
-        pieceCounter.AddPiece(newPiece);
-        return newPiece;
-    }
-
-    private void SpawnNewBooster(int x, int y, BoosterType type)
-    {
-        if (pieces[x, y] != null)
-            DeletePiece(x, y);
-
-        Piece boosterPiece = SpawnNewPiece(x, y, PieceType.Booster);
-        Booster booster = boosterPiece.GetComponent<Booster>();
-
-        booster.SetBoosterType(type);
-        booster.SetBoosterSprite(boosterDictionary.GetSpriteByT(type));
-    }
-
+    
     private int GetXInGridPos(int x)
     {
         return (x + bounds.xMin);
@@ -150,30 +118,6 @@ public class FieldController : MonoBehaviour
     private int GetYInGridPos(int y)
     {
         return (bounds.yMax - y);
-    }
-
-    public bool CheckTypeOfPieceInGrid(int x, int y, PieceType type)
-    {
-        if (pieces[x, y] == null)
-            return false;
-
-        return pieces[x, y].Type == type;
-    }
-
-    public void DeletePiece(int x, int y)
-    {
-        PieceType type = pieces[x, y].Type;
-
-        if (pieces[x, y].Clerable == null)
-            Destroy(pieces[x, y].gameObject);
-        else
-            pieces[x, y].Clerable.ClearPiece();
-
-        pieces[x, y] = null;
-        if (type != PieceType.Empty)
-        {
-            SpawnNewPiece(x, y, PieceType.Empty);
-        }
     }
 
     private IEnumerator DroppingPieces()
@@ -205,18 +149,18 @@ public class FieldController : MonoBehaviour
         {
             for (int x = 0; x < xDim; x++)
             {
-                if (pieces[x, y] == null)
+                if (matrixController.Pieces[x, y] == null)
                     continue;
 
-                if (pieces[x, y].IsMovable)
+                if (matrixController.Pieces[x, y].IsMovable)
                 {
-                    Piece pieceBelow = pieces[x, y + 1];
+                    Piece pieceBelow = matrixController.Pieces[x, y + 1];
 
                     if (pieceBelow != null)
                     {
                         if (pieceBelow.Type == PieceType.Empty)
                         {
-                            SwapEmptyPieceWithNonEmpty(x, y + 1, x, y);
+                            matrixController.SwapEmptyPieceWithNonEmpty(x, y + 1, x, y);
                             spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
                             isPieceDrop = true;
                         }
@@ -228,16 +172,16 @@ public class FieldController : MonoBehaviour
                         Piece pieceBelowLeft = null;
                         Piece piece = null;
 
-                        if (x + 1 < xDim && pieces[x + 1, y + 1] != null)
+                        if (x + 1 < xDim && matrixController.Pieces[x + 1, y + 1] != null)
                         {
-                            if (pieces[x + 1, y + 1].Type == PieceType.Empty)
-                                pieceBelowRight = pieces[x + 1, y + 1];
+                            if (matrixController.Pieces[x + 1, y + 1].Type == PieceType.Empty)
+                                pieceBelowRight = matrixController.Pieces[x + 1, y + 1];
                         }
                         
-                        if (x - 1 >= 0 && pieces[x - 1, y + 1] != null)
+                        if (x - 1 >= 0 && matrixController.Pieces[x - 1, y + 1] != null)
                         {
-                            if (pieces[x - 1, y + 1].Type == PieceType.Empty)
-                                pieceBelowLeft = pieces[x - 1, y + 1];
+                            if (matrixController.Pieces[x - 1, y + 1].Type == PieceType.Empty)
+                                pieceBelowLeft = matrixController.Pieces[x - 1, y + 1];
                         }
 
                         if (pieceBelowRight != null && pieceBelowLeft == null)
@@ -256,7 +200,7 @@ public class FieldController : MonoBehaviour
 
                         if (piece != null)
                         {
-                            SwapEmptyPieceWithNonEmpty(piece.X, piece.Y, x, y);
+                            matrixController.SwapEmptyPieceWithNonEmpty(piece.X, piece.Y, x, y);
                             spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
                             isPieceDrop = true;
                         }
@@ -268,22 +212,13 @@ public class FieldController : MonoBehaviour
         return isPieceDrop;
     }
 
-    private Vector2 GetPiecePositionOnWorld(int x, int y)
+    public Vector2 GetPiecePositionOnWorld(int x, int y)
     {
         Vector3 pos = field.CellToWorld(new Vector3Int(GetXInGridPos(x), GetYInGridPos(y), 0));
         pos.x += grid.cellSize.x / 2;
         pos.y += grid.cellSize.y / 2;
 
         return pos;
-    }
-
-    private void SwapEmptyPieceWithNonEmpty(int xEmpty, int yEmpty, int xNonEmpty, int yNonEmpty)
-    {
-        DeletePiece(xEmpty, yEmpty);
-        pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, GetPiecePositionOnWorld(xEmpty, yEmpty), droppingTime);
-        pieces[xEmpty, yEmpty] = pieces[xNonEmpty, yNonEmpty];
-
-        SpawnNewPiece(xNonEmpty, yNonEmpty, PieceType.Empty);
     }
 
     private MatchingPieces FindMatch(Piece piece)
@@ -308,7 +243,7 @@ public class FieldController : MonoBehaviour
 
         for (int x = piece.X + 1; x < xDim; x++)
         {
-            Piece horPiece = pieces[x, piece.Y];
+            Piece horPiece = matrixController.Pieces[x, piece.Y];
             if (horPiece == null)
                 break;
             if (!horPiece.IsColorable)
@@ -324,7 +259,7 @@ public class FieldController : MonoBehaviour
 
         for (int x = piece.X - 1; x >= 0; x--)
         {
-            Piece horPiece = pieces[x, piece.Y];
+            Piece horPiece = matrixController.Pieces[x, piece.Y];
             if (horPiece == null)
                 break;
             if (!horPiece.IsColorable)
@@ -340,7 +275,7 @@ public class FieldController : MonoBehaviour
 
         for (int y = piece.Y + 1; y < yDim; y++)
         {
-            Piece verPiece = pieces[piece.X, y];
+            Piece verPiece = matrixController.Pieces[piece.X, y];
             if (verPiece == null)
                 break;
             if (!verPiece.IsColorable)
@@ -356,7 +291,7 @@ public class FieldController : MonoBehaviour
 
         for (int y = piece.Y - 1; y >= 0; y--)
         {
-            Piece verPiece = pieces[piece.X, y];
+            Piece verPiece = matrixController.Pieces[piece.X, y];
             if (verPiece == null)
                 break;
 
@@ -412,29 +347,26 @@ public class FieldController : MonoBehaviour
         {
             for (int x = 0; x < xDim; x++)
             {
-                if (pieces[x, y] == null)
+                if (matrixController.Pieces[x, y] == null)
                     continue;
 
-                if (!pieces[x, y].IsMovable)
+                if (!matrixController.Pieces[x, y].IsMovable)
                     continue;
 
                 MatchingPieces matchPieces = new MatchingPieces();
-                matchPieces = FindMatch(pieces[x, y]);
+                matchPieces = FindMatch(matrixController.Pieces[x, y]);
 
                 if (matchPieces.matchPieces != null
                     && matchPieces.matchPieces.Count > 0)
                 {
-                    foreach(Piece piece in matchPieces.matchPieces)
-                    {
-                        DeletePiece(piece.X, piece.Y);
-                    }
+                    matrixController.DeleteSomePieces(matchPieces.matchPieces);
 
                     isMatchFound = true;
                 }
 
                 if (matchPieces.boosterType != BoosterType.None)
                 {
-                    SpawnNewBooster(matchPieces.matchPieces[0].X, matchPieces.matchPieces[0].Y, matchPieces.boosterType);
+                    matrixController.SpawnNewBooster(matchPieces.matchPieces[0].X, matchPieces.matchPieces[0].Y, matchPieces.boosterType);
                 }
             }
         }
@@ -466,8 +398,7 @@ public class FieldController : MonoBehaviour
             return false;
         }
 
-        pieces[piece1.X, piece1.Y] = piece2;
-        pieces[piece2.X, piece2.Y] = piece1;
+        matrixController.SwapPiecesOnlyInMatrix(piece1, piece2);
 
         Vector2Int piece1XY = new Vector2Int(piece1.X, piece1.Y);
         Vector2Int piece2XY = new Vector2Int(piece2.X, piece2.Y);
@@ -476,31 +407,32 @@ public class FieldController : MonoBehaviour
         piece2.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), droppingTime);
 
         MatchingPieces matchPiece1 = new MatchingPieces();
-        matchPiece1 = FindMatch(pieces[piece1.X, piece1.Y]);
+        matchPiece1 = FindMatch(matrixController.Pieces[piece1.X, piece1.Y]);
 
         MatchingPieces matchPiece2 = new MatchingPieces();
-        matchPiece2 = FindMatch(pieces[piece2.X, piece2.Y]);
+        matchPiece2 = FindMatch(matrixController.Pieces[piece2.X, piece2.Y]);
 
 
 
-        if (matchPiece1.matchPieces.Count >= 3 || matchPiece2.matchPieces.Count >= 3)
+        if ((matchPiece1.matchPieces != null && matchPiece1.matchPieces.Count >= 3) 
+            || (matchPiece2.matchPieces != null && matchPiece2.matchPieces.Count >= 3))
         {
-            foreach (Piece piece in matchPiece1.matchPieces)
+            if (matchPiece1.matchPieces != null)
             {
-                DeletePiece(piece.X, piece.Y);
+                matrixController.DeleteSomePieces(matchPiece1.matchPieces);
             }
-            foreach (Piece piece in matchPiece2.matchPieces)
+            if (matchPiece2.matchPieces != null)
             {
-                DeletePiece(piece.X, piece.Y);
+                matrixController.DeleteSomePieces(matchPiece2 .matchPieces);
             }
 
             if (matchPiece1.boosterType != BoosterType.None)
             {
-                SpawnNewBooster(matchPiece1.matchPieces[0].X, matchPiece1.matchPieces[0].Y, matchPiece1.boosterType);
+                matrixController.SpawnNewBooster(matchPiece1.matchPieces[0].X, matchPiece1.matchPieces[0].Y, matchPiece1.boosterType);
             }
             else if (matchPiece2.boosterType != BoosterType.None)
             {
-                SpawnNewBooster(matchPiece2.matchPieces[0].X, matchPiece2.matchPieces[0].Y, matchPiece2.boosterType);
+                matrixController.SpawnNewBooster(matchPiece2.matchPieces[0].X, matchPiece2.matchPieces[0].Y, matchPiece2.boosterType);
             }
 
             StartCoroutine(DroppingPieces());
@@ -510,8 +442,7 @@ public class FieldController : MonoBehaviour
         }
         else
         {
-            pieces[piece1.X, piece1.Y] = piece2;
-            pieces[piece2.X, piece2.Y] = piece1;
+            matrixController.SwapPiecesOnlyInMatrix(piece1, piece2);
 
             piece1.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), droppingTime);
             piece2.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), droppingTime);
@@ -627,5 +558,4 @@ public class FieldController : MonoBehaviour
 
         return boosterType;
     }
-    
 }
