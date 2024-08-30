@@ -32,7 +32,7 @@ public class PieceControl : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePosition), Vector2.zero);
 
-        if (hit.collider != null)
+        if (hit.collider != null && field.IsLevelEnd && field.AreMovesAllowed)
         {
             Piece piece = hit.collider.GetComponent<Piece>();
 

@@ -39,12 +39,15 @@ public class FieldController : MonoBehaviour
     private BoundsInt bounds;
     private int xDim;
     private int yDim;
+    private bool isLevelEnd = true;
     private bool areMovesAllowed = true;
     private bool continueDropping;
     
     public bool IsDroppingContinue => continueDropping;
     public Dictionary<PieceType, Piece>  PiecePrefabDict => piecePrefabDict;
     public float DroppingTime => droppingTime;  
+    public bool IsLevelEnd => isLevelEnd;
+    public bool AreMovesAllowed => areMovesAllowed;
 
     private void Awake()
     {
@@ -78,6 +81,7 @@ public class FieldController : MonoBehaviour
 
     private void OnLevelEnd()
     {
+        isLevelEnd = false;
         areMovesAllowed = false;
     }
 
@@ -123,6 +127,7 @@ public class FieldController : MonoBehaviour
     private IEnumerator DroppingPieces()
     {
         continueDropping = true;
+        areMovesAllowed = false;
 
         while (continueDropping)
         {
@@ -138,6 +143,7 @@ public class FieldController : MonoBehaviour
                 continueDropping = true;
         }
 
+        areMovesAllowed = true;
         OnDropEnd?.Invoke();
     }
 
@@ -381,7 +387,9 @@ public class FieldController : MonoBehaviour
 
     public bool SwapPieces(Piece piece1, Piece piece2)
     {
+        if (!isLevelEnd) return false;
         if (!areMovesAllowed) return false;
+
         if (piece1 == null || piece2 == null)
         {
             Debug.Log($"Кто-то нуловьй. piece1: {piece1}, piece2: {piece2}");
