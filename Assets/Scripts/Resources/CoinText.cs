@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CoinText : MonoBehaviour
 {
@@ -20,6 +17,6 @@ public class CoinText : MonoBehaviour
 
     void UpdateText(int coins)
     {
-        Text.text = $"Монеты: {coins}";
+        Text.text = $"{coins}";
     }
 }
