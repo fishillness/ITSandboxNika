@@ -272,6 +272,9 @@ MonoBehaviour:
   OnPieceClear:
     m_PersistentCalls:
       m_Calls: []
+  OnPieceStartClear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7732811380212794240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,5 +352,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.85, y: 0.85}
+  m_Size: {x: 0.35, y: 0.35}
   m_EdgeRadius: 0

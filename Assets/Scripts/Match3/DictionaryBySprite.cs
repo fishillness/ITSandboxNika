@@ -13,7 +13,7 @@ public class DictionaryBySprite<T> :MonoBehaviour
 
     [SerializeField] private TypeSprite[] typeSprites;
 
-    private Dictionary<T, Sprite> typeSpriteDict;
+    protected Dictionary<T, Sprite> typeSpriteDict;
 
     public int NumberTypes => typeSprites.Length;
 

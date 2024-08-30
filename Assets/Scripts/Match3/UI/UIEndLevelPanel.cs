@@ -15,12 +15,15 @@ public class UIEndLevelPanel : MonoBehaviour
     private void Start()
     {
         endLevelPanel.SetActive(false);
+
         level.OnLevelResult.AddListener(OnLevelResult);
+        returnButton.onClick.AddListener(OpenCity);
     }
 
     private void OnDestroy()
     {
         level.OnLevelResult.RemoveListener(OnLevelResult);
+        returnButton.onClick.RemoveListener(OpenCity);
     }
 
     private void OnLevelResult(bool result)
@@ -31,5 +34,10 @@ public class UIEndLevelPanel : MonoBehaviour
             resultText.text = winText;
         else 
             resultText.text = loseText;
+    }
+
+    private void OpenCity()
+    {
+        SceneController.LoadSceneCity();
     }
 }

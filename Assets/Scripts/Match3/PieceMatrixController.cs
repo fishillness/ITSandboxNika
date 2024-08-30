@@ -35,7 +35,7 @@ public class PieceMatrixController : MonoBehaviour
             if (!newPiece.Colorable.IsColorDictionarySet)
                 newPiece.Colorable.SetColorDictionary(colorDictionary);
 
-            newPiece.Colorable.SetColor((ColorType)UnityEngine.Random.Range(0, colorDictionary.NumberTypes));
+            newPiece.Colorable.SetColor(colorDictionary.GetRandomColorFromDictionaty());
         }
 
         pieces[x, y] = newPiece;
