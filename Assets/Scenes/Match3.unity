@@ -2338,9 +2338,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeSprites:
   - type: 1
-    sprite: {fileID: -1747487396, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
+    sprite: {fileID: -485238794, guid: 727b018c8bc2e344e9bca7a4f3ce60c6, type: 3}
   - type: 2
-    sprite: {fileID: -685937771, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
+    sprite: {fileID: -468775078, guid: 727b018c8bc2e344e9bca7a4f3ce60c6, type: 3}
   - type: 3
     sprite: {fileID: -1788579019, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
   - type: 4
