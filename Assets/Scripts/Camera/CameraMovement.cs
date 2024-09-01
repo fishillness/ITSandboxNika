@@ -1,5 +1,3 @@
-using System.Drawing;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
