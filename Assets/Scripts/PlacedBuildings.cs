@@ -1,12 +1,18 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PlacedBuildings
 {
-    private List<int> buildings = new List<int>();
+    private List<Building> buildings = new List<Building>();
 
-    public int AddBuilding(int buildingID)
+    public int AddBuilding(Building building)
     {
-        buildings.Add(buildingID);
+        buildings.Add(building);
         return buildings.Count - 1;
+    }
+
+    public Building GetBuilding(int buildingIndex)
+    {
+        return buildings[buildingIndex];
     }
 }

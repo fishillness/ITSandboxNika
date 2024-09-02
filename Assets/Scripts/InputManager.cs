@@ -7,9 +7,8 @@ public class InputManager : MonoBehaviour
 {
     public event UnityAction Click;
     [SerializeField] private Camera m_Camera;
-    [SerializeField] private LayerMask m_LayerMask;
 
-    private Vector3 lastPosition;
+    private Vector3 worldPosition;
 
     private void Update()
     {
@@ -19,15 +18,14 @@ public class InputManager : MonoBehaviour
         }   
     }
 
-    public Vector3 GetMousePosition()
+    public Vector3 GetMousePosition(Transform targetPlane)
     {
-        Vector3 mousePos = Input.mousePosition;
-        Ray ray = m_Camera.ScreenPointToRay(mousePos);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, m_LayerMask))
+        Plane plane = new Plane(targetPlane.up, targetPlane.position);
+        Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out float position))
         {
-            lastPosition = hit.point;
+            worldPosition = ray.GetPoint(position);
         }
-        return lastPosition;
+        return worldPosition;
     }
 }

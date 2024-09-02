@@ -4,30 +4,46 @@ using UnityEngine;
 
 public class BuildModeUI : MonoBehaviour
 {
-    [SerializeField] private RectTransform SpawnButton;
-    [SerializeField] private RectTransform CancelButton;
-    [SerializeField] private RectTransform SetButton;
+    [SerializeField] private RectTransform m_SpawnButton;
+    [SerializeField] private RectTransform m_CancelButton;
+    [SerializeField] private RectTransform m_SetButton;
+    [SerializeField] private RectTransform m_DeleteButton;
+    [SerializeField] private RectTransform m_ReplacementButton;
 
     public void StartPlacement()
     {
-        CancelButton.gameObject.SetActive(true);
-        SetButton.gameObject.SetActive(true);
-        SpawnButton.gameObject.SetActive(false);
+        DisablingReplacement();
+        m_CancelButton.gameObject.SetActive(true);
+        m_SetButton.gameObject.SetActive(true);
+        m_SpawnButton.gameObject.SetActive(false);
     }
     public void EndPlacement()
     {
-        CancelButton.gameObject.SetActive(false);
-        SetButton.gameObject.SetActive(false);
-        SpawnButton.gameObject.SetActive(true);
+        m_CancelButton.gameObject.SetActive(false);
+        m_SetButton.gameObject.SetActive(false);
+        m_SpawnButton.gameObject.SetActive(true);
     }
 
     public void DisablingPlacement()
     {
-        SetButton.gameObject.SetActive(false);
+        m_SetButton.gameObject.SetActive(false);
+        m_SpawnButton.gameObject.SetActive(false);
     }
 
     public void EnablingPlacement()
     {
-        SetButton.gameObject.SetActive(true);
+        m_SetButton.gameObject.SetActive(true);
+        m_SpawnButton.gameObject.SetActive(false);
+    }
+    public void DisablingReplacement()
+    {
+        m_DeleteButton.gameObject.SetActive(false);
+        m_ReplacementButton.gameObject.SetActive(false);
+    }
+
+    public void EnablingReplacement()
+    {
+        m_DeleteButton.gameObject.SetActive(true);
+        m_ReplacementButton.gameObject.SetActive(true);
     }
 }

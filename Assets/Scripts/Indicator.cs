@@ -27,9 +27,9 @@ public class Indicator : MonoBehaviour
     }
     private void SetPosition()
     {
-        indicatorPosition = m_Grid.ConvertMousePositionToCellWorldPosition(m_InputManager.GetMousePosition());
+        indicatorPosition = m_Grid.ConvertMousePositionToCellWorldPosition(m_InputManager.GetMousePosition(m_Grid.transform));
 
-        Vector2 localCellPosition = m_Grid.ConvertMousePositionToLocalCellPosition(m_InputManager.GetMousePosition());
+        Vector2 localCellPosition = m_Grid.ConvertMousePositionToLocalCellPosition(m_InputManager.GetMousePosition(m_Grid.transform));
         if (m_Grid.CheckingCellActivity(localCellPosition) == false)
         {            
             m_SpriteRenderer.enabled = false;

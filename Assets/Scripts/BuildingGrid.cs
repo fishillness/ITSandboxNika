@@ -31,7 +31,7 @@ public class BuildingGrid : MonoBehaviour
             for (int j = 0; j < grid[i].Array.Length; j++)
             {                
                 Cell Cell = Instantiate(m_CellPrefab, transform);
-                Cell.transform.position = new Vector3(transform.position.x + (m_CellSize / 2) + i * m_CellSize, transform.position.y, transform.position.z + (m_CellSize / 2) + j * m_CellSize);
+                Cell.transform.localPosition = new Vector3((m_CellSize / 2) + i * m_CellSize, 0, (m_CellSize / 2) + j * m_CellSize);
                 Cell.transform.localScale = Vector3.one * m_CellSize;
                 grid[i].Array[j] = Cell; 
             }
@@ -42,7 +42,7 @@ public class BuildingGrid : MonoBehaviour
     {    
         Vector3 cellWorldPosition = transform.InverseTransformPoint(mousePosition);
         cellWorldPosition.x = Mathf.CeilToInt(cellWorldPosition.x / m_CellSize) * m_CellSize - (m_CellSize / 2);
-        cellWorldPosition.y = transform.position.y;
+        cellWorldPosition.y = 0;
         cellWorldPosition.z = Mathf.CeilToInt(cellWorldPosition.z / m_CellSize) * m_CellSize - (m_CellSize / 2);
         cellWorldPosition = transform.TransformPoint(cellWorldPosition);
 
@@ -51,7 +51,7 @@ public class BuildingGrid : MonoBehaviour
 
     public Vector3 ConvertCellLocalPositionToCellWorldPosition(Vector2 cellLocallPosition)
     {
-        Vector3 cellWorldPosition = new Vector3(cellLocallPosition.x, transform.position.y, cellLocallPosition.y);
+        Vector3 cellWorldPosition = new Vector3(cellLocallPosition.x, 0, cellLocallPosition.y);
         cellWorldPosition.x = cellWorldPosition.x * m_CellSize - (m_CellSize / 2);
         cellWorldPosition.z =cellWorldPosition.z * m_CellSize - (m_CellSize / 2);
         cellWorldPosition = transform.TransformPoint(cellWorldPosition);
@@ -90,6 +90,24 @@ public class BuildingGrid : MonoBehaviour
 
     public void OccupyACell(Vector2 cellLocalPosition, int buildingID, int buildingIndex)
     {   
-        grid[(int)cellLocalPosition.x - 1].Array[(int)cellLocalPosition.y - 1].BuildingPlacement(buildingID, buildingIndex);
+        grid[(int)cellLocalPosition.x - 1].Array[(int)cellLocalPosition.y - 1].OccupyACell(buildingID, buildingIndex);
+    }
+
+    public void ClearACell(Vector2 cellLocalPosition)
+    {
+        grid[(int)cellLocalPosition.x - 1].Array[(int)cellLocalPosition.y - 1].ClearACell();
+    }
+
+    public Cell GetCell(Vector2 cellLocalPosition)
+    {
+        if (CheckingCellActivity(cellLocalPosition) == true)
+        {
+            return grid[(int)cellLocalPosition.x - 1].Array[(int)cellLocalPosition.y - 1];
+        }
+        else
+        {
+            return null;
+        }
+
     }
 }
