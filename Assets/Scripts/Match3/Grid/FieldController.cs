@@ -136,6 +136,9 @@ public class FieldController : MonoBehaviour
             while (DropPieces())
             {
                 yield return new WaitForSeconds(droppingTime);
+                //
+                if (spawnerController.CheckNeedOfSpawnPiece())
+                    continueDropping = true;
             }
 
             continueDropping = ClearAllMatches();
@@ -167,7 +170,7 @@ public class FieldController : MonoBehaviour
                         if (pieceBelow.Type == PieceType.Empty)
                         {
                             matrixController.SwapEmptyPieceWithNonEmpty(x, y + 1, x, y);
-                            spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
+                            //spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
                             isPieceDrop = true;
                         }
                     }
@@ -207,14 +210,14 @@ public class FieldController : MonoBehaviour
                         if (piece != null)
                         {
                             matrixController.SwapEmptyPieceWithNonEmpty(piece.X, piece.Y, x, y);
-                            spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
+                            //spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
                             isPieceDrop = true;
                         }
                     }
                 }
             }
         }
-        
+
         return isPieceDrop;
     }
 
@@ -376,6 +379,7 @@ public class FieldController : MonoBehaviour
                 }
             }
         }
+
         return isMatchFound;
     }
 

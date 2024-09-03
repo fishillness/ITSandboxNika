@@ -24,7 +24,6 @@ public class UIMatch3LevelPanel : MonoBehaviour
 
     public void UpdateMoves(int moves)
     {
-        Debug.Log($"UpdateMoves: {moves}");
         textMoves.text = moves.ToString();
     }
 

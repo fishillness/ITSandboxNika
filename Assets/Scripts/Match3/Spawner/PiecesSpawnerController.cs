@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -87,7 +86,7 @@ public class PiecesSpawnerController : MonoBehaviour
 
         return somethingSpawned;
     }
-
+    /*
     public void CheckNeedOfSpawnPieceAfterTime(float time)
     {
         if (coroutine != null)
@@ -101,4 +100,5 @@ public class PiecesSpawnerController : MonoBehaviour
         yield return new WaitForSeconds(time);
         CheckNeedOfSpawnPiece();
     }
+    */
 }
