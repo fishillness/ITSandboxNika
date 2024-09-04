@@ -38,19 +38,22 @@ public class PlacementSystem : MonoBehaviour
         }
         else
         {
-            CheckingPossibilityOfBuildingReplacement();
+            CheckingCellOccupancy();
         }
     }
 
-    private void CheckingPossibilityOfBuildingReplacement()
+    private void CheckingCellOccupancy()
     {
-        if (m_Grid.CheckingCellOccupancy(new Vector2(currentCellLocalPosition.x, currentCellLocalPosition.y)) == true)
+        if (m_Grid.CheckingCellOccupancy(currentCellLocalPosition) == true)
         {
-            EnablingReplacement();
+            Building building = placedBuildings.GetBuilding(m_Grid.GetCell(currentCellLocalPosition).BuildingIndex);
+            m_Indicator.BuildingSelect(building.Size, building.OccupiedCells);
+            m_BuildModeUI.EnablingReplacement();
         }
         else
         {
-            DisablingReplacement();
+            m_BuildModeUI.DisablingReplacement();
+            m_Indicator.BuildingUnselect();
         }
     }
 
@@ -80,18 +83,21 @@ public class PlacementSystem : MonoBehaviour
         {
             Destroy(currentBuilding.gameObject);
         }
-        currentBuilding = Instantiate(building, m_Indicator.transform.position, Quaternion.identity);
+        currentBuilding = Instantiate(building, m_Indicator.transform.position, building.transform.rotation);
+        m_Indicator.IndicatorEnabled(false);
         m_BuildModeUI.StartPlacement();
         CheckingPossibilityOfBuildingPlacement();
     }
 
     private void DisablingPlacement()
     {
+        currentBuilding.ImpossibleToPlaceABuilding();
         m_BuildModeUI.DisablingPlacement();
     }
 
     private void EnablingPlacement()
     {
+        currentBuilding.PossibleToPlaceABuilding();
         m_BuildModeUI.EnablingPlacement();
     }    
 
@@ -117,25 +123,21 @@ public class PlacementSystem : MonoBehaviour
 
     private void EndPlacement()
     {
-        CheckingPossibilityOfBuildingReplacement();
+        m_Indicator.IndicatorEnabled(true);
+        currentBuilding.BuildingIsLocated();
+        
         m_BuildModeUI.EndPlacement();
         currentBuilding = null;
         isBuild = false;
-    }
+        CheckingCellOccupancy();
+    }      
 
-    private void DisablingReplacement()
-    {
-        m_BuildModeUI.DisablingReplacement();
-    }
-
-    private void EnablingReplacement()
-    {
-        m_BuildModeUI.EnablingReplacement();
-    }
+    
 
     public void StartReplacement()
     {
-        DisablingReplacement();        
+        m_Indicator.IndicatorEnabled(false);
+        m_BuildModeUI.DisablingReplacement();
         GridCleaning();
         isBuild = true;
         SetBuildingPosition();
@@ -143,10 +145,11 @@ public class PlacementSystem : MonoBehaviour
     }
     public void BuildingDelete()
     {
-        DisablingReplacement();
+        m_BuildModeUI.DisablingReplacement();
         GridCleaning();        
         Destroy(currentBuilding.gameObject);
         currentBuilding = null;
+        m_Indicator.BuildingUnselect();
     }
 
     private void GridCleaning()
@@ -156,6 +159,7 @@ public class PlacementSystem : MonoBehaviour
         {
             m_Grid.ClearACell(currentBuilding.OccupiedCells[i]);
         }
+        currentBuilding.ClearOccupiedCell();
     }
      
     private void SetBuildingPosition()
