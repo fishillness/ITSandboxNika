@@ -561,7 +561,7 @@ public class FieldController : MonoBehaviour
         {
             boosterType = BoosterType.HorizontalRocket;
         }
-
+        /*
         // Check the T or L shape
         if (verticalPieces.Count >= 2 && horizontelPieces.Count >= 2)
         {
@@ -573,7 +573,7 @@ public class FieldController : MonoBehaviour
         {
             boosterType = BoosterType.Rainbow;
         }
-
+        */
         return boosterType;
     }
 }

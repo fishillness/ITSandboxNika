@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -111,6 +112,11 @@ public class PieceMatrixController : MonoBehaviour
 
     public void DeleteRow(int x, int y)
     {
+        StartCoroutine(DeleteRowCoroutine(x, y, field.DroppingTime));
+    }
+
+    private IEnumerator DeleteRowCoroutine(int x, int y, float time)
+    {
         int xLeft = x - 1;
         int xRight = x + 1;
 
@@ -129,10 +135,18 @@ public class PieceMatrixController : MonoBehaviour
                 DeletePiece(xRight, y);
                 xRight++;
             }
+
+            yield return new WaitForSeconds(time);
         }
     }
 
+
     public void DeleteColumn(int x, int y)
+    {
+        StartCoroutine(DeleteColumnCoroutine(x, y, field.DroppingTime));
+    }
+
+    private IEnumerator DeleteColumnCoroutine(int x, int y, float time)
     {
         int yAbove = y - 1;
         int yBelow = y + 1;
@@ -152,6 +166,8 @@ public class PieceMatrixController : MonoBehaviour
                 DeletePiece(x, yBelow);
                 yBelow++;
             }
+
+            yield return new WaitForSeconds(time);
         }
     }
 
