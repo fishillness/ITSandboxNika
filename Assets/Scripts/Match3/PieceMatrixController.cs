@@ -13,7 +13,12 @@ public class PieceMatrixController : MonoBehaviour
     private int xDim;
     private int yDim;
 
+    private string activeBoosterName;
+    private bool isThereActiveBooster;
+
     public Piece[,] Pieces => pieces;
+    public bool IsThereActiveBooster => isThereActiveBooster;
+
 
     public void InitMatrix(int xDim, int yDim)
     {
@@ -156,13 +161,16 @@ public class PieceMatrixController : MonoBehaviour
         }
     }
 
-    public void DeleteRow(int x, int y)
+    public void DeleteRow(int x, int y, float time)
     {
-        StartCoroutine(DeleteRowCoroutine(x, y, field.DroppingTime));
+        BoosterActivated(pieces[x, y].name);
+
+        StartCoroutine(DeleteRowCoroutine(x, y, time));
     }
 
     private IEnumerator DeleteRowCoroutine(int x, int y, float time)
     {
+        string boosterName = pieces[x,y].name;
         int xLeft = x - 1;
         int xRight = x + 1;
 
@@ -184,16 +192,24 @@ public class PieceMatrixController : MonoBehaviour
 
             yield return new WaitForSeconds(time);
         }
+
+        if (boosterName == activeBoosterName)
+        {
+            isThereActiveBooster = false;
+            field.StartDropPieces();
+        }
     }
 
-
-    public void DeleteColumn(int x, int y)
+    public void DeleteColumn(int x, int y, float time)
     {
-        StartCoroutine(DeleteColumnCoroutine(x, y, field.DroppingTime));
+        BoosterActivated(pieces[x, y].name);
+
+        StartCoroutine(DeleteColumnCoroutine(x, y, time));
     }
 
     private IEnumerator DeleteColumnCoroutine(int x, int y, float time)
     {
+        string boosterName = pieces[x, y].name;
         int yAbove = y - 1;
         int yBelow = y + 1;
 
@@ -215,10 +231,20 @@ public class PieceMatrixController : MonoBehaviour
 
             yield return new WaitForSeconds(time);
         }
+
+        if (boosterName == activeBoosterName)
+        {
+            isThereActiveBooster = false;
+            field.StartDropPieces();
+        }
     }
 
     public void DeleteNearPiece(int x, int y)
     {
+        BoosterActivated(pieces[x, y].name);
+
+        string boosterName = pieces[x, y].name;
+
         DeleteNotEmptyPiece(x, y, DestructionType.Bomb);
 
         if (pieces[x, y - 1] != null && pieces[x, y - 1].IsDestructible)
@@ -232,10 +258,26 @@ public class PieceMatrixController : MonoBehaviour
 
         if (pieces[x - 1, y] != null && pieces[x - 1, y].IsDestructible)
             DeleteNotEmptyPiece(x - 1, y, DestructionType.Bomb);
+
+
+        if (boosterName == activeBoosterName)
+        {
+            isThereActiveBooster = false;
+            field.StartDropPieces();
+        }
     }
 
-    public void DeleteManyNearPieces(int x, int y)
+    public void DeleteManyNearPieces(int x, int y, float time)
     {
+        BoosterActivated(pieces[x, y].name);
+
+        StartCoroutine(DeleteManyNearPiecesCoroutine(x, y, time));
+    }
+
+    public IEnumerator DeleteManyNearPiecesCoroutine(int x, int y, float time)
+    {
+        string boosterName = pieces[x, y].name;
+
         int xMin = x - 2;
         int xMax = x + 2;
 
@@ -243,6 +285,7 @@ public class PieceMatrixController : MonoBehaviour
         int yMax = y + 2;
 
         DeleteNotEmptyPiece(x, y, DestructionType.Bomb);
+        yield return new WaitForSeconds(time);
 
         for (int i = xMin; i <= xMax; i++)
         {
@@ -259,13 +302,24 @@ public class PieceMatrixController : MonoBehaviour
                 if (pieces[i, j] != null && pieces[i, j].IsDestructible)
                 {
                     DeleteNotEmptyPiece(i, j, DestructionType.Bomb);
+                    yield return new WaitForSeconds(time);
                 }
             }
+        }
+
+        if (boosterName == activeBoosterName)
+        {
+            isThereActiveBooster = false;
+            field.StartDropPieces();
         }
     }
 
     public void DeleteAllPiecesByColor(int x, int y, Piece swapPiece)
     {
+        BoosterActivated(pieces[x, y].name);
+
+        string boosterName = pieces[x, y].name;
+
         ColorType color;
         if (!swapPiece.IsColorable)
             color = (ColorType)UnityEngine.Random.Range(0, colorDictionary.NumberTypes);
@@ -283,5 +337,17 @@ public class PieceMatrixController : MonoBehaviour
                 DeleteNotEmptyPiece(piece.X, piece.Y, DestructionType.Rainbow);
             }
         }
+
+        if (boosterName == activeBoosterName)
+        {
+            isThereActiveBooster = false;
+            field.StartDropPieces();
+        }
+    }
+
+    private void BoosterActivated(string boosterName)
+    {
+        activeBoosterName = boosterName;
+        isThereActiveBooster = true;
     }
 }

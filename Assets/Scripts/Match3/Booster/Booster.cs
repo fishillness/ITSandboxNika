@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Booster : MonoBehaviour
 {
+    [SerializeField] private float timeForDestroyingPiecesForRockets = 0.2f;
+    [SerializeField] private float timeForDestroyingPiecesForBomb = 0.1f;
+
     protected BoosterType type;
     private SpriteRenderer spriteRenderer;
     private Piece piece;
@@ -41,11 +44,11 @@ public class Booster : MonoBehaviour
 
         if (type == BoosterType.HorizontalRocket)
         {
-            matrixController.DeleteRow(piece.X, piece.Y);
+            matrixController.DeleteRow(piece.X, piece.Y, timeForDestroyingPiecesForRockets);
         }
         else if (type == BoosterType.VerticalRocket)
         {
-            matrixController.DeleteColumn(piece.X, piece.Y);
+            matrixController.DeleteColumn(piece.X, piece.Y, timeForDestroyingPiecesForRockets);
         }
         else if (type == BoosterType.MiniBomb)
         {
@@ -53,7 +56,7 @@ public class Booster : MonoBehaviour
         }
         else if (type == BoosterType.MaxiBomb)
         {
-            matrixController.DeleteManyNearPieces(piece.X, piece.Y);
+            matrixController.DeleteManyNearPieces(piece.X, piece.Y, timeForDestroyingPiecesForBomb);
         }
         else if (type == BoosterType.Rainbow)
         {

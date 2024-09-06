@@ -127,6 +127,7 @@ public class FieldController : MonoBehaviour
     public void StartDropPieces()
     {
         if (IsDroppingContinue) return;
+        if (matrixController.IsThereActiveBooster) return;
             
         StartCoroutine(DroppingPieces());
     }
@@ -568,13 +569,14 @@ public class FieldController : MonoBehaviour
         {
             boosterType = BoosterType.HorizontalRocket;
         }
-        /*
+
         // Check the T or L shape
         if (verticalPieces.Count >= 2 && horizontelPieces.Count >= 2)
         {
             boosterType = BoosterType.MaxiBomb;
         }
 
+        /*
         // Check the line of five
         if (verticalPieces.Count == 4 || horizontelPieces.Count == 4)
         {
