@@ -576,13 +576,12 @@ public class FieldController : MonoBehaviour
             boosterType = BoosterType.MaxiBomb;
         }
 
-        /*
         // Check the line of five
         if (verticalPieces.Count == 4 || horizontelPieces.Count == 4)
         {
             boosterType = BoosterType.Rainbow;
         }
-        */
+
         return boosterType;
     }
 }

@@ -4,6 +4,7 @@ public class Booster : MonoBehaviour
 {
     [SerializeField] private float timeForDestroyingPiecesForRockets = 0.2f;
     [SerializeField] private float timeForDestroyingPiecesForBomb = 0.1f;
+    [SerializeField] private float timeForDestroyingPiecesForRaindow = 0.2f;
 
     protected BoosterType type;
     private SpriteRenderer spriteRenderer;
@@ -60,7 +61,7 @@ public class Booster : MonoBehaviour
         }
         else if (type == BoosterType.Rainbow)
         {
-            matrixController.DeleteAllPiecesByColor(piece.X, piece.Y, swapPiece);
+            matrixController.DeleteAllPiecesByColor(piece.X, piece.Y, swapPiece, timeForDestroyingPiecesForRaindow);
         }
     }
 }

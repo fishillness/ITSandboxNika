@@ -274,7 +274,7 @@ public class PieceMatrixController : MonoBehaviour
         StartCoroutine(DeleteManyNearPiecesCoroutine(x, y, time));
     }
 
-    public IEnumerator DeleteManyNearPiecesCoroutine(int x, int y, float time)
+    private IEnumerator DeleteManyNearPiecesCoroutine(int x, int y, float time)
     {
         string boosterName = pieces[x, y].name;
 
@@ -314,10 +314,15 @@ public class PieceMatrixController : MonoBehaviour
         }
     }
 
-    public void DeleteAllPiecesByColor(int x, int y, Piece swapPiece)
+    public void DeleteAllPiecesByColor(int x, int y, Piece swapPiece, float time)
     {
         BoosterActivated(pieces[x, y].name);
 
+        StartCoroutine(DeleteAllPiecesByColorCoroutine(x, y, swapPiece, time));
+    }
+
+    private IEnumerator DeleteAllPiecesByColorCoroutine(int x, int y, Piece swapPiece, float time)
+    {
         string boosterName = pieces[x, y].name;
 
         ColorType color;
@@ -326,7 +331,7 @@ public class PieceMatrixController : MonoBehaviour
         else
             color = swapPiece.Colorable.Color;
 
-        DeleteNotEmptyPiece(x, y, DestructionType.Rainbow);
+        DeleteNotEmptyPiece(x, y, DestructionType.ByActivationByself);
 
         foreach(Piece piece in pieces)
         {
@@ -335,6 +340,7 @@ public class PieceMatrixController : MonoBehaviour
             if (piece.IsColorable && piece.IsDestructible && piece.Colorable.Color == color)
             {
                 DeleteNotEmptyPiece(piece.X, piece.Y, DestructionType.Rainbow);
+                yield return new WaitForSeconds(time);
             }
         }
 
