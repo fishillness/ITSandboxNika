@@ -8,6 +8,7 @@ public class PieceMatrixController : MonoBehaviour
     [SerializeField] private BoosterDictionary boosterDictionary;
     [SerializeField] private PieceCounter pieceCounter;
     [SerializeField] private FieldController field;
+    [SerializeField] private SpecifierRequiredPieces specifierRequiredPieces;
 
     private Piece[,] pieces;
     private int xDim;
@@ -30,6 +31,68 @@ public class PieceMatrixController : MonoBehaviour
         this.yDim = yDim;
 
         pieces = new Piece[xDim, yDim];
+
+        FillFieldEmptyPieces();
+        FillFieldColorPieces();
+        SetRequiredPieces();
+    }
+
+    private void FillFieldEmptyPieces()
+    {
+        for (int x = 0; x < xDim; x++)
+        {
+            for (int y = 0; y < yDim; y++)
+            {
+                if (field.IsTileNotEmpty(x,y))
+                {
+                    SpawnNewPiece(x, y, PieceType.Empty);
+                }
+                else
+                    pieces[x, y] = null;
+            }
+        }
+    }
+
+    private void SetRequiredPieces()
+    {
+        foreach (var piece in specifierRequiredPieces.RequiredPieces)
+        {
+            if (pieces[piece.position.x, piece.position.y] != null)
+            {
+                if (pieces[piece.position.x, piece.position.y].Type == PieceType.Empty)
+                {
+                    DeleteEmptyPiece(piece.position.x, piece.position.y);
+                }
+                else if (pieces[piece.position.x, piece.position.y].IsDestructible)
+                {
+                    pieces[piece.position.x, piece.position.y].Destructible.DestroyImmediately();
+                }
+                else
+                {
+                    continue;
+                }
+
+                pieces[piece.position.x, piece.position.y] = null;
+            }
+
+            SpawnNewPiece(piece.position.x, piece.position.y, piece.type);
+        }
+    }
+
+    private void FillFieldColorPieces()
+    {
+        foreach (Piece piece in pieces)
+        {
+            if (piece != null)
+            {
+                if (piece.Type == PieceType.Empty)
+                {
+                    DeleteEmptyPiece(piece.X, piece.Y);
+                    SpawnNewPiece(piece.X, piece.Y, PieceType.Normal);
+                    field.StartDropPieces(0);
+                }
+            }
+        }
     }
 
     public Piece SpawnNewPiece(int x, int y, PieceType type)
@@ -123,7 +186,7 @@ public class PieceMatrixController : MonoBehaviour
             SpawnNewPiece(piece.X, piece.Y, PieceType.Empty);
         }
 
-        field.StartDropPieces();
+        field.StartDropPieces(field.DroppingTime);
     }
 
     public bool CheckTypeOfPieceInGrid(int x, int y, PieceType type)
@@ -134,10 +197,20 @@ public class PieceMatrixController : MonoBehaviour
         return pieces[x, y].Type == type;
     }
 
-    public void SwapEmptyPieceWithNonEmpty(int xEmpty, int yEmpty, int xNonEmpty, int yNonEmpty)
+    public void SwapEmptyPieceWithNonEmpty(int xEmpty, int yEmpty, int xNonEmpty, int yNonEmpty, bool immediately)
     {
         DeleteEmptyPiece(xEmpty, yEmpty);
-        pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, field.GetPiecePositionOnWorld(xEmpty, yEmpty), field.DroppingTime);
+
+        if (immediately)
+        {
+            pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, field.GetPiecePositionOnWorld(xEmpty, yEmpty), 0);
+        }
+        else
+        {
+            pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, field.GetPiecePositionOnWorld(xEmpty, yEmpty), field.DroppingTime);
+        }
+        
+        
         pieces[xEmpty, yEmpty] = pieces[xNonEmpty, yNonEmpty];
 
         pieces[xNonEmpty, yNonEmpty] = null;
@@ -152,16 +225,24 @@ public class PieceMatrixController : MonoBehaviour
         pieces[piece2.X, piece2.Y] = piece1;
     }
 
-    public void SetPieceNull(int x, int y)
-    {
-        pieces[x, y] = null;
-    }
 
-    public void DeleteSomePieces(List<Piece> pieces, DestructionType destructionType)
+    public void DeleteSomePieces(List<Piece> listPieces, DestructionType destructionType, bool immediately)
     {
-        foreach (Piece piece in pieces)
+        if (immediately)
         {
-            DeleteNotEmptyPiece(piece.X, piece.Y, destructionType);
+            foreach (Piece piece in listPieces)
+            {
+                piece.Destructible.DestroyImmediately();
+                pieces[piece.X, piece.Y] = null;
+                SpawnNewPiece(piece.X, piece.Y, PieceType.Empty);
+            }
+        }
+        else
+        {
+            foreach (Piece piece in listPieces)
+            {
+                DeleteNotEmptyPiece(piece.X, piece.Y, destructionType);
+            }
         }
     }
 
@@ -349,7 +430,7 @@ public class PieceMatrixController : MonoBehaviour
         if (activeBoosterNames.Count == 0)
         {
             isThereActiveBooster = false;
-            field.StartDropPieces();
+            field.StartDropPieces(field.DroppingTime);
         }
     }
 }

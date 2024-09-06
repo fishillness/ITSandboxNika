@@ -64,13 +64,12 @@ public class FieldController : MonoBehaviour
         SetBounds();
 
         matrixController.InitMatrix(xDim, yDim);
-        FillEmptyField();
     }
 
     private void Start()
     {
         spawnerController.CheckNeedOfSpawnPiece();
-        StartDropPieces();
+        StartDropPieces(droppingTime);
         level.OnStopMoves.AddListener(OnLevelEnd);
     }
 
@@ -97,21 +96,10 @@ public class FieldController : MonoBehaviour
         xDim = bounds.xMax - bounds.xMin + 1;
         yDim = bounds.yMax - bounds.yMin + 1;
     }
-    
-    private void FillEmptyField()
+
+    public bool IsTileNotEmpty(int x, int y)
     {
-        for (int x = 0; x < xDim; x++)
-        {
-            for (int y = 0; y < yDim; y++)
-            {
-                if (field.GetTile(new Vector3Int(GetXInGridPos(x), GetYInGridPos(y), 0)) != null)
-                {
-                    matrixController.SpawnNewPiece(x, y, PieceType.Empty);
-                }
-                else
-                    matrixController.SetPieceNull(x, y);
-            }
-        }
+        return field.GetTile(new Vector3Int(GetXInGridPos(x), GetYInGridPos(y), 0)) != null;
     }
     
     private int GetXInGridPos(int x)
@@ -124,32 +112,33 @@ public class FieldController : MonoBehaviour
         return (bounds.yMax - y);
     }
 
-    public void StartDropPieces()
+    public void StartDropPieces(float time)
     {
         if (IsDroppingContinue) return;
         if (matrixController.IsThereActiveBooster) return;
             
-        StartCoroutine(DroppingPieces());
+        StartCoroutine(DroppingPieces(time));
     }
 
-    private IEnumerator DroppingPieces()
+    private IEnumerator DroppingPieces(float time)
     {
         continueDropping = true;
         areMovesAllowed = false;
+        bool immediately = time == 0;
 
         while (continueDropping)
         {
-            yield return new WaitForSeconds(droppingTime);
+            yield return new WaitForSeconds(time);
 
-            while (DropPieces())
+            while (DropPieces(immediately))
             {
-                yield return new WaitForSeconds(droppingTime);
+                yield return new WaitForSeconds(time);
 
                 if (spawnerController.CheckNeedOfSpawnPiece())
                     continueDropping = true;
             }
 
-            continueDropping = ClearAllMatches();
+            continueDropping = ClearAllMatches(time);
             if (spawnerController.CheckNeedOfSpawnPiece())
                 continueDropping = true;
         }
@@ -158,7 +147,7 @@ public class FieldController : MonoBehaviour
         OnDropEnd?.Invoke();
     }
 
-    private bool DropPieces()
+    private bool DropPieces(bool immediately)
     {
         bool isPieceDrop = false;
 
@@ -177,7 +166,7 @@ public class FieldController : MonoBehaviour
                     {
                         if (pieceBelow.Type == PieceType.Empty)
                         {
-                            matrixController.SwapEmptyPieceWithNonEmpty(x, y + 1, x, y);
+                            matrixController.SwapEmptyPieceWithNonEmpty(x, y + 1, x, y, immediately);
                             //spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
                             isPieceDrop = true;
                         }
@@ -225,7 +214,7 @@ public class FieldController : MonoBehaviour
 
                         if (piece != null)
                         {
-                            matrixController.SwapEmptyPieceWithNonEmpty(piece.X, piece.Y, x, y);
+                            matrixController.SwapEmptyPieceWithNonEmpty(piece.X, piece.Y, x, y, immediately);
                             //spawnerController.CheckNeedOfSpawnPieceAfterTime(droppingTime);
                             isPieceDrop = true;
                         }
@@ -363,10 +352,10 @@ public class FieldController : MonoBehaviour
         return matching;
     }
 
-    private bool ClearAllMatches()
+    private bool ClearAllMatches(float time)
     {
         bool isMatchFound = false;
-
+        bool deleteImmediately = time == 0;
 
         for (int y = 0; y < yDim; y++)
         {
@@ -384,7 +373,7 @@ public class FieldController : MonoBehaviour
                 if (matchPieces.matchPieces != null
                     && matchPieces.matchPieces.Count > 0)
                 {
-                    matrixController.DeleteSomePieces(matchPieces.matchPieces, DestructionType.ByMatch);
+                    matrixController.DeleteSomePieces(matchPieces.matchPieces, DestructionType.ByMatch, deleteImmediately);
 
                     isMatchFound = true;
                 }
@@ -448,11 +437,11 @@ public class FieldController : MonoBehaviour
         {
             if (matchPiece1.matchPieces != null)
             {
-                matrixController.DeleteSomePieces(matchPiece1.matchPieces, DestructionType.ByMatch);
+                matrixController.DeleteSomePieces(matchPiece1.matchPieces, DestructionType.ByMatch, false);
             }
             if (matchPiece2.matchPieces != null)
             {
-                matrixController.DeleteSomePieces(matchPiece2 .matchPieces, DestructionType.ByMatch);
+                matrixController.DeleteSomePieces(matchPiece2 .matchPieces, DestructionType.ByMatch, false);
             }
 
             if (matchPiece1.boosterType != BoosterType.None)
@@ -469,7 +458,7 @@ public class FieldController : MonoBehaviour
             if (piece2.IsBooster) 
                 piece2.Booster.Activate(piece1);
 
-            StartDropPieces();
+            StartDropPieces(droppingTime);
             OnMove?.Invoke();
 
             return true;

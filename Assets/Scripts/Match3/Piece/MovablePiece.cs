@@ -20,7 +20,12 @@ public class MovablePiece : MonoBehaviour
         if (coroutine != null)
             StopCoroutine(coroutine);
 
-        coroutine = StartCoroutine(Moving(newPos, time));
+        if (time != 0)
+        {
+            coroutine = StartCoroutine(Moving(newPos, time));
+        }
+        else
+            piece.transform.position = newPos;
     }
 
     private IEnumerator Moving(Vector2 newPos, float time)
