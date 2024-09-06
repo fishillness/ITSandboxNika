@@ -27,10 +27,10 @@ public class PieceCounter : MonoBehaviour
 
     public void AddPiece(Piece piece)
     {
-        if (pieceCount.ContainsKey(piece.Type) && piece.IsClerable)
+        if (pieceCount.ContainsKey(piece.Type) && piece.IsDestructible)
         {
             pieceCount[piece.Type] += 1;
-            piece.Clerable.OnPieceClear.AddListener(RemovePiece);
+            piece.Destructible.OnPieceDestroy.AddListener(RemovePiece);
             OnPieceAdded?.Invoke(piece);
         }
     }
@@ -38,7 +38,7 @@ public class PieceCounter : MonoBehaviour
     private void RemovePiece(Piece piece)
     {
         PieceType type = piece.Type;
-        piece.Clerable.OnPieceClear.RemoveListener(RemovePiece);
+        piece.Destructible.OnPieceDestroy.RemoveListener(RemovePiece);
         pieceCount[type] -= 1;
         OnPieceRemoved?.Invoke(piece);
     }

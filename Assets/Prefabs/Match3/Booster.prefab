@@ -181,8 +181,8 @@ GameObject:
   - component: {fileID: 4417132935875036991}
   - component: {fileID: 9219516940564759491}
   - component: {fileID: 3308527165835126541}
-  - component: {fileID: 5348815004592575471}
   - component: {fileID: 3633376396526058650}
+  - component: {fileID: 1688736655706250507}
   - component: {fileID: 1614750178669252082}
   - component: {fileID: 2336272568525287102}
   m_Layer: 0
@@ -245,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5af4707c4f8dc44873c76fad435040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
 --- !u!114 &3308527165835126541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,21 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7833f4d8206ed40b4f04ecaa66e6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5348815004592575471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7251047887755432649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3157a9a37947a784282ae304502efeea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnPieceClear:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3633376396526058650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +270,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedFrame: {fileID: 6647571960684480554}
+--- !u!114 &1688736655706250507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251047887755432649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbaa58cdf7de69143b9b1a93934d0c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPieceDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPieceStartDestroying:
+    m_PersistentCalls:
+      m_Calls: []
+  destructionTypeWhichDestroyPiece: 010000000200000006000000
 --- !u!95 &1614750178669252082
 Animator:
   serializedVersion: 5

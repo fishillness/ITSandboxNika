@@ -7,7 +7,7 @@ public class Piece : MonoBehaviour
     private PieceType type;
     private ColorablePiece colorable;
     private MovablePiece movable;
-    private ClerablePiece clerable;
+    private DestructiblePiece destructible;
     private ClickablePiece clickable;
     private Booster booster;
 
@@ -18,8 +18,8 @@ public class Piece : MonoBehaviour
     public bool IsColorable => colorable != null;
     public MovablePiece Movable => movable;
     public bool IsMovable => movable != null;
-    public ClerablePiece Clerable => clerable;
-    public bool IsClerable => clerable != null;
+    public DestructiblePiece Destructible => destructible;
+    public bool IsDestructible => destructible != null;
     public ClickablePiece Clickable => clickable;
     public bool IsClickable => clickable != null;
     public Booster Booster => booster;
@@ -29,7 +29,7 @@ public class Piece : MonoBehaviour
     {
         colorable = GetComponent<ColorablePiece>();
         movable = GetComponent<MovablePiece>();
-        clerable = GetComponent<ClerablePiece>();
+        destructible = GetComponent<DestructiblePiece>();
         clickable = GetComponent<ClickablePiece>();
         booster = GetComponent<Booster>();
     }

@@ -180,8 +180,8 @@ GameObject:
   - component: {fileID: 4079626180951254446}
   - component: {fileID: 7856225921301238673}
   - component: {fileID: 6446999978433139995}
+  - component: {fileID: 8113913500996926688}
   - component: {fileID: 927957704649667566}
-  - component: {fileID: 4356561453492691999}
   - component: {fileID: 7732811380212794240}
   - component: {fileID: 475231444174735181}
   - component: {fileID: 5043922742749525753}
@@ -245,6 +245,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a127c1da414f10498855bec290a055b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8113913500996926688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031679160357591305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbaa58cdf7de69143b9b1a93934d0c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPieceDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPieceStartDestroying:
+    m_PersistentCalls:
+      m_Calls: []
+  destructionTypeWhichDestroyPiece: 01000000020000000300000005000000
 --- !u!114 &927957704649667566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,24 +276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7833f4d8206ed40b4f04ecaa66e6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4356561453492691999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8031679160357591305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3157a9a37947a784282ae304502efeea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnPieceClear:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPieceStartClear:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7732811380212794240
 MonoBehaviour:
   m_ObjectHideFlags: 0

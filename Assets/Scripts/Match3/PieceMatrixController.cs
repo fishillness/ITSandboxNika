@@ -23,9 +23,16 @@ public class PieceMatrixController : MonoBehaviour
         pieces = new Piece[xDim, yDim];
     }
 
-
     public Piece SpawnNewPiece(int x, int y, PieceType type)
     {
+        if (pieces[x,y] != null)
+        {
+            if (pieces[x, y].Type == PieceType.Empty)
+                DeleteEmptyPiece(x, y);
+            else 
+                return null;
+        }
+
         Piece newPiece = Instantiate(field.PiecePrefabDict[type],
             field.GetPiecePositionOnWorld(x, y), Quaternion.identity);
         newPiece.transform.parent = transform;
@@ -46,32 +53,68 @@ public class PieceMatrixController : MonoBehaviour
     public void SpawnNewBooster(int x, int y, BoosterType type)
     {
         if (pieces[x, y] != null)
-            DeletePiece(x, y);
+        {
+            if (!pieces[x, y].IsDestructible) return;
+
+            if (pieces[x, y].Type == PieceType.Empty)
+                DeleteEmptyPiece(x, y);
+            else
+            {
+                pieces[x,y].Destructible.DestroyImmediately();
+                pieces[x, y] = null;
+            }
+        }
 
         Piece boosterPiece = SpawnNewPiece(x, y, PieceType.Booster);
-        Booster booster = boosterPiece.GetComponent<Booster>();
 
-        booster.SetProperties(type, this);
-        booster.SetBoosterSprite(boosterDictionary.GetSpriteByT(type));
+        boosterPiece.Booster.SetProperties(type, this);
+        boosterPiece.Booster.SetBoosterSprite(boosterDictionary.GetSpriteByT(type));
     }
 
-
-    public void DeletePiece(int x, int y)
+    public void DeleteEmptyPiece(int x, int y)
     {
-        if (!pieces[x, y].IsClerable && pieces[x, y].Type != PieceType.Empty) return;
-
-        PieceType type = pieces[x, y].Type;
-
-        if (pieces[x, y].Clerable == null)
-            Destroy(pieces[x, y].gameObject);
-        else
-            pieces[x, y].Clerable.ClearPiece();
-
-        pieces[x, y] = null;
-        if (type != PieceType.Empty)
+        if (pieces[x, y] == null) return;
+        if (pieces[x, y].Type != PieceType.Empty)
         {
-            SpawnNewPiece(x, y, PieceType.Empty);
+            return;
         }
+
+        Destroy(pieces[x, y].gameObject);
+        pieces[x, y] = null;
+    }
+
+    public bool DeleteNotEmptyPiece(int x, int y, DestructionType destructionType)
+    {
+        if (pieces[x, y] == null) return false;
+        if (pieces[x, y].Type == PieceType.Empty)
+        {
+            Debug.Log($"Попытка удалить пустую фишку: {x}, {y}");
+            return false;
+        }
+        if (!pieces[x,y].IsDestructible) return false;
+
+        if (pieces[x, y].Destructible.IsPieceDestroyThisType(destructionType))
+        {
+            pieces[x, y].Destructible.OnPieceDestroy.AddListener(RemoveDestroyingPieceFromMatrix);
+            pieces[x, y].Destructible.DestroyPiece(destructionType);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void RemoveDestroyingPieceFromMatrix(Piece piece)
+    {
+        piece.Destructible.OnPieceDestroy.RemoveListener(RemoveDestroyingPieceFromMatrix);
+
+        if (pieces[piece.X, piece.Y] == piece)
+        {
+            pieces[piece.X, piece.Y] = null;
+            SpawnNewPiece(piece.X, piece.Y, PieceType.Empty);
+        }
+
+        field.StartDropPieces();
     }
 
     public bool CheckTypeOfPieceInGrid(int x, int y, PieceType type)
@@ -84,12 +127,15 @@ public class PieceMatrixController : MonoBehaviour
 
     public void SwapEmptyPieceWithNonEmpty(int xEmpty, int yEmpty, int xNonEmpty, int yNonEmpty)
     {
-        DeletePiece(xEmpty, yEmpty);
+        DeleteEmptyPiece(xEmpty, yEmpty);
         pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, field.GetPiecePositionOnWorld(xEmpty, yEmpty), field.DroppingTime);
         pieces[xEmpty, yEmpty] = pieces[xNonEmpty, yNonEmpty];
 
+        pieces[xNonEmpty, yNonEmpty] = null;
         SpawnNewPiece(xNonEmpty, yNonEmpty, PieceType.Empty);
     }
+
+
 
     public void SwapPiecesOnlyInMatrix(Piece piece1, Piece piece2)
     {
@@ -102,11 +148,11 @@ public class PieceMatrixController : MonoBehaviour
         pieces[x, y] = null;
     }
 
-    public void DeleteSomePieces(List<Piece> pieces)
+    public void DeleteSomePieces(List<Piece> pieces, DestructionType destructionType)
     {
         foreach (Piece piece in pieces)
         {
-            DeletePiece(piece.X, piece.Y);
+            DeleteNotEmptyPiece(piece.X, piece.Y, destructionType);
         }
     }
 
@@ -120,19 +166,19 @@ public class PieceMatrixController : MonoBehaviour
         int xLeft = x - 1;
         int xRight = x + 1;
 
-        DeletePiece(x, y);
+        DeleteNotEmptyPiece(x, y, DestructionType.Rocket);
 
         while (xLeft >= 0 || xRight < xDim)
         {
-            if (xLeft >= 0 && pieces[xLeft, y] != null && pieces[xLeft, y].IsClerable)
+            if (xLeft >= 0 && pieces[xLeft, y] != null && pieces[xLeft, y].IsDestructible)
             {
-                DeletePiece(xLeft, y);
+                DeleteNotEmptyPiece(xLeft, y, DestructionType.Rocket);
                 xLeft--;
             }
 
-            if (xRight < xDim && pieces[xRight, y] != null && pieces[xRight, y].IsClerable)
+            if (xRight < xDim && pieces[xRight, y] != null && pieces[xRight, y].IsDestructible)
             {
-                DeletePiece(xRight, y);
+                DeleteNotEmptyPiece(xRight, y, DestructionType.Rocket);
                 xRight++;
             }
 
@@ -151,19 +197,19 @@ public class PieceMatrixController : MonoBehaviour
         int yAbove = y - 1;
         int yBelow = y + 1;
 
-        DeletePiece(x, y);
+        DeleteNotEmptyPiece(x, y, DestructionType.Rocket);
 
         while (yAbove >= 0 || yBelow < yDim)
         {
-            if (yAbove >= 0 && pieces[x, yAbove] != null && pieces[x, yAbove].IsClerable)
+            if (yAbove >= 0 && pieces[x, yAbove] != null && pieces[x, yAbove].IsDestructible)
             {
-                DeletePiece(x, yAbove);
+                DeleteNotEmptyPiece(x, yAbove, DestructionType.Rocket);
                 yAbove--;
             }
 
-            if (yBelow < yDim && pieces[x, yBelow] != null && pieces[x, yBelow].IsClerable)
+            if (yBelow < yDim && pieces[x, yBelow] != null && pieces[x, yBelow].IsDestructible)
             {
-                DeletePiece(x, yBelow);
+                DeleteNotEmptyPiece(x, yBelow, DestructionType.Rocket);
                 yBelow++;
             }
 
@@ -173,19 +219,19 @@ public class PieceMatrixController : MonoBehaviour
 
     public void DeleteNearPiece(int x, int y)
     {
-        DeletePiece(x, y);
+        DeleteNotEmptyPiece(x, y, DestructionType.Bomb);
 
-        if (pieces[x, y - 1] != null && pieces[x, y - 1].IsClerable) 
-            DeletePiece(x, y - 1);
+        if (pieces[x, y - 1] != null && pieces[x, y - 1].IsDestructible)
+            DeleteNotEmptyPiece(x, y - 1, DestructionType.Bomb);
 
-        if (pieces[x + 1, y] != null && pieces[x + 1, y].IsClerable)
-            DeletePiece(x + 1, y);
+        if (pieces[x + 1, y] != null && pieces[x + 1, y].IsDestructible)
+            DeleteNotEmptyPiece(x + 1, y, DestructionType.Bomb);
 
-        if (pieces[x, y + 1] != null && pieces[x, y + 1].IsClerable)
-            DeletePiece(x, y + 1);
+        if (pieces[x, y + 1] != null && pieces[x, y + 1].IsDestructible)
+            DeleteNotEmptyPiece(x, y + 1, DestructionType.Bomb);
 
-        if (pieces[x - 1, y] != null && pieces[x - 1, y].IsClerable)
-            DeletePiece(x - 1, y);
+        if (pieces[x - 1, y] != null && pieces[x - 1, y].IsDestructible)
+            DeleteNotEmptyPiece(x - 1, y, DestructionType.Bomb);
     }
 
     public void DeleteManyNearPieces(int x, int y)
@@ -196,7 +242,7 @@ public class PieceMatrixController : MonoBehaviour
         int yMin = y - 2;
         int yMax = y + 2;
 
-        DeletePiece(x, y);
+        DeleteNotEmptyPiece(x, y, DestructionType.Bomb);
 
         for (int i = xMin; i <= xMax; i++)
         {
@@ -210,9 +256,9 @@ public class PieceMatrixController : MonoBehaviour
                 if (j < 0 || j >= yDim) continue;
                 if (i == x && j == y) continue;
 
-                if (pieces[i, j] != null && pieces[i, j].IsClerable)
+                if (pieces[i, j] != null && pieces[i, j].IsDestructible)
                 {
-                    DeletePiece(i, j);
+                    DeleteNotEmptyPiece(i, j, DestructionType.Bomb);
                 }
             }
         }
@@ -226,15 +272,15 @@ public class PieceMatrixController : MonoBehaviour
         else
             color = swapPiece.Colorable.Color;
 
-        DeletePiece(x, y);
+        DeleteNotEmptyPiece(x, y, DestructionType.Rainbow);
 
         foreach(Piece piece in pieces)
         {
             if (piece == null) continue;
 
-            if (piece.IsColorable && piece.IsClerable && piece.Colorable.Color == color)
+            if (piece.IsColorable && piece.IsDestructible && piece.Colorable.Color == color)
             {
-                DeletePiece(piece.X, piece.Y);
+                DeleteNotEmptyPiece(piece.X, piece.Y, DestructionType.Rainbow);
             }
         }
     }

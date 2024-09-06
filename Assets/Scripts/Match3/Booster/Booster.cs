@@ -14,8 +14,8 @@ public class Booster : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         piece = GetComponentInChildren<Piece>();
 
-        if (piece.IsClerable)
-            piece.Clerable.OnPieceStartClear.AddListener(OnPieceStartClear);
+        if (piece.IsDestructible)
+            piece.Destructible.OnPieceStartDestroying.AddListener(OnPieceStartClear);
     }
 
     public void SetProperties(BoosterType type, PieceMatrixController matrixController)

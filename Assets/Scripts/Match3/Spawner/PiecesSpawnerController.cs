@@ -77,7 +77,7 @@ public class PiecesSpawnerController : MonoBehaviour
         {
             if (matrixController.CheckTypeOfPieceInGrid(spawner.X, spawner.Y, PieceType.Empty))
             {
-                matrixController.DeletePiece(spawner.X, spawner.Y);
+                matrixController.DeleteEmptyPiece(spawner.X, spawner.Y);
                 matrixController.SpawnNewPiece(spawner.X, spawner.Y, PieceType.Normal);
 
                 somethingSpawned = true;

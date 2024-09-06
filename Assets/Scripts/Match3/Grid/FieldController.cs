@@ -70,7 +70,7 @@ public class FieldController : MonoBehaviour
     private void Start()
     {
         spawnerController.CheckNeedOfSpawnPiece();
-        StartCoroutine(DroppingPieces());
+        StartDropPieces();
         level.OnStopMoves.AddListener(OnLevelEnd);
     }
 
@@ -124,6 +124,13 @@ public class FieldController : MonoBehaviour
         return (bounds.yMax - y);
     }
 
+    public void StartDropPieces()
+    {
+        if (IsDroppingContinue) return;
+            
+        StartCoroutine(DroppingPieces());
+    }
+
     private IEnumerator DroppingPieces()
     {
         continueDropping = true;
@@ -136,7 +143,7 @@ public class FieldController : MonoBehaviour
             while (DropPieces())
             {
                 yield return new WaitForSeconds(droppingTime);
-                //
+
                 if (spawnerController.CheckNeedOfSpawnPiece())
                     continueDropping = true;
             }
@@ -368,7 +375,7 @@ public class FieldController : MonoBehaviour
                 if (matchPieces.matchPieces != null
                     && matchPieces.matchPieces.Count > 0)
                 {
-                    matrixController.DeleteSomePieces(matchPieces.matchPieces);
+                    matrixController.DeleteSomePieces(matchPieces.matchPieces, DestructionType.ByMatch);
 
                     isMatchFound = true;
                 }
@@ -432,11 +439,11 @@ public class FieldController : MonoBehaviour
         {
             if (matchPiece1.matchPieces != null)
             {
-                matrixController.DeleteSomePieces(matchPiece1.matchPieces);
+                matrixController.DeleteSomePieces(matchPiece1.matchPieces, DestructionType.ByMatch);
             }
             if (matchPiece2.matchPieces != null)
             {
-                matrixController.DeleteSomePieces(matchPiece2 .matchPieces);
+                matrixController.DeleteSomePieces(matchPiece2 .matchPieces, DestructionType.ByMatch);
             }
 
             if (matchPiece1.boosterType != BoosterType.None)
@@ -453,7 +460,7 @@ public class FieldController : MonoBehaviour
             if (piece2.IsBooster) 
                 piece2.Booster.Activate(piece1);
 
-            StartCoroutine(DroppingPieces());
+            StartDropPieces();
             OnMove?.Invoke();
 
             return true;
