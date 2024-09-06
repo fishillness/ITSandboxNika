@@ -189,16 +189,24 @@ public class FieldController : MonoBehaviour
                         Piece pieceBelowLeft = null;
                         Piece piece = null;
 
-                        if (x + 1 < xDim && matrixController.Pieces[x + 1, y + 1] != null)
+                        if (x + 1 < xDim && matrixController.Pieces[x + 1, y + 1] != null
+                            && matrixController.Pieces[x + 1, y + 1].Type == PieceType.Empty)
                         {
-                            if (matrixController.Pieces[x + 1, y + 1].Type == PieceType.Empty)
-                                pieceBelowRight = matrixController.Pieces[x + 1, y + 1];
+                            pieceBelowRight = matrixController.Pieces[x + 1, y + 1];
+
+                            if (matrixController.Pieces[x + 1, y] != null &&
+                                matrixController.Pieces[x + 1, y].IsMovable)
+                                pieceBelowRight = null;
                         }
-                        
-                        if (x - 1 >= 0 && matrixController.Pieces[x - 1, y + 1] != null)
+
+                        if (x - 1 >= 0 && matrixController.Pieces[x - 1, y + 1] != null
+                            && matrixController.Pieces[x - 1, y + 1].Type == PieceType.Empty)
                         {
-                            if (matrixController.Pieces[x - 1, y + 1].Type == PieceType.Empty)
-                                pieceBelowLeft = matrixController.Pieces[x - 1, y + 1];
+                            pieceBelowLeft = matrixController.Pieces[x - 1, y + 1];
+
+                            if (matrixController.Pieces[x - 1, y] != null &&
+                                matrixController.Pieces[x - 1, y].IsMovable)
+                                pieceBelowLeft = null;
                         }
 
                         if (pieceBelowRight != null && pieceBelowLeft == null)
