@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,13 +13,10 @@ public class Indicator : MonoBehaviour
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
     [SerializeField] private Vector2 m_StartPosition;
 
-    private bool enablet = true;
+    private bool indicatorVisualization = true;
+    private bool indicatoEnabled = true;
     private void Start()
     {
-        transform.position = m_Grid.ConvertCellLocalPositionToCellWorldPosition(m_StartPosition);
-        CellSelected?.Invoke(m_StartPosition);
-
-        transform.localScale = Vector3.one * m_Grid.CellSize;
         m_InputManager.Click += SelectingACell;
     }
     private void OnDestroy()
@@ -28,6 +26,8 @@ public class Indicator : MonoBehaviour
 
     private void SelectingACell()
     {
+        if (indicatoEnabled == false) return;
+
         Vector2 localCellPosition = m_Grid.ConvertMousePositionToLocalCellPosition(m_InputManager.GetMousePosition(m_Grid.transform));
         
         if (m_Grid.CheckingCellActivity(localCellPosition) == false)
@@ -37,7 +37,7 @@ public class Indicator : MonoBehaviour
         }
         else
         {
-            if (enablet == true)
+            if (indicatorVisualization == true)
             {
                 m_SpriteRenderer.enabled = true;
             }
@@ -53,29 +53,50 @@ public class Indicator : MonoBehaviour
         transform.position = m_Grid.ConvertMousePositionToCellWorldPosition(m_InputManager.GetMousePosition(m_Grid.transform));
     }
 
-    public void IndicatorEnabled(bool value)
+    public void IndicatorVisualization(bool value)
     {
-        enablet = value;
+        indicatorVisualization = value;
         m_SpriteRenderer.enabled = value;
     }
 
-    public void BuildingSelect(Vector2 buildSize, List<Vector2> cells)
+    public void BuildingSelect(Vector2 buildSize, Vector2 buildPosition)
     {
         transform.localScale = buildSize;
         Vector2 indicatorPosition = new Vector2();
-        for (int i = 0; i < cells.Count; i++)
+        for (int i = 0; i < buildSize.x; i++)
         {
-            indicatorPosition.x += cells[i].x;
-            indicatorPosition.y += cells[i].y;
+            indicatorPosition.x += buildPosition.x + i;
         }
-        indicatorPosition.x /= cells.Count;
-        indicatorPosition.y /= cells.Count;
-
+        for (int i = 0; i < buildSize.y; i++)
+        {            
+            indicatorPosition.y += buildPosition.y + i;
+        }
+        indicatorPosition.x /= buildSize.x;
+        indicatorPosition.y /= buildSize.y;
         m_SpriteRenderer.transform.position = m_Grid.ConvertCellLocalPositionToCellWorldPosition(indicatorPosition);
     }
     public void BuildingUnselect()
     {
         transform.localScale = Vector3.one * m_Grid.CellSize;
         m_SpriteRenderer.transform.localPosition = Vector3.zero;
+    }
+
+    private void IndicatorReset()
+    {
+        m_SpriteRenderer.enabled = true;
+        transform.position = m_Grid.ConvertCellLocalPositionToCellWorldPosition(m_StartPosition);
+        CellSelected?.Invoke(m_StartPosition);
+    }
+
+    public void IndicatorDisabled()
+    {
+        indicatoEnabled = false;
+        m_SpriteRenderer.enabled = false;
+    }
+
+    public void IndicatorEnabled()
+    {
+        indicatoEnabled = true;
+        IndicatorReset();
     }
 }

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlacedBuildings;
 
 public class PlacementSystem : MonoBehaviour
-{
-    [SerializeField] private BuildModeUI m_BuildModeUI;
+{    
+
+    [SerializeField] private BuildingDataBase BuildingDataBase;
+    [SerializeField] private BuildingModeUI m_BuildModeUI;
     [SerializeField] private Indicator m_Indicator;
     [SerializeField] private BuildingGrid m_Grid;
 
@@ -15,18 +18,39 @@ public class PlacementSystem : MonoBehaviour
 
     private void Awake()
     {
-        if (placedBuildings == null)
-        {
-            placedBuildings = new PlacedBuildings();
-        }
         m_Indicator.CellSelected += OnCellSelected;
+        placedBuildings = new PlacedBuildings();
+        CreatingUploadedBuildings();                
     }
     private void OnDestroy()
     {
         m_Indicator.CellSelected -= OnCellSelected;
+    }    
+    
+    
+    private void CreatingUploadedBuildings()
+    {
+        List<BuildingInfo> uploadedBuildingsInfo = placedBuildings.Load();
+        if (uploadedBuildingsInfo == null) return;
+
+        for (int i = 0; i < uploadedBuildingsInfo.Count; i++)
+        {
+            Building building = Instantiate(BuildingDataBase.GetBuilding(uploadedBuildingsInfo[i].BuildingID));
+            building.BuildingPlacement(uploadedBuildingsInfo[i].OccupiedCell, placedBuildings.GetBuildIndex());
+            placedBuildings.AddBuilding(building);
+            building.transform.position = m_Grid.ConvertCellLocalPositionToCellWorldPosition(building.OccupiedCell);
+            for (int x = 0; x < building.Size.x; x++)
+            {
+                for (int y = 0; y < building.Size.y; y++)
+                {
+                    Vector2 cellPosition = new Vector2(building.OccupiedCell.x + x, building.OccupiedCell.y + y);
+                    m_Grid.OccupyACell(cellPosition, building.BuildingIndex);                    
+                }
+            }           
+            
+        }        
     }
     
-
     private void OnCellSelected(Vector2 cellLocalPosition)
     {
         currentCellLocalPosition = cellLocalPosition;
@@ -46,8 +70,8 @@ public class PlacementSystem : MonoBehaviour
     {
         if (m_Grid.CheckingCellOccupancy(currentCellLocalPosition) == true)
         {
-            Building building = placedBuildings.GetBuilding(m_Grid.GetCell(currentCellLocalPosition).BuildingIndex);
-            m_Indicator.BuildingSelect(building.Size, building.OccupiedCells);
+            Building building = placedBuildings.GetBuilding(m_Grid.GetCell(currentCellLocalPosition).BuildingIndex);            
+            m_Indicator.BuildingSelect(building.Size, building.OccupiedCell);
             m_BuildModeUI.EnablingReplacement();
         }
         else
@@ -84,7 +108,7 @@ public class PlacementSystem : MonoBehaviour
             Destroy(currentBuilding.gameObject);
         }
         currentBuilding = Instantiate(building, m_Indicator.transform.position, building.transform.rotation);
-        m_Indicator.IndicatorEnabled(false);
+        m_Indicator.IndicatorVisualization(false);
         m_BuildModeUI.StartPlacement();
         CheckingPossibilityOfBuildingPlacement();
     }
@@ -102,14 +126,16 @@ public class PlacementSystem : MonoBehaviour
     }    
 
     public void BuildingPlacement()
-    {
+    {        
+        int buildIndex = placedBuildings.GetBuildIndex();
+        currentBuilding.BuildingPlacement(currentCellLocalPosition, buildIndex);
+        placedBuildings.AddBuilding(currentBuilding);
         for (int x = 0; x < currentBuilding.Size.x; x++)
         {
             for (int y = 0; y < currentBuilding.Size.y; y++)
             {
                 Vector2 cellPosition = new Vector2(currentCellLocalPosition.x + x, currentCellLocalPosition.y + y);
-                m_Grid.OccupyACell(cellPosition, currentBuilding.BuildingID, placedBuildings.AddBuilding(currentBuilding));
-                currentBuilding.AddOccupiedCell(cellPosition);
+                m_Grid.OccupyACell(cellPosition, buildIndex);                
             }
         }
         EndPlacement();
@@ -123,7 +149,7 @@ public class PlacementSystem : MonoBehaviour
 
     private void EndPlacement()
     {
-        m_Indicator.IndicatorEnabled(true);
+        m_Indicator.IndicatorVisualization(true);
         currentBuilding.BuildingIsLocated();
         
         m_BuildModeUI.EndPlacement();
@@ -136,7 +162,7 @@ public class PlacementSystem : MonoBehaviour
 
     public void StartReplacement()
     {
-        m_Indicator.IndicatorEnabled(false);
+        m_Indicator.IndicatorVisualization(false);
         m_BuildModeUI.DisablingReplacement();
         GridCleaning();
         isBuild = true;
@@ -154,12 +180,18 @@ public class PlacementSystem : MonoBehaviour
 
     private void GridCleaning()
     {
-        currentBuilding = placedBuildings.GetBuilding(m_Grid.GetCell(currentCellLocalPosition).BuildingIndex);
-        for (int i = 0; i < currentBuilding.OccupiedCells.Count; i++)
+        int buildingIndex = m_Grid.GetCell(currentCellLocalPosition).BuildingIndex;
+        currentBuilding = placedBuildings.GetBuilding(buildingIndex);
+        for (int i = 0; i < currentBuilding.Size.x; i++)
         {
-            m_Grid.ClearACell(currentBuilding.OccupiedCells[i]);
+            for (int j = 0; j < currentBuilding.Size.y; j++)
+            {
+                m_Grid.ClearACell(currentBuilding.OccupiedCell + new Vector2(i,j));
+            }
+            
         }
         currentBuilding.ClearOccupiedCell();
+        placedBuildings.RemoveBuilding(buildingIndex);
     }
      
     private void SetBuildingPosition()

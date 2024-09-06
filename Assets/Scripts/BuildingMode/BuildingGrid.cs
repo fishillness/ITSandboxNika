@@ -88,13 +88,15 @@ public class BuildingGrid : MonoBehaviour
         return grid[(int)cellLocallPosition.x - 1].Array[(int)cellLocallPosition.y - 1].IsEmployed;
     }
 
-    public void OccupyACell(Vector2 cellLocalPosition, int buildingID, int buildingIndex)
-    {   
-        grid[(int)cellLocalPosition.x - 1].Array[(int)cellLocalPosition.y - 1].OccupyACell(buildingID, buildingIndex);
+    public void OccupyACell(Vector2 cellLocalPosition, int buildingIndex)
+    {
+        grid[(int)cellLocalPosition.x - 1].Array[(int)cellLocalPosition.y - 1].OccupyACell(buildingIndex);
     }
 
     public void ClearACell(Vector2 cellLocalPosition)
     {
+        if (CheckingCellActivity(cellLocalPosition) == false) return;
+
         grid[(int)cellLocalPosition.x - 1].Array[(int)cellLocalPosition.y - 1].ClearACell();
     }
 

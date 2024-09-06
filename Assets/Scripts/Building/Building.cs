@@ -1,18 +1,20 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Building : MonoBehaviour
 {
     public Vector2 Size => m_Size;
     public int BuildingID => m_BuildingID;
-    public List<Vector2> OccupiedCells => occupiedCells;
+    public Vector2 OccupiedCell => occupiedCell;
+    public int BuildingIndex => buildingIndex;
 
     [SerializeField] private VisualizationSystem m_VisualizationSystem;
     [SerializeField] private Vector2 m_Size;
     [SerializeField] private int m_BuildingID;
 
-    private List<Vector2> occupiedCells = new List<Vector2>();
+    private int buildingIndex;
+    private Vector2 occupiedCell;
 
     [ContextMenu("CellSpawnSpawn")]
     public void CellSpawnSpawn()
@@ -20,13 +22,14 @@ public class Building : MonoBehaviour
         m_VisualizationSystem.CellSpawnSpawn(m_Size);
     }
 
-    public void AddOccupiedCell(Vector2 cell)
+    public void BuildingPlacement(Vector2 cell, int buildingIndex)
     {
-        occupiedCells.Add(cell);
+        this.buildingIndex = buildingIndex;
+        occupiedCell = cell;
     }
     public void ClearOccupiedCell()
     {
-        occupiedCells.Clear();
+        occupiedCell = Vector2.zero;
     }
 
     public void ImpossibleToPlaceABuilding()
@@ -40,6 +43,5 @@ public class Building : MonoBehaviour
     public void BuildingIsLocated()
     {
         m_VisualizationSystem.BuildingIsLocated();
-    }
-    
+    }   
 }
