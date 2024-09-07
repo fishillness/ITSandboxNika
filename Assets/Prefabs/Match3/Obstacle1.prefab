@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 9169439114908532816}
   - component: {fileID: 6098197882140268525}
   - component: {fileID: 8907215690913408729}
-  - component: {fileID: 2838406104261217710}
-  - component: {fileID: 2954507952394745219}
+  - component: {fileID: 9051709715360351761}
   - component: {fileID: 4303057267901995564}
+  - component: {fileID: 2954507952394745219}
   m_Layer: 0
   m_Name: Obstacle1
   m_TagString: Untagged
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0cfe15e1083334682183e45f3e2d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2838406104261217710
+--- !u!114 &9051709715360351761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6432128446304652184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbaa58cdf7de69143b9b1a93934d0c9a, type: 3}
+  m_Script: {fileID: 11500000, guid: aa15fd1e50e117f4da161597b1456988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnPieceDestroy:
@@ -80,7 +80,33 @@ MonoBehaviour:
   OnPieceStartDestroying:
     m_PersistentCalls:
       m_Calls: []
-  destructionTypeWhichDestroyPiece: 01000000020000000000000004000000
+  destructionTypeWhichDestroyPiece: 00000000010000000200000004000000
+  spriteStages:
+  - {fileID: 894238277, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
+  - {fileID: 1467723566, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
+  - {fileID: 1240989748, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
+  changeableSprite: {fileID: 1352509400147657860}
+--- !u!95 &4303057267901995564
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432128446304652184}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f8db7d42a8eb56f4eaad0a85f2d0cad6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &2954507952394745219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,27 +152,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.35}
   m_EdgeRadius: 0
---- !u!95 &4303057267901995564
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432128446304652184}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f8db7d42a8eb56f4eaad0a85f2d0cad6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6544553886624816937
 GameObject:
   m_ObjectHideFlags: 0

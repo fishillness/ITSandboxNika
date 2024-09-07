@@ -155,25 +155,25 @@ public class PieceMatrixController : MonoBehaviour
         pieces[x, y] = null;
     }
 
-    public bool DeleteNotEmptyPiece(int x, int y, DestructionType destructionType)
+    public void DamageNotEmptyPiece(int x, int y, DestructionType destructionType)
     {
-        if (pieces[x, y] == null) return false;
+        if (pieces[x, y] == null) return;
         if (pieces[x, y].Type == PieceType.Empty)
         {
             Debug.Log($"Попытка удалить пустую фишку: {x}, {y}");
-            return false;
+            return;
         }
-        if (!pieces[x,y].IsDestructible) return false;
+        if (!pieces[x, y].IsDestructible) return;
 
         if (pieces[x, y].Destructible.IsPieceDestroyThisType(destructionType))
         {
-            pieces[x, y].Destructible.OnPieceDestroy.AddListener(RemoveDestroyingPieceFromMatrix);
-            pieces[x, y].Destructible.DestroyPiece(destructionType);
+            if (pieces[x, y].Destructible.IsLastStage)
+            {
+                pieces[x, y].Destructible.OnPieceDestroy.AddListener(RemoveDestroyingPieceFromMatrix);
+            }
 
-            return true;
+            pieces[x,y].Destructible.DamagePiece(destructionType);
         }
-
-        return false;
     }
 
     private void RemoveDestroyingPieceFromMatrix(Piece piece)
@@ -241,7 +241,7 @@ public class PieceMatrixController : MonoBehaviour
         {
             foreach (Piece piece in listPieces)
             {
-                DeleteNotEmptyPiece(piece.X, piece.Y, destructionType);
+                DamageNotEmptyPiece(piece.X, piece.Y, destructionType);
             }
         }
     }
@@ -259,19 +259,19 @@ public class PieceMatrixController : MonoBehaviour
         int xLeft = x - 1;
         int xRight = x + 1;
 
-        DeleteNotEmptyPiece(x, y, DestructionType.Rocket);
+        DamageNotEmptyPiece(x, y, DestructionType.Rocket);
 
         while (xLeft >= 0 || xRight < xDim)
         {
             if (xLeft >= 0 && pieces[xLeft, y] != null && pieces[xLeft, y].IsDestructible)
             {
-                DeleteNotEmptyPiece(xLeft, y, DestructionType.Rocket);
+                DamageNotEmptyPiece(xLeft, y, DestructionType.Rocket);
                 xLeft--;
             }
 
             if (xRight < xDim && pieces[xRight, y] != null && pieces[xRight, y].IsDestructible)
             {
-                DeleteNotEmptyPiece(xRight, y, DestructionType.Rocket);
+                DamageNotEmptyPiece(xRight, y, DestructionType.Rocket);
                 xRight++;
             }
 
@@ -294,19 +294,19 @@ public class PieceMatrixController : MonoBehaviour
         int yAbove = y - 1;
         int yBelow = y + 1;
 
-        DeleteNotEmptyPiece(x, y, DestructionType.Rocket);
+        DamageNotEmptyPiece(x, y, DestructionType.Rocket);
 
         while (yAbove >= 0 || yBelow < yDim)
         {
             if (yAbove >= 0 && pieces[x, yAbove] != null && pieces[x, yAbove].IsDestructible)
             {
-                DeleteNotEmptyPiece(x, yAbove, DestructionType.Rocket);
+                DamageNotEmptyPiece(x, yAbove, DestructionType.Rocket);
                 yAbove--;
             }
 
             if (yBelow < yDim && pieces[x, yBelow] != null && pieces[x, yBelow].IsDestructible)
             {
-                DeleteNotEmptyPiece(x, yBelow, DestructionType.Rocket);
+                DamageNotEmptyPiece(x, yBelow, DestructionType.Rocket);
                 yBelow++;
             }
 
@@ -322,19 +322,19 @@ public class PieceMatrixController : MonoBehaviour
 
         string boosterName = pieces[x, y].name;
 
-        DeleteNotEmptyPiece(x, y, DestructionType.Bomb);
+        DamageNotEmptyPiece(x, y, DestructionType.Bomb);
 
         if (pieces[x, y - 1] != null && pieces[x, y - 1].IsDestructible)
-            DeleteNotEmptyPiece(x, y - 1, DestructionType.Bomb);
+            DamageNotEmptyPiece(x, y - 1, DestructionType.Bomb);
 
         if (pieces[x + 1, y] != null && pieces[x + 1, y].IsDestructible)
-            DeleteNotEmptyPiece(x + 1, y, DestructionType.Bomb);
+            DamageNotEmptyPiece(x + 1, y, DestructionType.Bomb);
 
         if (pieces[x, y + 1] != null && pieces[x, y + 1].IsDestructible)
-            DeleteNotEmptyPiece(x, y + 1, DestructionType.Bomb);
+            DamageNotEmptyPiece(x, y + 1, DestructionType.Bomb);
 
         if (pieces[x - 1, y] != null && pieces[x - 1, y].IsDestructible)
-            DeleteNotEmptyPiece(x - 1, y, DestructionType.Bomb);
+            DamageNotEmptyPiece(x - 1, y, DestructionType.Bomb);
 
         BoosterActionEnded(boosterName);
     }
@@ -356,7 +356,7 @@ public class PieceMatrixController : MonoBehaviour
         int yMin = y - 2;
         int yMax = y + 2;
 
-        DeleteNotEmptyPiece(x, y, DestructionType.Bomb);
+        DamageNotEmptyPiece(x, y, DestructionType.Bomb);
         yield return new WaitForSeconds(time);
 
         for (int i = xMin; i <= xMax; i++)
@@ -373,7 +373,7 @@ public class PieceMatrixController : MonoBehaviour
 
                 if (pieces[i, j] != null && pieces[i, j].IsDestructible)
                 {
-                    DeleteNotEmptyPiece(i, j, DestructionType.Bomb);
+                    DamageNotEmptyPiece(i, j, DestructionType.Bomb);
                     yield return new WaitForSeconds(time);
                 }
             }
@@ -399,7 +399,7 @@ public class PieceMatrixController : MonoBehaviour
         else
             color = swapPiece.Colorable.Color;
 
-        DeleteNotEmptyPiece(x, y, DestructionType.ByActivationByself);
+        DamageNotEmptyPiece(x, y, DestructionType.ByActivationByself);
 
         foreach(Piece piece in pieces)
         {
@@ -407,7 +407,7 @@ public class PieceMatrixController : MonoBehaviour
 
             if (piece.IsColorable && piece.IsDestructible && piece.Colorable.Color == color)
             {
-                DeleteNotEmptyPiece(piece.X, piece.Y, DestructionType.Rainbow);
+                DamageNotEmptyPiece(piece.X, piece.Y, DestructionType.Rainbow);
                 yield return new WaitForSeconds(time);
             }
         }
