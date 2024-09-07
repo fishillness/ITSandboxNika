@@ -167,10 +167,11 @@ public class PieceMatrixController : MonoBehaviour
 
         if (pieces[x, y].Destructible.IsPieceDestroyThisType(destructionType))
         {
+            if (destructionType == DestructionType.ByMatch && pieces[x, y].Destructible.IsDestroying == false)
+                ActivatedDamageByNearMatchForNearPieces(x, y);
+
             if (pieces[x, y].Destructible.IsLastStage)
-            {
                 pieces[x, y].Destructible.OnPieceDestroy.AddListener(RemoveDestroyingPieceFromMatrix);
-            }
 
             pieces[x,y].Destructible.DamagePiece(destructionType);
         }
@@ -324,16 +325,16 @@ public class PieceMatrixController : MonoBehaviour
 
         DamageNotEmptyPiece(x, y, DestructionType.Bomb);
 
-        if (pieces[x, y - 1] != null && pieces[x, y - 1].IsDestructible)
+        if (y - 1 >= 0 && pieces[x, y - 1] != null && pieces[x, y - 1].IsDestructible)
             DamageNotEmptyPiece(x, y - 1, DestructionType.Bomb);
 
-        if (pieces[x + 1, y] != null && pieces[x + 1, y].IsDestructible)
+        if (x + 1 < xDim && pieces[x + 1, y] != null && pieces[x + 1, y].IsDestructible)
             DamageNotEmptyPiece(x + 1, y, DestructionType.Bomb);
 
-        if (pieces[x, y + 1] != null && pieces[x, y + 1].IsDestructible)
+        if (y + 1 < yDim && pieces[x, y + 1] != null && pieces[x, y + 1].IsDestructible)
             DamageNotEmptyPiece(x, y + 1, DestructionType.Bomb);
 
-        if (pieces[x - 1, y] != null && pieces[x - 1, y].IsDestructible)
+        if (x - 1 >= 0 && pieces[x - 1, y] != null && pieces[x - 1, y].IsDestructible)
             DamageNotEmptyPiece(x - 1, y, DestructionType.Bomb);
 
         BoosterActionEnded(boosterName);
@@ -432,5 +433,20 @@ public class PieceMatrixController : MonoBehaviour
             isThereActiveBooster = false;
             field.StartDropPieces(field.DroppingTime);
         }
+    }
+
+    private void ActivatedDamageByNearMatchForNearPieces(int x, int y)
+    {
+        if (y - 1 >= 0 && pieces[x, y - 1] != null && pieces[x, y - 1].IsDestructible)
+            DamageNotEmptyPiece(x, y - 1, DestructionType.NearToMatch);
+
+        if (x + 1 < xDim && pieces[x + 1, y] != null && pieces[x + 1, y].IsDestructible)
+            DamageNotEmptyPiece(x + 1, y, DestructionType.NearToMatch);
+
+        if (y + 1 < yDim && pieces[x, y + 1] != null && pieces[x, y + 1].IsDestructible)
+            DamageNotEmptyPiece(x, y + 1, DestructionType.NearToMatch);
+
+        if (x - 1 >= 0 && pieces[x - 1, y] != null && pieces[x - 1, y].IsDestructible)
+            DamageNotEmptyPiece(x - 1, y, DestructionType.NearToMatch);
     }
 }
