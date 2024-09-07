@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SpecifierRequiredPieces : MonoBehaviour
+public class SpecifierRequiredPiecesOfType : MonoBehaviour
 {
     [Serializable, SerializeField]
     public struct RequiredPiecePosition
