@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 public static class SceneController 
 {
     public const string MainMenuSceneTitle = "MainMenu";
-    public const string CitySceneTitle = "Test_CityScene";
+    public const string CitySceneTitle = "City";
     public const string Match3Title = "Match3";
 
     public static void LoadMainMenu()
