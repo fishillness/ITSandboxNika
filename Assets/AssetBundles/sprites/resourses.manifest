@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 2297391243
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 52ee68d0495db72c7a060a3eb5cd5e25
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 52ee68d0495db72c7a060a3eb5cd5e25
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/Sprites/GUI/\u043C\u043E\u0442\u0430 1.png"
+Dependencies: []

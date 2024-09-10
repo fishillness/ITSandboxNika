@@ -1,0 +1,39 @@
+ManifestFileVersion: 0
+CRC: 138926772
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d9a375c9338e16d8e4b389985d046b94
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 68738882dee87240b4ba7e08831f22ce
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: d9a375c9338e16d8e4b389985d046b94
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_9.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_13.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_4.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_12.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_10.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_1.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_7.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_14.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_3.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_2.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_8.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_11.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_6.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_15.asset
+- Assets/Tilemap/Palette/Tiles/Test_Match3_field_5.asset
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces

@@ -1,0 +1,40 @@
+ManifestFileVersion: 0
+CRC: 1345539459
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e679e1c39e460d59774bf5fff5948830
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: eb513b2d9228c497b0b79ef976796f53
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: e679e1c39e460d59774bf5fff5948830
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Models/Dog/Red/Dog_Red.mat
+- Assets/Models/Dog/Red/photo_5940376178156225367_y.jpg
+- Assets/Models/Dog/Red/Dog_Low.fbx
+- Assets/Models/Dog/Red/photo_5940376178156225366_y.jpg
+- Assets/Models/Dog/Red/photo_5940376178156225365_y.jpg
+Dependencies: []

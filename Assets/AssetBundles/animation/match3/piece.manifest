@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 1644312149
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 01d4c80ae47245d3062dad195fde4a7a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 147058da82bee871bbce28e472030442
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 01d4c80ae47245d3062dad195fde4a7a
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Animation/Match3/Piece/PieceClearing.anim
+- Assets/Animation/Match3/Piece/Piece.controller
+Dependencies: []

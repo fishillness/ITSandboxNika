@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 1778904869
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 59256aa51b0d1f4ff3a1ec7e67c1a543
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 147058da82bee871bbce28e472030442
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 59256aa51b0d1f4ff3a1ec7e67c1a543
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Animation/Match3/Obstacle/Obstacle.controller
+- Assets/Animation/Match3/Obstacle/ObstacleDestroy.anim
+Dependencies: []

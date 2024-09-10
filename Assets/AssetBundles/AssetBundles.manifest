@@ -1,0 +1,70 @@
+ManifestFileVersion: 0
+CRC: 274607404
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: sprites/match3/pieces
+      Dependencies: {}
+    Info_1:
+      Name: sprites/city
+      Dependencies: {}
+    Info_2:
+      Name: sprites/resourses
+      Dependencies: {}
+    Info_3:
+      Name: scriptableobjects/build
+      Dependencies:
+        Dependency_0: prefabs/house
+    Info_4:
+      Name: tilemap/palette
+      Dependencies:
+        Dependency_0: sprites/match3/pieces
+        Dependency_1: tilemap/tiles
+    Info_5:
+      Name: tilemap/tiles
+      Dependencies:
+        Dependency_0: sprites/match3/pieces
+    Info_6:
+      Name: prefabs/ui
+      Dependencies:
+        Dependency_0: sprites/match3/pieces
+        Dependency_1: sprites/resourses
+    Info_7:
+      Name: prefabs/match3/pieces
+      Dependencies:
+        Dependency_0: sprites/match3/pieces
+        Dependency_1: animation/match3/piece
+        Dependency_2: animation/match3/obstacle
+    Info_8:
+      Name: prefabs/match3/ui
+      Dependencies:
+        Dependency_0: sprites/match3/pieces
+    Info_9:
+      Name: prefabs/house
+      Dependencies:
+        Dependency_0: sprites/city
+        Dependency_1: prefabs/grid
+    Info_10:
+      Name: prefabs/grid
+      Dependencies:
+        Dependency_0: sprites/city
+    Info_11:
+      Name: prefabs/animal
+      Dependencies:
+        Dependency_0: models/dogs/dogbroun
+        Dependency_1: models/dogs/dogred
+    Info_12:
+      Name: models/dogs/dogbroun
+      Dependencies: {}
+    Info_13:
+      Name: models/dogs/dogred
+      Dependencies: {}
+    Info_14:
+      Name: materials/test
+      Dependencies: {}
+    Info_15:
+      Name: animation/match3/piece
+      Dependencies: {}
+    Info_16:
+      Name: animation/match3/obstacle
+      Dependencies: {}

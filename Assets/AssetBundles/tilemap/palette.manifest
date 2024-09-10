@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 1285094530
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 37ae4429a8a89e72c98a596e94925a5d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 65a154c1caa38c0d76ef5d46c5c9916f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 37ae4429a8a89e72c98a596e94925a5d
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 156049354
+  Script: {instanceID: 0}
+- Class: 483693784
+  Script: {instanceID: 0}
+- Class: 1839735485
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Tilemap/Palette/Test_Match3_field.prefab
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/tilemap/tiles

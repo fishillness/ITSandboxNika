@@ -1,0 +1,39 @@
+ManifestFileVersion: 0
+CRC: 2233760540
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f8812c132b90a7808338671dde182cfc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f8f23e50bf05de54d944b04447d5604d
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: f8812c132b90a7808338671dde182cfc
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/Animal/Dog_broun.prefab
+- Assets/Prefabs/Animal/Dog.prefab
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/models/dogs/dogbroun
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/models/dogs/dogred

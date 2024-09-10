@@ -1,0 +1,67 @@
+ManifestFileVersion: 0
+CRC: 1172202363
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1760b62cc7a6a82d7e1bbf843e809d1e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 834ab9b30317f83ac124c7f70bc893d0
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 1760b62cc7a6a82d7e1bbf843e809d1e
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 61
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5e7833f4d8206ed40b4f04ecaa66e6d3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cbaa58cdf7de69143b9b1a93934d0c9a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aa15fd1e50e117f4da161597b1456988, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0f843e0fc3b6e1842a76352769c0fe5b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1e0cfe15e1083334682183e45f3e2d44, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1a127c1da414f10498855bec290a055b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6c658a36d5517db4a983ef0e8ffc389e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1f5af4707c4f8dc44873c76fad435040, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 210
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent`1[Piece]
+Assets:
+- Assets/Prefabs/Match3/Booster.prefab
+- Assets/Prefabs/Match3/Piece.prefab
+- Assets/Prefabs/Match3/EmptyPiece.prefab
+- Assets/Prefabs/Match3/Obstacle1.prefab
+- Assets/Prefabs/Match3/PiecesSpawner.prefab
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/animation/match3/obstacle
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/animation/match3/piece
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces
