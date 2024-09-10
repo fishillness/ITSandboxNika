@@ -12,7 +12,7 @@ public class Saver<T>
     public static void TryLoad(string filename, ref T data)
     {
         string path = FileHandler.Path(filename);
-        // Debug.Log(path);
+        //Debug.Log(path);
         if(File.Exists(path))
         {
             string dataString = File.ReadAllText(path);
