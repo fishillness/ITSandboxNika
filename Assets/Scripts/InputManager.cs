@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -15,7 +13,16 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject() == true) return;
+            foreach (Touch touch in Input.touches)
+            {
+                int id = touch.fingerId;
+                if (EventSystem.current.IsPointerOverGameObject(id))
+                {
+                    Debug.Log("da");
+                    return;
+                }
+            }
+            if (EventSystem.current.IsPointerOverGameObject(-1)) return;
             Click?.Invoke();
         }   
     }
