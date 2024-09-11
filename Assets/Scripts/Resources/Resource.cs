@@ -11,7 +11,7 @@ public class Resource : MonoBehaviour
 
     private int currentValue;
 
-    public int CurrentValue;
+    public int CurrentValue => currentValue;
 
     private void Start()
     {

@@ -1085,4 +1085,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98796f2cf041e294abdf9e539b32660a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: {fileID: 4151765813837178965}
+  resource: {fileID: 0}
+  valueText: {fileID: 4151765813837178965}
