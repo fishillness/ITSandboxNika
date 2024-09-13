@@ -8,16 +8,17 @@ public class UIResourceText : MonoBehaviour
 
     private void Start()
     {
-        resource.OnResourceValueUpdate.AddListener(UpdateText);
+        UpdateText();
+        resource.OnResourceValueUpdate += UpdateText;
     }
 
     private void OnDestroy()
     {
-        resource.OnResourceValueUpdate.RemoveListener(UpdateText);
+        resource.OnResourceValueUpdate -= UpdateText;
     }
 
-    void UpdateText(int value)
+    void UpdateText()
     {
-        valueText.text = $"{value}";
+        valueText.text = $"{resource.CurrentValue}";
     }
 }

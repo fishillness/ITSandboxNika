@@ -3,37 +3,33 @@ using UnityEngine.Events;
 
 public class Resource : MonoBehaviour
 {
-    [HideInInspector]
-    public UnityEvent<int> OnResourceValueUpdate = new UnityEvent<int>();
+    public int CurrentValue => currentValue;        
+    public event UnityAction OnResourceValueUpdate;
 
-    [SerializeField] private ResourceType resourceType;
     [SerializeField] private int maxValue;
 
     private int currentValue;
-
-    public int CurrentValue;
-
-    private void Start()
+    private void Awake()
     {
-        currentValue = 0;
+        currentValue = maxValue;
     }
 
-    public void AddCoin(int value)
+    public void AddValue(int value)
     {
         currentValue += value;
 
         if (currentValue >= maxValue)
             currentValue = maxValue;
 
-        OnResourceValueUpdate?.Invoke(currentValue);
+        OnResourceValueUpdate?.Invoke();
     }
 
-    public bool DeleteCoin(int value)
+    public bool DeleteValue(int value)
     {
         if (currentValue - value < 0) return false;
 
         currentValue -= value;
-        OnResourceValueUpdate?.Invoke(currentValue);
+        OnResourceValueUpdate?.Invoke();
         return true;
     }
 }
