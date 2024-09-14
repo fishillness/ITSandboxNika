@@ -1,17 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Store : MonoBehaviour
-{
+{   
     public event UnityAction<BuildingInfo> BuyEvent;
 
-    [SerializeField] private Resource m_Coins;
-    [SerializeField] private Resource m_Boards;
-    [SerializeField] private Resource m_Bricks;
-    [SerializeField] private Resource m_Nails;
-
+    [SerializeField] private ResourceManager m_ResourceManager;
     [SerializeField] [Range(0, 1)] private float m_RefundPercentage;
-
     [SerializeField] private StoreCell[] m_Cells;
 
     private void Start()
@@ -31,28 +27,41 @@ public class Store : MonoBehaviour
     }
 
     public void Buy(BuildingInfo buildingInfo)
-    {
-        if (m_Coins.DeleteValue(buildingInfo.NeededCoins) & m_Boards.DeleteValue(buildingInfo.NeededBoards) & m_Bricks.DeleteValue(buildingInfo.NeededBricks) & m_Nails.DeleteValue(buildingInfo.NeededNails))
-        {
-            CellsUpdate();
-            BuyEvent?.Invoke(buildingInfo);
-        }         
+    {        
+        m_ResourceManager.DeleteResources(buildingInfo.NeededCoins, buildingInfo.NeededBoards, buildingInfo.NeededBricks, buildingInfo.NeededNails);
+        CellsUpdate();
+        BuyEvent?.Invoke(buildingInfo);        
     }
 
-    public void Refund(BuildingInfo buildingInfo)
+    private void Refund(BuildingInfo buildingInfo, float refundPercentage)
     {
-        m_Coins.AddValue(Mathf.CeilToInt(buildingInfo.NeededCoins * m_RefundPercentage));
-        m_Boards.AddValue(Mathf.CeilToInt(buildingInfo.NeededBoards * m_RefundPercentage));
-        m_Bricks.AddValue(Mathf.CeilToInt(buildingInfo.NeededBricks * m_RefundPercentage));
-        m_Nails.AddValue(Mathf.CeilToInt(buildingInfo.NeededNails * m_RefundPercentage));
+        m_ResourceManager.AddResources(
+            Mathf.CeilToInt(buildingInfo.NeededCoins * refundPercentage),
+            Mathf.CeilToInt(buildingInfo.NeededBoards * refundPercentage),
+            Mathf.CeilToInt(buildingInfo.NeededBricks * refundPercentage),
+            Mathf.CeilToInt(buildingInfo.NeededNails * refundPercentage)
+            );
+               
         CellsUpdate();
     }
+
+    public void FullRefund(BuildingInfo buildingInfo)
+    {
+        Refund(buildingInfo, 1);
+    }
+    public void PartialRefund(BuildingInfo buildingInfo)
+    {
+        Refund(buildingInfo, m_RefundPercentage);
+    }
+
 
     private void CellsUpdate()
     {
         for (int i = 0; i < m_Cells.Length; i++)
         {
-            m_Cells[i].CellUpdate(m_Coins.CurrentValue, m_Boards.CurrentValue, m_Bricks.CurrentValue, m_Nails.CurrentValue);
+            m_Cells[i].CellUpdate(m_ResourceManager.CoinsCount, m_ResourceManager.BoardsCount, m_ResourceManager.BricksCount, m_ResourceManager.NailsCount);
         }
     }
+
+    
 }

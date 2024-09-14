@@ -84,7 +84,6 @@ public class Indicator : MonoBehaviour
     {
         m_SpriteRenderer.enabled = true;
         transform.position = m_Grid.ConvertWorldPositionToCellWorldPosition(m_InputManager.GetCameraPosition(m_Grid.transform));
-        Debug.Log(m_Grid.ConvertWorldPositionToLocalCellPosition(m_InputManager.GetCameraPosition(m_Grid.transform)));
         CellSelected?.Invoke(m_Grid.ConvertWorldPositionToLocalCellPosition(m_InputManager.GetCameraPosition(m_Grid.transform)));
     }
 

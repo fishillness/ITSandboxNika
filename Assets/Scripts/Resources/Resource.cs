@@ -1,18 +1,14 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Resource : MonoBehaviour
 {
     public int CurrentValue => currentValue;        
-    public event UnityAction OnResourceValueUpdate;
 
+    [SerializeField] private UIResourceText m_UIResourceText;
     [SerializeField] private int maxValue;
 
     private int currentValue;
-    private void Awake()
-    {
-        currentValue = maxValue;
-    }
+    
 
     public void AddValue(int value)
     {
@@ -21,15 +17,25 @@ public class Resource : MonoBehaviour
         if (currentValue >= maxValue)
             currentValue = maxValue;
 
-        OnResourceValueUpdate?.Invoke();
+        m_UIResourceText.UpdateText(currentValue);
     }
 
-    public bool DeleteValue(int value)
+    public void DeleteValue(int value)
     {
-        if (currentValue - value < 0) return false;
+        if (currentValue - value < 0) return;
 
         currentValue -= value;
-        OnResourceValueUpdate?.Invoke();
-        return true;
+        m_UIResourceText.UpdateText(currentValue);
+    }
+
+    public void MaxValue()
+    {
+        SetCurrentValue(maxValue);
+    }
+
+    public void SetCurrentValue(int value)
+    {
+        currentValue = value;
+        m_UIResourceText.UpdateText(currentValue);
     }
 }

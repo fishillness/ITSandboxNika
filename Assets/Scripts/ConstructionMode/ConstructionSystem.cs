@@ -12,6 +12,7 @@ public class ConstructionSystem : MonoBehaviour
     {
         m_Store.BuyEvent += StartConstruction;
         m_PlacementSystem.BuildingDeleteEvent += BuildingDelete;
+        m_PlacementSystem.CancellationBuildingPlacementEvent += CancellationBuildingPlacement;
     }
     private void OnDestroy()
     {
@@ -26,6 +27,10 @@ public class ConstructionSystem : MonoBehaviour
     }
     private void BuildingDelete(BuildingInfo buildingInfo)
     {
-        m_Store.Refund(buildingInfo);
+        m_Store.PartialRefund(buildingInfo);
+    }
+    private void CancellationBuildingPlacement(BuildingInfo buildingInfo)
+    {
+        m_Store.FullRefund(buildingInfo);
     }
 }

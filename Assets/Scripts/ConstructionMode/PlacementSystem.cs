@@ -7,6 +7,7 @@ using static PlacedBuildings;
 public class PlacementSystem : MonoBehaviour
 {    
     public event UnityAction<BuildingInfo> BuildingDeleteEvent;
+    public event UnityAction<BuildingInfo> CancellationBuildingPlacementEvent;
 
     [SerializeField] private BuildingDataBase m_BuildingDataBase;
     [SerializeField] private ConstructionModeUI m_ConstructionModeUI;
@@ -32,7 +33,7 @@ public class PlacementSystem : MonoBehaviour
     
     private void CreatingUploadedBuildings()
     {
-        List<BuildingData> uploadedBuildingsInfo = placedBuildings.Load();
+        List<BuildingData> uploadedBuildingsInfo = placedBuildings.LoadBuildingsData();
         if (uploadedBuildingsInfo == null) return;
 
         for (int i = 0; i < uploadedBuildingsInfo.Count; i++)
@@ -147,7 +148,7 @@ public class PlacementSystem : MonoBehaviour
 
     public void CancellationBuildingPlacement()
     {
-        BuildingDeleteEvent?.Invoke(m_BuildingDataBase.GetBuildingInfo(currentBuilding.BuildingID));
+        CancellationBuildingPlacementEvent?.Invoke(m_BuildingDataBase.GetBuildingInfo(currentBuilding.BuildingID));
         Destroy(currentBuilding.gameObject);    
         EndPlacement();
     }

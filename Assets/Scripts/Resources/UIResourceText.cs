@@ -3,22 +3,10 @@ using UnityEngine;
 
 public class UIResourceText : MonoBehaviour
 {
-    [SerializeField] private Resource resource;
-    [SerializeField] private TextMeshProUGUI valueText;
+    [SerializeField] private TextMeshProUGUI valueText;   
 
-    private void Start()
+    public void UpdateText(int value)
     {
-        UpdateText();
-        resource.OnResourceValueUpdate += UpdateText;
-    }
-
-    private void OnDestroy()
-    {
-        resource.OnResourceValueUpdate -= UpdateText;
-    }
-
-    void UpdateText()
-    {
-        valueText.text = $"{resource.CurrentValue}";
+        valueText.text = $"{value}";
     }
 }
