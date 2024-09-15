@@ -241,8 +241,28 @@ public class PieceMatrixController : MonoBehaviour
         
         pieces[xEmpty, yEmpty] = pieces[xNonEmpty, yNonEmpty];
 
+        if (pieces[xEmpty, yEmpty].IsDestructible && pieces[xEmpty, yEmpty].Destructible.IsPieceDestroyThisType(DestructionType.ByReachEnd))
+            pieces[xEmpty, yEmpty].Movable.OnMoveEnd.AddListener(CheckNeedDamagePieceByReachEnd);
+
         pieces[xNonEmpty, yNonEmpty] = null;
         SpawnNewPiece(xNonEmpty, yNonEmpty, PieceType.Empty);
+    }
+
+    public void AddListenerToCheckWhenMoveEnd(Piece piece)
+    {
+        piece.Movable.OnMoveEnd.RemoveListener(CheckNeedDamagePieceByReachEnd);
+    }
+
+    private void CheckNeedDamagePieceByReachEnd(Piece piece)
+    {
+        piece.Movable.OnMoveEnd.RemoveListener(CheckNeedDamagePieceByReachEnd);
+
+        if (!piece.IsDestructible) return;
+        //if (pieces[piece.X, piece.Y] != null) return;
+        //if (piece.Y + 1 < yDim) return;
+
+        if (piece.Y + 1 == yDim || pieces[piece.X, piece.Y + 1] == null)
+            DamageNotEmptyPiece(piece.X, piece.Y, DestructionType.ByReachEnd);
     }
 
     public void SwapPiecesOnlyInMatrix(Piece piece1, Piece piece2)
