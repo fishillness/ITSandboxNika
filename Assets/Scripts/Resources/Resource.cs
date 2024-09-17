@@ -1,39 +1,41 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Resource : MonoBehaviour
 {
-    [HideInInspector]
-    public UnityEvent<int> OnResourceValueUpdate = new UnityEvent<int>();
+    public int CurrentValue => currentValue;        
 
-    [SerializeField] private ResourceType resourceType;
+    [SerializeField] private UIResourceText m_UIResourceText;
     [SerializeField] private int maxValue;
 
     private int currentValue;
+    
 
-    public int CurrentValue => currentValue;
-
-    private void Start()
-    {
-        currentValue = 0;
-    }
-
-    public void AddCoin(int value)
+    public void AddValue(int value)
     {
         currentValue += value;
 
         if (currentValue >= maxValue)
             currentValue = maxValue;
 
-        OnResourceValueUpdate?.Invoke(currentValue);
+        m_UIResourceText.UpdateText(currentValue);
     }
 
-    public bool DeleteCoin(int value)
+    public void DeleteValue(int value)
     {
-        if (currentValue - value < 0) return false;
+        if (currentValue - value < 0) return;
 
         currentValue -= value;
-        OnResourceValueUpdate?.Invoke(currentValue);
-        return true;
+        m_UIResourceText.UpdateText(currentValue);
+    }
+
+    public void MaxValue()
+    {
+        SetCurrentValue(maxValue);
+    }
+
+    public void SetCurrentValue(int value)
+    {
+        currentValue = value;
+        m_UIResourceText.UpdateText(currentValue);
     }
 }

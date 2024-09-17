@@ -9,7 +9,7 @@ public class Saver<T>
     public T data;
 
         
-    public static void TryLoad(string filename, ref T data)
+    public static bool TryLoad(string filename, ref T data)
     {
         string path = FileHandler.Path(filename);
         //Debug.Log(path);
@@ -18,6 +18,11 @@ public class Saver<T>
             string dataString = File.ReadAllText(path);
             Saver<T> saver = JsonUtility.FromJson<Saver<T>>(dataString);
             data = saver.data;
+            return true;
+        }
+        else
+        {
+            return false;
         }
             
     }

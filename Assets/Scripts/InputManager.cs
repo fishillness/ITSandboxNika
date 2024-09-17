@@ -18,7 +18,6 @@ public class InputManager : MonoBehaviour
                 int id = touch.fingerId;
                 if (EventSystem.current.IsPointerOverGameObject(id))
                 {
-                    Debug.Log("da");
                     return;
                 }
             }
@@ -31,6 +30,17 @@ public class InputManager : MonoBehaviour
     {
         Plane plane = new Plane(targetPlane.up, targetPlane.position);
         Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out float position))
+        {
+            worldPosition = ray.GetPoint(position);
+        }
+        return worldPosition;
+    }
+
+    public Vector3 GetCameraPosition(Transform targetPlane)
+    {
+        Plane plane = new Plane(targetPlane.up, targetPlane.position);
+        Ray ray = new Ray(m_Camera.transform.position, m_Camera.transform.forward);
         if (plane.Raycast(ray, out float position))
         {
             worldPosition = ray.GetPoint(position);
