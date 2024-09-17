@@ -429,8 +429,6 @@ public class FieldController : MonoBehaviour
         MatchingPieces matchPiece2 = new MatchingPieces();
         matchPiece2 = FindMatch(matrixController.Pieces[piece2.X, piece2.Y]);
 
-
-
         if ((matchPiece1.matchPieces != null && matchPiece1.matchPieces.Count >= 3) 
             || (matchPiece2.matchPieces != null && matchPiece2.matchPieces.Count >= 3)
             || piece1.IsBooster || piece2.IsBooster)
@@ -457,6 +455,12 @@ public class FieldController : MonoBehaviour
                 piece1.Booster.Activate(piece2);
             if (piece2.IsBooster) 
                 piece2.Booster.Activate(piece1);
+
+            if (piece1.IsDestructible && piece1.Destructible.IsPieceDestroyThisType(DestructionType.ByReachEnd))
+                matrixController.AddListenerToCheckWhenMoveEnd(piece1);
+
+            if (piece1.IsDestructible && piece1.Destructible.IsPieceDestroyThisType(DestructionType.ByReachEnd))
+                matrixController.AddListenerToCheckWhenMoveEnd(piece2);
 
             StartDropPieces(droppingTime);
             OnMove?.Invoke();

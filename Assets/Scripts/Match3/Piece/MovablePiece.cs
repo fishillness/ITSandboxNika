@@ -1,8 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MovablePiece : MonoBehaviour
 {
+    [HideInInspector]
+    public UnityEvent<Piece> OnMoveEnd;
+
     private Piece piece;
     private Coroutine coroutine;
 
@@ -39,5 +43,6 @@ public class MovablePiece : MonoBehaviour
         }
 
         piece.transform.position = newPos;
+        OnMoveEnd?.Invoke(piece);
     }
 }

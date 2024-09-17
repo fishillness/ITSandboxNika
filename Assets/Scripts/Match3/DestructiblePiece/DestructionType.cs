@@ -7,5 +7,6 @@ public enum DestructionType
     Rainbow, // Урон от радуги
     NearRainbow, // Если рядом с фишкой, которую забрала радуга
     ByMatch, // Матч
-    ByActivationByself // Дляя бустеров
+    ByActivationByself, // Для бустеров
+    ByReachEnd // Достугнув низа поля
 }
