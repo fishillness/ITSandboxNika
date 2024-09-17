@@ -1,24 +1,25 @@
-using System.Threading;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CardDisplay : MonoBehaviour
 {
-    //public Card card;
-    private CardRandom cardRandom;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI descText;
-    // Start is called before the first frame update
+    [SerializeField] private CardRandom cardRandom;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI descText;
+
     void Start()
     {
-        nameText.text = cardRandom.selectCard.name;
-        descText.text = cardRandom.selectCard.description;
+        cardRandom.OnCardUpdated.AddListener(UpdateTexts);
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        //nameText.text = cardRandom.selectCard.name;
-        //descText.text = cardRandom.selectCard.description;
+        cardRandom.OnCardUpdated.RemoveListener(UpdateTexts);
+    }
+
+    public void UpdateTexts(Card selectCard)
+    {
+        nameText.text = selectCard.name;
+        descText.text = selectCard.description;
     }
 }

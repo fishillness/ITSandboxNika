@@ -1,21 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CardRandom : MonoBehaviour
 {
-    public List<Card> listHints;
-    public Card selectCard;
-    public int rangeRandom;
-    private int rnd;
-    // Start is called before the first frame update
+    [HideInInspector]
+    public UnityEvent<Card> OnCardUpdated;
+
+    [SerializeField] private List<Card> listHints;
+    [SerializeField] private float timeToCahngeCard;
+
+    private Card selectCard;
+    private int rangeRandom;
+    private int rnd => listHints.Count;
+    
     public void Awake()
     {
-        InvokeRepeating("randomNumber", 0, 5);
+        Random.seed = System.DateTime.Now.Millisecond;
+        InvokeRepeating("randomNumber", 0, timeToCahngeCard);
     }
 
     public void randomNumber()
     {
-        rnd = Random.Range(0, rnd);
-        selectCard = listHints[rnd];
+        int random = Random.Range(0, rnd);
+        selectCard = listHints[random];
+        OnCardUpdated?.Invoke(selectCard);
     }
 }
