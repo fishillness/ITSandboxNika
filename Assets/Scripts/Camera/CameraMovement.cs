@@ -17,6 +17,8 @@ public class CameraMovement : MonoBehaviour
     private float yTargetPos;
     private float zoomTarget;
     private float velocity;
+    private Touch touchOne;
+    private Touch touchZero;
 
     void Start()
     {
@@ -45,6 +47,22 @@ public class CameraMovement : MonoBehaviour
         }
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, xTargetPos, speed * Time.deltaTime),
             Mathf.Lerp(transform.position.y, yTargetPos, speed * Time.deltaTime), transform.position.z);
+
+        if (Input.touchCount == 2)
+        {
+            touchZero = inputController.TouchZero;
+            touchOne = inputController.TouchOne;
+
+            Vector2 touchZeroLastPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOneLastPos = touchOne.position - touchOne.deltaPosition;
+
+            float distTouch = (touchZeroLastPos - touchOneLastPos).magnitude;
+            float currentDistTouch = (touchZero.position - touchOne.position).magnitude;
+
+            float difference = currentDistTouch - distTouch;
+
+            ScrollTouch(difference * 0.01f);
+        }
     }
 
     private void Scroll()
@@ -59,5 +77,10 @@ public class CameraMovement : MonoBehaviour
         {
             
         }
+    }
+
+    private void ScrollTouch(float increment)
+    {
+        zoomTarget = Mathf.Clamp(zoomTarget - increment, minZoom, maxZoom);
     }
 }
