@@ -13,7 +13,7 @@ public class CardRandom : MonoBehaviour
     private Card selectCard;
     private int rangeRandom;
     private int rnd => listHints.Count;
-
+    // Start is called before the first frame update
     public void Awake()
     {
         Random.seed = System.DateTime.Now.Millisecond;

@@ -1575,6 +1575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784f0078f7c9f8c44b556b22bbedb378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardRandom: {fileID: 1982296951}
   nameText: {fileID: 1266175045}
   descText: {fileID: 1460866584}
 --- !u!114 &1982296951
@@ -1589,12 +1590,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ef8f83b10a30c479d44493a45a9573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnCardUpdated:
+    m_PersistentCalls:
+      m_Calls: []
   listHints:
   - {fileID: 11400000, guid: 7ee8643ea69bb674a8a5ab34f09ca962, type: 2}
   - {fileID: 11400000, guid: 39a272b8f979df341adfeb04d455a4a7, type: 2}
   - {fileID: 11400000, guid: efcf194b2eb4505448492246389ef2b0, type: 2}
-  selectCard: {fileID: 0}
-  rangeRandom: 2
+  timeToCahngeCard: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
