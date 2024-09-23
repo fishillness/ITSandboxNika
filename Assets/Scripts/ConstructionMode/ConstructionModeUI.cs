@@ -12,7 +12,7 @@ public class ConstructionModeUI : MonoBehaviour
 
     public void StartPlacement()
     {
-        DisablingReplacement();        
+        DisablingPermutation();        
         m_CancelButton.gameObject.SetActive(true);
         m_SetButton.gameObject.SetActive(true);
         m_CloseButton.gameObject.SetActive(false);
@@ -35,13 +35,13 @@ public class ConstructionModeUI : MonoBehaviour
         m_SetButton.gameObject.SetActive(true);
         m_CloseButton.gameObject.SetActive(false);
     }
-    public void DisablingReplacement()
+    public void DisablingPermutation()
     {
         m_DeleteButton.gameObject.SetActive(false);
         m_ReplacementButton.gameObject.SetActive(false);
     }
 
-    public void EnablingReplacement()
+    public void EnablingPermutation()
     {
         m_DeleteButton.gameObject.SetActive(true);
         m_ReplacementButton.gameObject.SetActive(true);

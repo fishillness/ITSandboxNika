@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Building: {fileID: 7252172201135276214, guid: b75f9c176e7c25f4a9e7bbad5cc764ff, type: 3}
   m_StoreCellImage: {fileID: 21300000, guid: 1ff6234df8424e348ad5e28e1562891d, type: 3}
-  m_NeededBoards: 10
   m_NeededCoins: 60
-  m_NeededNails: 50
+  m_NeededBoards: 10
   m_NeededBricks: 90
+  m_NeededNails: 50
+  m_Advancement: 20
+  m_Cosiness: 26
+  m_Health: 11
+  m_Joy: 32

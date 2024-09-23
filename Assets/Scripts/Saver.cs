@@ -41,7 +41,7 @@ public static class FileHandler
 {
     public static string Path(string filename)
     {
-        //Debug.Log(Application.persistentDataPath + "/");
+        //Debug.Log(Application.persistentDataPath + "/"); C:/Users/aser9/AppData/LocalLow/DefaultCompany/ItSandboxNika/
         return Application.persistentDataPath + "/" + filename;
     }
     public static void Reset(string filename)

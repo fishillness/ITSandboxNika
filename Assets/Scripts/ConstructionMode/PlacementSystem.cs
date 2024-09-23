@@ -5,22 +5,30 @@ using UnityEngine.Events;
 using static PlacedBuildings;
 
 public class PlacementSystem : MonoBehaviour
-{    
+{   
     public event UnityAction<BuildingInfo> BuildingDeleteEvent;
-    public event UnityAction<BuildingInfo> CancellationBuildingPlacementEvent;
+    public event UnityAction<BuildingInfo> BuildingPlacementEvent;
 
     [SerializeField] private BuildingDataBase m_BuildingDataBase;
     [SerializeField] private ConstructionModeUI m_ConstructionModeUI;
     [SerializeField] private Indicator m_Indicator;
     [SerializeField] private ConstructionGrid m_Grid;
 
+    private enum PlacemenSystemMode
+    {
+        Placement,
+        Permutation,
+        CheckingCells
+    }
+
     private PlacedBuildings placedBuildings;
     private Building currentBuilding;
     private Vector2 currentCellLocalPosition;
-    private bool isBuild;
+    private PlacemenSystemMode placemenSystemMode;
 
     private void Awake()
     {
+        placemenSystemMode = PlacemenSystemMode.CheckingCells;
         m_Indicator.CellSelected += OnCellSelected;
         placedBuildings = new PlacedBuildings();
         CreatingUploadedBuildings();                
@@ -58,14 +66,14 @@ public class PlacementSystem : MonoBehaviour
     {
         currentCellLocalPosition = cellLocalPosition;
 
-        if (isBuild == true)
-        {   
-            SetBuildingPosition();
-            CheckingPossibilityOfBuildingPlacement();   
+        if (placemenSystemMode == PlacemenSystemMode.CheckingCells)
+        {
+            CheckingCellOccupancy();               
         }
         else
         {
-            CheckingCellOccupancy();
+            SetBuildingPosition();
+            CheckingPossibilityOfBuildingPlacement();
         }
     }
 
@@ -75,11 +83,11 @@ public class PlacementSystem : MonoBehaviour
         {
             Building building = placedBuildings.GetBuilding(m_Grid.GetCell(currentCellLocalPosition).BuildingIndex);            
             m_Indicator.BuildingSelect(building.Size, building.OccupiedCell);
-            m_ConstructionModeUI.EnablingReplacement();
+            m_ConstructionModeUI.EnablingPermutation();
         }
         else
         {
-            m_ConstructionModeUI.DisablingReplacement();
+            m_ConstructionModeUI.DisablingPermutation();
             m_Indicator.BuildingUnselect();
         }
     }
@@ -102,16 +110,16 @@ public class PlacementSystem : MonoBehaviour
         EnablingPlacement();
     }
 
-    public void StartPlacement(int iD)
+    public void StartPlacement(Building building)
     {
-        isBuild = true;
+        placemenSystemMode = PlacemenSystemMode.Placement;
 
         if (currentBuilding != null)
         {
             Destroy(currentBuilding.gameObject);
         }
 
-        currentBuilding = Instantiate(m_BuildingDataBase.GetBuilding(iD));
+        currentBuilding = Instantiate(building);
         currentBuilding.transform.position = m_Indicator.transform.position;
         m_Indicator.IndicatorVisualization(false);
         m_ConstructionModeUI.StartPlacement();
@@ -143,40 +151,44 @@ public class PlacementSystem : MonoBehaviour
                 m_Grid.OccupyACell(cellPosition, buildIndex);                
             }
         }
+
+        if (placemenSystemMode == PlacemenSystemMode.Placement)
+        {
+            BuildingPlacementEvent?.Invoke(m_BuildingDataBase.GetBuildingInfo(currentBuilding.BuildingID));
+        }
+
         EndPlacement();
     }
 
     public void CancellationBuildingPlacement()
-    {
-        CancellationBuildingPlacementEvent?.Invoke(m_BuildingDataBase.GetBuildingInfo(currentBuilding.BuildingID));
+    {        
         Destroy(currentBuilding.gameObject);    
         EndPlacement();
     }
 
     private void EndPlacement()
-    {
-        m_Indicator.IndicatorVisualization(true);
-        
+    {       
+        m_Indicator.IndicatorVisualization(true);        
         m_ConstructionModeUI.EndPlacement();
         currentBuilding = null;
-        isBuild = false;
+        placemenSystemMode = PlacemenSystemMode.CheckingCells;
         CheckingCellOccupancy();
     }      
 
     
 
-    public void StartReplacement()
+    public void StartPermutation()
     {
         m_Indicator.IndicatorVisualization(false);
-        m_ConstructionModeUI.DisablingReplacement();
+        m_ConstructionModeUI.DisablingPermutation();
         GridCleaning();
-        isBuild = true;
+        placemenSystemMode = PlacemenSystemMode.Permutation;
         SetBuildingPosition();
         CheckingPossibilityOfBuildingPlacement();
     }
     public void BuildingDelete()
     {
-        m_ConstructionModeUI.DisablingReplacement();
+        m_ConstructionModeUI.DisablingPermutation();
         GridCleaning();
         BuildingDeleteEvent?.Invoke(m_BuildingDataBase.GetBuildingInfo(currentBuilding.BuildingID));
         Destroy(currentBuilding.gameObject);

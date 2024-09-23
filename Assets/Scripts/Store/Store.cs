@@ -6,7 +6,7 @@ public class Store : MonoBehaviour
 {   
     public event UnityAction<BuildingInfo> BuyEvent;
 
-    [SerializeField] private ResourceManager m_ResourceManager;
+    [SerializeField] private ValueManager m_ResourceManager;
     [SerializeField] [Range(0, 1)] private float m_RefundPercentage;
     [SerializeField] private StoreCell[] m_Cells;
 
@@ -15,46 +15,39 @@ public class Store : MonoBehaviour
         CellsUpdate();
         for (int i = 0; i < m_Cells.Length; i++)
         {
-            m_Cells[i].BuyEvent += Buy;
+            m_Cells[i].BuyEvent += TryBuy;
         }
     }
     private void OnDestroy()
     {
         for (int i = 0; i < m_Cells.Length; i++)
         {
-            m_Cells[i].BuyEvent -= Buy;
+            m_Cells[i].BuyEvent -= TryBuy;
         }
+    }
+
+    public void TryBuy(BuildingInfo buildingInfo)
+    {
+        BuyEvent?.Invoke(buildingInfo);
     }
 
     public void Buy(BuildingInfo buildingInfo)
     {        
         m_ResourceManager.DeleteResources(buildingInfo.NeededCoins, buildingInfo.NeededBoards, buildingInfo.NeededBricks, buildingInfo.NeededNails);
-        CellsUpdate();
-        BuyEvent?.Invoke(buildingInfo);        
+        CellsUpdate();               
     }
 
-    private void Refund(BuildingInfo buildingInfo, float refundPercentage)
+    public void Refund(BuildingInfo buildingInfo)
     {
         m_ResourceManager.AddResources(
-            Mathf.CeilToInt(buildingInfo.NeededCoins * refundPercentage),
-            Mathf.CeilToInt(buildingInfo.NeededBoards * refundPercentage),
-            Mathf.CeilToInt(buildingInfo.NeededBricks * refundPercentage),
-            Mathf.CeilToInt(buildingInfo.NeededNails * refundPercentage)
+            Mathf.CeilToInt(buildingInfo.NeededCoins * m_RefundPercentage),
+            Mathf.CeilToInt(buildingInfo.NeededBoards * m_RefundPercentage),
+            Mathf.CeilToInt(buildingInfo.NeededBricks * m_RefundPercentage),
+            Mathf.CeilToInt(buildingInfo.NeededNails * m_RefundPercentage)
             );
                
         CellsUpdate();
-    }
-
-    public void FullRefund(BuildingInfo buildingInfo)
-    {
-        Refund(buildingInfo, 1);
-    }
-    public void PartialRefund(BuildingInfo buildingInfo)
-    {
-        Refund(buildingInfo, m_RefundPercentage);
-    }
-
-
+    }  
     private void CellsUpdate()
     {
         for (int i = 0; i < m_Cells.Length; i++)
