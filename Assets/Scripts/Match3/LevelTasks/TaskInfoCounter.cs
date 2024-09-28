@@ -1,13 +1,20 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TaskInfoCounter : MonoBehaviour
+public class TaskInfoCounter : MonoBehaviour,
+    IDependency<PieceCounter>, IDependency<UIMatch3LevelPanel>
 {
     [HideInInspector]
     public UnityEvent OnAllTaskComplite;
 
-    [SerializeField] private PieceCounter pieceCounter;
-    [SerializeField] private UIMatch3LevelPanel levelPanel;
+    private PieceCounter pieceCounter;
+    private UIMatch3LevelPanel levelPanel;
+
+
+    #region Constructs
+    public void Construct(PieceCounter pieceCounter) => this.pieceCounter = pieceCounter;
+    public void Construct(UIMatch3LevelPanel levelPanel) => this.levelPanel = levelPanel;
+    #endregion
 
     private TaskInfo[] taskInfos;
     private int taskCount;
@@ -26,6 +33,7 @@ public class TaskInfoCounter : MonoBehaviour
     public void InitTasks(TaskInfo[] taskInfos)
     {
         this.taskInfos = taskInfos;
+        levelPanel.InitUITaskInfo();
 
         foreach (var taskInfo in this.taskInfos)
         {

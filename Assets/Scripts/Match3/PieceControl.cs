@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class PieceControl : MonoBehaviour
+public class PieceControl : MonoBehaviour,
+    IDependency<FieldController>
 {
-    [SerializeField] private FieldController field;
+    private FieldController field;
     [SerializeField] private GameObject inputControll;
+
+    #region Constructs
+    public void Construct(FieldController field) => this.field = field;
+    #endregion
 
     private Camera camera;
     private Piece selectPiece;

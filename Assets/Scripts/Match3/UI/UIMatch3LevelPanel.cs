@@ -11,7 +11,7 @@ public class UIMatch3LevelPanel : MonoBehaviour
 
     private List<UITaskInfo> uiTaskInfos;
 
-    private void Start()
+    public void InitUITaskInfo()
     {
         uiTaskInfos = new List<UITaskInfo>();
     }

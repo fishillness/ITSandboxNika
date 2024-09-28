@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Match3Level : MonoBehaviour
+public class Match3Level : MonoBehaviour,
+    IDependency<FieldController>, IDependency<TaskInfoCounter>, IDependency<UIMatch3LevelPanel>
 {
     [HideInInspector]
     public UnityEvent OnStopMoves;
@@ -11,9 +12,15 @@ public class Match3Level : MonoBehaviour
     [SerializeField] private int moves;
     [SerializeField] private TaskInfo[] taskInfos;
 
-    [SerializeField] private FieldController field;
-    [SerializeField] private TaskInfoCounter taskInfoCounter;
-    [SerializeField] private UIMatch3LevelPanel levelPanel;
+    private FieldController field;
+    private TaskInfoCounter taskInfoCounter;
+    private UIMatch3LevelPanel levelPanel;
+
+    #region Constructs
+    public void Construct(FieldController field) => this.field = field;
+    public void Construct(TaskInfoCounter taskInfoCounter) => this.taskInfoCounter = taskInfoCounter;
+    public void Construct(UIMatch3LevelPanel levelPanel) => this.levelPanel = levelPanel;
+    #endregion
 
     private int remainingMoves;
     private bool areTasksComplite = false;

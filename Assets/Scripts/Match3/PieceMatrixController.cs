@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PieceMatrixController : MonoBehaviour
+public class PieceMatrixController : MonoBehaviour,
+    IDependency<PieceColorDictionary>, IDependency<BoosterDictionary>, IDependency<PieceCounter>,
+    IDependency<FieldController>, IDependency<SpecifierRequiredPiecesOfType>, IDependency<SpecifierRequiredBooster>
 {
-    [SerializeField] private PieceColorDictionary colorDictionary;
-    [SerializeField] private BoosterDictionary boosterDictionary;
-    [SerializeField] private PieceCounter pieceCounter;
-    [SerializeField] private FieldController field;
-    [SerializeField] private SpecifierRequiredPiecesOfType specifierRequiredPieces;
-    [SerializeField] private SpecifierRequiredBooster specifierRequiredBooster;
+    private PieceColorDictionary colorDictionary;
+    private BoosterDictionary boosterDictionary;
+    private PieceCounter pieceCounter;
+    private FieldController field;
+    private SpecifierRequiredPiecesOfType specifierRequiredPieces;
+    private SpecifierRequiredBooster specifierRequiredBooster;
+
+    #region Constructs
+    public void Construct(PieceColorDictionary colorDictionary) => this.colorDictionary = colorDictionary;
+    public void Construct(BoosterDictionary boosterDictionary) => this.boosterDictionary = boosterDictionary;
+    public void Construct(PieceCounter pieceCounter) => this.pieceCounter = pieceCounter;
+    public void Construct(FieldController fieldController) => field = fieldController;
+    public void Construct(SpecifierRequiredPiecesOfType specifierRequiredPieces) => this.specifierRequiredPieces = specifierRequiredPieces;
+    public void Construct(SpecifierRequiredBooster specifierRequiredBooster) => this.specifierRequiredBooster = specifierRequiredBooster;
+    #endregion
 
     private Piece[,] pieces;
     private int xDim;
@@ -30,6 +41,9 @@ public class PieceMatrixController : MonoBehaviour
     {
         this.xDim = xDim;
         this.yDim = yDim;
+
+        colorDictionary.InitDictionaty();
+        boosterDictionary.InitDictionaty();
 
         pieces = new Piece[xDim, yDim];
 
