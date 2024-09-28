@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Building : MonoBehaviour
@@ -15,15 +13,17 @@ public class Building : MonoBehaviour
 
     private int buildingIndex;
     private Vector2 occupiedCell;
+    
 
     [ContextMenu("CellSpawnSpawn")]
     public void CellSpawnSpawn()
     {
-        m_VisualizationSystem.CellSpawnSpawn(m_Size);
+        m_VisualizationSystem.CellSpawn(m_Size);
     }
 
     public void BuildingPlacement(Vector2 cell, int buildingIndex)
     {
+        BuildingIsLocated();
         this.buildingIndex = buildingIndex;
         occupiedCell = cell;
     }
@@ -40,7 +40,7 @@ public class Building : MonoBehaviour
     {
         m_VisualizationSystem.PossibleToPlaceABuilding();
     }
-    public void BuildingIsLocated()
+    private void BuildingIsLocated()
     {
         m_VisualizationSystem.BuildingIsLocated();
     }   

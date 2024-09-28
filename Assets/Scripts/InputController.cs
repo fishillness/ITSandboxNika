@@ -6,15 +6,23 @@ public class InputController : MonoBehaviour
     private bool mouseButton;
     private bool mouseButtonDown;
     private Vector3 scroll;
+    private Touch touchOne;
+    private Touch touchZero;
 
     public Vector3 MousePosition => mousePosition;
     public bool MouseButton => mouseButton;
     public bool MouseButtonDown => mouseButtonDown;
     public Vector3 Scroll => scroll;
+    public Touch TouchOne => touchOne;
+    public Touch TouchZero => touchZero;
 
     private void Update()
     {
         GetMouseInput();
+        if (Input.touchCount == 2)
+        {
+            GetTouchInput();
+        }
     }
 
     private void GetMouseInput()
@@ -23,5 +31,11 @@ public class InputController : MonoBehaviour
         mouseButtonDown = Input.GetMouseButtonDown(0);
         mouseButton = Input.GetMouseButton(0);
         scroll = Input.mouseScrollDelta;
+    }
+    
+    private void GetTouchInput()
+    {
+        touchOne = Input.GetTouch(1);
+        touchZero = Input.GetTouch(0);
     }
 }
