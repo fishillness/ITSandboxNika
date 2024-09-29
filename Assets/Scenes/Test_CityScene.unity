@@ -1597,7 +1597,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7ee8643ea69bb674a8a5ab34f09ca962, type: 2}
   - {fileID: 11400000, guid: 39a272b8f979df341adfeb04d455a4a7, type: 2}
   - {fileID: 11400000, guid: efcf194b2eb4505448492246389ef2b0, type: 2}
-  timeToCahngeCard: 5
+  timeToCahngeCard: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
