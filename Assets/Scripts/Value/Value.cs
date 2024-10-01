@@ -18,10 +18,12 @@ public class Value : MonoBehaviour
     }
 
     public virtual void DeleteValue(int value)
-    {
-        if (currentValue - value < 0) return;
-
+    {  
         currentValue -= value;
+        if (currentValue  < 0)
+        {
+            currentValue = 0;
+        }
     }    
 
     public virtual void SetCurrentValue(int value)

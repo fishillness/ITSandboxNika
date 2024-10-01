@@ -24,6 +24,11 @@ public class ValueManager : MonoBehaviour
     public int BricksCount => m_Bricks.CurrentValue;
     public int NailsCount => m_Nails.CurrentValue;
 
+    public int Advancement => m_Advancement.CurrentValue;
+    public int Cosiness => m_Cosiness.CurrentValue;
+    public int Health => m_Health.CurrentValue;
+    public int Joy => m_Joy.CurrentValue;
+
     [SerializeField] private Resource m_Coins;
     [SerializeField] private Resource m_Boards;
     [SerializeField] private Resource m_Bricks;
