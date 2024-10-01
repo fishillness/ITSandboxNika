@@ -6,5 +6,6 @@ public class RESET : MonoBehaviour
     {
         FileHandler.Reset("Value");
         FileHandler.Reset("PlacedBuildings");
+        FileHandler.Reset("Level");
     }
 }

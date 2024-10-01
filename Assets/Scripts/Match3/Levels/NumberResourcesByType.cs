@@ -4,6 +4,6 @@ using UnityEngine;
 [SerializeField, Serializable]
 public struct NumberResourcesByType
 {
-    public ResourceType resourceType;
+    //public ResourceType resourceType;
     public int value;
 }

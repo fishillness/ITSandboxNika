@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class LevelCreator : MonoBehaviour
 {
-    [SerializeField] private LevelInfo levelInfo;
+    [SerializeField] private Match3LevelManager levelManager;
 
     private void Awake()
     {
-        Instantiate(levelInfo.LevelPrefab);
+        Instantiate(levelManager.LevelList.Levels[levelManager.CurrentLevel].LevelPrefab);
     }
 }
