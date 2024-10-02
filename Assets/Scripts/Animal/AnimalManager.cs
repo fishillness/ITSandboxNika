@@ -9,9 +9,18 @@ public class AnimalManager : MonoBehaviour
     [SerializeField] private AnimalSpawner m_AnimalSpawner;
     [SerializeField] private PlacedBuildings m_PlacedBuildings;
     [SerializeField] private float TheTimeOfTheAppearanceOfAnimals;
+    [SerializeField] private WalkArea m_WalkArea;
 
     private Coroutine coroutine;
     private List<Animal> animals = new List<Animal>();
+
+    private void Start()
+    {
+        for (int i = 0; i < CalculatingRequiredNumberOfAnimals(); i++)
+        {
+            animals.Add(m_AnimalSpawner.SpawnAnimalsAtARandomPoint());
+        }
+    }
 
     public void UpdateAnimalCount()
     {
@@ -77,7 +86,7 @@ public class AnimalManager : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            animals.Add(m_AnimalSpawner.AnimalSpawn(m_PlacedBuildings.GetARandomBuildingWithAnEntry().GetEntryPoint()));
+            animals.Add(m_AnimalSpawner.SpawnAnimalsAtAGivenPoint(m_PlacedBuildings.GetARandomBuildingWithAnEntry().GetEntryPoint()));
             yield return new WaitForSeconds(TheTimeOfTheAppearanceOfAnimals);
         }       
         
