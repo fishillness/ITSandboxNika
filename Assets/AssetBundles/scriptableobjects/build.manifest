@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 4053994955
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0ff6489fec10a4e0f455c4dbc0132635
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 41fae8b36cc95bac374e29e9818dff15
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 0ff6489fec10a4e0f455c4dbc0132635
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4f32b15a220fc5840a74deedbf7f82df, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 430cc9f7cd4802142b92f4a1628145cb, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/ScriptableObjects/Building Data Base.asset
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/prefabs/house
