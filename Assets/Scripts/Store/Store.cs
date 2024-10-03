@@ -33,7 +33,7 @@ public class Store : MonoBehaviour
 
     public void Buy(BuildingInfo buildingInfo)
     {        
-        m_ResourceManager.DeleteResources(buildingInfo.NeededCoins, buildingInfo.NeededBoards, buildingInfo.NeededBricks, buildingInfo.NeededNails);
+        m_ResourceManager.DeleteResources(buildingInfo.NeededCoins, buildingInfo.NeededBoards, buildingInfo.NeededBricks, buildingInfo.NeededNails, 0);
         CellsUpdate();               
     }
 
@@ -43,7 +43,8 @@ public class Store : MonoBehaviour
             Mathf.CeilToInt(buildingInfo.NeededCoins * m_RefundPercentage),
             Mathf.CeilToInt(buildingInfo.NeededBoards * m_RefundPercentage),
             Mathf.CeilToInt(buildingInfo.NeededBricks * m_RefundPercentage),
-            Mathf.CeilToInt(buildingInfo.NeededNails * m_RefundPercentage)
+            Mathf.CeilToInt(buildingInfo.NeededNails * m_RefundPercentage),
+            0
             );
                
         CellsUpdate();
