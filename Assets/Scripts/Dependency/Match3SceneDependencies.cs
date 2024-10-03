@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Match3SceneDependencies : MonoBehaviour
+public class Match3SceneDependencies : Dependency
 {
     [SerializeField] private PieceCounter pieceCounter;
     [SerializeField] private PieceColorDictionary pieceColorDictionary;
@@ -19,28 +19,24 @@ public class Match3SceneDependencies : MonoBehaviour
 
     private void Awake()
     {
-        MonoBehaviour[] monoInScene = FindObjectsOfType<MonoBehaviour>();  
-        
-        for (int i = 0; i < monoInScene.Length; i++)
-        {
-            Bind(monoInScene[i]);
-        }
+        FindAllObjectToBind();
     }
 
-    private void Bind(MonoBehaviour mono)
+    protected override void BindAll(MonoBehaviour monoBehaviourInScene)
     {
-        (mono as IDependency<PieceCounter>)?.Construct(pieceCounter);
-        (mono as IDependency<PieceColorDictionary>)?.Construct(pieceColorDictionary);
-        (mono as IDependency<BoosterDictionary>)?.Construct(boosterDictionary);
-        (mono as IDependency<SpecifierRequiredPiecesOfType>)?.Construct(specifierRequiredPiecesOfType);
-        (mono as IDependency<SpecifierRequiredBooster>)?.Construct(specifierRequiredBooster);
-        (mono as IDependency<UIMatch3LevelPanel>)?.Construct(levelPanel);
-        (mono as IDependency<TaskInfoCounter>)?.Construct(taskInfoCounter);
+        Bind<PieceCounter>(pieceCounter, monoBehaviourInScene);
+        Bind<PieceColorDictionary>(pieceColorDictionary, monoBehaviourInScene);
+        Bind<BoosterDictionary>(boosterDictionary, monoBehaviourInScene);
 
-        (mono as IDependency<PieceMatrixController>)?.Construct(matrixController);
-        (mono as IDependency<PiecesSpawnerController>)?.Construct(spawnerController);
-        (mono as IDependency<Match3Level>)?.Construct(level);
-        (mono as IDependency<FieldController>)?.Construct(fieldController);
-        (mono as IDependency<PieceControl>)?.Construct(pieceControl);
+        Bind<SpecifierRequiredPiecesOfType>(specifierRequiredPiecesOfType, monoBehaviourInScene);
+        Bind<SpecifierRequiredBooster>(specifierRequiredBooster, monoBehaviourInScene);
+        Bind<UIMatch3LevelPanel>(levelPanel, monoBehaviourInScene);
+        Bind<TaskInfoCounter>(taskInfoCounter, monoBehaviourInScene);
+
+        Bind<PieceMatrixController>(matrixController, monoBehaviourInScene);
+        Bind<PiecesSpawnerController>(spawnerController, monoBehaviourInScene);
+        Bind<Match3Level>(level, monoBehaviourInScene);
+        Bind<FieldController>(fieldController, monoBehaviourInScene);
+        Bind<PieceControl>(pieceControl, monoBehaviourInScene);
     }
 }

@@ -1,10 +1,19 @@
 using UnityEngine;
 
-public class LevelCreator : MonoBehaviour
+public class LevelCreator : MonoBehaviour,
+    IDependency<Match3LevelManager>
 {
-    [SerializeField] private Match3LevelManager levelManager;
+    private Match3LevelManager levelManager;
 
-    private void Awake()
+    #region Constructs
+    public void Construct(Match3LevelManager levelManager)
+    {
+        Debug.Log("!");
+        this.levelManager = levelManager;
+    } 
+    #endregion
+
+    private void Start()
     {
         Instantiate(levelManager.LevelList.Levels[levelManager.CurrentLevel].LevelPrefab);
     }
