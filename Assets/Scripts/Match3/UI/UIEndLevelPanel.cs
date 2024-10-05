@@ -2,42 +2,87 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIEndLevelPanel : MonoBehaviour
+public class UIEndLevelPanel : MonoBehaviour,
+    IDependency<Match3Level>,
+    IDependency<Match3LevelManager>
 {
-    [SerializeField] private Match3Level level;
-    [SerializeField] private GameObject endLevelPanel;
-    [SerializeField] private TextMeshProUGUI resultText;
-    [SerializeField] private Button returnButton;
+    [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject losePanel;
+    [SerializeField] private Button[] returnButtons;
+    [SerializeField] private Button retryButton;
 
-    [SerializeField] private Button DebugButtonReturn;
+    [Header("ResourcesText")]
+    [SerializeField] private TextMeshProUGUI coinsText;
+    [SerializeField] private TextMeshProUGUI boardsText;
+    [SerializeField] private TextMeshProUGUI bricksText;
+    [SerializeField] private TextMeshProUGUI nailsText;
 
-    private string winText = "Победа";
-    private string loseText = "Проигрыш";
+    private Match3Level level;
+    private Match3LevelManager levelManager;
+
+    #region Constructs
+    public void Construct(Match3Level level) => this.level = level;
+    public void Construct(Match3LevelManager levelManager) => this.levelManager = levelManager;
+    #endregion
+
+    private void Awake()
+    {
+        if (levelManager == null)
+            GlobalGameDependenciesContainer.Instance.Rebind(this);
+
+        SetReceivedResource(levelManager.CurrentLevelInfo.Coins, levelManager.CurrentLevelInfo.Boards,
+            levelManager.CurrentLevelInfo.Bricks, levelManager.CurrentLevelInfo.Nails);
+    }
 
     private void Start()
     {
-        endLevelPanel.SetActive(false);
+        winPanel.SetActive(false);
+        losePanel.SetActive(false);
 
         level.OnLevelResult.AddListener(OnLevelResult);
-        returnButton.onClick.AddListener(OpenCity);
-        DebugButtonReturn.onClick.AddListener(OpenCity);
+        retryButton.onClick.AddListener(RetryLevel);
+
+        foreach (var button in returnButtons)
+        {
+            button.onClick.AddListener(OpenCity);
+        }
     }
 
     private void OnDestroy()
     {
         level.OnLevelResult.RemoveListener(OnLevelResult);
-        returnButton.onClick.RemoveListener(OpenCity);
-        DebugButtonReturn.onClick.RemoveListener(OpenCity);
+        retryButton.onClick.RemoveListener(RetryLevel);
+
+        foreach (var button in returnButtons)
+        {
+            button.onClick.RemoveListener(OpenCity);
+        }
+    }
+
+    private void SetReceivedResource(int coins, int boards, int bricks, int nails)
+    {
+        coinsText.text = coins.ToString();
+        boardsText.text = boards.ToString();
+        bricksText.text = bricks.ToString();
+        nailsText.text = nails.ToString();
     }
 
     private void OnLevelResult(bool result)
     {
-        endLevelPanel.SetActive(true);
-
         if (result)
-            resultText.text = winText;
-        else 
-            resultText.text = loseText;
+        {
+            winPanel.SetActive(true);
+        }
+        else
+        {
+            losePanel.SetActive(true);
+        }
+    }
+
+    private void RetryLevel()
+    {
+        //TODO: отнять энергию
+        SceneController.Restart();
     }
 
     private void OpenCity()

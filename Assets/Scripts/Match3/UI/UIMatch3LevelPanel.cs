@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UIMatch3LevelPanel : MonoBehaviour
+public class UIMatch3LevelPanel : MonoBehaviour,
+    IDependency<Match3LevelManager>
 {
     [SerializeField] private TextMeshProUGUI textLevelNumber;
     [SerializeField] private TextMeshProUGUI textMoves;
@@ -10,15 +11,27 @@ public class UIMatch3LevelPanel : MonoBehaviour
     [SerializeField] private UITaskInfo taskInfoPrefab;
 
     private List<UITaskInfo> uiTaskInfos;
+    private Match3LevelManager levelManager;
+
+    #region Constructs
+    public void Construct(Match3LevelManager levelManager) => this.levelManager = levelManager;
+    #endregion
+
+    private void Awake()
+    {
+        if (levelManager == null)
+            GlobalGameDependenciesContainer.Instance.Rebind(this);
+
+        textLevelNumber.text = levelManager.CurrentLevel.ToString();
+    }
 
     public void InitUITaskInfo()
     {
         uiTaskInfos = new List<UITaskInfo>();
     }
 
-    public void SetProperties(int levelNumber, int startMoves)
+    public void SetMoves(int startMoves)
     {
-        textLevelNumber.text = levelNumber.ToString();
         textMoves.text = startMoves.ToString();
     }
 

@@ -351,18 +351,13 @@ MonoBehaviour:
   OnLevelResult:
     m_PersistentCalls:
       m_Calls: []
-  moves: 20
+  moves: 3
   taskInfos:
-  - taskType: 0
-    sprite: {fileID: 894238277, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
-    count: 3
-    type: 3
+  - taskType: 1
+    sprite: {fileID: 21300000, guid: b12bbecc280669b4da9f624e9cbf2eac, type: 3}
+    count: 15
+    type: 1
     colorType: 0
-  - taskType: 0
-    sprite: {fileID: 116977398, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
-    count: 3
-    type: 4
-    colorType: 1
 --- !u!1 &983554703530676523
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,6 +2339,7 @@ MonoBehaviour:
   level: {fileID: 1982579595026113219}
   fieldController: {fileID: 6379823829506017523}
   pieceControl: {fileID: 3237871013122704741}
+  endLevelPanel: {fileID: 1679953449011523560}
 --- !u!1 &8943783366864810765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,6 +2498,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
+--- !u!114 &1679953449011523560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7154581723562015885, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
+  m_PrefabInstance: {fileID: 8366081622699430757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043f4e5e5e6178c49b3fd68023683272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4774523356984946061 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3916101269919956712, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}

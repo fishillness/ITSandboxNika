@@ -5,7 +5,6 @@ public class LevelInfo : ScriptableObject
 {
     [SerializeField] private GameObject levelPrefabs;
     [SerializeField] private int costInEnergy;
-    //[SerializeField] private NumberResourcesByType[] numberResourcesByTypes;
 
     [Header("Resources received")]
     [SerializeField] private int coins;
@@ -15,7 +14,6 @@ public class LevelInfo : ScriptableObject
 
     public GameObject LevelPrefab => levelPrefabs;
     public int CostInEnergy => costInEnergy;
-    //public NumberResourcesByType[] NumberResourcesByTypes => numberResourcesByTypes;
 
     public int Coins => coins;
     public int Boards => boards;

@@ -16,6 +16,7 @@ public class Match3SceneDependencies : Dependency
 
     [SerializeField] private FieldController fieldController;
     [SerializeField] private PieceControl pieceControl;
+    [SerializeField] private UIEndLevelPanel endLevelPanel;
 
     private void Awake()
     {
@@ -36,7 +37,9 @@ public class Match3SceneDependencies : Dependency
         Bind<PieceMatrixController>(matrixController, monoBehaviourInScene);
         Bind<PiecesSpawnerController>(spawnerController, monoBehaviourInScene);
         Bind<Match3Level>(level, monoBehaviourInScene);
+
         Bind<FieldController>(fieldController, monoBehaviourInScene);
         Bind<PieceControl>(pieceControl, monoBehaviourInScene);
+        Bind<UIEndLevelPanel>(endLevelPanel, monoBehaviourInScene);
     }
 }

@@ -5,6 +5,11 @@ public class GlobalGameDependenciesContainer : Dependency
 {
     private static GlobalGameDependenciesContainer instance;
 
+    [SerializeField] private Match3LevelManager levelManager;
+    [SerializeField] private ValueManager valueManager;
+
+    public static GlobalGameDependenciesContainer Instance => instance;
+
     private void Awake()
     {
         if (instance != null)
@@ -31,6 +36,12 @@ public class GlobalGameDependenciesContainer : Dependency
 
     protected override void BindAll(MonoBehaviour monoBehaviourInScene)
     {
-        //Bind<Match3LevelManager>(property, monoBehaviourInScene);
+        Bind<Match3LevelManager>(levelManager, monoBehaviourInScene);
+        Bind<ValueManager>(valueManager, monoBehaviourInScene);
+    }
+
+    public void Rebind(MonoBehaviour monoBehaviour)
+    {
+        BindAll(monoBehaviour);
     }
 }

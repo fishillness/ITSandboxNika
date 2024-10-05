@@ -8,7 +8,6 @@ public class LevelCreator : MonoBehaviour,
     #region Constructs
     public void Construct(Match3LevelManager levelManager)
     {
-        Debug.Log("!");
         this.levelManager = levelManager;
     } 
     #endregion

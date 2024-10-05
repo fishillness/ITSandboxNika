@@ -17,6 +17,7 @@ public class Match3LevelManager : MonoBehaviour
 
     public LevelList LevelList => levelList;
     public int CurrentLevel => currentLevel;
+    public LevelInfo CurrentLevelInfo => levelList.Levels[currentLevel];
     public bool HaveUnCompletedLevels => currentLevel < levelList.Levels.Length;
 
     private void Awake()
