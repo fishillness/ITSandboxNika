@@ -1212,6 +1212,7 @@ MonoBehaviour:
   - {fileID: 6247523297352743086}
   - {fileID: 3198035219788906851}
   retryButton: {fileID: 934641803838631872}
+  retryButtonText: {fileID: 1640262175660977062}
   coinsText: {fileID: 492366734810671485}
   boardsText: {fileID: 5482863212052338482}
   bricksText: {fileID: 6635173375856384908}

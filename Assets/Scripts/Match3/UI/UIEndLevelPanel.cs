@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class UIEndLevelPanel : MonoBehaviour,
     IDependency<Match3Level>,
-    IDependency<Match3LevelManager>
+    IDependency<Match3LevelManager>, IDependency<ValueManager>
 {
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
     [SerializeField] private Button[] returnButtons;
     [SerializeField] private Button retryButton;
+    [SerializeField] private TextMeshProUGUI retryButtonText;
 
     [Header("ResourcesText")]
     [SerializeField] private TextMeshProUGUI coinsText;
@@ -19,10 +20,12 @@ public class UIEndLevelPanel : MonoBehaviour,
 
     private Match3Level level;
     private Match3LevelManager levelManager;
+    private ValueManager valueManager;
 
     #region Constructs
     public void Construct(Match3Level level) => this.level = level;
     public void Construct(Match3LevelManager levelManager) => this.levelManager = levelManager;
+    public void Construct(ValueManager valueManager) => this.valueManager = valueManager;
     #endregion
 
     private void Awake()
@@ -32,6 +35,7 @@ public class UIEndLevelPanel : MonoBehaviour,
 
         SetReceivedResource(levelManager.CurrentLevelInfo.Coins, levelManager.CurrentLevelInfo.Boards,
             levelManager.CurrentLevelInfo.Bricks, levelManager.CurrentLevelInfo.Nails);
+        retryButtonText.text = $"Повтор - {levelManager.CurrentLevelInfo.CostInEnergy} эн";
     }
 
     private void Start()
@@ -81,7 +85,7 @@ public class UIEndLevelPanel : MonoBehaviour,
 
     private void RetryLevel()
     {
-        //TODO: отнять энергию
+        valueManager.DeleteResources(0, 0, 0, 0, levelManager.CurrentLevelInfo.CostInEnergy);
         SceneController.Restart();
     }
 
