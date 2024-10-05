@@ -27,9 +27,13 @@ public class Match3LevelManager : MonoBehaviour
 
     public void LevelUp()
     {
-        if (!HaveUnCompletedLevels) return;
+        if (!HaveUnCompletedLevels) return;  
 
         currentLevel++;
+
+        if (!HaveUnCompletedLevels && levelList.Replayable)
+            currentLevel = 0;
+
         SaveLevelData();
     }
 

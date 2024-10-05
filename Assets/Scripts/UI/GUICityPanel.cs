@@ -54,6 +54,8 @@ public class GUICityPanel : MonoBehaviour,
         }
         else
         {
+            match3Button.interactable = valueManager.EnergyCount >= levelManager.CurrentLevelInfo.CostInEnergy;
+
             match3LevelNumberText.text = levelManager.CurrentLevel.ToString();
             match3EnergyCostText.text = $"-  {levelManager.CurrentLevelInfo.CostInEnergy} energy";
         }

@@ -355,7 +355,7 @@ MonoBehaviour:
   taskInfos:
   - taskType: 1
     sprite: {fileID: 21300000, guid: b12bbecc280669b4da9f624e9cbf2eac, type: 3}
-    count: 15
+    count: 1
     type: 1
     colorType: 0
 --- !u!1 &983554703530676523

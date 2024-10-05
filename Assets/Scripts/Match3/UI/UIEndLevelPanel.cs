@@ -35,6 +35,7 @@ public class UIEndLevelPanel : MonoBehaviour,
 
         SetReceivedResource(levelManager.CurrentLevelInfo.Coins, levelManager.CurrentLevelInfo.Boards,
             levelManager.CurrentLevelInfo.Bricks, levelManager.CurrentLevelInfo.Nails);
+
         retryButtonText.text = $"Повтор - {levelManager.CurrentLevelInfo.CostInEnergy} эн";
     }
 
@@ -80,6 +81,10 @@ public class UIEndLevelPanel : MonoBehaviour,
         else
         {
             losePanel.SetActive(true);
+            if (valueManager.EnergyCount < levelManager.CurrentLevelInfo.CostInEnergy)
+                retryButton.interactable = false;
+            else
+                retryButton.interactable = true;
         }
     }
 
