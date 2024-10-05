@@ -95,10 +95,9 @@ public class Match3Level : MonoBehaviour,
     {
         Debug.Log("Win");
         valueManager.AddResources(levelManager.CurrentLevelInfo.Coins, levelManager.CurrentLevelInfo.Boards,
-            levelManager.CurrentLevelInfo.Bricks, levelManager.CurrentLevelInfo.Nails);
-        Debug.Log("Resourcesa added");
+            levelManager.CurrentLevelInfo.Bricks, levelManager.CurrentLevelInfo.Nails, 0);
         levelManager.LevelUp();
-        Debug.Log("Levelup");
+
         OnLevelResult?.Invoke(true);
     }
 
