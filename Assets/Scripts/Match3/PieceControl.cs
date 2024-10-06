@@ -55,7 +55,10 @@ public class PieceControl : MonoBehaviour,
                         SelectPiece(piece);
                     else if (piece == selectPiece)
                     {
-                        Debug.Log("Даблклик не прописан");
+                        if (piece.IsBooster)
+                        {
+                            piece.Booster.Activate(piece);
+                        }
                     }
                     else
                     {
