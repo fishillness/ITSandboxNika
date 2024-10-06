@@ -2012,7 +2012,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fd524d5529bfa4ba5821376d1c9c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredBoosters: []
+  requiredBoosters:
+  - type: 5
+    position: {x: 5, y: 5}
 --- !u!1 &6030681723435542599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,7 +2282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6c4f19814bcfa43af5198aec13f47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputControll: {fileID: 0}
 --- !u!1 &8820197216980655091
 GameObject:
   m_ObjectHideFlags: 0
