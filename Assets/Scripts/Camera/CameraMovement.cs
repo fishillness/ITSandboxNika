@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraMovement : MonoBehaviour,
+    IDependency<InputController>
 {
-    [SerializeField] private InputController inputController;
     [SerializeField] private Vector2 xBounds;
     [SerializeField] private Vector2 yBounds;
     [SerializeField] private float speed;
     [SerializeField] private float zoomSpeed, minZoom, maxZoom, smoothTime;
     [SerializeField] private float startZoom;
 
+    private InputController inputController;
     private Camera cam;
     private Vector2 startPosition;
     private float xTargetPos;
@@ -17,6 +18,10 @@ public class CameraMovement : MonoBehaviour
     private float velocity;
     private Touch touchOne;
     private Touch touchZero;
+
+    #region Constructs
+    public void Construct(InputController inputController) => this.inputController = inputController;
+    #endregion
 
     void Start()
     {
@@ -46,7 +51,7 @@ public class CameraMovement : MonoBehaviour
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, xTargetPos, speed * Time.deltaTime),
             Mathf.Lerp(transform.position.y, yTargetPos, speed * Time.deltaTime), transform.position.z);
 
-        if (Input.touchCount == 2)
+        if (inputController.IsTouchCountEquals2)
         {
             touchZero = inputController.TouchZero;
             touchOne = inputController.TouchOne;

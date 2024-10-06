@@ -17,10 +17,12 @@ public class InputController : MonoBehaviour
     public Vector3 Scroll => scroll;
     public Touch TouchOne => touchOne;
     public Touch TouchZero => touchZero;
+    public bool IsTouchCountEquals2 => Input.touchCount == 2;
 
     private void Update()
     {
         GetMouseInput();
+
         if (Input.touchCount == 2)
         {
             GetTouchInput();
