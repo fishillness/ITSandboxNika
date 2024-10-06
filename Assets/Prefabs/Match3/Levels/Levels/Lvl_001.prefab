@@ -351,11 +351,11 @@ MonoBehaviour:
   OnLevelResult:
     m_PersistentCalls:
       m_Calls: []
-  moves: 3
+  moves: 15
   taskInfos:
   - taskType: 1
     sprite: {fileID: 21300000, guid: b12bbecc280669b4da9f624e9cbf2eac, type: 3}
-    count: 1
+    count: 15
     type: 1
     colorType: 0
 --- !u!1 &983554703530676523
@@ -2012,9 +2012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fd524d5529bfa4ba5821376d1c9c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredBoosters:
-  - type: 5
-    position: {x: 5, y: 5}
+  requiredBoosters: []
 --- !u!1 &6030681723435542599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2384,19 +2382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966f670451906c44ebad0d60d534a1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredPieces:
-  - type: 3
-    position: {x: 0, y: 3}
-  - type: 3
-    position: {x: 0, y: 4}
-  - type: 3
-    position: {x: 0, y: 5}
-  - type: 4
-    position: {x: 4, y: 0}
-  - type: 4
-    position: {x: 5, y: 0}
-  - type: 4
-    position: {x: 6, y: 0}
+  requiredPieces: []
 --- !u!1001 &8366081622699430757
 PrefabInstance:
   m_ObjectHideFlags: 0

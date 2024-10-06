@@ -327,11 +327,19 @@ public class PieceMatrixController : MonoBehaviour,
                 DamageNotEmptyPiece(xLeft, y, DestructionType.Rocket);
                 xLeft--;
             }
+            else if (xLeft >= 0 && pieces[xLeft, y] == null)
+            {
+                xLeft = -1;
+            }
 
             if (xRight < xDim && pieces[xRight, y] != null && pieces[xRight, y].IsDestructible)
             {
                 DamageNotEmptyPiece(xRight, y, DestructionType.Rocket);
                 xRight++;
+            }
+            else if (xRight < xDim && pieces[xRight, y] == null)
+            {
+                xRight = xDim;
             }
 
             yield return new WaitForSeconds(time);
@@ -362,11 +370,19 @@ public class PieceMatrixController : MonoBehaviour,
                 DamageNotEmptyPiece(x, yAbove, DestructionType.Rocket);
                 yAbove--;
             }
+            else if (yAbove >= 0 && pieces[x, yAbove] == null)
+            {
+                yAbove = -1;
+            }
 
             if (yBelow < yDim && pieces[x, yBelow] != null && pieces[x, yBelow].IsDestructible)
             {
                 DamageNotEmptyPiece(x, yBelow, DestructionType.Rocket);
                 yBelow++;
+            }
+            else if (yBelow < yDim && pieces[x, yBelow] == null)
+            {
+                yBelow = yDim;
             }
 
             yield return new WaitForSeconds(time);
