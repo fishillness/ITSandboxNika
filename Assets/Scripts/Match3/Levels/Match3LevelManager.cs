@@ -37,6 +37,15 @@ public class Match3LevelManager : MonoBehaviour
         SaveLevelData();
     }
 
+    public void SetLevel(int number)
+    {
+        if (number < 0) number = 0;
+        if (number >= levelList.Levels.Length) number = levelList.Levels.Length - 1;
+
+        currentLevel = number;
+        SaveLevelData();
+    }
+
     private void SaveLevelData()
     {
         LevelData levelData = new LevelData();
