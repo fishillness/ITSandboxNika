@@ -1,36 +1,33 @@
 using UnityEngine;
 
 public class PieceControl : MonoBehaviour,
-    IDependency<FieldController>
+    IDependency<FieldController>, IDependency<InputController>
 {
     private FieldController field;
-    [SerializeField] private GameObject inputControll;
+
+    private InputController inputControll;
 
     #region Constructs
     public void Construct(FieldController field) => this.field = field;
+    public void Construct(InputController inputControll) => this.inputControll = inputControll;
     #endregion
 
-    private Camera camera;
     private Piece selectPiece;
-
-    //брать после данньiе из инпутконтроллера
     private Vector3 mousePosition;
 
     private void Awake()
     {
-        camera = Camera.main;
+        if (inputControll == null)
+            GlobalGameDependenciesContainer.Instance.Rebind(this);
     }
 
     private void Update()
     {
-        //брать после данньiе из инпутконтроллера
-        
-        mousePosition = Input.mousePosition;
-        if (Input.GetMouseButtonDown(0))
+        mousePosition = inputControll.MousePosition;
+        if (inputControll.MouseButtonDown)
             OnMouseButtonDown();
-        if (Input.GetMouseButtonUp(0))
+        if (inputControll.MouseButtonUp)
             OnMouseButtonUp();
-        //
     }
     
     private void OnMouseButtonDown()
