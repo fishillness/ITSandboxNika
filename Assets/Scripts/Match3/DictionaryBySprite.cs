@@ -17,7 +17,8 @@ public class DictionaryBySprite<T> :MonoBehaviour
 
     public int NumberTypes => typeSprites.Length;
 
-    private void Awake()
+
+    public void InitDictionaty()
     {
         typeSpriteDict = new Dictionary<T, Sprite>();
 
