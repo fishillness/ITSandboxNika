@@ -19,7 +19,7 @@ public class CardRandom : MonoBehaviour
         Random.seed = System.DateTime.Now.Millisecond;
         InvokeRepeating("randomNumber", 0, timeToCahngeCard);
     }
-
+    
     public void randomNumber()
     {
         int random = Random.Range(0, rnd);
