@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ValueManager : MonoBehaviour
 {
@@ -92,6 +93,61 @@ public class ValueManager : MonoBehaviour
 
         SaveStoreData();
     }
+
+    public UnityEvent<int> GetEventOnValueChangeByType(ValueType type)
+    {
+        switch(type)
+        {
+            case ValueType.Coins:
+                return m_Coins.OnValueChange;
+            case ValueType.Boards:
+                return m_Boards.OnValueChange;
+            case ValueType.Bricks:
+                return m_Bricks.OnValueChange;
+            case ValueType.Nails:
+                return m_Nails.OnValueChange;
+            case ValueType.Energy:
+                return m_Energy.OnValueChange;
+            case ValueType.Advancement:
+                return m_Advancement.OnValueChange;
+            case ValueType.Cosiness:
+                return m_Cosiness.OnValueChange;
+            case ValueType.Health:
+                return m_Health.OnValueChange;
+            case ValueType.Joy:
+                return m_Joy.OnValueChange;
+        }
+
+        return null;
+    }
+
+    public int GetValueByType(ValueType type)
+    {
+        switch (type)
+        {
+            case ValueType.Coins:
+                return CoinsCount;
+            case ValueType.Boards:
+                return BoardsCount;
+            case ValueType.Bricks:
+                return BricksCount;
+            case ValueType.Nails:
+                return NailsCount;
+            case ValueType.Energy:
+                return EnergyCount;
+            case ValueType.Advancement:
+                return Advancement;
+            case ValueType.Cosiness:
+                return Cosiness;
+            case ValueType.Health:
+                return Health;
+            case ValueType.Joy:
+                return Joy;
+        }
+
+        return 0;
+    }
+
     private void SaveStoreData()
     {
         ValueData storeData = new ValueData();

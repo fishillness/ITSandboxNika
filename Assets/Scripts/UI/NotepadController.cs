@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class NotepadController : MonoBehaviour
+public class NotepadController : MonoBehaviour,
+    IDependency<InputController>
 {
     [SerializeField] private GameObject m_StorePage;
     [SerializeField] private GameObject m_ResourcePage;
@@ -14,10 +15,15 @@ public class NotepadController : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private GameObject m_Notepad;
-    [SerializeField] private InputController m_InputController;
-
+    
+    private InputController m_InputController;
     private GameObject currentPage;
     private GameObject currentButton;
+
+    #region Constructs
+    public void Construct(InputController m_InputController) => this.m_InputController = m_InputController;
+    #endregion
+
     public void OpenStorePage()
     {
         ResetPage();        

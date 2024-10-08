@@ -4,7 +4,7 @@ public abstract class Dependency : MonoBehaviour
 {
     protected void FindAllObjectToBind()
     {
-        MonoBehaviour[] allMonoInScene = FindObjectsOfType<MonoBehaviour>();
+        MonoBehaviour[] allMonoInScene = FindObjectsOfType<MonoBehaviour>(true);
 
         for (int i = 0; i < allMonoInScene.Length; i++)
         {
