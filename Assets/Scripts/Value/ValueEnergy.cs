@@ -76,7 +76,7 @@ public class ValueEnergy : MonoBehaviour
         while (true)
         {
             valueManager.AddResources(0, 0, 0, 0, energy: energy_Recovering);
-            yield return new WaitForSeconds(600);
+            yield return new WaitForSeconds(time_Restoration * 60);
         }
     }
 }
