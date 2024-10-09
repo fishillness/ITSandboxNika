@@ -1,13 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static ValueManager;
 
 public class ValueEnergy : MonoBehaviour
 {
-    public const string Filename = "EnergyTime";
+    public const string Filename = "EnergyTime12";
 
     [SerializeField] private int energy_Recovering;
     [SerializeField] private int time_Restoration;
@@ -19,32 +16,29 @@ public class ValueEnergy : MonoBehaviour
         public DateTime time;
     }
 
-    private void Awake()
+    private IEnumerator Start()
     {
-        DateTimeToUnixTimestamp();
-    }
-
-    private IEnumerable Start()
-    {
-        if((DateTime.Now - LoadStoreData()).TotalMinutes < time_Restoration)
+        if ((DateTime.Now - LoadStoreData()).TotalMinutes >= time_Restoration)
+        {
+            StartCoroutine(DateTimeToUnixTimestamp());
+        }
+        else
+        {
             yield return new WaitForSeconds((float)(DateTime.Now - LoadStoreData()).TotalSeconds);
+            StartCoroutine(AddEnergy());
+        }
     }
 
-    void Update()
-    {
-
-    }
-
-    private void DateTimeToUnixTimestamp()
+    private IEnumerator DateTimeToUnixTimestamp()
     {
         var oldTime = LoadStoreData();
         var dif = (DateTime.Now - oldTime).TotalMinutes;
-        if (dif >= time_Restoration)
-        {
+
             var n = (int)dif / energy_Recovering;
             valueManager.AddResources(0, 0, 0, 0, energy: energy_Recovering * n);
             SaveStoreData();
-        }
+            yield return new WaitForSeconds(time_Restoration * 60);
+            StartCoroutine(AddEnergy());
     }
 
     private void SaveStoreData()
@@ -71,11 +65,12 @@ public class ValueEnergy : MonoBehaviour
         }
     }
 
-    private IEnumerable AddEnergy()
+    private IEnumerator AddEnergy()
     {
         while (true)
         {
             valueManager.AddResources(0, 0, 0, 0, energy: energy_Recovering);
+            SaveStoreData();
             yield return new WaitForSeconds(time_Restoration * 60);
         }
     }
