@@ -65,14 +65,14 @@ public class NotepadController : MonoBehaviour
 
     public void OpenNotepad()
     {
-        m_InputController.enabled = false;
+        m_InputController.SetInputControllerMode(InputControllerModes.NotepadMode);
         m_Notepad.SetActive(true);
         OpenStorePage();
     }
 
     public void CloseNotepad()
     {
-        m_InputController.enabled = true;
+        m_InputController.SetInputControllerMode(InputControllerModes.CityMode);
         m_Notepad.SetActive(false);
     }
 }

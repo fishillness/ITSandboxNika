@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,25 +6,27 @@ public class Indicator : MonoBehaviour
     public event UnityAction<Vector2> CellSelected;
 
     [SerializeField] private ConstructionGrid m_Grid;
-    [SerializeField] private InputManager m_InputManager;
+    [SerializeField] private InputController m_InputController;
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
+    [SerializeField] private Camera m_Camera;
 
+    private Vector3 worldPosition;
     private bool indicatorVisualization = true;
     private bool indicatoEnabled = true;
     private void Start()
     {
-        m_InputManager.Click += SelectingACell;
+        m_InputController.ClickEventInConstructionMode += SelectingACell;
     }
     private void OnDestroy()
     {
-        m_InputManager.Click -= SelectingACell;
+        m_InputController.ClickEventInConstructionMode -= SelectingACell;
     }
 
     private void SelectingACell()
     {
         if (indicatoEnabled == false) return;
 
-        Vector2 localCellPosition = m_Grid.ConvertWorldPositionToLocalCellPosition(m_InputManager.GetMousePosition(m_Grid.transform));
+        Vector2 localCellPosition = m_Grid.ConvertWorldPositionToLocalCellPosition(GetMousePosition(m_Grid.transform));
         
         if (m_Grid.CheckingCellActivity(localCellPosition) == false)
         {            
@@ -49,7 +48,7 @@ public class Indicator : MonoBehaviour
 
     private void SetPosition()
     {
-        transform.position = m_Grid.ConvertWorldPositionToCellWorldPosition(m_InputManager.GetMousePosition(m_Grid.transform));
+        transform.position = m_Grid.ConvertWorldPositionToCellWorldPosition(GetMousePosition(m_Grid.transform));
     }
 
     public void IndicatorVisualization(bool value)
@@ -83,8 +82,8 @@ public class Indicator : MonoBehaviour
     private void IndicatorReset()
     {
         m_SpriteRenderer.enabled = true;
-        transform.position = m_Grid.ConvertWorldPositionToCellWorldPosition(m_InputManager.GetCameraPosition(m_Grid.transform));
-        CellSelected?.Invoke(m_Grid.ConvertWorldPositionToLocalCellPosition(m_InputManager.GetCameraPosition(m_Grid.transform)));
+        transform.position = m_Grid.ConvertWorldPositionToCellWorldPosition(GetCameraPosition(m_Grid.transform));
+        CellSelected?.Invoke(m_Grid.ConvertWorldPositionToLocalCellPosition(GetCameraPosition(m_Grid.transform)));
     }
 
     public void IndicatorDisabled()
@@ -97,5 +96,27 @@ public class Indicator : MonoBehaviour
     {
         indicatoEnabled = true;
         IndicatorReset();
+    }
+
+    public Vector3 GetMousePosition(Transform targetPlane)
+    {
+        Plane plane = new Plane(targetPlane.up, targetPlane.position);
+        Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out float position))
+        {
+            worldPosition = ray.GetPoint(position);
+        }
+        return worldPosition;
+    }
+
+    public Vector3 GetCameraPosition(Transform targetPlane)
+    {
+        Plane plane = new Plane(targetPlane.up, targetPlane.position);
+        Ray ray = new Ray(m_Camera.transform.position, m_Camera.transform.forward);
+        if (plane.Raycast(ray, out float position))
+        {
+            worldPosition = ray.GetPoint(position);
+        }
+        return worldPosition;
     }
 }

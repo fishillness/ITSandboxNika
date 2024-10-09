@@ -8,7 +8,7 @@ public class ConstructionModeActivator : MonoBehaviour
     [SerializeField] private Canvas m_BuildingModeCanvas;
     [SerializeField] private Indicator m_Indicator;
     [SerializeField] private Canvas m_MainCanvas;
-
+    [SerializeField] private InputController m_InputController;
 
     private void Start()
     {
@@ -17,6 +17,7 @@ public class ConstructionModeActivator : MonoBehaviour
 
     public void ConstructionModeActivate()
     {
+        m_InputController.SetInputControllerMode(InputControllerModes.ConstructionMode);
         m_MainCanvas.enabled = false;
         m_BuildingGrid.gameObject.SetActive(true);
         m_BuildingModeCanvas.enabled = true;
@@ -24,6 +25,7 @@ public class ConstructionModeActivator : MonoBehaviour
     }
     public void ConstructionModeDeactivate()
     {
+        m_InputController.SetInputControllerMode(InputControllerModes.CityMode);
         m_MainCanvas.enabled = true;
         m_BuildingModeCanvas.enabled = false;
         m_BuildingGrid.gameObject.SetActive(false);
