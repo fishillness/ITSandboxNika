@@ -45,7 +45,6 @@ public class UICheatPanel : MonoBehaviour,
 
     private void Awake()
     {
-        levelButtons = new List<UILevelButton>();
         addValueText.text = $" Добавить +{value}";
         cheatPanel.SetActive(false);
 
@@ -86,7 +85,9 @@ public class UICheatPanel : MonoBehaviour,
 
     private void CreateLevelButtons()
     {
-        for(int i = 0;  i < levelManager.LevelList.Levels.Length; i++)
+        levelButtons = new List<UILevelButton>();
+
+        for (int i = 0;  i < levelManager.LevelList.Levels.Length; i++)
         {
             UILevelButton button = Instantiate(levelButtonPrefab, levelButtonsGroup);
 
