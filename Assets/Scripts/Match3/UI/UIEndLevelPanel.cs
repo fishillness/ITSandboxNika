@@ -6,6 +6,7 @@ public class UIEndLevelPanel : MonoBehaviour,
     IDependency<Match3Level>,
     IDependency<Match3LevelManager>, IDependency<ValueManager>
 {
+    [SerializeField] private GameObject endLevelPanel;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
     [SerializeField] private Button[] returnButtons;
@@ -36,7 +37,7 @@ public class UIEndLevelPanel : MonoBehaviour,
         SetReceivedResource(levelManager.CurrentLevelInfo.Coins, levelManager.CurrentLevelInfo.Boards,
             levelManager.CurrentLevelInfo.Bricks, levelManager.CurrentLevelInfo.Nails);
 
-        retryButtonText.text = $"Повтор - {levelManager.CurrentLevelInfo.CostInEnergy} эн";
+        retryButtonText.text = $"-{levelManager.CurrentLevelInfo.CostInEnergy}";
     }
 
     private void Start()
@@ -74,6 +75,8 @@ public class UIEndLevelPanel : MonoBehaviour,
 
     private void OnLevelResult(bool result)
     {
+        endLevelPanel.SetActive(false);
+
         if (result)
         {
             winPanel.SetActive(true);
