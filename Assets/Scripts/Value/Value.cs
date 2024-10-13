@@ -5,7 +5,8 @@ public class Value : MonoBehaviour
 {
     [HideInInspector]
     public UnityEvent<int> OnValueChange;
-    public int CurrentValue => currentValue;        
+    public int CurrentValue => currentValue;
+    public int MaxValue => m_MaxValue;
         
     [SerializeField] protected int m_MaxValue;
 

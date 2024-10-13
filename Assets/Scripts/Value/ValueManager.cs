@@ -45,11 +45,6 @@ public class ValueManager : MonoBehaviour
 
     private void Awake()
     {
-        m_Advancement.SetMaxValue();
-        m_Cosiness.SetMaxValue();
-        m_Health.SetMaxValue();
-        m_Joy.SetMaxValue();
-
         LoadStoreData();
     }
 
@@ -143,6 +138,33 @@ public class ValueManager : MonoBehaviour
                 return Health;
             case ValueType.Joy:
                 return Joy;
+        }
+
+        return 0;
+    }
+
+    public int GetMaxValueByType(ValueType type)
+    {
+        switch (type)
+        {
+            case ValueType.Coins:
+                return m_Coins.MaxValue;
+            case ValueType.Boards:
+                return m_Boards.MaxValue;
+            case ValueType.Bricks:
+                return m_Bricks.MaxValue;
+            case ValueType.Nails:
+                return m_Nails.MaxValue;
+            case ValueType.Energy:
+                return m_Energy.MaxValue;
+            case ValueType.Advancement:
+                return m_Advancement.MaxValue;
+            case ValueType.Cosiness:
+                return m_Cosiness.MaxValue;
+            case ValueType.Health:
+                return m_Health.MaxValue;
+            case ValueType.Joy:
+                return m_Joy.MaxValue;
         }
 
         return 0;

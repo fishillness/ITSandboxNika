@@ -16,6 +16,7 @@ public class UIShelterCharacteristic : MonoBehaviour,
     private void Start()
     {
         m_ShelterCharacteristicManager.GetEventOnValueChangeByType(m_ValueType).AddListener(UpdateUIValues);
+        SetMaxValue(m_ShelterCharacteristicManager.GetMaxValueByType(m_ValueType));
         UpdateUIValues(m_ShelterCharacteristicManager.GetValueByType(m_ValueType));
     }
 
