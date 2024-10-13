@@ -21369,8 +21369,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WalkArea: {fileID: 136798770}
   m_AnimalsPrefabs:
-  - {fileID: -8780669150960197079, guid: ce66d14ca6fe59f48b00aac080c02004, type: 3}
-  - {fileID: 2120493917876890320, guid: 62cb3df57fe89de4a8c4eb8d3b472a15, type: 3}
+  - {fileID: -8780669150960197079, guid: ef67e818fa616804bab7290a7ffe34f5, type: 3}
+  - {fileID: 6461967450361411580, guid: 462d04084138dbd4fa72b2b53409e987, type: 3}
+  - {fileID: 6044397222454191258, guid: 9906874e6a94b2842bea55765a0c5359, type: 3}
+  - {fileID: 6130424304749735582, guid: 2f5440d60daafe24b8e77754994fcf57, type: 3}
+  - {fileID: 145722086024743876, guid: bb5ae280a157c7543a86b29d413fdacf, type: 3}
+  - {fileID: 2224538840782909392, guid: 4091268e28554664faa3f20db36a9dcc, type: 3}
+  - {fileID: 2623727255109666864, guid: 74dffebee5f1e1b4495383c6ef9381d1, type: 3}
+  - {fileID: 5621667398668685211, guid: d3c30aea466d6754fbd51016aa68bf95, type: 3}
 --- !u!4 &350547255
 Transform:
   m_ObjectHideFlags: 0
