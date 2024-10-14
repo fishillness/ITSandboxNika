@@ -1,0 +1,197 @@
+ManifestFileVersion: 0
+CRC: 2278337012
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: fbe1eccb50e92defca33ea2b93b4e66a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 82c9c1fee62c45347ae2deef248bfac3
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: fbe1eccb50e92defca33ea2b93b4e66a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 44a9bcdaf617a794ca3372ccf9f431a2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e862a57618725ce4b910a4dcaa2fe611, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d49265c09d232fd43aba8691ed15f52c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 76ce17bd102e25b4983a1eca2d93ac17, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 29af03c21196f30408cee57c6b9e392a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31fd524d5529bfa4ba5821376d1c9c8a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2b0973b220a6bb54cae7617459b76ae5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 966f670451906c44ebad0d60d534a1ea, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 81ea447494cd71543adb736443199f42, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1e0cfe15e1083334682183e45f3e2d44, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 043f4e5e5e6178c49b3fd68023683272, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1bc89adfb875ce94c8fc089ef235e035, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e83826d28b5a85c47beb28acd090d636, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 98f4aeaa195cfaa4bbd47dd5ddcc157e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6c658a36d5517db4a983ef0e8ffc389e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 62705db3656b8df46a62cd0df80fb953, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7c6c4f19814bcfa43af5198aec13f47a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ed16d8e058f8004488bee2bae94eb555, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e25270dcaee70a49bac6652c8e798ab, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c0462184263bb3a4aa3d602ed07800ad, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 48ead449ba8932a428c53a2156adcf13, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6e6d9541ba6c3a44b9931afbb3c854ee, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 156049354
+  Script: {instanceID: 0}
+- Class: 483693784
+  Script: {instanceID: 0}
+- Class: 1839735485
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: DictionaryBySprite`1/TypeSprite[BoosterType]
+- AssemblyName: Assembly-CSharp
+  ClassName: DictionaryBySprite`1/TypeSprite[ColorType]
+- AssemblyName: Assembly-CSharp
+  ClassName: FieldController/PiecePrefab
+- AssemblyName: Assembly-CSharp
+  ClassName: SpecifierRequiredBooster/RequiredBoosterPosition
+- AssemblyName: Assembly-CSharp
+  ClassName: SpecifierRequiredPiecesOfType/RequiredPiecePosition
+- AssemblyName: Assembly-CSharp
+  ClassName: TaskInfo
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent`1[Piece]
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent`1[System.Boolean]
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_009.prefab
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_007.prefab
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_002.prefab
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_006.prefab
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_003.prefab
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_005.prefab
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_001.prefab
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_008.prefab
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_004.prefab
+- Assets/Prefabs/Match3/Levels/TEST_Level.prefab
+- Assets/Prefabs/Match3/Levels/Levels/Lvl_010.prefab
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/prefabs/match3/pieces
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/prefabs/match3/ui
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/gui
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/booster
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/grid
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/obstacles
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/resources
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/settings
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/shop
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/ui
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/notebook
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/tilemap/tiles

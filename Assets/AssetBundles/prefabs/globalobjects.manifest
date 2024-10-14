@@ -1,0 +1,44 @@
+ManifestFileVersion: 0
+CRC: 1860724527
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4a7fe6d64376828b871cc55d728df10a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f92fdfe5db57d184ddaad7de1f0731d9
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 4a7fe6d64376828b871cc55d728df10a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 81aebb5c570b71043bc2453c43ad3fab, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e6347bdb837eafe45963126673dbf28c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0e30ac4423372244fbf662b6b8490661, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1278ec60bbba9474fa60eb91f960c9b1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f41c8cbee8a5ada4f894cff647290a0a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3aa88de1a11c9594da915bd6a71d8d8a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ca398c00586f4bb40857163ff9912d8d, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent`1[System.Int32]
+Assets:
+- Assets/Prefabs/GlobalObjects/ValueManager.prefab
+- Assets/Prefabs/GlobalObjects/GlobalGameDependenciesContainer.prefab
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/levels

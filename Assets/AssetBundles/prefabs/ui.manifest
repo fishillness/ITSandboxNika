@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1816801521
+CRC: 2248400089
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1a5de0ad9e34f0305d67b412dac09435
+    Hash: 31a9466459161657201ac73f7f093640
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f094e88bb1fbc7e11399ae67963b21c0
+    Hash: b12551f7fa8e762d51c43ed111e49626
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 1a5de0ad9e34f0305d67b412dac09435
+    Hash: 31a9466459161657201ac73f7f093640
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,17 +25,41 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 98796f2cf041e294abdf9e539b32660a, type: 3}
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: a6c210c3ebc919a4ab77db4f2451f76d, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1ac2730a8eae86945bb6fd751ca5ecba, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 64e4102961019004f857c6e19184155f, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: e83826d28b5a85c47beb28acd090d636, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 32cfb10f2bea4fe49b92efd08ba85b27, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c0462184263bb3a4aa3d602ed07800ad, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e1a1dbd5bb55db54fb5cb0014926101c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6e6d9541ba6c3a44b9931afbb3c854ee, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6fa0c2ea1fa3d484d8e75af37965ce2d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 98796f2cf041e294abdf9e539b32660a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -70,7 +94,15 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.VertexGradient
 - AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
 - AssemblyName: UnityEngine.TextCoreFontEngineModule
   ClassName: UnityEngine.TextCore.FaceInfo
 - AssemblyName: UnityEngine.TextCoreFontEngineModule
@@ -92,7 +124,24 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
 Assets:
+- Assets/Prefabs/UI/TopPanel.prefab
+- Assets/Prefabs/UI/Product.prefab
+- Assets/Prefabs/UI/Mission.prefab
+- Assets/Prefabs/UI/SettingController.prefab
+- Assets/Prefabs/UI/Value.prefab
+- Assets/Prefabs/UI/StoreCell.prefab
+- Assets/Prefabs/UI/LevelButton.prefab
 - Assets/Prefabs/UI/Canvas.prefab
+- Assets/Prefabs/UI/ShopContoller.prefab
+- Assets/Prefabs/UI/CheatPanelCanvas.prefab
+- Assets/Prefabs/UI/Settings.prefab
 Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/build
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/city
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/gui
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/booster
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces
-- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/resourses
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/resources
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/settings
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/shop
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/notebook

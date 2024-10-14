@@ -1,0 +1,37 @@
+ManifestFileVersion: 0
+CRC: 1911005357
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6dfc43381340e93adefa6de9d2deb062
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 61142880065568495ebc80cac74106cb
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 6dfc43381340e93adefa6de9d2deb062
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: ca398c00586f4bb40857163ff9912d8d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dabe5109340ce144b9a1b15bee16cb7b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_009.asset
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_008.asset
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_005.asset
+- Assets/ScriptableObjects/Match3Levels/LevelList.asset
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_004.asset
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_001.asset
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_010.asset
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_007.asset
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_003.asset
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_006.asset
+- Assets/ScriptableObjects/Match3Levels/LevelInfos/Lvl_002.asset
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/prefabs/match3/levels

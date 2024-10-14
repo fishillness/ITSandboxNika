@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 3238946054
+CRC: 230046874
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0bbeace6e8e7affa9eea140b4add6584
+    Hash: 48ad2aa4454535353dcefb57733ee8d8
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 0bbeace6e8e7affa9eea140b4add6584
+    Hash: 48ad2aa4454535353dcefb57733ee8d8
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -18,12 +18,26 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/Sprites/City/Shop_broken.png
 - Assets/Sprites/House/house_13.jpg 1.png
+- Assets/Sprites/City/Playground.png
 - Assets/Sprites/House/Rpg-Background-PNG-Clip-Art.png
 - Assets/Sprites/Cell/Cell.png
+- Assets/Sprites/City/Grumming_broken.png
+- Assets/Sprites/City/Administration.png
+- Assets/Sprites/Ground/0384161f7595fc5aad159147cb7bb5a3.png
 - Assets/Sprites/Cell/EmptyCell.png
 - Assets/Sprites/Concept_Art_Highquality_stylized_3D_rendering_of_a_large_empty_1
   (6) 1.png
 - "Assets/Sprites/House/\u0421\u043B\u043E\u0439 1 1.png"
-- Assets/Sprites/Ground/0384161f7595fc5aad159147cb7bb5a3.png
+- Assets/Sprites/City/VetClinic.png
+- Assets/Sprites/City/Shop.png
+- Assets/Sprites/City/Administration_broken.png
+- Assets/Sprites/City/Grumming.png
+- Assets/Sprites/City/Volier.png
+- Assets/Sprites/City/VetClinic_broken.png
+- Assets/Sprites/City/Tree.png
+- Assets/Sprites/City/Bench.png
+- Assets/Sprites/City/4 (1).png
+- Assets/Sprites/City/Spruce.png
 Dependencies: []

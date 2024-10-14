@@ -1,0 +1,37 @@
+ManifestFileVersion: 0
+CRC: 683610410
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6edaf5da2e8082388836c4bf720098e9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 6edaf5da2e8082388836c4bf720098e9
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sprites/Notebook/Rectangle 7459.png
+- Assets/Sprites/Notebook/house_13.jpg 3.png
+- Assets/Sprites/Notebook/btn.png
+- Assets/Sprites/Notebook/Rectangle 7458 (1).png
+- Assets/Sprites/Notebook/1.png
+- "Assets/Sprites/Notebook/\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u043C\u0438\u0441\u0441\u0438\u044E
+  (1).png"
+- Assets/Sprites/Notebook/1 818.png
+- Assets/Sprites/Notebook/Ellipse 158.png
+- Assets/Sprites/Notebook/close.png
+- Assets/Sprites/Notebook/Rectangle 7461.png
+- Assets/Sprites/Notebook/Line 7.png
+- Assets/Sprites/Notebook/Line 6.png
+- Assets/Sprites/Notebook/Frame 388.png
+- Assets/Sprites/Notebook/Ellipse 366.png
+- Assets/Sprites/Notebook/Rectangle 7460.png
+Dependencies: []

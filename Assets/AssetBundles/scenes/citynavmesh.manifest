@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 1839229502
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 678ba93f008cf4a54efec3290ecc7ef5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bc28b7adf343c0b5d21b44ebc2703253
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 678ba93f008cf4a54efec3290ecc7ef5
+HashAppended: 0
+ClassTypes:
+- Class: 238
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Scenes/City/NavMesh-Quad.asset
+- Assets/Scenes/City/NavMesh-NavMesh.asset
+- Assets/Scenes/City/NavMesh-Ground.asset
+- Assets/Scenes/City/NavMesh-Ground 1.asset
+- Assets/Scenes/City/NavMesh-Cube.asset
+- Assets/Scenes/City/NavMesh-Cube 1.asset
+- Assets/Scenes/City/NavMesh-Ground 2.asset
+Dependencies: []

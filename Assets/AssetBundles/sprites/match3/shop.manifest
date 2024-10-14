@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 1533894215
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9ac7bc1ee24969238d546539961d48ad
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 9ac7bc1ee24969238d546539961d48ad
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sprites/Shop/Rectangle 7458.png
+- Assets/Sprites/Shop/Frame 393.png
+Dependencies: []

@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 274607404
+CRC: 3357444528
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -9,62 +9,156 @@ AssetBundleManifest:
       Name: sprites/city
       Dependencies: {}
     Info_2:
-      Name: sprites/resourses
-      Dependencies: {}
-    Info_3:
       Name: scriptableobjects/build
       Dependencies:
-        Dependency_0: prefabs/house
-    Info_4:
+        Dependency_0: sprites/city
+        Dependency_1: prefabs/house
+    Info_3:
       Name: tilemap/palette
       Dependencies:
         Dependency_0: sprites/match3/pieces
         Dependency_1: tilemap/tiles
-    Info_5:
+        Dependency_2: sprites/match3/grid
+    Info_4:
       Name: tilemap/tiles
       Dependencies:
         Dependency_0: sprites/match3/pieces
-    Info_6:
+        Dependency_1: sprites/match3/grid
+    Info_5:
       Name: prefabs/ui
       Dependencies:
         Dependency_0: sprites/match3/pieces
-        Dependency_1: sprites/resourses
-    Info_7:
+        Dependency_1: sprites/city
+        Dependency_2: scriptableobjects/build
+        Dependency_3: sprites/gui
+        Dependency_4: sprites/match3/booster
+        Dependency_5: sprites/notebook
+        Dependency_6: sprites/match3/resources
+        Dependency_7: sprites/match3/settings
+        Dependency_8: sprites/match3/shop
+    Info_6:
       Name: prefabs/match3/pieces
       Dependencies:
         Dependency_0: sprites/match3/pieces
         Dependency_1: animation/match3/piece
         Dependency_2: animation/match3/obstacle
-    Info_8:
+        Dependency_3: sprites/match3/grid
+        Dependency_4: sprites/match3/obstacles
+    Info_7:
       Name: prefabs/match3/ui
       Dependencies:
         Dependency_0: sprites/match3/pieces
-    Info_9:
+        Dependency_1: sprites/gui
+        Dependency_2: sprites/match3/booster
+        Dependency_3: sprites/match3/ui
+        Dependency_4: sprites/notebook
+        Dependency_5: sprites/match3/resources
+        Dependency_6: sprites/match3/settings
+        Dependency_7: sprites/match3/shop
+    Info_8:
       Name: prefabs/house
       Dependencies:
         Dependency_0: sprites/city
         Dependency_1: prefabs/grid
-    Info_10:
+    Info_9:
       Name: prefabs/grid
       Dependencies:
         Dependency_0: sprites/city
+    Info_10:
+      Name: models/dogs/dogbroun
+      Dependencies: {}
     Info_11:
-      Name: prefabs/animal
+      Name: models/dogs/dogred
+      Dependencies: {}
+    Info_12:
+      Name: materials/test
+      Dependencies: {}
+    Info_13:
+      Name: animation/match3/piece
+      Dependencies: {}
+    Info_14:
+      Name: animation/match3/obstacle
+      Dependencies: {}
+    Info_15:
+      Name: models/animals/cat
+      Dependencies: {}
+    Info_16:
+      Name: models/animals/dog
+      Dependencies: {}
+    Info_17:
+      Name: models/animals/dog_bigears
+      Dependencies: {}
+    Info_18:
+      Name: prefabs/amimal/cat
+      Dependencies:
+        Dependency_0: models/animals/cat
+    Info_19:
+      Name: prefabs/amimal/dog
+      Dependencies:
+        Dependency_0: models/animals/dog
+    Info_20:
+      Name: prefabs/amimal/dog_bigears
+      Dependencies:
+        Dependency_0: models/animals/dog_bigears
+    Info_21:
+      Name: prefabs/amimal/old
       Dependencies:
         Dependency_0: models/dogs/dogbroun
         Dependency_1: models/dogs/dogred
-    Info_12:
-      Name: models/dogs/dogbroun
+    Info_22:
+      Name: prefabs/globalobjects
+      Dependencies:
+        Dependency_0: scriptableobjects/levels
+    Info_23:
+      Name: prefabs/match3/levels
+      Dependencies:
+        Dependency_0: sprites/match3/pieces
+        Dependency_1: tilemap/tiles
+        Dependency_2: prefabs/match3/pieces
+        Dependency_3: prefabs/match3/ui
+        Dependency_4: sprites/gui
+        Dependency_5: sprites/match3/booster
+        Dependency_6: sprites/match3/grid
+        Dependency_7: sprites/match3/obstacles
+        Dependency_8: sprites/match3/ui
+        Dependency_9: sprites/notebook
+        Dependency_10: sprites/match3/resources
+        Dependency_11: sprites/match3/settings
+        Dependency_12: sprites/match3/shop
+    Info_24:
+      Name: scenes/citynavmesh
       Dependencies: {}
-    Info_13:
-      Name: models/dogs/dogred
+    Info_25:
+      Name: scriptableobjects/levels
+      Dependencies:
+        Dependency_0: prefabs/match3/levels
+    Info_26:
+      Name: scriptableobjects/texthits
       Dependencies: {}
-    Info_14:
-      Name: materials/test
+    Info_27:
+      Name: sprites/gui
       Dependencies: {}
-    Info_15:
-      Name: animation/match3/piece
+    Info_28:
+      Name: sprites/match3/booster
       Dependencies: {}
-    Info_16:
-      Name: animation/match3/obstacle
+    Info_29:
+      Name: sprites/match3/grid
+      Dependencies: {}
+    Info_30:
+      Name: sprites/match3/obstacles
+      Dependencies: {}
+    Info_31:
+      Name: sprites/match3/ui
+      Dependencies: {}
+    Info_32:
+      Name: sprites/notebook
+      Dependencies: {}
+    Info_33:
+      Name: sprites/match3/resources
+      Dependencies: {}
+    Info_34:
+      Name: sprites/match3/settings
+      Dependencies: {}
+    Info_35:
+      Name: sprites/match3/shop
       Dependencies: {}

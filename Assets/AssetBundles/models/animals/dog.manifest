@@ -1,0 +1,60 @@
+ManifestFileVersion: 0
+CRC: 853646559
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2ad4cf05279f688f31c9ea16106555e8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 664c2bcabbe7fc85272579cd85e8af7c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 2ad4cf05279f688f31c9ea16106555e8
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Models/Animals/Dog/Dog_Nika2mat/photo_5771917175576184260_y.jpg
+- Assets/Models/Animals/Dog/Dog_2mat/photo_5771917175576184254_y.jpg
+- Assets/Models/Animals/Dog/Dog_Nika2mat/photo_5771917175576184264_y.jpg
+- Assets/Models/Animals/Dog/Dog_Nika2mat/photo_5771917175576184261_y.jpg
+- Assets/Models/Animals/Dog/Dog_Nika2mat/photo_5771917175576184262_y.jpg
+- Assets/Models/Animals/Dog/Dog_2mat/photo_5771917175576184255_y.jpg
+- Assets/Models/Animals/Dog/Dog_2mat/photo_5771917175576184258_y.jpg
+- Assets/Models/Animals/Dog/Dog_Game_ex2Dog_Game_Ex2.fbx
+- Assets/Models/Animals/Dog/Dog_Nika2mat/photo_5771917175576184263_y.jpg
+- Assets/Models/Animals/Dog/Dog_2mat/Dog_2mat_eyes.mat
+- Assets/Models/Animals/Dog/Dog_2mat/Dog_2mat_body.mat
+- Assets/Models/Animals/Dog/Animation/Dog_Walk.anim
+- Assets/Models/Animals/Dog/Dog_2mat/photo_5771917175576184256_y.jpg
+- Assets/Models/Animals/Dog/Dog_2mat/photo_5771917175576184259_y.jpg
+- Assets/Models/Animals/Dog/Dog_Nika2mat/Dog_Nika2mat_eyes.mat
+- Assets/Models/Animals/Dog/Animation/Dog_animator.controller
+- Assets/Models/Animals/Dog/Dog_Nika2mat/Dog_Nika2mat_body.mat
+- Assets/Models/Animals/Dog/Dog_2mat/photo_5771917175576184257_y.jpg
+- Assets/Models/Animals/Dog/Dog_Nika2mat/photo_5771917175576184265_y.jpg
+Dependencies: []

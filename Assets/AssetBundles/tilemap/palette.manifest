@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1285094530
+CRC: 4072967980
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 37ae4429a8a89e72c98a596e94925a5d
+    Hash: b3a200714c884d1551945a12d35db1e0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 65a154c1caa38c0d76ef5d46c5c9916f
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 37ae4429a8a89e72c98a596e94925a5d
+    Hash: b3a200714c884d1551945a12d35db1e0
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -33,6 +33,8 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Tilemap/Palette/Test_Match3_field.prefab
+- Assets/Tilemap/Palette/Match3.prefab
 Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/grid
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/tilemap/tiles

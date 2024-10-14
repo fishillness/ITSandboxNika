@@ -1,0 +1,41 @@
+ManifestFileVersion: 0
+CRC: 1702632108
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ffa87cb7006e01f884d3e3c4b3ea26bd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a9af8d25bd3ab0eee49760b65377adca
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: ffa87cb7006e01f884d3e3c4b3ea26bd
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 305ebcf47d0d18242935c7b4af41bea8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9a85f88923ad8844b948081269b48b19, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 195
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/Animal/Old/Dog_02.prefab
+- Assets/Prefabs/Animal/Old/Dog_01.prefab
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/models/dogs/dogbroun
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/models/dogs/dogred

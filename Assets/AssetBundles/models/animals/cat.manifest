@@ -1,0 +1,76 @@
+ManifestFileVersion: 0
+CRC: 282351434
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c0ea5fdb053a1b1396becdfdb206e467
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 664c2bcabbe7fc85272579cd85e8af7c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: c0ea5fdb053a1b1396becdfdb206e467
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Models/Animals/Cat/Animation/Cat_animator.controller
+- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184270_y.jpg
+- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/Cat_Nika_2_2Fmat_body.mat
+- Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184276_y.jpg
+- Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184284_y.jpg
+- Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184282_y.jpg
+- Assets/Models/Animals/Cat/Cat_Walk_Test2Walik.fbx
+- Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184271_y.jpg
+- Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184277_y.jpg
+- Assets/Models/Animals/Cat/Cat_Wite_2mat/Cat_Wite_2mat_eyes.mat
+- Assets/Models/Animals/Cat/Animation/Cat_walk.anim
+- Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184277_y.jpg
+- Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184272_y.jpg
+- Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/Cat_Lawa_1_2mat_body.mat
+- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184271_y.jpg
+- Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184274_y.jpg
+- Assets/Models/Animals/Cat/Cat_Red3_2mat/Cat_Red3_2mat_eyes.mat
+- Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184279_y.jpg
+- Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184286_y.jpg
+- Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184280_y.jpg
+- Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184281_y.jpg
+- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/Cat_Nika_2_2Fmat_eyes.mat
+- Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184288_y.jpg
+- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184269_y.jpg
+- Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184275_y.jpg
+- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184268_y.jpg
+- Assets/Models/Animals/Cat/Cat_Red3_2mat/Cat_Red3_2mat_body.mat
+- Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184285_y.jpg
+- Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184273_y.jpg
+- Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184283_y.jpg
+- Assets/Models/Animals/Cat/Cat_Wite_2mat/Cat_Wite_2mat_body.mat
+- Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/Cat_Lawa_1_2mat_eyes.mat
+- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184266_y.jpg
+- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184267_y.jpg
+- Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184287_y.jpg
+Dependencies: []

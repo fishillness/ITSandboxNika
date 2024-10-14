@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 382005645
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6df2fd95cdff9ae81639aa7842101769
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 6df2fd95cdff9ae81639aa7842101769
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sprites/Setting/Ellipse 367 (1).png
+- Assets/Sprites/Setting/Rectangle 7459.png
+- Assets/Sprites/Setting/Rectangle 7508 (1).png
+- Assets/Sprites/Setting/Ellipse 368.png
+- Assets/Sprites/Setting/Ellipse 367.png
+- Assets/Sprites/Setting/Frame 1171278309.png
+- Assets/Sprites/Setting/close.png
+- Assets/Sprites/Setting/Rectangle 7509.png
+- Assets/Sprites/Setting/Rectangle 7508.png
+Dependencies: []

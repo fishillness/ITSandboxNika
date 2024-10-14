@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 1417822765
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ea4a5876bd17730ba4817e846cb3e0e4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: ea4a5876bd17730ba4817e846cb3e0e4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sprites/Match 3/Obstacles/1 828.png
+- Assets/Sprites/Match 3/Obstacles/web_2 1.png
+- Assets/Sprites/Match 3/Obstacles/locker_2.png
+- Assets/Sprites/Match 3/Obstacles/web_1 1.png
+- Assets/Sprites/Match 3/Obstacles/locker_1.png
+- Assets/Sprites/Match 3/Obstacles/stones 1 (1).png
+- Assets/Sprites/Match 3/Obstacles/dog.png
+Dependencies: []

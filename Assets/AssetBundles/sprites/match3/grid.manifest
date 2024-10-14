@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 2724913770
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 95f328a131af6fb731926b28e3b1bb47
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 95f328a131af6fb731926b28e3b1bb47
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sprites/Match 3/Grid/Grid.png
+- Assets/Sprites/Match 3/Grid/background.png
+- Assets/Sprites/Match 3/Grid/SelectedFrame.png
+Dependencies: []
