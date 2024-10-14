@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca398c00586f4bb40857163ff9912d8d, type: 3}
   m_Name: LevelList
   m_EditorClassIdentifier: 
+  replayable: 1
   levels:
   - {fileID: 11400000, guid: 55f1897c1f2b1fd4fbd82bfa007da4b3, type: 2}
   - {fileID: 11400000, guid: 225ca81271526404999169ae63111238, type: 2}
   - {fileID: 11400000, guid: 290fe7dc8110a2d4fa35544d7faf3ede, type: 2}
-  replayable: 1
+  - {fileID: 11400000, guid: d0ec59bc4e1f76b4e8438e7a032cbceb, type: 2}
+  - {fileID: 11400000, guid: e4243ad56a4e82945925a84870bd7db5, type: 2}
+  - {fileID: 11400000, guid: ef3a88c9d688aed42aaa3bdd4c31c38a, type: 2}
+  - {fileID: 11400000, guid: 732d5c515086ea343b4d7e1e6448c244, type: 2}
+  - {fileID: 11400000, guid: d714a593e1c55b34dab1ba385e75fa8e, type: 2}
+  - {fileID: 11400000, guid: 563c9d81a3b793846ac7db9237b864d6, type: 2}

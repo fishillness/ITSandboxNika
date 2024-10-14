@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabe5109340ce144b9a1b15bee16cb7b, type: 3}
   m_Name: Lvl_002
   m_EditorClassIdentifier: 
-  levelPrefabs: {fileID: 8039439364365940317, guid: 6f9df819c9c1a3640805b1cf1e6508c2, type: 3}
+  levelPrefabs: {fileID: 6002726099538212816, guid: 92661b38fb5ab6c498c7fb6476606a79, type: 3}
   costInEnergy: 5
   coins: 2
   boards: 2
