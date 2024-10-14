@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 230046874
+CRC: 3952437548
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 48ad2aa4454535353dcefb57733ee8d8
+    Hash: beb2aa9cfcf533d0abbde7e131a16b43
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 48ad2aa4454535353dcefb57733ee8d8
+    Hash: beb2aa9cfcf533d0abbde7e131a16b43
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -27,8 +27,6 @@ Assets:
 - Assets/Sprites/City/Administration.png
 - Assets/Sprites/Ground/0384161f7595fc5aad159147cb7bb5a3.png
 - Assets/Sprites/Cell/EmptyCell.png
-- Assets/Sprites/Concept_Art_Highquality_stylized_3D_rendering_of_a_large_empty_1
-  (6) 1.png
 - "Assets/Sprites/House/\u0421\u043B\u043E\u0439 1 1.png"
 - Assets/Sprites/City/VetClinic.png
 - Assets/Sprites/City/Shop.png

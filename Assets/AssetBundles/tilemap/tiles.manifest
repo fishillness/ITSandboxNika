@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1803703145
+CRC: 1119070030
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 107d67c3758c751fbff832e611216546
+    Hash: 0143d5be119cbb04335b1c3930241988
   TypeTreeHash:
     serializedVersion: 2
     Hash: 68738882dee87240b4ba7e08831f22ce
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 107d67c3758c751fbff832e611216546
+    Hash: 0143d5be119cbb04335b1c3930241988
 HashAppended: 0
 ClassTypes:
 - Class: 114
@@ -38,4 +38,3 @@ Assets:
 - Assets/Tilemap/Palette/Tiles/Test_Match3_field_5.asset
 Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/grid
-- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces

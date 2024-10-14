@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1286400054
+CRC: 3417987776
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e3277f3cac901de1d03e21a75fa057a7
+    Hash: 54a16352fd5d01589c89467dd123a5e6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: e3277f3cac901de1d03e21a75fa057a7
+    Hash: 54a16352fd5d01589c89467dd123a5e6
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -21,22 +21,16 @@ Assets:
 - "Assets/Sprites/Match 3/Pieces/Old/\u043F\u0430\u043A\u0442 \u0441\u043E\u0431\u0430\u043A\u04303.png"
 - "Assets/Sprites/Match 3/Pieces/Old/\u043A\u043E\u0441\u0440\u0432\u0430.png"
 - Assets/Sprites/Match 3/Pieces/bones_200x200.png
-- Assets/Sprites/Match 3/Test/Match3_Bounds.png
 - Assets/Sprites/Match 3/Pieces/green.png
 - "Assets/Sprites/Match 3/Pieces/Old/\u043A\u043E\u0441\u0442\u044C2 1.png"
 - "Assets/Sprites/Match 3/Pieces/Old/\u043C\u044F\u0447 1.png"
 - "Assets/Sprites/Match 3/Pieces/Old/\u043F\u0430\u043A\u0442 \u0441\u043E\u0431\u0430\u043A\u0430.png"
 - Assets/Sprites/Match 3/Pieces/yellow.png
 - "Assets/Sprites/Match 3/Pieces/Old/\u0438\u0442\u043A\u04383 1.png"
-- Assets/Sprites/Match 3/Test/Test_SelectedFrame.png
 - Assets/Sprites/Match 3/Pieces/white.png
 - "Assets/Sprites/Match 3/Pieces/Old/\u043C\u0438\u0441\u043A\u0430 1.png"
-- Assets/Sprites/Match 3/Test/task.png
 - Assets/Sprites/Match 3/Pieces/blue.png
-- Assets/Sprites/Match 3/Test/rockets.png
-- Assets/Sprites/Match 3/Test/Test_Match3_field.png
 - Assets/Sprites/Match 3/Pieces/Purple.png
 - Assets/Sprites/Match 3/Pieces/orange.png
-- Assets/Sprites/Match 3/Test/Test_Match3_Pieces.png
 - "Assets/Sprites/Match 3/Pieces/Old/\u043F\u0430\u043A\u0442 \u0441\u043E\u0431\u0430\u043A\u04302.png"
 Dependencies: []

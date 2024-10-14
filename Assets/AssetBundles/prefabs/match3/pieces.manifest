@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 573390990
+CRC: 856619692
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e5121b0721080498242582a448bb706d
+    Hash: d8f2d788b93318e470b71e06d5c35c1c
   TypeTreeHash:
     serializedVersion: 2
     Hash: afa90bfa4fdd052f575c76fc7f66c161
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: e5121b0721080498242582a448bb706d
+    Hash: d8f2d788b93318e470b71e06d5c35c1c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -67,4 +67,3 @@ Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/animation/match3/piece
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/grid
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/obstacles
-- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces

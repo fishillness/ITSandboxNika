@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 4072967980
+CRC: 729211907
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b3a200714c884d1551945a12d35db1e0
+    Hash: 63fba195024a48a6c02166369cc9e43e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 65a154c1caa38c0d76ef5d46c5c9916f
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: b3a200714c884d1551945a12d35db1e0
+    Hash: 63fba195024a48a6c02166369cc9e43e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -36,5 +36,4 @@ Assets:
 - Assets/Tilemap/Palette/Match3.prefab
 Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/grid
-- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/tilemap/tiles
