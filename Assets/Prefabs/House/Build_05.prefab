@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_VisualizationSystem: {fileID: 7078528333542888560}
   m_Size: {x: 2, y: 2}
-  m_BuildingID: 1
+  m_BuildingID: 5
   m_EntryPoint: {fileID: 6325302109659885365}
 --- !u!114 &7078528333542888560
 MonoBehaviour:
