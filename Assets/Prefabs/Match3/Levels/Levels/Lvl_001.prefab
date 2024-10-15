@@ -500,7 +500,7 @@ MonoBehaviour:
   boundsElement:
   - {fileID: 3597042599056598517}
   - {fileID: 71272496138330508}
-  droppingTime: 0.2
+  droppingTime: 0.06
 --- !u!1 &3331796232436578083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,6 +2419,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1053551673312174114, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141875721038730193, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298903306216367803, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1359007599923723260, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}

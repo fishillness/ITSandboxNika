@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1788579019, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ebcb7ef7c32bad4d8b203a4009c522b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.47}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -245,9 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5af4707c4f8dc44873c76fad435040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeForDestroyingPiecesForRockets: 0.2
-  timeForDestroyingPiecesForBomb: 0.1
-  timeForDestroyingPiecesForRaindow: 0.2
+  timeForDestroyingPiecesForRockets: 0.1
+  timeForDestroyingPiecesForBomb: 0.05
+  timeForDestroyingPiecesForRaindow: 0.1
   spriteRenderer: {fileID: 338531185635490787}
 --- !u!114 &3308527165835126541
 MonoBehaviour:
