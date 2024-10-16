@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabe5109340ce144b9a1b15bee16cb7b, type: 3}
+  m_Name: Lvl_006
+  m_EditorClassIdentifier: 
+  levelPrefabs: {fileID: 659858302160520870, guid: d5d49ba8ac6579e4d8ed8b6508858153, type: 3}
+  costInEnergy: 5
+  coins: 3
+  boards: 3
+  bricks: 3
+  nails: 3

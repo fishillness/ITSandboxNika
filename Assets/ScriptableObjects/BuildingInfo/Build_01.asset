@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c210c3ebc919a4ab77db4f2451f76d, type: 3}
   m_Name: Build_01
   m_EditorClassIdentifier: 
-  m_Building: {fileID: 7252172201135276214, guid: b75f9c176e7c25f4a9e7bbad5cc764ff, type: 3}
-  m_StoreCellImage: {fileID: 21300000, guid: 1ff6234df8424e348ad5e28e1562891d, type: 3}
-  m_NeededCoins: 60
-  m_NeededBoards: 10
-  m_NeededBricks: 90
-  m_NeededNails: 50
-  m_Advancement: 20
-  m_Cosiness: 26
-  m_Health: 11
+  m_Building: {fileID: 7252172201135276214, guid: 5a3791906cfac7c45ba19c6de44bbd0c, type: 3}
+  m_StoreCellImage: {fileID: 21300000, guid: a4db837815965be4e8859c434b7c6d27, type: 3}
+  m_NeededCoins: 30
+  m_NeededBoards: 15
+  m_NeededBricks: 5
+  m_NeededNails: 25
+  m_Advancement: 34
+  m_Cosiness: 22
+  m_Health: 12
   m_Joy: 32

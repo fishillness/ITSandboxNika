@@ -5,9 +5,9 @@ public class Booster : MonoBehaviour
     [SerializeField] private float timeForDestroyingPiecesForRockets = 0.2f;
     [SerializeField] private float timeForDestroyingPiecesForBomb = 0.1f;
     [SerializeField] private float timeForDestroyingPiecesForRaindow = 0.2f;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     protected BoosterType type;
-    private SpriteRenderer spriteRenderer;
     private Piece piece;
     private PieceMatrixController matrixController;
 
@@ -15,7 +15,6 @@ public class Booster : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         piece = GetComponentInChildren<Piece>();
 
         if (piece.IsDestructible)

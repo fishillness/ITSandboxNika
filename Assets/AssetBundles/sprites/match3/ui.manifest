@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+CRC: 2643914811
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 499fa06b6d4b071197557c42adc880c8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 499fa06b6d4b071197557c42adc880c8
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sprites/Match 3/UI/Frame 1171278285.png
+- Assets/Sprites/Match 3/UI/1.png
+- Assets/Sprites/Match 3/UI/Frame 471.png
+- Assets/Sprites/Match 3/UI/Rectangle 7459 (1).png
+- Assets/Sprites/Match 3/UI/Rectangle 7497.png
+- Assets/Sprites/Match 3/UI/Ellipse 357.png
+- Assets/Sprites/Match 3/UI/Union.png
+- Assets/Sprites/Match 3/UI/btn.png
+- "Assets/Sprites/Match 3/UI/\u0434\u043E\u0433.png"
+- Assets/Sprites/Match 3/UI/Done_icon.png
+- Assets/Sprites/Match 3/UI/Rectangle 7305.png
+- "Assets/Sprites/Match 3/UI/\u0434\u043E\u0433 (1).png"
+- Assets/Sprites/Match 3/UI/Rectangle 7358.png
+- Assets/Sprites/Match 3/UI/Ellipse 164.png
+- Assets/Sprites/Match 3/UI/Vector.png
+Dependencies: []

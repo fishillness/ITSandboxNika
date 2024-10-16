@@ -6,10 +6,13 @@ public class Building : MonoBehaviour
     public int BuildingID => m_BuildingID;
     public Vector2 OccupiedCell => occupiedCell;
     public int BuildingIndex => buildingIndex;
+    public bool HasEntry => m_EntryPoint != null;
+
 
     [SerializeField] private VisualizationSystem m_VisualizationSystem;
     [SerializeField] private Vector2 m_Size;
     [SerializeField] private int m_BuildingID;
+    [SerializeField] private Transform m_EntryPoint;
 
     private int buildingIndex;
     private Vector2 occupiedCell;
@@ -44,4 +47,9 @@ public class Building : MonoBehaviour
     {
         m_VisualizationSystem.BuildingIsLocated();
     }   
+
+    public Transform GetEntryPoint()
+    {
+        return m_EntryPoint;
+    }
 }

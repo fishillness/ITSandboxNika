@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraMovement : MonoBehaviour,
+    IDependency<InputController>
 {
-    [SerializeField] private InputController inputController;
     [SerializeField] private Vector2 xBounds;
     [SerializeField] private Vector2 yBounds;
     [SerializeField] private float speed;
@@ -12,6 +12,7 @@ public class CameraMovement : MonoBehaviour
 
     private float spriteMinX, spriteMaxX, spriteMinY, spriteMaxY;
 
+    private InputController inputController;
     private Camera cam;
     private Vector2 startPosition;
     private float xTargetPos;
@@ -29,6 +30,10 @@ public class CameraMovement : MonoBehaviour
         spriteMinY = spriteRenderer.transform.position.y - spriteRenderer.bounds.size.y / 2f;
         spriteMaxY = spriteRenderer.transform.position.y + spriteRenderer.bounds.size.y / 2f;
     }
+
+    #region Constructs
+    public void Construct(InputController inputController) => this.inputController = inputController;
+    #endregion
 
     void Start()
     {

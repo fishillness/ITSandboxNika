@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 3794053079
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a374d7b5086c65935dad623cb32ebdd5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 25d8c87b5d6d04046f2da40e971b2371
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: a374d7b5086c65935dad623cb32ebdd5
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: c93a9a069dd298f409f5815bb275cfb9, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/ScriptableObjects/TextHits/Hint1.asset
+- Assets/ScriptableObjects/TextHits/Hint3.asset
+- Assets/ScriptableObjects/TextHits/Hint2.asset
+Dependencies: []
