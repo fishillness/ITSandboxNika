@@ -10,10 +10,10 @@ public class ValueEnergy : MonoBehaviour
     [SerializeField] private int time_Restoration;
     [SerializeField] private ValueManager valueManager;
 
-    [SerializeField]
+    [Serializable]
     public class EnergyTimeData
     {
-        public DateTime time;
+        public string time;
     }
 
     private IEnumerator Start()
@@ -45,14 +45,13 @@ public class ValueEnergy : MonoBehaviour
     {
         EnergyTimeData storeData = new EnergyTimeData();
 
-        storeData.time = DateTime.Now;
+        storeData.time = ConvertTimeToString(DateTime.Now);
 
         Saver<EnergyTimeData>.Save(Filename, storeData);
     }
 
     private DateTime LoadStoreData()
     {
-
         EnergyTimeData storeData = new EnergyTimeData();
 
         if (Saver<EnergyTimeData>.TryLoad(Filename, ref storeData) == false)
@@ -61,7 +60,7 @@ public class ValueEnergy : MonoBehaviour
         }
         else
         {
-            return storeData.time;
+            return ConvertTimeFromString(storeData.time);
         }
     }
 
@@ -73,5 +72,14 @@ public class ValueEnergy : MonoBehaviour
             SaveStoreData();
             yield return new WaitForSeconds(time_Restoration * 60);
         }
+    }
+    private string ConvertTimeToString(DateTime time)
+    {
+        return time.ToBinary().ToString();
+    }
+
+    private DateTime ConvertTimeFromString(string time)
+    {
+        return DateTime.FromBinary(long.Parse(time));
     }
 }

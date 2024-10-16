@@ -33,6 +33,7 @@ Transform:
   - {fileID: 890997140957276646}
   - {fileID: 2760676024257852371}
   - {fileID: 6477704104568017625}
+  - {fileID: 93331594199650561}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1699417618827125691
@@ -94,6 +95,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1278ec60bbba9474fa60eb91f960c9b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8376216092525135720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 93331594199650561}
+  - component: {fileID: 2327805717142483409}
+  m_Layer: 0
+  m_Name: EnergyRegen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &93331594199650561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376216092525135720}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4073865124348802788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2327805717142483409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376216092525135720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab7ac332f7cce74784cdb4a81d5c680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energy_Recovering: 1
+  time_Restoration: 1
+  valueManager: {fileID: 6504860258764647850}
 --- !u!1 &8463707761101354881
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +195,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4073865124348802788}
     m_Modifications:
+    - target: {fileID: 243306215863694315, guid: be73b42d1953b964caa78b51b8857203, type: 3}
+      propertyPath: m_StartValue
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 354663714544262295, guid: be73b42d1953b964caa78b51b8857203, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
