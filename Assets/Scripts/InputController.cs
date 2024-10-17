@@ -17,14 +17,17 @@ public class InputController : MonoBehaviour
     public Vector3 MousePosition => mousePosition;
     public bool MouseButton => mouseButton;
     public bool MouseButtonDown => mouseButtonDown;
+    public bool MouseButtonUp => mouseButtonUp;
     public Vector3 Scroll => scroll;
     public Touch TouchOne => touchOne;
     public Touch TouchZero => touchZero;
+    public bool IsTouchCountEquals2 => Input.touchCount == 2;
     
     private InputControllerModes inputControllerMode;
     private Vector3 mousePosition;
     private bool mouseButton;
     private bool mouseButtonDown;
+    private bool mouseButtonUp;
     private Vector3 scroll;
     private Touch touchOne;
     private Touch touchZero;
@@ -58,7 +61,7 @@ public class InputController : MonoBehaviour
             {
                 GetTouchInput();
             }
-        }        
+        }  
     }
 
     private bool CheckingTheUITouch()
@@ -81,6 +84,7 @@ public class InputController : MonoBehaviour
         mousePosition = Input.mousePosition;
         mouseButtonDown = Input.GetMouseButtonDown(0);
         mouseButton = Input.GetMouseButton(0);
+        mouseButtonUp = Input.GetMouseButtonUp(0);
         scroll = Input.mouseScrollDelta;
     }
     

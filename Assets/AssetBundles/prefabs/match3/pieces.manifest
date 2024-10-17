@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1172202363
+CRC: 856619692
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1760b62cc7a6a82d7e1bbf843e809d1e
+    Hash: d8f2d788b93318e470b71e06d5c35c1c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 834ab9b30317f83ac124c7f70bc893d0
+    Hash: afa90bfa4fdd052f575c76fc7f66c161
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 1760b62cc7a6a82d7e1bbf843e809d1e
+    Hash: d8f2d788b93318e470b71e06d5c35c1c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -59,9 +59,11 @@ Assets:
 - Assets/Prefabs/Match3/Booster.prefab
 - Assets/Prefabs/Match3/Piece.prefab
 - Assets/Prefabs/Match3/EmptyPiece.prefab
-- Assets/Prefabs/Match3/Obstacle1.prefab
+- Assets/Prefabs/Match3/Stone.prefab
+- Assets/Prefabs/Match3/Dog.prefab
 - Assets/Prefabs/Match3/PiecesSpawner.prefab
 Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/animation/match3/obstacle
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/animation/match3/piece
-- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/pieces
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/grid
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/obstacles

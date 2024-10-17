@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1788579019, guid: e9d397ceab8146f4caf97854cdd3ce69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ebcb7ef7c32bad4d8b203a4009c522b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.47}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b62c0966fc01912408398f69975cc152, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df877e26fa3e8864783762b84882c6dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -205,8 +205,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2334894929320389053}
   - {fileID: 1616974348156447316}
+  - {fileID: 2334894929320389053}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &8748409115047429699
@@ -245,6 +245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5af4707c4f8dc44873c76fad435040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeForDestroyingPiecesForRockets: 0.1
+  timeForDestroyingPiecesForBomb: 0.05
+  timeForDestroyingPiecesForRaindow: 0.1
+  spriteRenderer: {fileID: 338531185635490787}
 --- !u!114 &3308527165835126541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7833f4d8206ed40b4f04ecaa66e6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnMoveEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3633376396526058650
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
-public class FieldController : MonoBehaviour
+public class FieldController : MonoBehaviour,
+    IDependency<PiecesSpawnerController>, IDependency<PieceCounter>,
+    IDependency<Match3Level>, IDependency<PieceMatrixController>
 {
     [HideInInspector] 
     public UnityEvent OnMove;
@@ -16,11 +18,19 @@ public class FieldController : MonoBehaviour
     [SerializeField] private Tilemap field;
     [SerializeField] private PiecePrefab[] piecePrefabs;
     [SerializeField] private Bound[] boundsElement;
-    [SerializeField] private PiecesSpawnerController spawnerController;
     [SerializeField] private float droppingTime;
-    [SerializeField] private PieceCounter pieceCounter; //
-    [SerializeField] private Match3Level level;
-    [SerializeField] private PieceMatrixController matrixController;
+
+    private PiecesSpawnerController spawnerController;
+    private PieceCounter pieceCounter; //
+    private Match3Level level;
+    private PieceMatrixController matrixController;
+
+    #region Constructs
+    public void Construct(PiecesSpawnerController spawnerController) => this.spawnerController = spawnerController;
+    public void Construct(PieceCounter pieceCounter) => this.pieceCounter = pieceCounter;
+    public void Construct(Match3Level level) => this.level = level;
+    public void Construct(PieceMatrixController matrixController) => this.matrixController = matrixController;
+    #endregion
 
     [Serializable, SerializeField]
     public struct PiecePrefab
@@ -68,6 +78,7 @@ public class FieldController : MonoBehaviour
 
     private void Start()
     {
+        spawnerController.InitSpawners();
         spawnerController.CheckNeedOfSpawnPiece();
         StartDropPieces(droppingTime);
         level.OnStopMoves.AddListener(OnLevelEnd);

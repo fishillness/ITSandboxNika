@@ -2,22 +2,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PiecesSpawnerController : MonoBehaviour
+public class PiecesSpawnerController : MonoBehaviour,
+    IDependency<PieceMatrixController>
 {
     [SerializeField] private Grid grid;
     [SerializeField] private Tilemap piecesSpawnersTilemap;
     [SerializeField] private Bound[] boundsElement;
-    //[SerializeField] private FieldController gridController;
     [SerializeField] private PiecesSpawner spawnerPrefab;
-    [SerializeField] private PieceMatrixController matrixController;
+
+    private PieceMatrixController matrixController;
+
+    #region Constructs
+    public void Construct(PieceMatrixController matrixController) => this.matrixController = matrixController;
+    #endregion
 
     private List<PiecesSpawner> piecesSpawners;
     private BoundsInt bounds;
     private int xDim;
     private int yDim;
-    private Coroutine coroutine;
+    //private Coroutine coroutine;
 
-    private void Start()
+    public void InitSpawners()
     {
         piecesSpawners = new List<PiecesSpawner>();
 
