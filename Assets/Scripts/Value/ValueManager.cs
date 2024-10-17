@@ -1,6 +1,8 @@
 using System;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class ValueManager : MonoBehaviour
 {
@@ -167,6 +169,40 @@ public class ValueManager : MonoBehaviour
                 return m_Joy.MaxValue;
         }
 
+        return 0;
+    }
+    public int AddValueByType(ValueType type, int value)
+    {
+        switch (type)
+        {
+            case ValueType.Coins:
+                AddResources(value, 0, 0, 0, 0);
+                break;
+            case ValueType.Boards:
+                AddResources(0, value, 0, 0, 0);
+                break;
+            case ValueType.Bricks:
+                AddResources(0, 0, value, 0, 0);
+                break;
+            case ValueType.Nails:
+                AddResources(0, 0, 0, value, 0);
+                break;
+            case ValueType.Energy:
+                AddResources(0, 0, 0, 0, value);
+                break;
+            case ValueType.Advancement:
+                AddShelterCharacteristics(value, 0, 0, 0);
+                break;
+            case ValueType.Cosiness:
+                AddShelterCharacteristics(0, value, 0, 0);
+                break;
+            case ValueType.Health:
+                AddShelterCharacteristics(0, 0, value, 0);
+                break;
+            case ValueType.Joy:
+                AddShelterCharacteristics(0, 0, 0, value);
+                break;
+        }
         return 0;
     }
 

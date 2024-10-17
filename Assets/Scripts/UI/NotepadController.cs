@@ -8,6 +8,7 @@ public class NotepadController : MonoBehaviour,
     [SerializeField] private GameObject m_ResourcePage;
     [SerializeField] private GameObject m_ShelterPage;
     [SerializeField] private GameObject m_InfoPage;
+    [SerializeField] private UIResourceShop m_ResourceShopPage;
 
     [SerializeField] private GameObject m_StoreButton;
     [SerializeField] private GameObject m_ResourceButton;
@@ -16,6 +17,9 @@ public class NotepadController : MonoBehaviour,
 
     [Space(10)]  
     [SerializeField] private GameObject m_Notepad;
+
+    [Space(10)]
+    [SerializeField] private GameObject closeButton;
 
     [Header("ButtonSprites")]
     [SerializeField] private Sprite defaultButtomSprite;
@@ -118,5 +122,19 @@ public class NotepadController : MonoBehaviour,
 
         Image selectButtonImage = selectButton.GetComponentInChildren<Image>();
         selectButtonImage.sprite = selectButtonSprite;
+    }
+
+    public void OpenResourceShopPage(ResourceShopInfo resourceShopInfo)
+    {
+        m_ResourceShopPage.OpenResourceShopPanel(resourceShopInfo);
+        m_ResourcePage.SetActive(false);
+        closeButton.SetActive(false);
+    }
+
+    public void CloseResourceShopPage()
+    {
+        m_ResourceShopPage.CloseResourceShopPanel();
+        m_ResourcePage.SetActive(true);
+        closeButton.SetActive(true);
     }
 }
