@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstructionModeActivator : MonoBehaviour
+public class ConstructionModeActivator : MonoBehaviour,
+    IDependency<InputController>
 {
     [SerializeField] private GameObject m_BuildingGrid;
     [SerializeField] private Canvas m_BuildingModeCanvas;
     [SerializeField] private Indicator m_Indicator;
-    [SerializeField] private Canvas m_MainCanvas;
-    [SerializeField] private InputController m_InputController;
+    [SerializeField] private Canvas m_MainCanvas; 
+
+    private InputController m_InputController;
+
+    #region Constructs
+    public void Construct(InputController m_InputController) => this.m_InputController = m_InputController;
+    #endregion
 
     private void Start()
     {
@@ -31,6 +35,4 @@ public class ConstructionModeActivator : MonoBehaviour
         m_BuildingGrid.gameObject.SetActive(false);
         m_Indicator.IndicatorDisabled();
     }
-
-    
 }

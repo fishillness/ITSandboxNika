@@ -1,17 +1,20 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
 
-public class DialogController : MonoBehaviour
+public class DialogController : MonoBehaviour,
+    IDependency<InputController>
 {    
-    [SerializeField] private InputController m_InputController;
     [SerializeField] private DialogCharacter[] m_DialogCharacters;
     [SerializeField] private DialogUI m_DialogUI;
 
+    private InputController m_InputController;
     private Dialog dialog;
     private DialogCharacter currentCharacter;
     private DialogAction dialogAction;
-    
+
+    #region Constructs
+    public void Construct(InputController m_InputController) => this.m_InputController = m_InputController;
+    #endregion
+
     private void Start()
     {
         m_InputController.ClickEventInDialogMode += NextSentence;

@@ -1,18 +1,24 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Indicator : MonoBehaviour
+public class Indicator : MonoBehaviour,
+    IDependency<InputController>
 {
     public event UnityAction<Vector2> CellSelected;
 
     [SerializeField] private ConstructionGrid m_Grid;
-    [SerializeField] private InputController m_InputController;
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
     [SerializeField] private Camera m_Camera;
 
+    private InputController m_InputController;
     private Vector3 worldPosition;
     private bool indicatorVisualization = true;
     private bool indicatoEnabled = true;
+
+    #region Constructs
+    public void Construct(InputController m_InputController) => this.m_InputController = m_InputController;
+    #endregion
+
     private void Start()
     {
         m_InputController.ClickEventInConstructionMode += SelectingACell;
