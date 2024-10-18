@@ -1144,6 +1144,7 @@ MonoBehaviour:
   - {fileID: 5973093485641439572}
   - {fileID: 3258420901748760053}
   droppingTime: 0.06
+  movingTime: 0.15
 --- !u!1 &3985680215320103402
 GameObject:
   m_ObjectHideFlags: 0

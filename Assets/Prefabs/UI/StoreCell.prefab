@@ -400,6 +400,7 @@ MonoBehaviour:
   m_BoardsImage: {fileID: 7848150851105876738}
   m_BricksImage: {fileID: 5691736063000385652}
   m_NailsImage: {fileID: 4266199717443129917}
+  m_name: {fileID: 8799762509434562312}
   m_CoinsText: {fileID: 750591688577800077}
   m_BoardsText: {fileID: 7164942501343425771}
   m_BricksText: {fileID: 9108805136310232118}

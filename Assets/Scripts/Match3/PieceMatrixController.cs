@@ -249,7 +249,7 @@ public class PieceMatrixController : MonoBehaviour,
         }
         else
         {
-            pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, field.GetPiecePositionOnWorld(xEmpty, yEmpty), field.DroppingTime);
+            pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, field.GetPiecePositionOnWorld(xEmpty, yEmpty), field.MovingTime);//field.DroppingTime);
         }
         
         

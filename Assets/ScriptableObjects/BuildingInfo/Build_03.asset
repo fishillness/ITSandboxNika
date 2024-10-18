@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Building: {fileID: 7252172201135276214, guid: 47ad5fce054288b48a63944e47a7a501, type: 3}
   m_StoreCellImage: {fileID: 21300000, guid: 7e7444694a2afa2418aa3cb93607ce4b, type: 3}
+  nameBuilding: "\u0413\u0440\u0443\u043C\u0438\u043D\u0433"
   m_NeededCoins: 30
   m_NeededBoards: 15
   m_NeededBricks: 5

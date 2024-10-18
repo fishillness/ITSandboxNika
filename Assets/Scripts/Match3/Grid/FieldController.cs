@@ -19,6 +19,7 @@ public class FieldController : MonoBehaviour,
     [SerializeField] private PiecePrefab[] piecePrefabs;
     [SerializeField] private Bound[] boundsElement;
     [SerializeField] private float droppingTime;
+    [SerializeField] private float movingTime;
 
     private PiecesSpawnerController spawnerController;
     private PieceCounter pieceCounter; //
@@ -56,6 +57,7 @@ public class FieldController : MonoBehaviour,
     public bool IsDroppingContinue => continueDropping;
     public Dictionary<PieceType, Piece>  PiecePrefabDict => piecePrefabDict;
     public float DroppingTime => droppingTime;  
+    public float MovingTime => movingTime;
     public bool IsLevelEnd => isLevelEnd;
     public bool AreMovesAllowed => areMovesAllowed;
 
@@ -431,8 +433,8 @@ public class FieldController : MonoBehaviour,
         Vector2Int piece1XY = new Vector2Int(piece1.X, piece1.Y);
         Vector2Int piece2XY = new Vector2Int(piece2.X, piece2.Y);
 
-        piece1.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), droppingTime);
-        piece2.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), droppingTime);
+        piece1.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), movingTime);//droppingTime);
+        piece2.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), movingTime);//droppingTime);
 
         MatchingPieces matchPiece1 = new MatchingPieces();
         matchPiece1 = FindMatch(matrixController.Pieces[piece1.X, piece1.Y]);
@@ -482,8 +484,8 @@ public class FieldController : MonoBehaviour,
         {
             matrixController.SwapPiecesOnlyInMatrix(piece1, piece2);
 
-            piece1.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), droppingTime);
-            piece2.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), droppingTime);
+            piece1.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), movingTime);//droppingTime);
+            piece2.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), movingTime);//droppingTime);
 
             return false;
         }

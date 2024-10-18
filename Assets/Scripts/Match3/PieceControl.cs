@@ -19,6 +19,8 @@ public class PieceControl : MonoBehaviour,
     {
         if (inputControll == null)
             GlobalGameDependenciesContainer.Instance.Rebind(this);
+
+        inputControll.SetInputControllerMode(InputControllerModes.CityMode);
     }
 
     private void Update()

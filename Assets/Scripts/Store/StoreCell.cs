@@ -18,6 +18,7 @@ public class StoreCell : MonoBehaviour
     [SerializeField] private Image m_BricksImage;
     [SerializeField] private Image m_NailsImage;
 
+    [SerializeField] private TMP_Text m_name;
     [SerializeField] private TMP_Text m_CoinsText;
     [SerializeField] private TMP_Text m_BoardsText;
     [SerializeField] private TMP_Text m_BricksText;
@@ -41,7 +42,7 @@ public class StoreCell : MonoBehaviour
             m_CellImage.sprite = m_BuildingInfo.StoreCellImage;
         }
         
-
+        m_name.text = m_BuildingInfo.Name;
         m_CoinsText.text = m_BuildingInfo.NeededCoins.ToString();
         m_BoardsText.text = m_BuildingInfo.NeededBoards.ToString();
         m_BricksText.text = m_BuildingInfo.NeededBricks.ToString();

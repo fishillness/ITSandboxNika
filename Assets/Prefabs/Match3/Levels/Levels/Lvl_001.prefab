@@ -501,6 +501,7 @@ MonoBehaviour:
   - {fileID: 3597042599056598517}
   - {fileID: 71272496138330508}
   droppingTime: 0.06
+  movingTime: 0.15
 --- !u!1 &3331796232436578083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,6 +2446,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1602262188133105965, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5000992
+      objectReference: {fileID: 0}
     - target: {fileID: 1726389232251286576, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2668,6 +2673,10 @@ PrefabInstance:
     - target: {fileID: 5691887415523891329, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -228.45833
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771059987107883693, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.0150146
       objectReference: {fileID: 0}
     - target: {fileID: 6776941220643266987, guid: 88c6fb1cfcdbf0b4d8ed08e5bcd8f6bd, type: 3}
       propertyPath: m_AnchorMax.y
