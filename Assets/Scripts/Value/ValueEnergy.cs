@@ -1,14 +1,22 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ValueEnergy : MonoBehaviour
 {
-    public const string Filename = "EnergyTime12";
+    public const string Filename = "EnergyTime313131";
 
     [SerializeField] private int energy_Recovering;
-    [SerializeField] private int time_Restoration;
+    [SerializeField] private float time_Restoration;
     [SerializeField] private ValueManager valueManager;
+
+    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+    private float startTime;
+    private bool stopTimer;
+    
 
     [SerializeField]
     public class EnergyTimeData
@@ -18,18 +26,48 @@ public class ValueEnergy : MonoBehaviour
 
     private IEnumerator Start()
     {
+        stopTimer = false;
+        startTime = time_Restoration * 60;
         if ((DateTime.Now - LoadStoreData()).TotalMinutes >= time_Restoration)
         {
-            StartCoroutine(DateTimeToUnixTimestamp());
+            var oldTime = LoadStoreData();
+            var dif = (DateTime.Now - oldTime).TotalMinutes;
+
+            var n = dif % energy_Recovering * 60;
+            DateTimeToUnixTimestamp();
+            if (valueManager.SetCurrent() == valueManager.SetMax())
+            {
+                valueManager.UpdateTime("0:00");
+                stopTimer = true;
+            }
+            else
+            {
+                valueManager.UpdateTime(n.ToString());
+            }
         }
         else
         {
-            yield return new WaitForSeconds((float)(DateTime.Now - LoadStoreData()).TotalSeconds);
-            StartCoroutine(AddEnergy());
+            if (valueManager.SetCurrent() == valueManager.SetMax())
+            {
+                valueManager.UpdateTime("0:00");
+                stopTimer = true;
+            }
+            else
+            {
+                yield return new WaitForSeconds((float)(DateTime.Now - LoadStoreData()).TotalSeconds);
+                AddEnergy();
+            }
         }
+
+        valueManager.DeleteResources(0, 0, 0, 0, 30);
     }
 
-    private IEnumerator DateTimeToUnixTimestamp()
+    private void Update()
+    {
+        StartCoroutine(TextOn());
+    }
+
+    private void DateTimeToUnixTimestamp()
     {
         var oldTime = LoadStoreData();
         var dif = (DateTime.Now - oldTime).TotalMinutes;
@@ -37,8 +75,6 @@ public class ValueEnergy : MonoBehaviour
             var n = (int)dif / energy_Recovering;
             valueManager.AddResources(0, 0, 0, 0, energy: energy_Recovering * n);
             SaveStoreData();
-            yield return new WaitForSeconds(time_Restoration * 60);
-            StartCoroutine(AddEnergy());
     }
 
     private void SaveStoreData()
@@ -65,13 +101,39 @@ public class ValueEnergy : MonoBehaviour
         }
     }
 
-    private IEnumerator AddEnergy()
+    private void AddEnergy()
     {
-        while (true)
+        valueManager.AddResources(0, 0, 0, 0, energy: energy_Recovering);
+        SaveStoreData();
+        startTime = time_Restoration * 60;
+    }
+
+    private IEnumerator TextOn()
+    {
+        if (valueManager.SetCurrent() != valueManager.SetMax())
         {
-            valueManager.AddResources(0, 0, 0, 0, energy: energy_Recovering);
-            SaveStoreData();
-            yield return new WaitForSeconds(time_Restoration * 60);
+            float time = startTime - Time.time;
+            int minutes = Mathf.FloorToInt(time / 60f);
+            int seconds = Mathf.FloorToInt(time - minutes * 60);
+
+            string textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+            if (stopTimer == false)
+            {
+                valueManager.UpdateTime(textTime);
+            }
+
+            if (time <= 0)
+            {
+                AddEnergy();
+                yield return new WaitForSeconds(1);
+                
+            }
+        }
+        else
+        {
+            valueManager.UpdateTime("0:00");
+            stopTimer = true;
         }
     }
 }

@@ -87,6 +87,22 @@ public class ValueManager : MonoBehaviour
 
         SaveStoreData();
     }
+
+    public void UpdateTime(string time)
+    {
+        m_Energy.UpdateTime(time);
+    }
+
+    public int SetMax()
+    {
+        return m_Energy.SetMaxValueResource();
+    }
+
+    public int SetCurrent() 
+    {
+        return m_Energy.SetCur();
+    }
+
     private void SaveStoreData()
     {
         ValueData storeData = new ValueData();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,5 +28,20 @@ public class Resource : Value
     public void StartValue()
     {
         SetCurrentValue(m_StartValue);
+    }
+
+    public void UpdateTime(string time)
+    {
+        m_UIResource.UpdateUITimes(time);
+    }
+
+    public override int SetMaxValueResource()
+    {
+        return base.SetMaxValueResource();
+    }
+
+    public override int SetCur()
+    {
+        return base.SetCur();
     }
 }

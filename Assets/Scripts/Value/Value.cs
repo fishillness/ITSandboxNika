@@ -28,4 +28,14 @@ public class Value : MonoBehaviour
     {
         currentValue = value;
     }
+
+    public virtual int SetMaxValueResource() 
+    {
+       return  m_MaxValue;
+    }
+
+    public virtual int SetCur() 
+    {
+        return currentValue;
+    }
 }
