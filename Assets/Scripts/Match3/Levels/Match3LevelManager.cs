@@ -1,8 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Match3LevelManager : MonoBehaviour
 {
+    public UnityEvent<int> OnLevelUp;
+
     public const string Filename = "Level";
 
     [Serializable]
@@ -27,12 +30,15 @@ public class Match3LevelManager : MonoBehaviour
 
     public void LevelUp()
     {
+        Debug.Log("level up");
         if (!HaveUnCompletedLevels) return;  
 
         currentLevel++;
 
         if (!HaveUnCompletedLevels && levelList.Replayable)
             currentLevel = 0;
+
+        OnLevelUp?.Invoke(currentLevel);
 
         SaveLevelData();
     }
@@ -67,5 +73,18 @@ public class Match3LevelManager : MonoBehaviour
         {
             currentLevel = levelData.CurrentLevel;
         }
+    }
+
+    public int GetNextLevelNumber()
+    {
+        if (!HaveUnCompletedLevels)
+        {
+            if (!levelList.Replayable)
+                return -1;
+            else
+                return 0;
+        }
+
+        return currentLevel + 1;
     }
 }

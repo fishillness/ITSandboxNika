@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1534864069942503061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5261466067325566860}
+  - component: {fileID: 8537981163577477813}
+  m_Layer: 0
+  m_Name: MissionController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5261466067325566860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534864069942503061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4073865124348802788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8537981163577477813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534864069942503061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4114794ad7e96ea4c82241efdb95d3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnMissionAdd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMissionUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  missionList: {fileID: 11400000, guid: 14b498dba1c7b3c48a5d248c7568a762, type: 2}
+  mission1: {fileID: 11400000, guid: 98ad3aefc5cecfa42860aee0311d2ad0, type: 2}
+  add1: 0
+  mission2: {fileID: 11400000, guid: bf23531352a7cc3429d3797a418682a6, type: 2}
+  add2: 0
 --- !u!1 &3325556875757251599
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +89,7 @@ Transform:
   - {fileID: 2760676024257852371}
   - {fileID: 6477704104568017625}
   - {fileID: 93331594199650561}
+  - {fileID: 5261466067325566860}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1699417618827125691
@@ -51,6 +107,7 @@ MonoBehaviour:
   levelManager: {fileID: 1046529626138558152}
   valueManager: {fileID: 6504860258764647850}
   inputController: {fileID: 4252103863065722292}
+  missionController: {fileID: 8537981163577477813}
 --- !u!1 &7843271125554256370
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41c8cbee8a5ada4f894cff647290a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnLevelUp:
+    m_PersistentCalls:
+      m_Calls: []
   levelList: {fileID: 11400000, guid: 89abb0981c2e8124986021101f01e84d, type: 2}
 --- !u!1001 &2496085954216996676
 PrefabInstance:
