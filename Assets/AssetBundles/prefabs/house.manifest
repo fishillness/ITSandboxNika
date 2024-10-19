@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 427174969
+CRC: 1015990965
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9a4711d8cae26ed613fe854631ad212c
+    Hash: 8b5c32b58771506cbbaba878ce5b211e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 8ab1d3dc1373f60bc21eaf1740438bf8
+    Hash: 10e51f6ab1f82c03021b825a631f435a
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 9a4711d8cae26ed613fe854631ad212c
+    Hash: 8b5c32b58771506cbbaba878ce5b211e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -19,6 +19,8 @@ ClassTypes:
 - Class: 21
   Script: {instanceID: 0}
 - Class: 48
+  Script: {instanceID: 0}
+- Class: 65
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 4f32b15a220fc5840a74deedbf7f82df, type: 3}
@@ -33,7 +35,15 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Prefabs/House/Build_02.prefab
+- Assets/Prefabs/House/Build_09.prefab
+- Assets/Prefabs/House/Build_06.prefab
 - Assets/Prefabs/House/Build_01.prefab
+- Assets/Prefabs/House/TEST_Build.prefab
+- Assets/Prefabs/House/Build_03.prefab
+- Assets/Prefabs/House/Build_05.prefab
+- Assets/Prefabs/House/Build_08.prefab
+- Assets/Prefabs/House/Build_04.prefab
+- Assets/Prefabs/House/Build_07.prefab
 Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/prefabs/grid
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/city

@@ -5,6 +5,7 @@ public class BuildingInfo : ScriptableObject
 {
     public Building Building => m_Building;
     public Sprite StoreCellImage => m_StoreCellImage;
+    public string Name => nameBuilding;
     public int NeededBoards => m_NeededBoards;
     public int NeededCoins => m_NeededCoins;
     public int NeededNails => m_NeededNails;
@@ -16,6 +17,7 @@ public class BuildingInfo : ScriptableObject
 
     [SerializeField] private Building m_Building;
     [SerializeField] private Sprite m_StoreCellImage;
+    [SerializeField] private string nameBuilding;
 
     [Header("Needed Resources")]
     [SerializeField] private int m_NeededCoins;

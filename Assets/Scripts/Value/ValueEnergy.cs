@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ValueEnergy : MonoBehaviour
 {
-    public const string Filename = "EnergyTime313131";
+    public const string Filename = "EnergyTime12";
 
     [SerializeField] private int energy_Recovering;
     [SerializeField] private float time_Restoration;
@@ -17,11 +17,10 @@ public class ValueEnergy : MonoBehaviour
     private float startTime;
     private bool stopTimer;
     
-
-    [SerializeField]
+    [Serializable]
     public class EnergyTimeData
     {
-        public DateTime time;
+        public string time;
     }
 
     private IEnumerator Start()
@@ -81,14 +80,13 @@ public class ValueEnergy : MonoBehaviour
     {
         EnergyTimeData storeData = new EnergyTimeData();
 
-        storeData.time = DateTime.Now;
+        storeData.time = ConvertTimeToString(DateTime.Now);
 
         Saver<EnergyTimeData>.Save(Filename, storeData);
     }
 
     private DateTime LoadStoreData()
     {
-
         EnergyTimeData storeData = new EnergyTimeData();
 
         if (Saver<EnergyTimeData>.TryLoad(Filename, ref storeData) == false)
@@ -97,7 +95,7 @@ public class ValueEnergy : MonoBehaviour
         }
         else
         {
-            return storeData.time;
+            return ConvertTimeFromString(storeData.time);
         }
     }
 
@@ -135,5 +133,14 @@ public class ValueEnergy : MonoBehaviour
             valueManager.UpdateTime("0:00");
             stopTimer = true;
         }
+    }
+    private string ConvertTimeToString(DateTime time)
+    {
+        return time.ToBinary().ToString();
+    }
+
+    private DateTime ConvertTimeFromString(string time)
+    {
+        return DateTime.FromBinary(long.Parse(time));
     }
 }

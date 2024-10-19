@@ -1,11 +1,18 @@
 using UnityEngine;
 
-public class ConstructionSystem : MonoBehaviour
+public class ConstructionSystem : MonoBehaviour,
+    IDependency<ValueManager>
 {
     [SerializeField] private Store m_Store;
     [SerializeField] private ConstructionModeActivator m_ConstructionModeActivator;
     [SerializeField] private PlacementSystem m_PlacementSystem;
-    [SerializeField] private ValueManager m_ShelterCharacteristicsManager;
+    [SerializeField] private AnimalManager m_AnimalManager;
+
+    private ValueManager m_ShelterCharacteristicsManager;
+
+    #region Constructs
+    public void Construct(ValueManager m_ShelterCharacteristicsManager) => this.m_ShelterCharacteristicsManager = m_ShelterCharacteristicsManager;
+    #endregion
 
     private void Awake()
     {
@@ -29,10 +36,12 @@ public class ConstructionSystem : MonoBehaviour
     {
         m_Store.Refund(buildingInfo);
         m_ShelterCharacteristicsManager.DeleteShelterCharacteristics(buildingInfo.Advancement, buildingInfo.Cosiness, buildingInfo.Health, buildingInfo.Joy);
+        m_AnimalManager.UpdateAnimalCount();
     }
     private void BuildingPlacement(BuildingInfo buildingInfo)
     {
         m_Store.Buy(buildingInfo);
         m_ShelterCharacteristicsManager.AddShelterCharacteristics(buildingInfo.Advancement, buildingInfo.Cosiness, buildingInfo.Health, buildingInfo.Joy);
+        m_AnimalManager.UpdateAnimalCount();
     }
 }

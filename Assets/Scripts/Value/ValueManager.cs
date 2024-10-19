@@ -1,5 +1,8 @@
 using System;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Events;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class ValueManager : MonoBehaviour
 {
@@ -26,6 +29,11 @@ public class ValueManager : MonoBehaviour
     public int NailsCount => m_Nails.CurrentValue;
     public int EnergyCount => m_Energy.CurrentValue;
 
+    public int Advancement => m_Advancement.CurrentValue;
+    public int Cosiness => m_Cosiness.CurrentValue;
+    public int Health => m_Health.CurrentValue;
+    public int Joy => m_Joy.CurrentValue;
+
     [SerializeField] private Resource m_Coins;
     [SerializeField] private Resource m_Boards;
     [SerializeField] private Resource m_Bricks;
@@ -39,11 +47,6 @@ public class ValueManager : MonoBehaviour
 
     private void Awake()
     {
-        m_Advancement.SetMaxValue();
-        m_Cosiness.SetMaxValue();
-        m_Health.SetMaxValue();
-        m_Joy.SetMaxValue();
-
         LoadStoreData();
     }
 
@@ -101,6 +104,121 @@ public class ValueManager : MonoBehaviour
     public int SetCurrent() 
     {
         return m_Energy.SetCur();
+    }
+
+    public UnityEvent<int> GetEventOnValueChangeByType(ValueType type)
+    {
+        switch(type)
+        {
+            case ValueType.Coins:
+                return m_Coins.OnValueChange;
+            case ValueType.Boards:
+                return m_Boards.OnValueChange;
+            case ValueType.Bricks:
+                return m_Bricks.OnValueChange;
+            case ValueType.Nails:
+                return m_Nails.OnValueChange;
+            case ValueType.Energy:
+                return m_Energy.OnValueChange;
+            case ValueType.Advancement:
+                return m_Advancement.OnValueChange;
+            case ValueType.Cosiness:
+                return m_Cosiness.OnValueChange;
+            case ValueType.Health:
+                return m_Health.OnValueChange;
+            case ValueType.Joy:
+                return m_Joy.OnValueChange;
+        }
+
+        return null;
+    }
+
+    public int GetValueByType(ValueType type)
+    {
+        switch (type)
+        {
+            case ValueType.Coins:
+                return CoinsCount;
+            case ValueType.Boards:
+                return BoardsCount;
+            case ValueType.Bricks:
+                return BricksCount;
+            case ValueType.Nails:
+                return NailsCount;
+            case ValueType.Energy:
+                return EnergyCount;
+            case ValueType.Advancement:
+                return Advancement;
+            case ValueType.Cosiness:
+                return Cosiness;
+            case ValueType.Health:
+                return Health;
+            case ValueType.Joy:
+                return Joy;
+        }
+
+        return 0;
+    }
+
+    public int GetMaxValueByType(ValueType type)
+    {
+        switch (type)
+        {
+            case ValueType.Coins:
+                return m_Coins.MaxValue;
+            case ValueType.Boards:
+                return m_Boards.MaxValue;
+            case ValueType.Bricks:
+                return m_Bricks.MaxValue;
+            case ValueType.Nails:
+                return m_Nails.MaxValue;
+            case ValueType.Energy:
+                return m_Energy.MaxValue;
+            case ValueType.Advancement:
+                return m_Advancement.MaxValue;
+            case ValueType.Cosiness:
+                return m_Cosiness.MaxValue;
+            case ValueType.Health:
+                return m_Health.MaxValue;
+            case ValueType.Joy:
+                return m_Joy.MaxValue;
+        }
+
+        return 0;
+    }
+    public int AddValueByType(ValueType type, int value)
+    {
+        switch (type)
+        {
+            case ValueType.Coins:
+                AddResources(value, 0, 0, 0, 0);
+                break;
+            case ValueType.Boards:
+                AddResources(0, value, 0, 0, 0);
+                break;
+            case ValueType.Bricks:
+                AddResources(0, 0, value, 0, 0);
+                break;
+            case ValueType.Nails:
+                AddResources(0, 0, 0, value, 0);
+                break;
+            case ValueType.Energy:
+                AddResources(0, 0, 0, 0, value);
+                break;
+            case ValueType.Advancement:
+                AddShelterCharacteristics(value, 0, 0, 0);
+                break;
+            case ValueType.Cosiness:
+                AddShelterCharacteristics(0, value, 0, 0);
+                break;
+            case ValueType.Health:
+                AddShelterCharacteristics(0, 0, value, 0);
+                break;
+            case ValueType.Joy:
+                AddShelterCharacteristics(0, 0, 0, value);
+                break;
+        }
+        return 0;
     }
 
     private void SaveStoreData()

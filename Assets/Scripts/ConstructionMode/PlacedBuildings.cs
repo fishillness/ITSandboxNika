@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlacedBuildings
+public class PlacedBuildings : MonoBehaviour 
 {
     [Serializable]
     public class BuildingData   
@@ -17,6 +17,7 @@ public class PlacedBuildings
 
     private List<Building> buildings = new List<Building>();
     private List<BuildingData> buildingsData = new List<BuildingData>();
+    private List<Building> buildingsWithAnEntry = new List<Building>();
     private int buildingIndex;
     public void AddBuilding(Building building)
     {
@@ -51,7 +52,23 @@ public class PlacedBuildings
         }
         return null;
     }
-
+    public List<Building> GetABuildingsWithAnEntry()
+    {
+        buildingsWithAnEntry.Clear();
+        for (int i = 0; i < buildings.Count; i++)
+        {
+            if (buildings[i].HasEntry == true)
+            {
+                buildingsWithAnEntry.Add(buildings[i]);
+            }
+        }
+        return buildingsWithAnEntry;
+    }
+    public Building GetARandomBuildingWithAnEntry()
+    {
+        GetABuildingsWithAnEntry();
+        return buildingsWithAnEntry[UnityEngine.Random.Range(0, buildingsWithAnEntry.Count)];
+    }
     public void RemoveBuilding(int buildingIndex)
     {
         for (int i = 0; i < buildings.Count; i++)
@@ -91,4 +108,6 @@ public class PlacedBuildings
         }           
         
     }
+
+    
 }

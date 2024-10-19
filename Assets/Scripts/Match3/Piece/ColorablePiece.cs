@@ -2,17 +2,12 @@ using UnityEngine;
 
 public class ColorablePiece : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private ColorType color;
-    private SpriteRenderer spriteRenderer;
     private PieceColorDictionary colorDictionary;
 
     public ColorType Color => color;
     public bool IsColorDictionarySet => colorDictionary != null;
-
-    private void Awake()
-    {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-    }
 
     public void SetColorDictionary(PieceColorDictionary colorDictionary)
     {

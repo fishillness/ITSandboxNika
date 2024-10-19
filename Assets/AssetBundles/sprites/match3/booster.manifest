@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 125880584
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7f50c62d6cc8e09ca201e57ec1807747
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 7f50c62d6cc8e09ca201e57ec1807747
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sprites/free-icon-rocket-16116383.png
+- Assets/Sprites/Match 3/Booster/free-icon-rocket-16116383 (1).png
+- Assets/Sprites/Match 3/Booster/1 820.png
+- Assets/Sprites/Match 3/Booster/free-icon-rocket-16116383 (2).png
+- Assets/Sprites/Match 3/Booster/image 848.png
+Dependencies: []

@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PieceMatrixController : MonoBehaviour
+public class PieceMatrixController : MonoBehaviour,
+    IDependency<PieceColorDictionary>, IDependency<BoosterDictionary>, IDependency<PieceCounter>,
+    IDependency<FieldController>, IDependency<SpecifierRequiredPiecesOfType>, IDependency<SpecifierRequiredBooster>
 {
-    [SerializeField] private PieceColorDictionary colorDictionary;
-    [SerializeField] private BoosterDictionary boosterDictionary;
-    [SerializeField] private PieceCounter pieceCounter;
-    [SerializeField] private FieldController field;
-    [SerializeField] private SpecifierRequiredPiecesOfType specifierRequiredPieces;
-    [SerializeField] private SpecifierRequiredBooster specifierRequiredBooster;
+    private PieceColorDictionary colorDictionary;
+    private BoosterDictionary boosterDictionary;
+    private PieceCounter pieceCounter;
+    private FieldController field;
+    private SpecifierRequiredPiecesOfType specifierRequiredPieces;
+    private SpecifierRequiredBooster specifierRequiredBooster;
+
+    #region Constructs
+    public void Construct(PieceColorDictionary colorDictionary) => this.colorDictionary = colorDictionary;
+    public void Construct(BoosterDictionary boosterDictionary) => this.boosterDictionary = boosterDictionary;
+    public void Construct(PieceCounter pieceCounter) => this.pieceCounter = pieceCounter;
+    public void Construct(FieldController fieldController) => field = fieldController;
+    public void Construct(SpecifierRequiredPiecesOfType specifierRequiredPieces) => this.specifierRequiredPieces = specifierRequiredPieces;
+    public void Construct(SpecifierRequiredBooster specifierRequiredBooster) => this.specifierRequiredBooster = specifierRequiredBooster;
+    #endregion
 
     private Piece[,] pieces;
     private int xDim;
@@ -30,6 +41,9 @@ public class PieceMatrixController : MonoBehaviour
     {
         this.xDim = xDim;
         this.yDim = yDim;
+
+        colorDictionary.InitDictionaty();
+        boosterDictionary.InitDictionaty();
 
         pieces = new Piece[xDim, yDim];
 
@@ -235,7 +249,7 @@ public class PieceMatrixController : MonoBehaviour
         }
         else
         {
-            pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, field.GetPiecePositionOnWorld(xEmpty, yEmpty), field.DroppingTime);
+            pieces[xNonEmpty, yNonEmpty].Movable.Move(xEmpty, yEmpty, field.GetPiecePositionOnWorld(xEmpty, yEmpty), field.MovingTime);//field.DroppingTime);
         }
         
         
@@ -313,11 +327,19 @@ public class PieceMatrixController : MonoBehaviour
                 DamageNotEmptyPiece(xLeft, y, DestructionType.Rocket);
                 xLeft--;
             }
+            else if (xLeft >= 0 && pieces[xLeft, y] == null)
+            {
+                xLeft = -1;
+            }
 
             if (xRight < xDim && pieces[xRight, y] != null && pieces[xRight, y].IsDestructible)
             {
                 DamageNotEmptyPiece(xRight, y, DestructionType.Rocket);
                 xRight++;
+            }
+            else if (xRight < xDim && pieces[xRight, y] == null)
+            {
+                xRight = xDim;
             }
 
             yield return new WaitForSeconds(time);
@@ -348,11 +370,19 @@ public class PieceMatrixController : MonoBehaviour
                 DamageNotEmptyPiece(x, yAbove, DestructionType.Rocket);
                 yAbove--;
             }
+            else if (yAbove >= 0 && pieces[x, yAbove] == null)
+            {
+                yAbove = -1;
+            }
 
             if (yBelow < yDim && pieces[x, yBelow] != null && pieces[x, yBelow].IsDestructible)
             {
                 DamageNotEmptyPiece(x, yBelow, DestructionType.Rocket);
                 yBelow++;
+            }
+            else if (yBelow < yDim && pieces[x, yBelow] == null)
+            {
+                yBelow = yDim;
             }
 
             yield return new WaitForSeconds(time);

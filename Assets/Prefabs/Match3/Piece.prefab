@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b62c0966fc01912408398f69975cc152, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df877e26fa3e8864783762b84882c6dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -205,8 +205,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8458190366736747140}
   - {fileID: 5813442097042380255}
+  - {fileID: 8458190366736747140}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &4079626180951254446
@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a127c1da414f10498855bec290a055b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 8046229045330697042}
 --- !u!114 &8113913500996926688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7833f4d8206ed40b4f04ecaa66e6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnMoveEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7732811380212794240
 MonoBehaviour:
   m_ObjectHideFlags: 0

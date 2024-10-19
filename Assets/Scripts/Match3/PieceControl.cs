@@ -1,36 +1,49 @@
 using UnityEngine;
 
-public class PieceControl : MonoBehaviour
+public class PieceControl : MonoBehaviour,
+    IDependency<FieldController>, IDependency<InputController>
 {
-    [SerializeField] private FieldController field;
-    [SerializeField] private GameObject inputControll;
+    private FieldController field;
 
-    private Camera camera;
+    private InputController inputControll;
+
+    #region Constructs
+    public void Construct(FieldController field) => this.field = field;
+    public void Construct(InputController inputControll) => this.inputControll = inputControll;
+    #endregion
+
     private Piece selectPiece;
-
-    //брать после данньiе из инпутконтроллера
     private Vector3 mousePosition;
 
     private void Awake()
     {
-        camera = Camera.main;
+        if (inputControll == null)
+            GlobalGameDependenciesContainer.Instance.Rebind(this);
+
+        inputControll.SetInputControllerMode(InputControllerModes.CityMode);
     }
 
     private void Update()
     {
-        //брать после данньiе из инпутконтроллера
-        
-        mousePosition = Input.mousePosition;
-        if (Input.GetMouseButtonDown(0))
-            OnMouseButtonDown();
-        if (Input.GetMouseButtonUp(0))
-            OnMouseButtonUp();
-        //
+        mousePosition = inputControll.MousePosition;
+
+        if (inputControll.IsTouchCountEquals2)
+        {
+            OnDown(inputControll.TouchZero.position);
+            OnUp(inputControll.TouchOne.position);
+        }
+        else
+        {
+            if (inputControll.MouseButtonDown)
+                OnDown(mousePosition);
+            if (inputControll.MouseButtonUp)
+                OnUp(mousePosition);
+        }
     }
     
-    private void OnMouseButtonDown()
+    private void OnDown(Vector3 position)
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePosition), Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(position), Vector2.zero);
 
         if (hit.collider != null && field.IsLevelEnd && field.AreMovesAllowed)
         {
@@ -44,7 +57,10 @@ public class PieceControl : MonoBehaviour
                         SelectPiece(piece);
                     else if (piece == selectPiece)
                     {
-                        Debug.Log("Даблклик не прописан");
+                        if (piece.IsBooster)
+                        {
+                            piece.Booster.Activate(piece);
+                        }
                     }
                     else
                     {
@@ -72,9 +88,9 @@ public class PieceControl : MonoBehaviour
         }
     }
 
-    private void OnMouseButtonUp()
+    private void OnUp(Vector3 position)
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePosition), Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(position), Vector2.zero);
 
         if (hit.collider != null)
         {

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,6 +12,8 @@ public class PlacementSystem : MonoBehaviour
     [SerializeField] private ConstructionModeUI m_ConstructionModeUI;
     [SerializeField] private Indicator m_Indicator;
     [SerializeField] private ConstructionGrid m_Grid;
+    [SerializeField] private RealtimeNavMesh m_RealtimeNavmesh;
+    [SerializeField] private PlacedBuildings m_PlacedBuildings;
 
     private enum PlacemenSystemMode
     {
@@ -21,7 +22,7 @@ public class PlacementSystem : MonoBehaviour
         CheckingCells
     }
 
-    private PlacedBuildings placedBuildings;
+    
     private Building currentBuilding;
     private Vector2 currentCellLocalPosition;
     private PlacemenSystemMode placemenSystemMode;
@@ -30,7 +31,6 @@ public class PlacementSystem : MonoBehaviour
     {
         placemenSystemMode = PlacemenSystemMode.CheckingCells;
         m_Indicator.CellSelected += OnCellSelected;
-        placedBuildings = new PlacedBuildings();
         CreatingUploadedBuildings();                
     }
     private void OnDestroy()
@@ -41,14 +41,14 @@ public class PlacementSystem : MonoBehaviour
     
     private void CreatingUploadedBuildings()
     {
-        List<BuildingData> uploadedBuildingsInfo = placedBuildings.LoadBuildingsData();
+        List<BuildingData> uploadedBuildingsInfo = m_PlacedBuildings.LoadBuildingsData();
         if (uploadedBuildingsInfo == null) return;
 
         for (int i = 0; i < uploadedBuildingsInfo.Count; i++)
         {
             Building building = Instantiate(m_BuildingDataBase.GetBuilding(uploadedBuildingsInfo[i].BuildingID));
-            building.BuildingPlacement(uploadedBuildingsInfo[i].OccupiedCell, placedBuildings.GetBuildIndex());
-            placedBuildings.AddBuilding(building);
+            building.BuildingPlacement(uploadedBuildingsInfo[i].OccupiedCell, m_PlacedBuildings.GetBuildIndex());
+            m_PlacedBuildings.AddBuilding(building);
             building.transform.position = m_Grid.ConvertCellLocalPositionToCellWorldPosition(building.OccupiedCell);
             for (int x = 0; x < building.Size.x; x++)
             {
@@ -59,7 +59,8 @@ public class PlacementSystem : MonoBehaviour
                 }
             }           
             
-        }        
+        }
+        m_RealtimeNavmesh.UpdateNavMesh();
     }
     
     private void OnCellSelected(Vector2 cellLocalPosition)
@@ -81,7 +82,7 @@ public class PlacementSystem : MonoBehaviour
     {
         if (m_Grid.CheckingCellOccupancy(currentCellLocalPosition) == true)
         {
-            Building building = placedBuildings.GetBuilding(m_Grid.GetCell(currentCellLocalPosition).BuildingIndex);            
+            Building building = m_PlacedBuildings.GetBuilding(m_Grid.GetCell(currentCellLocalPosition).BuildingIndex);            
             m_Indicator.BuildingSelect(building.Size, building.OccupiedCell);
             m_ConstructionModeUI.EnablingPermutation();
         }
@@ -140,9 +141,9 @@ public class PlacementSystem : MonoBehaviour
 
     public void BuildingPlacement()
     {        
-        int buildIndex = placedBuildings.GetBuildIndex();
+        int buildIndex = m_PlacedBuildings.GetBuildIndex();
         currentBuilding.BuildingPlacement(currentCellLocalPosition, buildIndex);
-        placedBuildings.AddBuilding(currentBuilding);
+        m_PlacedBuildings.AddBuilding(currentBuilding);
         for (int x = 0; x < currentBuilding.Size.x; x++)
         {
             for (int y = 0; y < currentBuilding.Size.y; y++)
@@ -167,7 +168,8 @@ public class PlacementSystem : MonoBehaviour
     }
 
     private void EndPlacement()
-    {       
+    {
+        m_RealtimeNavmesh.UpdateNavMesh();
         m_Indicator.IndicatorVisualization(true);        
         m_ConstructionModeUI.EndPlacement();
         currentBuilding = null;
@@ -191,15 +193,16 @@ public class PlacementSystem : MonoBehaviour
         m_ConstructionModeUI.DisablingPermutation();
         GridCleaning();
         BuildingDeleteEvent?.Invoke(m_BuildingDataBase.GetBuildingInfo(currentBuilding.BuildingID));
-        Destroy(currentBuilding.gameObject);
+        DestroyImmediate(currentBuilding.gameObject);
         currentBuilding = null;
         m_Indicator.BuildingUnselect();
+        m_RealtimeNavmesh.UpdateNavMesh();
     }
 
     private void GridCleaning()
     {
         int buildingIndex = m_Grid.GetCell(currentCellLocalPosition).BuildingIndex;
-        currentBuilding = placedBuildings.GetBuilding(buildingIndex);
+        currentBuilding = m_PlacedBuildings.GetBuilding(buildingIndex);
         for (int i = 0; i < currentBuilding.Size.x; i++)
         {
             for (int j = 0; j < currentBuilding.Size.y; j++)
@@ -209,7 +212,7 @@ public class PlacementSystem : MonoBehaviour
             
         }
         currentBuilding.ClearOccupiedCell();
-        placedBuildings.RemoveBuilding(buildingIndex);
+        m_PlacedBuildings.RemoveBuilding(buildingIndex);
     }
      
     private void SetBuildingPosition()

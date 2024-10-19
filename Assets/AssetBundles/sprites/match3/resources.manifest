@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 1452377163
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 566829383d4ce6d192782097f595f7a9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 566829383d4ce6d192782097f595f7a9
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/Sprites/Resources/\u043A\u0438\u0440\u043F\u0438\u0447\u0438 1.png"
+- "Assets/Sprites/Resources/lightning_\u0448\u0441\u0449\u0442 2.png"
+- Assets/Sprites/Resources/1 844.png
+- "Assets/Sprites/Resources/\u043C\u043E\u0442\u0430 4.png"
+- "Assets/Sprites/Resources/\u0431\u0440\u0435\u0432\u043D\u0430_1 2.png"
+- Assets/Sprites/Resources/Rectangle 7325.png
+Dependencies: []

@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
-public class FieldController : MonoBehaviour
+public class FieldController : MonoBehaviour,
+    IDependency<PiecesSpawnerController>, IDependency<PieceCounter>,
+    IDependency<Match3Level>, IDependency<PieceMatrixController>
 {
     [HideInInspector] 
     public UnityEvent OnMove;
@@ -16,11 +18,20 @@ public class FieldController : MonoBehaviour
     [SerializeField] private Tilemap field;
     [SerializeField] private PiecePrefab[] piecePrefabs;
     [SerializeField] private Bound[] boundsElement;
-    [SerializeField] private PiecesSpawnerController spawnerController;
     [SerializeField] private float droppingTime;
-    [SerializeField] private PieceCounter pieceCounter; //
-    [SerializeField] private Match3Level level;
-    [SerializeField] private PieceMatrixController matrixController;
+    [SerializeField] private float movingTime;
+
+    private PiecesSpawnerController spawnerController;
+    private PieceCounter pieceCounter; //
+    private Match3Level level;
+    private PieceMatrixController matrixController;
+
+    #region Constructs
+    public void Construct(PiecesSpawnerController spawnerController) => this.spawnerController = spawnerController;
+    public void Construct(PieceCounter pieceCounter) => this.pieceCounter = pieceCounter;
+    public void Construct(Match3Level level) => this.level = level;
+    public void Construct(PieceMatrixController matrixController) => this.matrixController = matrixController;
+    #endregion
 
     [Serializable, SerializeField]
     public struct PiecePrefab
@@ -46,6 +57,7 @@ public class FieldController : MonoBehaviour
     public bool IsDroppingContinue => continueDropping;
     public Dictionary<PieceType, Piece>  PiecePrefabDict => piecePrefabDict;
     public float DroppingTime => droppingTime;  
+    public float MovingTime => movingTime;
     public bool IsLevelEnd => isLevelEnd;
     public bool AreMovesAllowed => areMovesAllowed;
 
@@ -68,6 +80,7 @@ public class FieldController : MonoBehaviour
 
     private void Start()
     {
+        spawnerController.InitSpawners();
         spawnerController.CheckNeedOfSpawnPiece();
         StartDropPieces(droppingTime);
         level.OnStopMoves.AddListener(OnLevelEnd);
@@ -420,8 +433,8 @@ public class FieldController : MonoBehaviour
         Vector2Int piece1XY = new Vector2Int(piece1.X, piece1.Y);
         Vector2Int piece2XY = new Vector2Int(piece2.X, piece2.Y);
 
-        piece1.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), droppingTime);
-        piece2.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), droppingTime);
+        piece1.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), movingTime);//droppingTime);
+        piece2.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), movingTime);//droppingTime);
 
         MatchingPieces matchPiece1 = new MatchingPieces();
         matchPiece1 = FindMatch(matrixController.Pieces[piece1.X, piece1.Y]);
@@ -471,8 +484,8 @@ public class FieldController : MonoBehaviour
         {
             matrixController.SwapPiecesOnlyInMatrix(piece1, piece2);
 
-            piece1.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), droppingTime);
-            piece2.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), droppingTime);
+            piece1.Movable.Move(piece1XY.x, piece1XY.y, GetPiecePositionOnWorld(piece1XY.x, piece1XY.y), movingTime);//droppingTime);
+            piece2.Movable.Move(piece2XY.x, piece2XY.y, GetPiecePositionOnWorld(piece2XY.x, piece2XY.y), movingTime);//droppingTime);
 
             return false;
         }

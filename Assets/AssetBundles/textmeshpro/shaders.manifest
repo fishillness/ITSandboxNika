@@ -1,0 +1,32 @@
+ManifestFileVersion: 0
+CRC: 1297209175
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 144c3860bd988f04ca563b6fd6147f6a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0df1dec30b5d061d422d3e6493d27647
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 144c3860bd988f04ca563b6fd6147f6a
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+- Assets/TextMesh Pro/Shaders/TMP_Sprite.shader
+- Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader
+- Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader
+- Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader
+Dependencies: []

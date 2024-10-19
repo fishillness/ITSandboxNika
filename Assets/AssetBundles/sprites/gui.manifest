@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 784483178
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 58b59518db9e931054698e87883ae355
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 58b59518db9e931054698e87883ae355
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sprites/GUI/SettingButton.png
+- Assets/Sprites/GUI/Frame 380.png
+- Assets/Sprites/GUI/Frame 405.png
+- Assets/Sprites/GUI/Firefly paper note book 3d icon, isometric view, simple style
+  90277 1.png
+- Assets/Sprites/Frame 383.png
+- Assets/Sprites/GUI/Group 14679.png
+- Assets/Sprites/GUI/MainValueBackgroud.png
+Dependencies: []
