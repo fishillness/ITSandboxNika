@@ -51,10 +51,9 @@ public class UIMissionInfo : MonoBehaviour
 
     public void OnButtonClick()
     {
-        Debug.Log($"buttonText: {missionText.text}, finish:{finish}, =? {buttonText.text == finish}");
         if (buttonText.text == finish)
         {
-            uiMissionController.OnMissionFinishButtonClick(id);
+            uiMissionController.OnMissionFinishButtonClick(id, gameObject);
         }
         else
         {

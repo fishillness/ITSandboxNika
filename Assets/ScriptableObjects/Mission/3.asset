@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e1eb7f115c44904fa8db1b9a226dddf, type: 3}
-  m_Name: 2
+  m_Name: 3
   m_EditorClassIdentifier: 
-  id: 1
-  type: 0
-  text: "\u041F\u0440\u043E\u0439\u0434\u0438\u0442\u0435 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
-  valueType: 0
-  value: 1
+  id: 2
+  type: 1
+  text: "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 \u0431\u0440\u0435\u0432\u043D\u0430"
+  valueType: 1
+  value: 60
   anyBuilding: 1
   buildingInfo: {fileID: 0}

@@ -54,7 +54,18 @@ public class MissionController : MonoBehaviour,
     private void Start()
     {
         LoadData();
+
         levelManager.OnLevelUp.AddListener(OnLevelUp);
+
+        valueManager.GetEventOnValueAddByType(ValueType.Coins).AddListener(OnCoinsAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Boards).AddListener(OnBoardsAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Bricks).AddListener(OnBricksAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Nails).AddListener(OnNailsAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Energy).AddListener(OnEnergyAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Advancement).AddListener(OnAdvancementAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Cosiness).AddListener(OnCosinessAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Health).AddListener(OnHealthAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Joy).AddListener(OnJoyAdd);
     }
 
     private void Update()
@@ -74,6 +85,16 @@ public class MissionController : MonoBehaviour,
     private void OnDestroy()
     {
         levelManager.OnLevelUp.RemoveListener(OnLevelUp);
+
+        valueManager.GetEventOnValueAddByType(ValueType.Coins).RemoveListener(OnCoinsAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Boards).RemoveListener(OnBoardsAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Bricks).RemoveListener(OnBricksAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Nails).RemoveListener(OnNailsAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Energy).RemoveListener(OnEnergyAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Advancement).RemoveListener(OnAdvancementAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Cosiness).RemoveListener(OnCosinessAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Health).RemoveListener(OnHealthAdd);
+        valueManager.GetEventOnValueAddByType(ValueType.Joy).RemoveListener(OnJoyAdd);
     }
 
     public void AddNewMission(MissionInfo missionInfo)
@@ -145,21 +166,6 @@ public class MissionController : MonoBehaviour,
         }
     }
 
-    private void OnLevelUp(int level)
-    {
-        foreach(Mission mission in currentMissions)
-        {
-            if (mission.missionInfo.Type == MissionType.CompleteMatch3)
-            {
-                mission.value = 1;
-                mission.isFinish = true;
-                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
-
-                OnMissionUpdate?.Invoke(mission);
-            }
-        }
-    }
-
     private void ChangeMissionDataById(int id, int value, bool isFinish)
     {
         foreach(MissionData mission in currentMissionData)
@@ -173,4 +179,176 @@ public class MissionController : MonoBehaviour,
 
         Saver<List<MissionData>>.Save(Filename, currentMissionData);
     }
+
+    #region OnEvent
+
+    private void OnLevelUp(int level)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.CompleteMatch3)
+            {
+                mission.value = 1;
+                mission.isFinish = true;
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+
+    private void OnCoinsAdd(int value)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetResource && mission.missionInfo.ValueType == ValueType.Coins)
+            { 
+                mission.value += value;
+                if (mission.value >= mission.missionInfo.NeedGetValue)
+                    mission.isFinish = true;
+
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+
+    private void OnBoardsAdd(int value)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetResource && mission.missionInfo.ValueType == ValueType.Boards)
+            {
+                mission.value += value;
+                if (mission.value >= mission.missionInfo.NeedGetValue)
+                    mission.isFinish = true;
+
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+
+    private void OnBricksAdd(int value)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetResource && mission.missionInfo.ValueType == ValueType.Bricks)
+            {
+                mission.value += value;
+                if (mission.value >= mission.missionInfo.NeedGetValue)
+                    mission.isFinish = true;
+
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+
+            }
+        }
+    }
+
+    private void OnNailsAdd(int value)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetResource && mission.missionInfo.ValueType == ValueType.Nails)
+            {
+                mission.value += value;
+                if (mission.value >= mission.missionInfo.NeedGetValue)
+                    mission.isFinish = true;
+
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+
+    private void OnEnergyAdd(int value)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetResource && mission.missionInfo.ValueType == ValueType.Energy)
+            {
+                mission.value += value;
+                if (mission.value >= mission.missionInfo.NeedGetValue)
+                    mission.isFinish = true;
+
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+
+    private void OnAdvancementAdd(int value)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetResource && mission.missionInfo.ValueType == ValueType.Advancement)
+            {
+                mission.value += value;
+                if (mission.value >= mission.missionInfo.NeedGetValue)
+                    mission.isFinish = true;
+
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+
+    private void OnCosinessAdd(int value)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetResource && mission.missionInfo.ValueType == ValueType.Cosiness)
+            {
+                mission.value += value;
+                if (mission.value >= mission.missionInfo.NeedGetValue)
+                    mission.isFinish = true;
+
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+
+    private void OnHealthAdd(int value)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetResource && mission.missionInfo.ValueType == ValueType.Health)
+            {
+                mission.value += value;
+                if (mission.value >= mission.missionInfo.NeedGetValue)
+                    mission.isFinish = true;
+
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+
+    private void OnJoyAdd(int value)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetResource && mission.missionInfo.ValueType == ValueType.Joy)
+            {
+                mission.value += value;
+                if (mission.value >= mission.missionInfo.NeedGetValue)
+                    mission.isFinish = true;
+
+                ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+    #endregion
 }

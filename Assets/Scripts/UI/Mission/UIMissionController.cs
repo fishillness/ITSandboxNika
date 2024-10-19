@@ -66,7 +66,7 @@ public class UIMissionController : MonoBehaviour,
     private void MissionAdd(Mission mission)
     {
         UIMissionInfo uiMissionInfo = Instantiate(missionPrefab, missionGroup);
-        uiMissionInfo.SetProperties(mission.missionInfo.Id, mission.missionInfo.Text, mission.missionInfo.Value, mission.value, mission.isFinish, this);
+        uiMissionInfo.SetProperties(mission.missionInfo.Id, mission.missionInfo.Text, mission.missionInfo.NeedGetValue, mission.value, mission.isFinish, this);
 
         missionInfos.Add(uiMissionInfo);
     }
@@ -77,15 +77,16 @@ public class UIMissionController : MonoBehaviour,
         {
             if (missionInfo.Id == mission.missionInfo.Id)
             {
-                missionInfo.UpdateTexts(mission.missionInfo.Value, mission.value, mission.isFinish);
+                missionInfo.UpdateTexts(mission.missionInfo.NeedGetValue, mission.value, mission.isFinish);
 
                 return;
             }
         }
     }
 
-    public void OnMissionFinishButtonClick(int id)
+    public void OnMissionFinishButtonClick(int id, GameObject uiMissionInfo)
     {
         missionController.OnMissionFinishClick(id);
+        Destroy(uiMissionInfo);
     }
 }

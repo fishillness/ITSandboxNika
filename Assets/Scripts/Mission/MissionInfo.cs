@@ -20,7 +20,7 @@ public class MissionInfo : ScriptableObject
     public MissionType Type => type;
     public string Text => text;
     public ValueType ValueType => valueType;
-    public int Value => value;
+    public int NeedGetValue => value;
     public bool AnyBuilding => anyBuilding;
     public BuildingInfo BuildingInfo => buildingInfo;
 

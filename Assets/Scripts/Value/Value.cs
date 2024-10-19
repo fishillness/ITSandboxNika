@@ -5,6 +5,8 @@ public class Value : MonoBehaviour
 {
     [HideInInspector]
     public UnityEvent<int> OnValueChange;
+    [HideInInspector]
+    public UnityEvent<int> OnValueAdd;
     public int CurrentValue => currentValue;
     public int MaxValue => m_MaxValue;
         
@@ -19,6 +21,7 @@ public class Value : MonoBehaviour
         if (currentValue >= m_MaxValue)
             currentValue = m_MaxValue;
 
+        OnValueAdd?.Invoke(value);
         OnValueChange?.Invoke(currentValue);
     }
 
