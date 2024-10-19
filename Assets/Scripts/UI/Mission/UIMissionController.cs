@@ -66,7 +66,7 @@ public class UIMissionController : MonoBehaviour,
     private void MissionAdd(Mission mission)
     {
         UIMissionInfo uiMissionInfo = Instantiate(missionPrefab, missionGroup);
-        uiMissionInfo.SetProperties(mission.missionInfo.Id, mission.missionInfo.Text, mission.value, mission.missionInfo.Value, mission.isFinish, this);
+        uiMissionInfo.SetProperties(mission.missionInfo.Id, mission.missionInfo.Text, mission.missionInfo.Value, mission.value, mission.isFinish, this);
 
         missionInfos.Add(uiMissionInfo);
     }

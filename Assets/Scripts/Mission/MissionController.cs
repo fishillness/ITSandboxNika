@@ -136,6 +136,7 @@ public class MissionController : MonoBehaviour,
             {
                 currentMissionData.Add(data);
                 Mission mission = new Mission(missionList.GetMissionInfoById(data.id), data.value, data.isFinish);
+                currentMissions.Add(mission);
             }
         }
         else
