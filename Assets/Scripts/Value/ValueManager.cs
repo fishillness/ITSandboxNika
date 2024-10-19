@@ -34,6 +34,8 @@ public class ValueManager : MonoBehaviour
     public int Health => m_Health.CurrentValue;
     public int Joy => m_Joy.CurrentValue;
 
+    public Resource Energy => m_Energy;
+
     [SerializeField] private Resource m_Coins;
     [SerializeField] private Resource m_Boards;
     [SerializeField] private Resource m_Bricks;

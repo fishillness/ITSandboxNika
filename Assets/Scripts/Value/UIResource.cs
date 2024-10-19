@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -22,19 +21,23 @@ public class UIResource : MonoBehaviour,
     private void Start()
     {
         if (m_ResourceManager == null)
-        GlobalGameDependenciesContainer.Instance.Rebind(this);
+            GlobalGameDependenciesContainer.Instance.Rebind(this);
     }
 
     private void OnDestroy()
     {
         if (m_ResourceManager != null)
-        m_ResourceManager.GetEventOnValueChangeByType(m_ValueType).RemoveListener(UpdateUIValues);
+        {
+            m_ResourceManager.GetEventOnValueChangeByType(m_ValueType).RemoveListener(UpdateUIValues);
+            m_ResourceManager.Energy.OnTimeTextUpdated.RemoveListener(UpdateUITimes);
+        }
     }
 
     private void Subscribe()
     {
         m_ResourceManager.GetEventOnValueChangeByType(m_ValueType).AddListener(UpdateUIValues);
         UpdateUIValues(m_ResourceManager.GetValueByType(m_ValueType));
+        m_ResourceManager.Energy.OnTimeTextUpdated.AddListener(UpdateUITimes);
     }
 
     public void UpdateUIValues(int value)

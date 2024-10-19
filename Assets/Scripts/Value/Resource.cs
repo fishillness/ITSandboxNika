@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Resource : Value
 {
+    [HideInInspector]
+    public UnityEvent<string> OnTimeTextUpdated;
+
     [SerializeField] private int m_StartValue;
     //[SerializeField] private UIResource m_UIResource;    
 
@@ -35,7 +39,8 @@ public class Resource : Value
 
     public void UpdateTime(string time)
     {
-        m_UIResource.UpdateUITimes(time);
+        //m_UIResource.UpdateUITimes(time);
+        OnTimeTextUpdated?.Invoke(time);
     }
 
     public override int SetMaxValueResource()
