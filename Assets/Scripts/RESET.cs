@@ -9,5 +9,6 @@ public class RESET : MonoBehaviour
         FileHandler.Reset("Level");
         FileHandler.Reset("EnergyTime12");
         FileHandler.Reset("CurrentMissions");
+        FileHandler.Reset("Plot");
     }
 }

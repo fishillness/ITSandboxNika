@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using static PlacedBuildings;
 
 public class MissionController : MonoBehaviour, 
     IDependency<ValueManager>, IDependency<Match3LevelManager>
@@ -11,6 +10,8 @@ public class MissionController : MonoBehaviour,
     public UnityEvent<Mission> OnMissionAdd;
     [HideInInspector]
     public UnityEvent<Mission> OnMissionUpdate;
+    [HideInInspector]
+    public UnityEvent OnMissionEnd;
 
     public const string Filename = "CurrentMissions";
 
@@ -51,10 +52,13 @@ public class MissionController : MonoBehaviour,
 
     public List<Mission> GetAllCurrentMissions => currentMissions;
 
-    private void Start()
+    private void Awake()
     {
         LoadData();
+    }
 
+    private void Start()
+    {
         levelManager.OnLevelUp.AddListener(OnLevelUp);
 
         valueManager.GetEventOnValueAddByType(ValueType.Coins).AddListener(OnCoinsAdd);
@@ -145,6 +149,7 @@ public class MissionController : MonoBehaviour,
         }
 
         Saver<List<MissionData>>.Save(Filename, currentMissionData);
+        OnMissionEnd?.Invoke();
     }
 
     private void LoadData()

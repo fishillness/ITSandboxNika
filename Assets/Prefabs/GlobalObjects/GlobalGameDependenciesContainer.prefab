@@ -50,10 +50,13 @@ MonoBehaviour:
   OnMissionUpdate:
     m_PersistentCalls:
       m_Calls: []
+  OnMissionEnd:
+    m_PersistentCalls:
+      m_Calls: []
   missionList: {fileID: 11400000, guid: 14b498dba1c7b3c48a5d248c7568a762, type: 2}
-  mission1: {fileID: 11400000, guid: 98ad3aefc5cecfa42860aee0311d2ad0, type: 2}
+  mission1: {fileID: 11400000, guid: ef7fd63893476f84cbc936580365a9de, type: 2}
   add1: 0
-  mission2: {fileID: 11400000, guid: bf23531352a7cc3429d3797a418682a6, type: 2}
+  mission2: {fileID: 11400000, guid: 6c19eca186d16164c9b579facd6f423f, type: 2}
   add2: 0
 --- !u!1 &3325556875757251599
 GameObject:
@@ -90,6 +93,7 @@ Transform:
   - {fileID: 6477704104568017625}
   - {fileID: 93331594199650561}
   - {fileID: 5261466067325566860}
+  - {fileID: 366105661977450872}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1699417618827125691
@@ -107,6 +111,52 @@ MonoBehaviour:
   levelManager: {fileID: 1046529626138558152}
   valueManager: {fileID: 6504860258764647850}
   inputController: {fileID: 4252103863065722292}
+  missionController: {fileID: 8537981163577477813}
+--- !u!1 &5406196150790572755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 366105661977450872}
+  - component: {fileID: 1315674062068372575}
+  m_Layer: 0
+  m_Name: PlotController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &366105661977450872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406196150790572755}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4073865124348802788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1315674062068372575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406196150790572755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000ba3ba33c284843b2f351b0f4ab8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plotList: {fileID: 11400000, guid: a7d41cb4559dc8248a65d5ed689263d5, type: 2}
   missionController: {fileID: 8537981163577477813}
 --- !u!1 &7843271125554256370
 GameObject:
