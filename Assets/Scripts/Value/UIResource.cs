@@ -42,11 +42,13 @@ public class UIResource : MonoBehaviour,
 
     public void UpdateUIValues(int value)
     {
-        m_UIResourceText.text = value.ToString();
+        if (m_UIResourceText != null)
+            m_UIResourceText.text = value.ToString();
     }
 
     public void UpdateUITimes(string time)
     {
-        m_UIEnergyTime.text = time;
+        if (m_UIEnergyTime != null)
+            m_UIEnergyTime.text = time;
     }
 }
