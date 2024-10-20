@@ -403,7 +403,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 6620535503621396048}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -723,6 +723,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8012344123212321091}
     m_Modifications:
+    - target: {fileID: 2458668027794057846, guid: fa7c5a82179711e448df04c44022922d, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2812565989535146202, guid: fa7c5a82179711e448df04c44022922d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
