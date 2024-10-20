@@ -21,7 +21,9 @@ public class GUICityPanel : MonoBehaviour,
     private void Start()
     {
         match3Button.onClick.AddListener(OpenMatch3);
-        mainMenuButton.onClick.AddListener(OpenMainMenu);
+
+        if (mainMenuButton != null)
+            mainMenuButton.onClick.AddListener(OpenMainMenu);
         
         SetMatch3ButtonParameter();
     }
@@ -29,7 +31,9 @@ public class GUICityPanel : MonoBehaviour,
     private void OnDestroy()
     {
         match3Button.onClick.RemoveListener(OpenMatch3);
-        mainMenuButton.onClick.RemoveListener(OpenMainMenu);
+
+        if (mainMenuButton != null)
+            mainMenuButton.onClick.RemoveListener(OpenMainMenu);
     }
 
     private void OpenMatch3()
