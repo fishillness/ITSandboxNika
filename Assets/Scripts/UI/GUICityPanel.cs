@@ -24,8 +24,10 @@ public class GUICityPanel : MonoBehaviour,
 
         if (mainMenuButton != null)
             mainMenuButton.onClick.AddListener(OpenMainMenu);
-        
-        SetMatch3ButtonParameter();
+
+        valueManager.GetEventOnValueChangeByType(ValueType.Energy).AddListener(SetMatch3ButtonParameter);
+
+        SetMatch3ButtonParameter(0);
     }
 
     private void OnDestroy()
@@ -47,7 +49,7 @@ public class GUICityPanel : MonoBehaviour,
         SceneController.LoadMainMenu();
     }
 
-    private void SetMatch3ButtonParameter()
+    private void SetMatch3ButtonParameter(int value)
     {
         match3Button.interactable = levelManager.HaveUnCompletedLevels;
 
