@@ -1805,6 +1805,8 @@ MonoBehaviour:
     prefab: {fileID: 8907215690913408729, guid: 6df9f76655be35f44a4433f723d39959, type: 3}
   - type: 4
     prefab: {fileID: 5484179368176546677, guid: 6782be4fecddbf747881f65aa02c4b9e, type: 3}
+  - type: 5
+    prefab: {fileID: 5634014191736171235, guid: 9330891af2ef16346befacca008d8fe3, type: 3}
   boundsElement:
   - {fileID: 2236239698640307289}
   - {fileID: 4847450035804013670}

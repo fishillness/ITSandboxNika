@@ -63,6 +63,8 @@ MonoBehaviour:
     prefab: {fileID: 8907215690913408729, guid: 6df9f76655be35f44a4433f723d39959, type: 3}
   - type: 4
     prefab: {fileID: 5484179368176546677, guid: 6782be4fecddbf747881f65aa02c4b9e, type: 3}
+  - type: 5
+    prefab: {fileID: 5634014191736171235, guid: 9330891af2ef16346befacca008d8fe3, type: 3}
   boundsElement:
   - {fileID: 2678222979499782338}
   - {fileID: 133969106832373884}
@@ -1232,16 +1234,11 @@ MonoBehaviour:
       m_Calls: []
   moves: 25
   taskInfos:
-  - taskType: 1
-    sprite: {fileID: 21300000, guid: 3673aada02e653e47bb0046f6bbb74a6, type: 3}
-    count: 20
-    type: 1
+  - taskType: 0
+    sprite: {fileID: 21300000, guid: dddcfa9141bef0e4499c634fc4056a49, type: 3}
+    count: 10
+    type: 5
     colorType: 1
-  - taskType: 1
-    sprite: {fileID: 21300000, guid: 7804e119f46713945b82ddbbe36701d7, type: 3}
-    count: 20
-    type: 1
-    colorType: 5
 --- !u!1 &2205582204362253784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1555,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966f670451906c44ebad0d60d534a1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredPieces: []
+  requiredPieces:
+  - type: 5
+    position: {x: 3, y: 3}
+  - type: 5
+    position: {x: 3, y: 4}
+  - type: 5
+    position: {x: 6, y: 3}
+  - type: 5
+    position: {x: 6, y: 4}
+  - type: 5
+    position: {x: 3, y: 6}
+  - type: 5
+    position: {x: 3, y: 7}
+  - type: 5
+    position: {x: 4, y: 7}
+  - type: 5
+    position: {x: 5, y: 7}
+  - type: 5
+    position: {x: 6, y: 7}
+  - type: 5
+    position: {x: 6, y: 6}
 --- !u!1 &5752264439064327663
 GameObject:
   m_ObjectHideFlags: 0
