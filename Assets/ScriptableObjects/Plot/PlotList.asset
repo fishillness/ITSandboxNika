@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: PlotList
   m_EditorClassIdentifier: 
   plotActions:
-  - {fileID: 11400000, guid: 2bb3f5f2ee60b04458af854ddceefdd7, type: 2}
-  - {fileID: 11400000, guid: c2f3474ef1f8db24d960eb2fba7616d0, type: 2}
-  - {fileID: 11400000, guid: 95f001174f15fc24c8e4ae55909316cd, type: 2}
-  - {fileID: 11400000, guid: d5234d5d2b56c36458c442323507bb19, type: 2}
+  - {fileID: 11400000, guid: f614f8e72ff0e494597afbbdbf115712, type: 2}
+  - {fileID: 11400000, guid: fcf280ec1dc67f341ad336ac1f6d201b, type: 2}
+  - {fileID: 11400000, guid: 5a252fbc4f0a45e41ae687e99a84173b, type: 2}
+  - {fileID: 11400000, guid: 7923ac0f5f09c1a43808ef3ffd487085, type: 2}
+  - {fileID: 11400000, guid: 056bd34ac97920649928039dd948786d, type: 2}
+  - {fileID: 11400000, guid: 68f5bfef68868b041a50ab1c0548f32b, type: 2}
+  - {fileID: 11400000, guid: 150b626e54b29ee43b4b9c3b72186f44, type: 2}
+  - {fileID: 11400000, guid: 150b626e54b29ee43b4b9c3b72186f44, type: 2}
+  - {fileID: 11400000, guid: 7486420514d299143a15247cf0d355f3, type: 2}

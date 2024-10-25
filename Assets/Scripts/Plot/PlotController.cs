@@ -6,9 +6,13 @@ public class PlotController : MonoBehaviour
     public const string Filename = "Plot";
 
     [SerializeField] private PlotList plotList;
+
     [SerializeField] private MissionController missionController;
+    [SerializeField] private DialogController dialogController;
+    [SerializeField] private InputController inputController;
 
     private int currentAction;
+    private bool isDialogActive;
     private bool haveUncomplitedPlotAction => currentAction < plotList.PlotActions.Length - 1;
 
     [Serializable]
@@ -19,13 +23,17 @@ public class PlotController : MonoBehaviour
 
     private void Start()
     {
-        LoadPlotData();
         missionController.OnMissionEnd.AddListener(GoToNextAction);
+        inputController.OnInputControllerModeChanges += OnInputControllerModeChanges;
+        dialogController.OnDialogEnd += OnDialogEnd;
+        LoadPlotData();
     }
 
     private void OnDestroy()
     {
         missionController.OnMissionEnd.RemoveListener(GoToNextAction);
+        inputController.OnInputControllerModeChanges -= OnInputControllerModeChanges;
+        dialogController.OnDialogEnd -= OnDialogEnd;
     }
 
     private void GoToNextAction()
@@ -76,6 +84,36 @@ public class PlotController : MonoBehaviour
         else
         {
             currentAction = data.currentAction;
+
+            ActivateDialog();
         }
     }
+
+    #region Dialog activation
+
+    private void OnInputControllerModeChanges(InputControllerModes controllerModes)
+    {
+        ActivateDialog();
+    }
+
+    private void ActivateDialog()
+    {
+        if (plotList.PlotActions[currentAction].ActionType != PlotActionType.Dialog) return;
+        if (SceneController.GetActiveScene() != SceneController.CitySceneTitle) return;
+        if (inputController.InputControllerMode != InputControllerModes.CityMode) return;
+        if (isDialogActive) return;
+
+        dialogController.StartDialogue(plotList.PlotActions[currentAction].Dialog);
+        isDialogActive = true;
+    }
+
+    private void OnDialogEnd()
+    {
+        if (plotList.PlotActions[currentAction].ActionType != PlotActionType.Dialog) return;
+
+        isDialogActive = false;
+        GoToNextAction();
+    }
+
+    #endregion
 }

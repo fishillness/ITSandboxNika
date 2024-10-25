@@ -22,7 +22,7 @@ public class UIMissionController : MonoBehaviour,
 
     private void Start()
     {
-        ClosePanel();
+        missionPanel.SetActive(false);
         CreateAllCurrentMission();
 
         openButton.onClick.AddListener(OpenPanel);

@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogController : MonoBehaviour,
     IDependency<InputController>
-{    
+{
+    public event UnityAction OnDialogEnd;
+
     [SerializeField] private DialogCharacter[] m_DialogCharacters;
     [SerializeField] private DialogUI m_DialogUI;
 
@@ -43,6 +46,7 @@ public class DialogController : MonoBehaviour,
     {
         m_InputController.SetInputControllerMode(InputControllerModes.CityMode);
         m_DialogUI.EndDialogue();
+        OnDialogEnd?.Invoke();
     }
 
     private void NextSentence()

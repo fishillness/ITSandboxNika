@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c1a1a120ec8ba84c91b53a3de67b257, type: 3}
-  m_Name: 1
+  m_Name: ActMiss_002
   m_EditorClassIdentifier: 
   actionType: 1
   dialog: {fileID: 0}
-  mission: {fileID: 11400000, guid: ef7fd63893476f84cbc936580365a9de, type: 2}
+  mission: {fileID: 11400000, guid: 98ad3aefc5cecfa42860aee0311d2ad0, type: 2}
