@@ -47,7 +47,7 @@ public class UIMissionController : MonoBehaviour,
         missionPanel.SetActive(true);
     }
 
-    private void ClosePanel()
+    public void ClosePanel()
     {
         inputController.SetInputControllerMode(InputControllerModes.CityMode);
         missionPanel.SetActive(false);
