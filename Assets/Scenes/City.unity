@@ -9536,6 +9536,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376352169}
   m_CullTransparentMesh: 1
+--- !u!114 &377752987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4323497982549701276, guid: c9f3edfb2eff8304184207ae6bb2f341, type: 3}
+  m_PrefabInstance: {fileID: 3994473859752805475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0462184263bb3a4aa3d602ed07800ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &377757600
 GameObject:
   m_ObjectHideFlags: 0
@@ -49987,6 +49998,7 @@ MonoBehaviour:
   missionPrefab: {fileID: 1106556215608609243, guid: 27a7f9c957d702f48bede824c078e542, type: 3}
   openButton: {fileID: 515807113}
   closeButton: {fileID: 1352294354}
+  cityPanels: {fileID: 5517514902943985257}
 --- !u!1 &2071537215
 GameObject:
   m_ObjectHideFlags: 0
@@ -52538,6 +52550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2802714764924990111}
   - component: {fileID: 5517514902943985256}
+  - component: {fileID: 5517514902943985257}
   m_Layer: 5
   m_Name: GUI
   m_TagString: Untagged
@@ -52572,6 +52585,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5162301592151525036}
   m_CullTransparentMesh: 1
+--- !u!114 &5517514902943985257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5162301592151525036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca528107dbbb4e4c94970d14c7d03a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notepadController: {fileID: 828066526}
+  missionController: {fileID: 2068763692}
+  settingController: {fileID: 377752987}
+  match3LevelInfoPanel: {fileID: 1000806367}
+  bottomPanelButtons: {fileID: 5983138845439835866}
 --- !u!114 &5648633312576286237
 MonoBehaviour:
   m_ObjectHideFlags: 0

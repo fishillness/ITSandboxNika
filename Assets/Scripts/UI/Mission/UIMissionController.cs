@@ -10,10 +10,13 @@ public class UIMissionController : MonoBehaviour,
     [SerializeField] private UIMissionInfo missionPrefab;
     [SerializeField] private Button openButton;
     [SerializeField] private Button closeButton;
+    [SerializeField] private UICityPanels cityPanels;
 
     private List<UIMissionInfo> missionInfos = new List<UIMissionInfo>();
     private InputController inputController;
     private MissionController missionController;
+
+    public UICityPanels CityPanels => cityPanels;
 
     #region Constructs
     public void Construct(InputController inputController) => this.inputController = inputController;
@@ -41,7 +44,7 @@ public class UIMissionController : MonoBehaviour,
         missionController.OnMissionUpdate.RemoveListener(MissionUpdate);
     }
 
-    private void OpenPanel()
+    public void OpenPanel()
     {
         inputController.SetInputControllerMode(InputControllerModes.NotepadMode);
         missionPanel.SetActive(true);
@@ -66,7 +69,7 @@ public class UIMissionController : MonoBehaviour,
     private void MissionAdd(Mission mission)
     {
         UIMissionInfo uiMissionInfo = Instantiate(missionPrefab, missionGroup);
-        uiMissionInfo.SetProperties(mission.missionInfo.Id, mission.missionInfo.Text, mission.missionInfo.NeedGetValue, mission.value, mission.isFinish, this);
+        uiMissionInfo.SetProperties(mission.missionInfo.Id, mission.missionInfo.Type, mission.missionInfo.Text, mission.missionInfo.NeedGetValue, mission.value, mission.isFinish, this);
 
         missionInfos.Add(uiMissionInfo);
     }

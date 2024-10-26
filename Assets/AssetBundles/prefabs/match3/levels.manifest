@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 587501622
+CRC: 3944429718
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4ccfb3abac43991c7a70cfdfea328798
+    Hash: 45430fcebd535b0376290d69eb7f3fc2
   TypeTreeHash:
     serializedVersion: 2
-    Hash: af8d34990f363c379fa50d4979f8894f
+    Hash: 4cccc226cf4e82400a2162d92517a520
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 4ccfb3abac43991c7a70cfdfea328798
+    Hash: 45430fcebd535b0376290d69eb7f3fc2
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -22,14 +22,24 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 61
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 44a9bcdaf617a794ca3372ccf9f431a2, type: 3}
 - Class: 114
@@ -41,9 +51,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 76ce17bd102e25b4983a1eca2d93ac17, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 29af03c21196f30408cee57c6b9e392a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a071991e9451ba94c9c061fcc1136b7a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aa15fd1e50e117f4da161597b1456988, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 31fd524d5529bfa4ba5821376d1c9c8a, type: 3}
 - Class: 114
@@ -53,11 +65,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 81ea447494cd71543adb736443199f42, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1e0cfe15e1083334682183e45f3e2d44, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e25270dcaee70a49bac6652c8e798ab, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 043f4e5e5e6178c49b3fd68023683272, type: 3}
 - Class: 114
@@ -67,26 +79,32 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: e83826d28b5a85c47beb28acd090d636, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: c0462184263bb3a4aa3d602ed07800ad, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 98f4aeaa195cfaa4bbd47dd5ddcc157e, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 6c658a36d5517db4a983ef0e8ffc389e, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 453213136cba1354e859118f1442b971, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 62705db3656b8df46a62cd0df80fb953, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 7c6c4f19814bcfa43af5198aec13f47a, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: ed16d8e058f8004488bee2bae94eb555, type: 3}
+  Script: {fileID: 11500000, guid: 6e6d9541ba6c3a44b9931afbb3c854ee, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 4e25270dcaee70a49bac6652c8e798ab, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: c0462184263bb3a4aa3d602ed07800ad, type: 3}
+  Script: {fileID: 11500000, guid: 9e545c113531d4d4f839d7753af3ce85, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 48ead449ba8932a428c53a2156adcf13, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 6e6d9541ba6c3a44b9931afbb3c854ee, type: 3}
+  Script: {fileID: 11500000, guid: ed16d8e058f8004488bee2bae94eb555, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 222d36acc9a7bf043867c2b03b78ba33, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 210
   Script: {instanceID: 0}
 - Class: 212
   Script: {instanceID: 0}
@@ -144,6 +162,7 @@ SerializeReferenceClassIdentifiers:
 Assets:
 - Assets/Prefabs/Match3/Levels/Levels/Lvl_009.prefab
 - Assets/Prefabs/Match3/Levels/Levels/Lvl_007.prefab
+- Assets/Prefabs/Match3/Levels/Levels/test.prefab
 - Assets/Prefabs/Match3/Levels/Levels/Lvl_002.prefab
 - Assets/Prefabs/Match3/Levels/Levels/Lvl_006.prefab
 - Assets/Prefabs/Match3/Levels/Levels/Lvl_003.prefab
@@ -154,8 +173,10 @@ Assets:
 - Assets/Prefabs/Match3/Levels/TEST_Level.prefab
 - Assets/Prefabs/Match3/Levels/Levels/Lvl_010.prefab
 Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/animation/match3/obstacle
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/prefabs/match3/pieces
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/prefabs/match3/ui
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/resourceshopinfo
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/gui
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/booster
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/grid
@@ -166,5 +187,6 @@ Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/shop
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/ui
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/notebook
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/textmeshpro/fonts
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/textmeshpro/recources
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/tilemap/tiles

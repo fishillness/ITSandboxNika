@@ -45,13 +45,13 @@ public class UIMatch3LevelInfoPanel : MonoBehaviour,
         valueManager.GetEventOnValueChangeByType(ValueType.Energy).RemoveListener(UpdateEnergy);
     }
 
-    private void OpenPanel()
+    public void OpenPanel()
     {
         inputController.SetInputControllerMode(InputControllerModes.NotepadMode);
         panel.SetActive(true);
     }
 
-    private void ClosePanel()
+    public void ClosePanel()
     {
         inputController.SetInputControllerMode(InputControllerModes.CityMode);
         panel.SetActive(false);

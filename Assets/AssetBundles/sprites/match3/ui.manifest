@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 2643914811
+CRC: 3006761498
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 499fa06b6d4b071197557c42adc880c8
+    Hash: 21d41bc4c7dadaf29d515d2c6f5ce31d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 499fa06b6d4b071197557c42adc880c8
+    Hash: 21d41bc4c7dadaf29d515d2c6f5ce31d
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -27,6 +27,7 @@ Assets:
 - Assets/Sprites/Match 3/UI/Union.png
 - Assets/Sprites/Match 3/UI/btn.png
 - "Assets/Sprites/Match 3/UI/\u0434\u043E\u0433.png"
+- Assets/Sprites/Match 3/UI/Rectangle 7498.png
 - Assets/Sprites/Match 3/UI/Done_icon.png
 - Assets/Sprites/Match 3/UI/Rectangle 7305.png
 - "Assets/Sprites/Match 3/UI/\u0434\u043E\u0433 (1).png"

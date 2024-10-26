@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 3673866907
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6100ff3ade67e25a4c50f5bdefd74aba
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 6100ff3ade67e25a4c50f5bdefd74aba
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sprites/ShelterPhoto/image 890.png
+- Assets/Sprites/ShelterPhoto/image 888.png
+- Assets/Sprites/ShelterPhoto/image 891 (1).png
+- Assets/Sprites/ShelterPhoto/image 889.png
+Dependencies: []

@@ -10,6 +10,7 @@ public class UIMissionInfo : MonoBehaviour
     [SerializeField] private Button missionButton;
 
     private int id;
+    private MissionType missionType;
     private string inProgress = "Перейти";
     private string finish = "Выполнить";
     private UIMissionController uiMissionController;
@@ -26,9 +27,10 @@ public class UIMissionInfo : MonoBehaviour
         missionButton.onClick.RemoveListener(OnButtonClick);
     }
 
-    public void SetProperties(int id, string missionText, int maxValue, int currentValue, bool isFinish, UIMissionController uiMissionController)
+    public void SetProperties(int id, MissionType missionType, string missionText, int maxValue, int currentValue, bool isFinish, UIMissionController uiMissionController)
     {
         this.id = id;
+        this.missionType = missionType;
         this.missionText.text = missionText;
         this.progressText.text = $"{currentValue}/{maxValue}";
         this.uiMissionController = uiMissionController;
@@ -57,7 +59,26 @@ public class UIMissionInfo : MonoBehaviour
         }
         else
         {
-            Debug.Log("Перейти не реализовано");
+            GoToNeedPanel();
+        }
+    }
+
+    private void GoToNeedPanel()
+    {
+        switch (missionType)
+        {
+            case MissionType.CompleteMatch3:
+                uiMissionController.CityPanels.Match3LevelInfoPanel.OpenPanel();
+                uiMissionController.ClosePanel();
+                break;
+            case MissionType.GetResource:
+                uiMissionController.CityPanels.Match3LevelInfoPanel.OpenPanel();
+                uiMissionController.ClosePanel();
+                break;
+            case MissionType.GetBuilding:
+                uiMissionController.CityPanels.NotepadController.OpenNotepad();
+                uiMissionController.ClosePanel();
+                break;
         }
     }
 }
