@@ -7,14 +7,14 @@ public class Music : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource.clip = clips[0];
-        audioSource.Play();
+       // audioSource.clip = clips[0];
+       // audioSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckEnd();
+        //CheckEnd();
     }
 
     public void CheckEnd()

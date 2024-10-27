@@ -9,6 +9,7 @@ public class CameraMovement : MonoBehaviour,
     [SerializeField] private float zoomSpeed, minZoom, maxZoom, smoothTime;
     [SerializeField] private float startZoom;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private bool invert;
 
     private float spriteMinX, spriteMaxX, spriteMinY, spriteMaxY;
 
@@ -98,8 +99,16 @@ public class CameraMovement : MonoBehaviour,
 
     private void ScrollTouch(float increment)
     {
-        zoomTarget = Mathf.Clamp(zoomTarget - increment, minZoom, maxZoom);
-        cam.transform.position = ClampCamera(cam.transform.position);
+        if (invert == true)
+        {
+            zoomTarget = Mathf.Clamp(zoomTarget + increment, minZoom, maxZoom);
+            cam.transform.position = ClampCamera(cam.transform.position);
+        }
+        else 
+        {
+            zoomTarget = Mathf.Clamp(zoomTarget - increment, minZoom, maxZoom);
+            cam.transform.position = ClampCamera(cam.transform.position);
+        }
     }
 
     private Vector3 ClampCamera(Vector3 tartgetPosition)
