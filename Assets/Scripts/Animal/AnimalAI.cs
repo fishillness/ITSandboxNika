@@ -8,6 +8,8 @@ public class AnimalAI : MonoBehaviour
 {
     public event UnityAction TheGoalHasBeenAchievedEvent;
 
+    public float AgentVelocityMagnitude => m_Agent.velocity.magnitude;
+
     [SerializeField] private float m_MinWaitingTime;
     [SerializeField] private float m_MaxWaitingTime;
     [SerializeField] private int m_WalkingRadius;
@@ -105,22 +107,27 @@ public class AnimalAI : MonoBehaviour
 
     private void MoveTowardsTheGoal(Vector3 position)
     {
+        Debug.Log("MovingTowardsTheGoal");
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
             coroutine = null;
         }
-        
+
+        Debug.Log("coroutine == nulll");
         SetNewPath(position);
-        behaviorType = BehaviorYype.MovingTowardsTheGoal;        
+        behaviorType = BehaviorYype.MovingTowardsTheGoal;
     }
 
     public void Walk()
     {
+        Debug.Log("Walk");
         if (coroutine != null)
         {
             return;
         }
+
+        Debug.Log("coroutine == nulll");
         behaviorType = BehaviorYype.Walk;
         SetNewPath(walkArea.GetRandomPoint());
     }

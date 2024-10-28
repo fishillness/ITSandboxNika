@@ -110,7 +110,7 @@ public class ValueManager : MonoBehaviour
 
     public UnityEvent<int> GetEventOnValueChangeByType(ValueType type)
     {
-        switch(type)
+        switch (type)
         {
             case ValueType.Coins:
                 return m_Coins.OnValueChange;
@@ -130,6 +130,32 @@ public class ValueManager : MonoBehaviour
                 return m_Health.OnValueChange;
             case ValueType.Joy:
                 return m_Joy.OnValueChange;
+        }
+
+        return null;
+    }
+    public UnityEvent<int> GetEventOnValueAddByType(ValueType type)
+    {
+        switch (type)
+        {
+            case ValueType.Coins:
+                return m_Coins.OnValueAdd;
+            case ValueType.Boards:
+                return m_Boards.OnValueAdd;
+            case ValueType.Bricks:
+                return m_Bricks.OnValueAdd;
+            case ValueType.Nails:
+                return m_Nails.OnValueAdd;
+            case ValueType.Energy:
+                return m_Energy.OnValueAdd;
+            case ValueType.Advancement:
+                return m_Advancement.OnValueAdd;
+            case ValueType.Cosiness:
+                return m_Cosiness.OnValueAdd;
+            case ValueType.Health:
+                return m_Health.OnValueAdd;
+            case ValueType.Joy:
+                return m_Joy.OnValueAdd;
         }
 
         return null;

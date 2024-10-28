@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 301274336
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 910d00c90d25089380b162dab964badd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ce08517944405b30ab6c291baaf544af
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 910d00c90d25089380b162dab964badd
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 9e545c113531d4d4f839d7753af3ce85, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/ScriptableObjects/ResourceShopInfo/Board.asset
+- Assets/ScriptableObjects/ResourceShopInfo/Energy.asset
+- Assets/ScriptableObjects/ResourceShopInfo/Coins.asset
+- Assets/ScriptableObjects/ResourceShopInfo/Brick.asset
+- Assets/ScriptableObjects/ResourceShopInfo/Nail.asset
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/resources

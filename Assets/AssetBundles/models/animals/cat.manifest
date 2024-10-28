@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 282351434
+CRC: 342407068
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c468d908a29927641803c114d44053c5
+    Hash: be0651718048d5442bb42c7647dcedb9
   TypeTreeHash:
     serializedVersion: 2
     Hash: 664c2bcabbe7fc85272579cd85e8af7c
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: c468d908a29927641803c114d44053c5
+    Hash: be0651718048d5442bb42c7647dcedb9
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,21 +38,22 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Models/Animals/Cat/Animation/Cat_animator.controller
 - Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184270_y.jpg
 - Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/Cat_Nika_2_2Fmat_body.mat
 - Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184276_y.jpg
+- Assets/Models/Animals/Cat/Animation/Cat_Lie.anim
 - Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184284_y.jpg
+- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184266_y.jpg
 - Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184282_y.jpg
 - Assets/Models/Animals/Cat/Cat_Walk_Test2Walik.fbx
 - Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184271_y.jpg
 - Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184277_y.jpg
 - Assets/Models/Animals/Cat/Cat_Wite_2mat/Cat_Wite_2mat_eyes.mat
-- Assets/Models/Animals/Cat/Animation/Cat_walk.anim
 - Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184277_y.jpg
 - Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184272_y.jpg
 - Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/Cat_Lawa_1_2mat_body.mat
 - Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184271_y.jpg
+- Assets/Models/Animals/Cat/Animation/Cat_AnimatorController.controller
 - Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184274_y.jpg
 - Assets/Models/Animals/Cat/Cat_Red3_2mat/Cat_Red3_2mat_eyes.mat
 - Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184279_y.jpg
@@ -64,13 +65,17 @@ Assets:
 - Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184269_y.jpg
 - Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184275_y.jpg
 - Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184268_y.jpg
+- Assets/Models/Animals/Cat/Cat_Lie.fbx
 - Assets/Models/Animals/Cat/Cat_Red3_2mat/Cat_Red3_2mat_body.mat
+- Assets/Models/Animals/Cat/Cat_Sit.fbx
 - Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184285_y.jpg
 - Assets/Models/Animals/Cat/Cat_Red3_2mat/photo_5771917175576184273_y.jpg
-- Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184283_y.jpg
+- Assets/Models/Animals/Cat/Animation/Walik.anim
 - Assets/Models/Animals/Cat/Cat_Wite_2mat/Cat_Wite_2mat_body.mat
 - Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/Cat_Lawa_1_2mat_eyes.mat
-- Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184266_y.jpg
+- Assets/Models/Animals/Cat/Cat_Wite_2mat/photo_5771917175576184283_y.jpg
+- Assets/Models/Animals/Cat/Animation/test.controller
+- Assets/Models/Animals/Cat/Animation/Sit.anim
 - Assets/Models/Animals/Cat/Cat_Nika_2_2Fmat/photo_5771917175576184267_y.jpg
 - Assets/Models/Animals/Cat/Cat_Lawa_1_2mat/photo_5771917175576184287_y.jpg
 Dependencies: []

@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 683610410
+CRC: 4013504680
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 25f7784ab948326ce3ac74e24d38c7e2
+    Hash: 007582054d86b8ddb2afba2949dc4899
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 25f7784ab948326ce3ac74e24d38c7e2
+    Hash: 007582054d86b8ddb2afba2949dc4899
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -34,4 +34,5 @@ Assets:
 - Assets/Sprites/Notebook/Frame 388.png
 - Assets/Sprites/Notebook/Ellipse 366.png
 - Assets/Sprites/Notebook/Rectangle 7460.png
+- Assets/Sprites/Notebook/Group 14544.png
 Dependencies: []

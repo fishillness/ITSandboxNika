@@ -50,17 +50,17 @@ MonoBehaviour:
   OnLevelResult:
     m_PersistentCalls:
       m_Calls: []
-  moves: 20
+  moves: 15
   taskInfos:
-  - taskType: 1
-    sprite: {fileID: 21300000, guid: 8aeaa7df6044ea04682a14cdf1c48a09, type: 3}
+  - taskType: 0
+    sprite: {fileID: 21300000, guid: 2333ae2b187dd2d4db19709f62172d44, type: 3}
     count: 3
     type: 4
     colorType: 0
   - taskType: 1
     sprite: {fileID: 21300000, guid: 9f346c0c0ccca9846b101c9675c58962, type: 3}
     count: 20
-    type: 4
+    type: 1
     colorType: 2
 --- !u!1 &1987677247322882880
 GameObject:
@@ -177,7 +177,7 @@ Transform:
   m_GameObject: {fileID: 2561427435582036599}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.88, y: -1.59, z: 0}
+  m_LocalPosition: {x: 2.56, y: -2.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -369,7 +369,7 @@ Transform:
   m_GameObject: {fileID: 2989295551213751716}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.84, y: 2.01, z: 0}
+  m_LocalPosition: {x: -2.36, y: 1.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -903,7 +903,7 @@ Transform:
   m_GameObject: {fileID: 5419445359672159826}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.22, y: 0, z: 0}
+  m_LocalPosition: {x: -0.31, y: -0.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -919,7 +919,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5419445359672159826}
   m_Enabled: 1
-  m_CellSize: {x: 0.45, y: 0.45, z: 0}
+  m_CellSize: {x: 0.6, y: 0.6, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -986,6 +986,8 @@ MonoBehaviour:
     prefab: {fileID: 8907215690913408729, guid: 6df9f76655be35f44a4433f723d39959, type: 3}
   - type: 4
     prefab: {fileID: 5484179368176546677, guid: 6782be4fecddbf747881f65aa02c4b9e, type: 3}
+  - type: 5
+    prefab: {fileID: 5634014191736171235, guid: 9330891af2ef16346befacca008d8fe3, type: 3}
   boundsElement:
   - {fileID: 6581590138959747276}
   - {fileID: 3674329601355124661}

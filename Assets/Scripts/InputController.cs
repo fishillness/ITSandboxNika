@@ -14,6 +14,8 @@ public class InputController : MonoBehaviour
 {  
     public event UnityAction ClickEventInConstructionMode;
     public event UnityAction ClickEventInDialogMode;
+    public event UnityAction<InputControllerModes> OnInputControllerModeChanges;
+
     public Vector3 MousePosition => mousePosition;
     public bool MouseButton => mouseButton;
     public bool MouseButtonDown => mouseButtonDown;
@@ -22,6 +24,7 @@ public class InputController : MonoBehaviour
     public Touch TouchOne => touchOne;
     public Touch TouchZero => touchZero;
     public bool IsTouchCountEquals2 => Input.touchCount == 2;
+    public InputControllerModes InputControllerMode => inputControllerMode;
     
     private InputControllerModes inputControllerMode;
     private Vector3 mousePosition;
@@ -97,5 +100,6 @@ public class InputController : MonoBehaviour
     public void SetInputControllerMode(InputControllerModes inputControllerMode)
     {
         this.inputControllerMode = inputControllerMode;
+        OnInputControllerModeChanges?.Invoke(this.inputControllerMode);
     }
 }

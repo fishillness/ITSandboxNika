@@ -1,31 +1,43 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; 
 
-public class UISettingController : MonoBehaviour
+public class UISettingController : MonoBehaviour,
+    IDependency<InputController>
 {
     [SerializeField] private GameObject settingPanel;
-    [SerializeField] private Button[] openCloseButtons;
+    [SerializeField] private Button openButton;
+    [SerializeField] private Button closeButton;
+
+    private InputController inputController;
+
+    #region Constructs
+    public void Construct(InputController inputController) => this.inputController = inputController;
+    #endregion
 
     private void Start()
     {
         settingPanel.SetActive(false);
-
-        foreach (var button in openCloseButtons)
-        {
-            button.onClick.AddListener(ChangePanelActive);
-        }
+        
+        openButton.onClick.AddListener(OpenPanel);
+        closeButton.onClick.AddListener(ClosePanel);
     }
 
     private void OnDestroy()
     {
-        foreach (var button in openCloseButtons)
-        {
-            button.onClick.RemoveListener(ChangePanelActive);
-        }
+        openButton.onClick.RemoveListener(OpenPanel);
+        closeButton.onClick.RemoveListener(ClosePanel);
     }
 
-    private void ChangePanelActive()
+
+    private void OpenPanel()
     {
-        settingPanel.SetActive(!settingPanel.activeSelf);
+        inputController.SetInputControllerMode(InputControllerModes.NotepadMode);
+        settingPanel.SetActive(true);
+    }
+
+    private void ClosePanel()
+    {
+        inputController.SetInputControllerMode(InputControllerModes.CityMode);
+        settingPanel?.SetActive(false);
     }
 }

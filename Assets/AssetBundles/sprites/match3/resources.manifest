@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1452377163
+CRC: 289243107
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 566829383d4ce6d192782097f595f7a9
+    Hash: 613b7e27b1e61f2d0043f322d07301bc
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 566829383d4ce6d192782097f595f7a9
+    Hash: 613b7e27b1e61f2d0043f322d07301bc
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -18,6 +18,7 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/Sprites/Resources/1 819.png
 - "Assets/Sprites/Resources/\u043A\u0438\u0440\u043F\u0438\u0447\u0438 1.png"
 - "Assets/Sprites/Resources/lightning_\u0448\u0441\u0449\u0442 2.png"
 - Assets/Sprites/Resources/1 844.png

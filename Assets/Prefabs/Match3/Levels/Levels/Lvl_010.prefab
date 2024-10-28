@@ -151,6 +151,8 @@ MonoBehaviour:
     prefab: {fileID: 8907215690913408729, guid: 6df9f76655be35f44a4433f723d39959, type: 3}
   - type: 4
     prefab: {fileID: 5484179368176546677, guid: 6782be4fecddbf747881f65aa02c4b9e, type: 3}
+  - type: 5
+    prefab: {fileID: 5634014191736171235, guid: 9330891af2ef16346befacca008d8fe3, type: 3}
   boundsElement:
   - {fileID: 1046165663084897541}
   - {fileID: 8881852679869655130}
@@ -987,7 +989,7 @@ Transform:
   m_GameObject: {fileID: 1722368587543327475}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.86, y: 2.08, z: 0}
+  m_LocalPosition: {x: -2.48, y: 2.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1406,7 +1408,7 @@ Transform:
   m_GameObject: {fileID: 2701626191060606761}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.85, y: -2.51, z: 0}
+  m_LocalPosition: {x: 2.44, y: -3.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1978,7 +1980,7 @@ Transform:
   m_GameObject: {fileID: 7629202270721206383}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.23, y: 0, z: 0}
+  m_LocalPosition: {x: -0.32, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1994,7 +1996,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7629202270721206383}
   m_Enabled: 1
-  m_CellSize: {x: 0.45, y: 0.45, z: 0}
+  m_CellSize: {x: 0.6, y: 0.6, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0

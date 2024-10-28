@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 322921245
+CRC: 577445134
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 786d6385cf90aabaf12b28e0a9bb9315
+    Hash: 383e4203c14d3e751520c9213b84214e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 664c2bcabbe7fc85272579cd85e8af7c
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 786d6385cf90aabaf12b28e0a9bb9315
+    Hash: 383e4203c14d3e751520c9213b84214e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,7 +38,10 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/Models/Animals/Dog_BigEars/DOG1_Sit.fbx
+- Assets/Models/Animals/Dog_BigEars/Dog1_Lie.anim
 - Assets/Models/Animals/Dog_BigEars/Dog1_2mat/Dog1_2mat_body.mat
+- Assets/Models/Animals/Dog_BigEars/Dog_BigEars_AnimatorController.controller
 - Assets/Models/Animals/Dog_BigEars/Dog_1_2mat_Nika/photo_5771917175576184243_y.jpg
 - Assets/Models/Animals/Dog_BigEars/Dog1_2mat/photo_5771917175576184249_y.jpg
 - Assets/Models/Animals/Dog_BigEars/Dog1_2mat/photo_5771917175576184250_y.jpg
@@ -55,6 +58,9 @@ Assets:
 - Assets/Models/Animals/Dog_BigEars/Dog1_2mat/photo_5771917175576184248_y.jpg
 - Assets/Models/Animals/Dog_BigEars/Dog1_2mat/photo_5771917175576184251_y.jpg
 - Assets/Models/Animals/Dog_BigEars/Dog_1_2mat_Nika/photo_5771917175576184241_y.jpg
+- Assets/Models/Animals/Dog_BigEars/Dog1_Sit.anim
+- Assets/Models/Animals/Dog_BigEars/Dog1_Walk1.anim
 - Assets/Models/Animals/Dog_BigEars/Dog1_Walk1_1Dog1_Walk1.fbx
 - Assets/Models/Animals/Dog_BigEars/Dog1_2mat/photo_5771917175576184247_y.jpg
+- Assets/Models/Animals/Dog_BigEars/Dog1_Lie.fbx
 Dependencies: []

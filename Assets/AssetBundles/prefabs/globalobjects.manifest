@@ -1,44 +1,101 @@
 ManifestFileVersion: 0
-CRC: 1860724527
+CRC: 595088010
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: aebc9aa86e04d220ba3e29852b1d0017
+    Hash: 3c5e085bb95be90bb756ada042b83846
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f92fdfe5db57d184ddaad7de1f0731d9
+    Hash: 5a013ef00ae9fe92b0562f1448111a30
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: aebc9aa86e04d220ba3e29852b1d0017
+    Hash: 3c5e085bb95be90bb756ada042b83846
 HashAppended: 0
 ClassTypes:
 - Class: 1
   Script: {instanceID: 0}
 - Class: 4
   Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 81aebb5c570b71043bc2453c43ad3fab, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3c1a1a120ec8ba84c91b53a3de67b257, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 55a27e47e5648c442845e90c05aab017, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: e6347bdb837eafe45963126673dbf28c, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0e30ac4423372244fbf662b6b8490661, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 1278ec60bbba9474fa60eb91f960c9b1, type: 3}
+  Script: {fileID: 11500000, guid: 7fd03024d7e3aa6418eb15e67cd46bef, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4114794ad7e96ea4c82241efdb95d3a4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ca398c00586f4bb40857163ff9912d8d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8e1eb7f115c44904fa8db1b9a226dddf, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c7fc19fc02189d547a69bb01b873f75c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7ab7ac332f7cce74784cdb4a81d5c680, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f41c8cbee8a5ada4f894cff647290a0a, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 1278ec60bbba9474fa60eb91f960c9b1, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 3aa88de1a11c9594da915bd6a71d8d8a, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: ca398c00586f4bb40857163ff9912d8d, type: 3}
+  Script: {fileID: 11500000, guid: 2d0b02b5588027040867e4b2b3793075, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ee77f824fa3916347847ee40b88bbc76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 05cb181844a15d34d84658e405ec5b80, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 000ba3ba33c284843b2f351b0f4ab8a9, type: 3}
 - Class: 115
   Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: DialogAction
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 - AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent`1[Mission]
+- AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.UnityEvent`1[System.Int32]
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
 Assets:
 - Assets/Prefabs/GlobalObjects/ValueManager.prefab
 - Assets/Prefabs/GlobalObjects/GlobalGameDependenciesContainer.prefab
 Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/levels
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/textmeshpro/fonts

@@ -7,6 +7,7 @@ public class UIEndLevelPanel : MonoBehaviour,
     IDependency<Match3LevelManager>, IDependency<ValueManager>
 {
     [SerializeField] private GameObject endLevelPanel;
+    [SerializeField] private GameObject background;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
     [SerializeField] private Button[] returnButtons;
@@ -42,6 +43,7 @@ public class UIEndLevelPanel : MonoBehaviour,
 
     private void Start()
     {
+        background.SetActive(false);
         winPanel.SetActive(false);
         losePanel.SetActive(false);
 
@@ -76,6 +78,7 @@ public class UIEndLevelPanel : MonoBehaviour,
     private void OnLevelResult(bool result)
     {
         endLevelPanel.SetActive(false);
+        background.SetActive(true);
 
         if (result)
         {

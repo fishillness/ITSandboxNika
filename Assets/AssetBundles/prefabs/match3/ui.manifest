@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 3070834159
+CRC: 3896252393
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 49787dac229993d8cf21eeda3c976863
+    Hash: d83e63738e5ca241c24d75fa6e817d00
   TypeTreeHash:
     serializedVersion: 2
-    Hash: fe5cc3fe222201661cf37030f8fd3702
+    Hash: 001249501117199409ed15509c32087e
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 49787dac229993d8cf21eeda3c976863
+    Hash: d83e63738e5ca241c24d75fa6e817d00
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -19,21 +19,23 @@ ClassTypes:
 - Class: 28
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 44a9bcdaf617a794ca3372ccf9f431a2, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  Script: {fileID: 11500000, guid: a071991e9451ba94c9c061fcc1136b7a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2b0973b220a6bb54cae7617459b76ae5, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
@@ -43,11 +45,17 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: e83826d28b5a85c47beb28acd090d636, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: c0462184263bb3a4aa3d602ed07800ad, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 453213136cba1354e859118f1442b971, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 6e6d9541ba6c3a44b9931afbb3c854ee, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9e545c113531d4d4f839d7753af3ce85, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 222d36acc9a7bf043867c2b03b78ba33, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 213
@@ -83,6 +91,7 @@ Assets:
 - Assets/Prefabs/Match3/UI/Resource.prefab
 - Assets/Prefabs/Match3/UI/TaskInfo.prefab
 Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/resourceshopinfo
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/gui
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/booster
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/resources
@@ -90,4 +99,5 @@ Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/shop
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/match3/ui
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sprites/notebook
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/textmeshpro/fonts
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/textmeshpro/recources

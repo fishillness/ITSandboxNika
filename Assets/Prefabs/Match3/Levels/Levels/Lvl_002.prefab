@@ -1397,7 +1397,7 @@ Transform:
   m_GameObject: {fileID: 5106790314190594141}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.07, y: 1.85, z: 0}
+  m_LocalPosition: {x: -2.76, y: 2.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1633,7 +1633,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6107838181961647432}
   m_Enabled: 1
-  m_CellSize: {x: 0.45, y: 0.45, z: 0}
+  m_CellSize: {x: 0.6, y: 0.6, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -1805,6 +1805,8 @@ MonoBehaviour:
     prefab: {fileID: 8907215690913408729, guid: 6df9f76655be35f44a4433f723d39959, type: 3}
   - type: 4
     prefab: {fileID: 5484179368176546677, guid: 6782be4fecddbf747881f65aa02c4b9e, type: 3}
+  - type: 5
+    prefab: {fileID: 5634014191736171235, guid: 9330891af2ef16346befacca008d8fe3, type: 3}
   boundsElement:
   - {fileID: 2236239698640307289}
   - {fileID: 4847450035804013670}
@@ -2111,7 +2113,7 @@ Transform:
   m_GameObject: {fileID: 8984941434711873121}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.02, y: -1.81, z: 0}
+  m_LocalPosition: {x: 2.71, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

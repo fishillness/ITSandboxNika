@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 874847849
+CRC: 3190135102
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -29,18 +29,22 @@ AssetBundleManifest:
         Dependency_1: scriptableobjects/build
         Dependency_2: sprites/gui
         Dependency_3: sprites/match3/booster
-        Dependency_4: sprites/notebook
-        Dependency_5: sprites/match3/resources
-        Dependency_6: sprites/match3/settings
-        Dependency_7: sprites/match3/shop
-        Dependency_8: textmeshpro/recources
+        Dependency_4: sprites/match3/ui
+        Dependency_5: sprites/notebook
+        Dependency_6: sprites/match3/resources
+        Dependency_7: sprites/match3/settings
+        Dependency_8: sprites/match3/shop
+        Dependency_9: textmeshpro/fonts
+        Dependency_10: textmeshpro/recources
+        Dependency_11: scriptableobjects/resourceshopinfo
     Info_6:
       Name: prefabs/match3/pieces
       Dependencies:
         Dependency_0: animation/match3/piece
         Dependency_1: animation/match3/obstacle
-        Dependency_2: sprites/match3/grid
-        Dependency_3: sprites/match3/obstacles
+        Dependency_2: sprites/match3/booster
+        Dependency_3: sprites/match3/grid
+        Dependency_4: sprites/match3/obstacles
     Info_7:
       Name: prefabs/match3/ui
       Dependencies:
@@ -51,7 +55,9 @@ AssetBundleManifest:
         Dependency_4: sprites/match3/resources
         Dependency_5: sprites/match3/settings
         Dependency_6: sprites/match3/shop
-        Dependency_7: textmeshpro/recources
+        Dependency_7: textmeshpro/fonts
+        Dependency_8: textmeshpro/recources
+        Dependency_9: scriptableobjects/resourceshopinfo
     Info_8:
       Name: prefabs/house
       Dependencies:
@@ -92,6 +98,7 @@ AssetBundleManifest:
       Name: prefabs/globalobjects
       Dependencies:
         Dependency_0: scriptableobjects/levels
+        Dependency_1: textmeshpro/fonts
     Info_19:
       Name: prefabs/match3/levels
       Dependencies:
@@ -99,16 +106,19 @@ AssetBundleManifest:
         Dependency_1: tilemap/tiles
         Dependency_2: prefabs/match3/pieces
         Dependency_3: prefabs/match3/ui
-        Dependency_4: sprites/gui
-        Dependency_5: sprites/match3/booster
-        Dependency_6: sprites/match3/grid
-        Dependency_7: sprites/match3/obstacles
-        Dependency_8: sprites/match3/ui
-        Dependency_9: sprites/notebook
-        Dependency_10: sprites/match3/resources
-        Dependency_11: sprites/match3/settings
-        Dependency_12: sprites/match3/shop
-        Dependency_13: textmeshpro/recources
+        Dependency_4: animation/match3/obstacle
+        Dependency_5: sprites/gui
+        Dependency_6: sprites/match3/booster
+        Dependency_7: sprites/match3/grid
+        Dependency_8: sprites/match3/obstacles
+        Dependency_9: sprites/match3/ui
+        Dependency_10: sprites/notebook
+        Dependency_11: sprites/match3/resources
+        Dependency_12: sprites/match3/settings
+        Dependency_13: sprites/match3/shop
+        Dependency_14: textmeshpro/fonts
+        Dependency_15: textmeshpro/recources
+        Dependency_16: scriptableobjects/resourceshopinfo
     Info_20:
       Name: scenes/citynavmesh
       Dependencies: {}
@@ -153,21 +163,30 @@ AssetBundleManifest:
         Dependency_1: scriptableobjects/build
         Dependency_2: prefabs/ui
         Dependency_3: prefabs/grid
-        Dependency_4: prefabs/amimal/cat
-        Dependency_5: prefabs/amimal/dog
-        Dependency_6: prefabs/amimal/dog_bigears
-        Dependency_7: prefabs/globalobjects
-        Dependency_8: prefabs/match3/levels
-        Dependency_9: scenes/citynavmesh
-        Dependency_10: scriptableobjects/texthits
-        Dependency_11: sprites/gui
-        Dependency_12: sprites/match3/grid
-        Dependency_13: sprites/notebook
-        Dependency_14: sprites/match3/resources
-        Dependency_15: textmeshpro/recources
+        Dependency_4: models/animals/cat
+        Dependency_5: models/animals/dog
+        Dependency_6: models/animals/dog_bigears
+        Dependency_7: prefabs/amimal/cat
+        Dependency_8: prefabs/amimal/dog
+        Dependency_9: prefabs/amimal/dog_bigears
+        Dependency_10: prefabs/globalobjects
+        Dependency_11: prefabs/match3/levels
+        Dependency_12: scenes/citynavmesh
+        Dependency_13: scriptableobjects/texthits
+        Dependency_14: sprites/gui
+        Dependency_15: sprites/match3/grid
+        Dependency_16: sprites/notebook
+        Dependency_17: sprites/match3/resources
+        Dependency_18: sprites/match3/settings
+        Dependency_19: sprites/match3/shop
+        Dependency_20: textmeshpro/fonts
+        Dependency_21: textmeshpro/recources
+        Dependency_22: sprites/shelterphoto
+        Dependency_23: scriptableobjects/resourceshopinfo
     Info_33:
       Name: textmeshpro/fonts
-      Dependencies: {}
+      Dependencies:
+        Dependency_0: textmeshpro/shaders
     Info_34:
       Name: textmeshpro/recources
       Dependencies:
@@ -180,3 +199,10 @@ AssetBundleManifest:
     Info_36:
       Name: textmeshpro/sprites
       Dependencies: {}
+    Info_37:
+      Name: sprites/shelterphoto
+      Dependencies: {}
+    Info_38:
+      Name: scriptableobjects/resourceshopinfo
+      Dependencies:
+        Dependency_0: sprites/match3/resources

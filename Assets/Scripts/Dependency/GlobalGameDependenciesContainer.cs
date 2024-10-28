@@ -8,6 +8,7 @@ public class GlobalGameDependenciesContainer : Dependency
     [SerializeField] private Match3LevelManager levelManager;
     [SerializeField] private ValueManager valueManager;
     [SerializeField] private InputController inputController;
+    [SerializeField] private MissionController missionController;
 
     public static GlobalGameDependenciesContainer Instance => instance;
 
@@ -40,6 +41,7 @@ public class GlobalGameDependenciesContainer : Dependency
         Bind<Match3LevelManager>(levelManager, monoBehaviourInScene);
         Bind<ValueManager>(valueManager, monoBehaviourInScene);
         Bind<InputController>(inputController, monoBehaviourInScene);
+        Bind<MissionController>(missionController, monoBehaviourInScene);
     }
 
     public void Rebind(MonoBehaviour monoBehaviour)

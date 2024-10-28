@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 2006387899
+CRC: 3943293555
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f0acb14d8b147b91f6c26e35a7b2b165
+    Hash: 2ed2aca24c066e014c71919f38699b37
   TypeTreeHash:
     serializedVersion: 2
-    Hash: abe42f113c6781325502875cb84ab500
+    Hash: a6bef0f79125f712b8f5feb6d30cb405
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: f0acb14d8b147b91f6c26e35a7b2b165
+    Hash: 2ed2aca24c066e014c71919f38699b37
 HashAppended: 0
 ClassTypes:
 - Class: 21
@@ -20,10 +20,49 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 49
   Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
 - Class: 128
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
 Assets:
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-Regular SDF.asset
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-ThinItalic.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-Medium.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-LightItalic.ttf
 - Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-Light.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-Italic.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-BoldItalic.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-Black.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/LICENSE.txt
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-Regular.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-Thin.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-MediumItalic.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-BlackItalic.ttf
+- Assets/TextMesh Pro/Fonts/Roboto/Roboto-Bold.ttf
 - Assets/TextMesh Pro/Fonts/LiberationSans.ttf
-Dependencies: []
+Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/textmeshpro/shaders

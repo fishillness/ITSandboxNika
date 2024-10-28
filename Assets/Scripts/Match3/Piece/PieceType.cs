@@ -5,5 +5,6 @@ public enum PieceType
     Normal,
     Booster,
     Stone,
-    Dog
+    Dog,
+    Chest
 }
