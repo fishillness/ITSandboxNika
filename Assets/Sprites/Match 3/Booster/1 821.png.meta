@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c5a3689cab7d0854f9e7b63fc9c79e5d
+guid: 52fac3d6d752bb641b1236cbf971bd71
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,5 +149,5 @@ TextureImporter:
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
-  assetBundleName: sprites/match3/booster
+  assetBundleName: 
   assetBundleVariant: 

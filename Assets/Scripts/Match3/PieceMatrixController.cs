@@ -459,7 +459,7 @@ public class PieceMatrixController : MonoBehaviour,
 
         ColorType color;
         if (!swapPiece.IsColorable)
-            color = (ColorType)UnityEngine.Random.Range(0, colorDictionary.NumberTypes);
+            color = colorDictionary.GetRandomColorFromDictionaty();
         else
             color = swapPiece.Colorable.Color;
 
