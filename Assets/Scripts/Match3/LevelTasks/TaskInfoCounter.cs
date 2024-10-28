@@ -2,18 +2,21 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class TaskInfoCounter : MonoBehaviour,
-    IDependency<PieceCounter>, IDependency<UIMatch3LevelPanel>
+    IDependency<PieceCounter>, IDependency<UIMatch3LevelPanel>, 
+    IDependency<FieldController>
 {
     [HideInInspector]
     public UnityEvent OnAllTaskComplite;
 
     private PieceCounter pieceCounter;
     private UIMatch3LevelPanel levelPanel;
+    private FieldController fieldController;
 
 
     #region Constructs
     public void Construct(PieceCounter pieceCounter) => this.pieceCounter = pieceCounter;
     public void Construct(UIMatch3LevelPanel levelPanel) => this.levelPanel = levelPanel;
+    public void Construct(FieldController fieldController) => this.fieldController = fieldController;
     #endregion
 
     private TaskInfo[] taskInfos;
@@ -46,6 +49,7 @@ public class TaskInfoCounter : MonoBehaviour,
 
     private void OnPieceRemoved(Piece piece)
     {
+        if (fieldController.IsStartFillingField) return;
         if (isAllTaskComplite) return;
 
         foreach (var taskInfo in taskInfos)
@@ -69,7 +73,6 @@ public class TaskInfoCounter : MonoBehaviour,
             isAllTaskComplite = true;
             OnAllTaskComplite?.Invoke();
         }
-
     }
 
     private void RemovePiece(TaskInfo taskInfo)

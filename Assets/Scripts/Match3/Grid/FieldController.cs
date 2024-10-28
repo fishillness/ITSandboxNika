@@ -53,6 +53,7 @@ public class FieldController : MonoBehaviour,
     private bool isLevelEnd = true;
     private bool areMovesAllowed = true;
     private bool continueDropping;
+    private bool isStartFillingField = true;
     
     public bool IsDroppingContinue => continueDropping;
     public Dictionary<PieceType, Piece>  PiecePrefabDict => piecePrefabDict;
@@ -60,6 +61,7 @@ public class FieldController : MonoBehaviour,
     public float MovingTime => movingTime;
     public bool IsLevelEnd => isLevelEnd;
     public bool AreMovesAllowed => areMovesAllowed;
+    public bool IsStartFillingField => isStartFillingField;
 
     private void Awake()
     {
@@ -152,12 +154,16 @@ public class FieldController : MonoBehaviour,
             }
 
             continueDropping = ClearAllMatches(time);
+
             if (spawnerController.CheckNeedOfSpawnPiece())
                 continueDropping = true;
         }
 
         areMovesAllowed = true;
         OnDropEnd?.Invoke();
+
+        if (immediately)
+            isStartFillingField = false;
     }
 
     private bool DropPieces(bool immediately)
