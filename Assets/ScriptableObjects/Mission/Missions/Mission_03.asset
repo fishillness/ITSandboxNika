@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   type: 2
-  text: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0437\u0434\u0430\u043D\u0438\u0435"
+  text: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0430\u0434\u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0430\u0443\u0446\u0438\u044E"
   valueType: 1
   value: 1
-  anyBuilding: 1
-  buildingInfo: {fileID: 0}
+  anyBuilding: 0
+  buildingInfo: {fileID: 11400000, guid: 1c5e488b4bd3e77438481e5846ff333a, type: 2}

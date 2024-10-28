@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MissionController : MonoBehaviour, 
     IDependency<ValueManager>, IDependency<Match3LevelManager>
@@ -38,13 +39,6 @@ public class MissionController : MonoBehaviour,
     private List<Mission> currentMissions = new List<Mission>();
     private List<MissionData> currentMissionData = new List<MissionData>();
 
-
-    [Header("Debug")]
-    [SerializeField] private MissionInfo mission1;
-    [SerializeField] private bool add1;
-    [SerializeField] private MissionInfo mission2;
-    [SerializeField] private bool add2;
-
     #region Constructs
     public void Construct(ValueManager valueManager) => this.valueManager = valueManager;
     public void Construct(Match3LevelManager levelManager) => this.levelManager = levelManager;
@@ -55,6 +49,9 @@ public class MissionController : MonoBehaviour,
     private void Awake()
     {
         LoadData();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void Start()
@@ -72,22 +69,11 @@ public class MissionController : MonoBehaviour,
         valueManager.GetEventOnValueAddByType(ValueType.Joy).AddListener(OnJoyAdd);
     }
 
-    private void Update()
-    {
-        if (add1)
-        {
-            add1 = false;
-            AddNewMission(mission1);
-        }
-        if (add2)
-        {
-            add2 = false;
-            AddNewMission(mission2);
-        }
-    }
-
     private void OnDestroy()
     {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+
         levelManager.OnLevelUp.RemoveListener(OnLevelUp);
 
         valueManager.GetEventOnValueAddByType(ValueType.Coins).RemoveListener(OnCoinsAdd);
@@ -352,6 +338,56 @@ public class MissionController : MonoBehaviour,
                 ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
 
                 OnMissionUpdate?.Invoke(mission);
+            }
+        }
+    }
+    #endregion
+
+    #region TemporatyBuildingMission
+
+    private Store store;
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    { 
+        if (temporaty_linkOnStore.Instance != null) 
+            store = temporaty_linkOnStore.Instance.Store;
+         
+        if (store != null)
+        {
+            store.BuyEvent += OnBuyBuilding;
+        } 
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    { 
+        if (store != null)
+        {
+            store.BuyEvent -= OnBuyBuilding;
+        } 
+    }
+
+    private void OnBuyBuilding(BuildingInfo buildingInfo)
+    {
+        foreach (Mission mission in currentMissions)
+        {
+            if (mission.missionInfo.Type == MissionType.GetBuilding)
+            {
+                if (mission.missionInfo.AnyBuilding)
+                {
+                    mission.value = 1;
+                    mission.isFinish = true;
+                    ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                    OnMissionUpdate?.Invoke(mission);
+                }
+                else if (mission.missionInfo.BuildingInfo == buildingInfo)
+                {
+                    mission.value = 1;
+                    mission.isFinish = true;
+                    ChangeMissionDataById(mission.missionInfo.Id, mission.value, mission.isFinish);
+
+                    OnMissionUpdate?.Invoke(mission);
+                }
             }
         }
     }
