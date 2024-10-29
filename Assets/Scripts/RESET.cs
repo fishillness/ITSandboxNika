@@ -7,7 +7,7 @@ public class RESET : MonoBehaviour
         FileHandler.Reset(SaverFilenames.ValueFilaname);
         FileHandler.Reset(SaverFilenames.PlacedBuilddingsFilaname);
         FileHandler.Reset(SaverFilenames.LevelFilaname);
-        FileHandler.Reset(SaverFilenames.EvengyFilaname);
+        FileHandler.Reset(SaverFilenames.EvengyFilename);
         FileHandler.Reset(SaverFilenames.MissionsFilename);
         FileHandler.Reset(SaverFilenames.PlotFilaname);
         FileHandler.Reset(SaverFilenames.MusicSettingsFilaname);

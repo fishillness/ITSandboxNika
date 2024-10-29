@@ -45470,6 +45470,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2327805717142483409, guid: 795f1bec849b14841a5e3fad2dac8655, type: 3}
+      propertyPath: textMeshProUGUI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327805717142483409, guid: 795f1bec849b14841a5e3fad2dac8655, type: 3}
+      propertyPath: time_Restoration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327805717142483409, guid: 795f1bec849b14841a5e3fad2dac8655, type: 3}
+      propertyPath: energy_Recovering
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3325556875757251599, guid: 795f1bec849b14841a5e3fad2dac8655, type: 3}
       propertyPath: m_Name
       value: GlobalGameDependenciesContainer

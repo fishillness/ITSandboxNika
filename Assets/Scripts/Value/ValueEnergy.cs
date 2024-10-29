@@ -1,10 +1,86 @@
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class ValueEnergy : MonoBehaviour
 {
+    [SerializeField] private int energy_Recovering;
+    [SerializeField] private int time_Restoration;
+    [SerializeField] private ValueManager valueManager;
+
+    [Serializable]
+    public class EnergyTimeData
+    {
+        public string time;
+    }
+
+    private IEnumerator Start()
+    {
+        if ((DateTime.Now - LoadStoreData()).TotalMinutes >= time_Restoration)
+        {
+            StartCoroutine(DateTimeToUnixTimestamp());
+        }
+        else
+        {
+            yield return new WaitForSeconds((float)(DateTime.Now - LoadStoreData()).TotalSeconds);
+            StartCoroutine(AddEnergy());
+        }
+    }
+
+    private IEnumerator DateTimeToUnixTimestamp()
+    {
+        var oldTime = LoadStoreData();
+        var dif = (DateTime.Now - oldTime).TotalMinutes;
+
+        var n = (int)dif / energy_Recovering;
+        valueManager.AddResources(0, 0, 0, 0, energy: energy_Recovering * n);
+        SaveStoreData();
+        yield return new WaitForSeconds(time_Restoration * 60);
+        StartCoroutine(AddEnergy());
+    }
+
+    private void SaveStoreData()
+    {
+        EnergyTimeData storeData = new EnergyTimeData();
+
+        storeData.time = ConvertTimeToString(DateTime.Now);
+
+        Saver<EnergyTimeData>.Save(SaverFilenames.EvengyFilename, storeData);
+    }
+
+    private DateTime LoadStoreData()
+    {
+        EnergyTimeData storeData = new EnergyTimeData();
+
+        if (Saver<EnergyTimeData>.TryLoad(SaverFilenames.EvengyFilename, ref storeData) == false)
+        {
+            return DateTime.Now;
+        }
+        else
+        {
+            return ConvertTimeFromString(storeData.time);
+        }
+    }
+
+    private IEnumerator AddEnergy()
+    {
+        while (true)
+        {
+            valueManager.AddResources(0, 0, 0, 0, energy: energy_Recovering);
+            SaveStoreData();
+            yield return new WaitForSeconds(time_Restoration * 60);
+        }
+    }
+    private string ConvertTimeToString(DateTime time)
+    {
+        return time.ToBinary().ToString();
+    }
+
+    private DateTime ConvertTimeFromString(string time)
+    {
+        return DateTime.FromBinary(long.Parse(time));
+    }
+    /*
     [SerializeField] private int energy_Recovering;
     [SerializeField] private float time_Restoration;
     [SerializeField] private ValueManager valueManager;
@@ -139,4 +215,5 @@ public class ValueEnergy : MonoBehaviour
     {
         return DateTime.FromBinary(long.Parse(time));
     }
+    */
 }
