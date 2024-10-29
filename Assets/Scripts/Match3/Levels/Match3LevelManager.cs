@@ -6,8 +6,6 @@ public class Match3LevelManager : MonoBehaviour
 {
     public UnityEvent<int> OnLevelUp;
 
-    public const string Filename = "Level";
-
     [Serializable]
     public class LevelData
     {
@@ -58,14 +56,14 @@ public class Match3LevelManager : MonoBehaviour
 
         levelData.CurrentLevel = currentLevel;
         
-        Saver<LevelData>.Save(Filename, levelData);
+        Saver<LevelData>.Save(SaverFilenames.LevelFilaname, levelData);
     }
 
     private void LoadLevelData()
     {
         LevelData levelData = new LevelData();
 
-        if (Saver<LevelData>.TryLoad(Filename, ref levelData) == false)
+        if (Saver<LevelData>.TryLoad(SaverFilenames.LevelFilaname, ref levelData) == false)
         {
             currentLevel = 0;
         }

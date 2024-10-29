@@ -14,8 +14,6 @@ public class MissionController : MonoBehaviour,
     [HideInInspector]
     public UnityEvent OnMissionEnd;
 
-    public const string Filename = "CurrentMissions";
-
     [Serializable]
     public class MissionData
     {
@@ -106,7 +104,7 @@ public class MissionController : MonoBehaviour,
 
         OnMissionAdd?.Invoke(mission);
 
-        Saver<List<MissionData>>.Save(Filename, currentMissionData);
+        Saver<List<MissionData>>.Save(SaverFilenames.MissionsFilename, currentMissionData);
     }
 
     public void OnMissionFinishClick(int id)
@@ -134,7 +132,7 @@ public class MissionController : MonoBehaviour,
             }
         }
 
-        Saver<List<MissionData>>.Save(Filename, currentMissionData);
+        Saver<List<MissionData>>.Save(SaverFilenames.MissionsFilename, currentMissionData);
         OnMissionEnd?.Invoke();
     }
 
@@ -142,7 +140,7 @@ public class MissionController : MonoBehaviour,
     {
         List<MissionData> uploadedMissionData = new List<MissionData>();
 
-        if (Saver<List<MissionData>>.TryLoad(Filename, ref uploadedMissionData) == true)
+        if (Saver<List<MissionData>>.TryLoad(SaverFilenames.MissionsFilename, ref uploadedMissionData) == true)
         {
             foreach (MissionData data in uploadedMissionData)
             {
@@ -168,7 +166,7 @@ public class MissionController : MonoBehaviour,
             }
         }
 
-        Saver<List<MissionData>>.Save(Filename, currentMissionData);
+        Saver<List<MissionData>>.Save(SaverFilenames.MissionsFilename, currentMissionData);
     }
 
     #region OnEvent

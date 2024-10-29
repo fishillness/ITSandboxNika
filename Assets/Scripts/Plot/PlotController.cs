@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class PlotController : MonoBehaviour
 {
-    public const string Filename = "Plot";
-
     [SerializeField] private PlotList plotList;
 
     [SerializeField] private MissionController missionController;
@@ -60,14 +58,14 @@ public class PlotController : MonoBehaviour
 
         data.currentAction = currentAction;
 
-        Saver<PlotData>.Save(Filename, data);
+        Saver<PlotData>.Save(SaverFilenames.PlotFilaname, data);
     }
 
     private void LoadPlotData()
     {
         PlotData data = new PlotData();
 
-        if (Saver<PlotData>.TryLoad(Filename, ref data) == false)
+        if (Saver<PlotData>.TryLoad(SaverFilenames.PlotFilaname, ref data) == false)
         {
             currentAction = 0;
             if (plotList.PlotActions[currentAction].ActionType == PlotActionType.Dialog)

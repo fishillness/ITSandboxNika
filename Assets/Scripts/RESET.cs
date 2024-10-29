@@ -4,12 +4,12 @@ public class RESET : MonoBehaviour
 {
     public void RESETDATA()
     {
-        FileHandler.Reset("Value");
-        FileHandler.Reset("PlacedBuildings");
-        FileHandler.Reset("Level");
-        FileHandler.Reset("EnergyTime12");
-        FileHandler.Reset("CurrentMissions");
-        FileHandler.Reset("Plot");
+        FileHandler.Reset(SaverFilenames.ValueFilaname);
+        FileHandler.Reset(SaverFilenames.PlacedBuilddingsFilaname);
+        FileHandler.Reset(SaverFilenames.LevelFilaname);
+        FileHandler.Reset(SaverFilenames.EvengyFilaname);
+        FileHandler.Reset(SaverFilenames.MissionsFilename);
+        FileHandler.Reset(SaverFilenames.PlotFilaname);
         FileHandler.Reset(SaverFilenames.MusicSettingsFilaname);
         FileHandler.Reset(SaverFilenames.SFXSettingsFilaname);
     }

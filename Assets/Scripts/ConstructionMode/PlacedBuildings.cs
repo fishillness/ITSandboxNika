@@ -13,8 +13,6 @@ public class PlacedBuildings : MonoBehaviour
         public int BuildingIndex;
     }
 
-    public const string Filename = "PlacedBuildings";
-
     private List<Building> buildings = new List<Building>();
     private List<BuildingData> buildingsData = new List<BuildingData>();
     private List<Building> buildingsWithAnEntry = new List<Building>();
@@ -39,7 +37,7 @@ public class PlacedBuildings : MonoBehaviour
         buildingInfo.BuildingIndex = building.BuildingIndex;
         buildingsData.Add(buildingInfo);
 
-        Saver<List<BuildingData>>.Save(Filename, buildingsData);
+        Saver<List<BuildingData>>.Save(SaverFilenames.PlacedBuilddingsFilaname, buildingsData);
     }
     public Building GetBuilding(int buildingIndex)
     {
@@ -92,13 +90,13 @@ public class PlacedBuildings : MonoBehaviour
             }
         }
 
-        Saver<List<BuildingData>>.Save(Filename, buildingsData);
+        Saver<List<BuildingData>>.Save(SaverFilenames.PlacedBuilddingsFilaname, buildingsData);
     }
 
     public List<BuildingData> LoadBuildingsData()
     {        
         List<BuildingData> uploadedBuildingsInfo = new List<BuildingData>();
-        if (Saver<List<BuildingData>>.TryLoad(Filename, ref uploadedBuildingsInfo) == true)
+        if (Saver<List<BuildingData>>.TryLoad(SaverFilenames.PlacedBuilddingsFilaname, ref uploadedBuildingsInfo) == true)
         {
             return uploadedBuildingsInfo;
         }

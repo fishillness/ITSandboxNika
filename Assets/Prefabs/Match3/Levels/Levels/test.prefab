@@ -1315,16 +1315,16 @@ MonoBehaviour:
   OnLevelResult:
     m_PersistentCalls:
       m_Calls: []
-  moves: 1
+  moves: 20
   taskInfos:
   - taskType: 1
     sprite: {fileID: 21300000, guid: 8aeaa7df6044ea04682a14cdf1c48a09, type: 3}
-    count: 5
+    count: 15
     type: 1
     colorType: 0
   - taskType: 1
     sprite: {fileID: 21300000, guid: 3af6353f9c129184fa039f2a76da0c85, type: 3}
-    count: 5
+    count: 15
     type: 1
     colorType: 4
 --- !u!1 &3174787025939364818
@@ -1947,7 +1947,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966f670451906c44ebad0d60d534a1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredPieces: []
+  requiredPieces:
+  - type: 3
+    position: {x: 4, y: 2}
+  - type: 3
+    position: {x: 4, y: 3}
+  - type: 3
+    position: {x: 4, y: 4}
+  - type: 3
+    position: {x: 4, y: 5}
+  - type: 3
+    position: {x: 4, y: 6}
 --- !u!1 &8602365380812836937
 GameObject:
   m_ObjectHideFlags: 0

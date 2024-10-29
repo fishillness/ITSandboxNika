@@ -2,13 +2,9 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ValueEnergy : MonoBehaviour
 {
-    public const string Filename = "EnergyTime12";
-
     [SerializeField] private int energy_Recovering;
     [SerializeField] private float time_Restoration;
     [SerializeField] private ValueManager valueManager;
@@ -82,14 +78,14 @@ public class ValueEnergy : MonoBehaviour
 
         storeData.time = ConvertTimeToString(DateTime.Now);
 
-        Saver<EnergyTimeData>.Save(Filename, storeData);
+        Saver<EnergyTimeData>.Save(SaverFilenames.EvengyFilaname, storeData);
     }
 
     private DateTime LoadStoreData()
     {
         EnergyTimeData storeData = new EnergyTimeData();
 
-        if (Saver<EnergyTimeData>.TryLoad(Filename, ref storeData) == false)
+        if (Saver<EnergyTimeData>.TryLoad(SaverFilenames.EvengyFilaname, ref storeData) == false)
         {
             return DateTime.Now;
         }

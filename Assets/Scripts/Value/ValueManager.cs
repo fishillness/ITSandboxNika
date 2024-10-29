@@ -1,13 +1,9 @@
 using System;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class ValueManager : MonoBehaviour
 {
-    public const string Filename = "Value";
-
     [Serializable]
     public class ValueData
     {
@@ -264,7 +260,7 @@ public class ValueManager : MonoBehaviour
         storeData.Health = m_Health.CurrentValue;
         storeData.Joy = m_Joy.CurrentValue;
 
-        Saver<ValueData>.Save(Filename, storeData);
+        Saver<ValueData>.Save(SaverFilenames.ValueFilaname, storeData);
     }
 
     private void LoadStoreData()
@@ -272,7 +268,7 @@ public class ValueManager : MonoBehaviour
 
         ValueData storeData = new ValueData();
 
-        if (Saver<ValueData>.TryLoad(Filename, ref storeData) == false)
+        if (Saver<ValueData>.TryLoad(SaverFilenames.ValueFilaname, ref storeData) == false)
         {
             m_Coins.StartValue();
             m_Boards.StartValue();
