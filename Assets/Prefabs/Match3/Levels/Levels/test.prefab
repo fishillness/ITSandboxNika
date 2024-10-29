@@ -1424,6 +1424,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ce17bd102e25b4983a1eca2d93ac17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3254081228788508965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6817234433113159669}
+  - component: {fileID: 7749317922636687938}
+  m_Layer: 0
+  m_Name: SpecifierRequiredColorPieces
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6817234433113159669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254081228788508965}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1896734095207820998}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7749317922636687938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254081228788508965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d861cec1c0cb94f880732dbbc39332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredColorPieces:
+  - colorType: 2
+    position: {x: 6, y: 8}
+  - colorType: 2
+    position: {x: 5, y: 7}
+  - colorType: 2
+    position: {x: 4, y: 7}
+  - colorType: 0
+    position: {x: 5, y: 8}
+  - colorType: 0
+    position: {x: 4, y: 8}
 --- !u!1 &3302536031480363634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,6 +1621,7 @@ Transform:
   - {fileID: 2619557953308753220}
   - {fileID: 6699989636456958824}
   - {fileID: 541601866944451129}
+  - {fileID: 6817234433113159669}
   m_Father: {fileID: 8071808945008588652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5172117765898117583
@@ -1958,6 +2014,8 @@ MonoBehaviour:
     position: {x: 4, y: 5}
   - type: 3
     position: {x: 4, y: 6}
+  - type: 4
+    position: {x: 6, y: 7}
 --- !u!1 &8602365380812836937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,6 +2060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29af03c21196f30408cee57c6b9e392a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  specifierRequiredColorPieces: {fileID: 7749317922636687938}
 --- !u!1 &8604767997669029070
 GameObject:
   m_ObjectHideFlags: 0

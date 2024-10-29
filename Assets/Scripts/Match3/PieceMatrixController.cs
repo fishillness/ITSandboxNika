@@ -7,6 +7,8 @@ public class PieceMatrixController : MonoBehaviour,
     IDependency<FieldController>, IDependency<SpecifierRequiredPiecesOfType>, IDependency<SpecifierRequiredBooster>,
     IDependency<SoundsPlayer>
 {
+    [SerializeField] private SpecifierRequiredColorPieces specifierRequiredColorPieces;
+
     private PieceColorDictionary colorDictionary;
     private BoosterDictionary boosterDictionary;
     private PieceCounter pieceCounter;
@@ -124,6 +126,31 @@ public class PieceMatrixController : MonoBehaviour,
 
             SpawnNewBooster(piece.position.x, piece.position.y, piece.type);
         }
+
+        if (specifierRequiredColorPieces != null)
+            foreach (var piece in specifierRequiredColorPieces.RequiredColorPieces)
+            {
+                if (pieces[piece.position.x, piece.position.y] != null)
+                {
+                    if (pieces[piece.position.x, piece.position.y].Type == PieceType.Empty)
+                    {
+                        DeleteEmptyPiece(piece.position.x, piece.position.y);
+                    }
+                    else if (pieces[piece.position.x, piece.position.y].IsDestructible)
+                    {
+                        pieces[piece.position.x, piece.position.y].Destructible.DestroyImmediately();
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    pieces[piece.position.x, piece.position.y] = null;
+                }
+
+                SpawnNewPiece(piece.position.x, piece.position.y, PieceType.Normal, piece.colorType);
+
+            }
     }
 
     private void FillFieldColorPieces()
@@ -169,6 +196,35 @@ public class PieceMatrixController : MonoBehaviour,
         pieceCounter.AddPiece(newPiece);
         return newPiece;
     }
+
+    public Piece SpawnNewPiece(int x, int y, PieceType type, ColorType colorType)
+    {
+        if (pieces[x, y] != null)
+        {
+            if (pieces[x, y].Type == PieceType.Empty)
+                DeleteEmptyPiece(x, y);
+            else
+                return null;
+        }
+
+        Piece newPiece = Instantiate(field.PiecePrefabDict[type],
+            field.GetPiecePositionOnWorld(x, y), Quaternion.identity);
+        newPiece.transform.parent = transform;
+        newPiece.Init(x, y, type);
+
+        if (newPiece.Colorable != null)
+        {
+            if (!newPiece.Colorable.IsColorDictionarySet)
+                newPiece.Colorable.SetColorDictionary(colorDictionary);
+
+            newPiece.Colorable.SetColor(colorType);
+        }
+
+        pieces[x, y] = newPiece;
+        pieceCounter.AddPiece(newPiece);
+        return newPiece;
+    }
+
     public void SpawnNewBooster(int x, int y, BoosterType type)
     {
         if (pieces[x, y] != null)
@@ -273,7 +329,7 @@ public class PieceMatrixController : MonoBehaviour,
 
     public void AddListenerToCheckWhenMoveEnd(Piece piece)
     {
-        piece.Movable.OnMoveEnd.RemoveListener(CheckNeedDamagePieceByReachEnd);
+        piece.Movable.OnMoveEnd.AddListener(CheckNeedDamagePieceByReachEnd);
     }
 
     private void CheckNeedDamagePieceByReachEnd(Piece piece)
