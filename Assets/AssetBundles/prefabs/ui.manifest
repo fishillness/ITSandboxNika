@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 4167344158
+CRC: 2886715732
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 94d2a18d75116c26db842cc525e87724
+    Hash: b6d6c474c1c9eb66b3a60ef44741d1d2
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 1d7dda9b7a0c8d6a60b52feb20a29b7d
+    Hash: 2e0862a570a7f0ea43552501533676eb
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 94d2a18d75116c26db842cc525e87724
+    Hash: b6d6c474c1c9eb66b3a60ef44741d1d2
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -19,6 +19,8 @@ ClassTypes:
 - Class: 21
   Script: {instanceID: 0}
 - Class: 28
+  Script: {instanceID: 0}
+- Class: 48
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
@@ -57,6 +59,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 64e4102961019004f857c6e19184155f, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 222d36acc9a7bf043867c2b03b78ba33, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -81,8 +85,14 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 05cb181844a15d34d84658e405ec5b80, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 55dac65d61f8b654ba4a37cce330d47c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ffe5cb94561d9bf458db44c716e293c7, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 98796f2cf041e294abdf9e539b32660a, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 128
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
@@ -91,6 +101,12 @@ ClassTypes:
 - Class: 223
   Script: {instanceID: 0}
 - Class: 224
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Unity.TextMeshPro
@@ -112,6 +128,8 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.ColorBlock
 - AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.Navigation
@@ -121,10 +139,11 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.Toggle/ToggleEvent
 Assets:
 - Assets/Prefabs/UI/TopPanel.prefab
-- Assets/Prefabs/UI/Settings.prefab
+- Assets/Prefabs/UI/Settings/Settings.prefab
+- Assets/Prefabs/UI/Settings/SettingsButton.prefab
 - Assets/Prefabs/UI/Product.prefab
 - Assets/Prefabs/UI/Mission.prefab
-- Assets/Prefabs/UI/SettingController.prefab
+- Assets/Prefabs/UI/Settings/SettingController.prefab
 - Assets/Prefabs/UI/Value.prefab
 - Assets/Prefabs/UI/StoreCell.prefab
 - Assets/Prefabs/UI/LevelButton.prefab
@@ -132,7 +151,7 @@ Assets:
 - Assets/Prefabs/UI/DialogSystem.prefab
 - Assets/Prefabs/UI/ShopContoller.prefab
 - Assets/Prefabs/UI/CheatPanelCanvas.prefab
-- Assets/Prefabs/UI/old_Settings.prefab
+- Assets/Prefabs/UI/Settings/old_Settings.prefab
 Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/build
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/resourceshopinfo

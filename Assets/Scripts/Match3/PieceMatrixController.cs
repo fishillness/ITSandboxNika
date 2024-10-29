@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PieceMatrixController : MonoBehaviour,
     IDependency<PieceColorDictionary>, IDependency<BoosterDictionary>, IDependency<PieceCounter>,
-    IDependency<FieldController>, IDependency<SpecifierRequiredPiecesOfType>, IDependency<SpecifierRequiredBooster>
+    IDependency<FieldController>, IDependency<SpecifierRequiredPiecesOfType>, IDependency<SpecifierRequiredBooster>,
+    IDependency<SoundsPlayer>
 {
     private PieceColorDictionary colorDictionary;
     private BoosterDictionary boosterDictionary;
@@ -12,6 +13,7 @@ public class PieceMatrixController : MonoBehaviour,
     private FieldController field;
     private SpecifierRequiredPiecesOfType specifierRequiredPieces;
     private SpecifierRequiredBooster specifierRequiredBooster;
+    private SoundsPlayer soundsPlayer;
 
     #region Constructs
     public void Construct(PieceColorDictionary colorDictionary) => this.colorDictionary = colorDictionary;
@@ -20,6 +22,7 @@ public class PieceMatrixController : MonoBehaviour,
     public void Construct(FieldController fieldController) => field = fieldController;
     public void Construct(SpecifierRequiredPiecesOfType specifierRequiredPieces) => this.specifierRequiredPieces = specifierRequiredPieces;
     public void Construct(SpecifierRequiredBooster specifierRequiredBooster) => this.specifierRequiredBooster = specifierRequiredBooster;
+    public void Construct(SoundsPlayer soundsPlayer) => this.soundsPlayer = soundsPlayer;
     #endregion
 
     private Piece[,] pieces;
@@ -35,6 +38,12 @@ public class PieceMatrixController : MonoBehaviour,
     private void Awake()
     {
         activeBoosterNames = new List<string>();
+    }
+
+    private void Start()
+    {
+        if (soundsPlayer == null)
+            GlobalGameDependenciesContainer.Instance.Rebind(this);
     }
 
     public void InitMatrix(int xDim, int yDim)
@@ -510,5 +519,10 @@ public class PieceMatrixController : MonoBehaviour,
 
         if (x - 1 >= 0 && pieces[x - 1, y] != null && pieces[x - 1, y].IsDestructible)
             DamageNotEmptyPiece(x - 1, y, type);
+    }
+
+    public void ActivateClip(AudioClip audioClip)
+    {
+        soundsPlayer.LaunchSound(audioClip);
     }
 }

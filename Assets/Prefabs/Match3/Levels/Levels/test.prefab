@@ -1315,7 +1315,7 @@ MonoBehaviour:
   OnLevelResult:
     m_PersistentCalls:
       m_Calls: []
-  moves: 25
+  moves: 1
   taskInfos:
   - taskType: 1
     sprite: {fileID: 21300000, guid: 8aeaa7df6044ea04682a14cdf1c48a09, type: 3}

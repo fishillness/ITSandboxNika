@@ -11,7 +11,11 @@ public class UISettingsTogglee : MonoBehaviour
     private void Start()
     {
         toggle.onValueChanged.AddListener(OnSwitch);
-        ApplyProperty();
+    }
+
+    private void OnDestroy()
+    {
+        toggle.onValueChanged.RemoveListener(OnSwitch);
     }
 
     private void OnSwitch(bool on)
@@ -28,7 +32,7 @@ public class UISettingsTogglee : MonoBehaviour
         }
     }
 
-    private void ApplyProperty()
+    public void ApplyProperty()
     {
         if (audioSetting == null) return;
 

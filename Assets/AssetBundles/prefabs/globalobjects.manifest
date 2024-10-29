@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 4131316425
+CRC: 3786323842
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1f383edabb645a6419dc51ceac7bbf32
+    Hash: d2c07b3302ddfe1b259bd10a7ca3790c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 2f19df302e6be863c4c3e246fbda7092
+    Hash: 595ea900db82c4874e39884a9d70cdd2
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 1f383edabb645a6419dc51ceac7bbf32
+    Hash: d2c07b3302ddfe1b259bd10a7ca3790c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -21,6 +21,8 @@ ClassTypes:
 - Class: 28
   Script: {instanceID: 0}
 - Class: 82
+  Script: {instanceID: 0}
+- Class: 83
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
@@ -76,6 +78,10 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 000ba3ba33c284843b2f351b0f4ab8a9, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fde826cf68004c44faf96e34480066ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ffe5cb94561d9bf458db44c716e293c7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cb9ccc13eeece2b468682ca4d58b30a9, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 213
@@ -115,4 +121,5 @@ Assets:
 Dependencies:
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/build
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/levels
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/sound/sounds
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/textmeshpro/fonts

@@ -7,6 +7,11 @@ public class Booster : MonoBehaviour
     [SerializeField] private float timeForDestroyingPiecesForRaindow = 0.2f;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip bombSound;
+    [SerializeField] private AudioClip rocketSound;
+    [SerializeField] private AudioClip rainbowSound;
+
     protected BoosterType type;
     private Piece piece;
     private PieceMatrixController matrixController;
@@ -45,22 +50,27 @@ public class Booster : MonoBehaviour
         if (type == BoosterType.HorizontalRocket)
         {
             matrixController.DeleteRow(piece.X, piece.Y, timeForDestroyingPiecesForRockets);
+            matrixController.ActivateClip(rocketSound);
         }
         else if (type == BoosterType.VerticalRocket)
         {
             matrixController.DeleteColumn(piece.X, piece.Y, timeForDestroyingPiecesForRockets);
+            matrixController.ActivateClip(rocketSound);
         }
         else if (type == BoosterType.MiniBomb)
         {
             matrixController.DeleteNearPiece(piece.X, piece.Y);
+            matrixController.ActivateClip(bombSound);
         }
         else if (type == BoosterType.MaxiBomb)
         {
             matrixController.DeleteManyNearPieces(piece.X, piece.Y, timeForDestroyingPiecesForBomb);
+            matrixController.ActivateClip(bombSound);
         }
         else if (type == BoosterType.Rainbow)
         {
             matrixController.DeleteAllPiecesByColor(piece.X, piece.Y, swapPiece, timeForDestroyingPiecesForRaindow);
+            matrixController.ActivateClip(rainbowSound);
         }
     }
 }

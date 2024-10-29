@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI; 
 
@@ -7,6 +8,9 @@ public class UISettingController : MonoBehaviour,
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private Button openButton;
     [SerializeField] private Button closeButton;
+    [SerializeField] private GameObject warningPanel;
+    [SerializeField] private Button openWarningPanel;
+    [SerializeField] private Button closeWarningPanel;
 
     private InputController inputController;
 
@@ -16,16 +20,31 @@ public class UISettingController : MonoBehaviour,
 
     private void Start()
     {
+        if (inputController == null)
+            GlobalGameDependenciesContainer.Instance.Rebind(this);
+
+        settingPanel.SetActive(true);
+        UISettingsTogglee[] UISettingsTogglee = GetComponentsInChildren<UISettingsTogglee>();
+        foreach (UISettingsTogglee button in UISettingsTogglee)
+        {
+            button.ApplyProperty();
+        }
         settingPanel.SetActive(false);
-        
+        warningPanel.SetActive(false);
+
+
         openButton.onClick.AddListener(OpenPanel);
         closeButton.onClick.AddListener(ClosePanel);
+        openWarningPanel.onClick.AddListener(OpenWarningPanel);
+        closeWarningPanel.onClick.AddListener(CloseWarningPanel);
     }
 
     private void OnDestroy()
     {
         openButton.onClick.RemoveListener(OpenPanel);
         closeButton.onClick.RemoveListener(ClosePanel);
+        openWarningPanel.onClick.RemoveListener(OpenWarningPanel);
+        closeWarningPanel.onClick.RemoveListener(CloseWarningPanel);
     }
 
 
@@ -39,5 +58,15 @@ public class UISettingController : MonoBehaviour,
     {
         inputController.SetInputControllerMode(InputControllerModes.CityMode);
         settingPanel?.SetActive(false);
+    }
+
+    private void OpenWarningPanel()
+    {
+        warningPanel.SetActive(true);
+    }
+
+    private void CloseWarningPanel()
+    {
+        warningPanel.SetActive(false);
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIEndLevelPanel : MonoBehaviour,
-    IDependency<Match3Level>,
-    IDependency<Match3LevelManager>, IDependency<ValueManager>
+    IDependency<Match3Level>, IDependency<Match3LevelManager>,
+    IDependency<ValueManager>, IDependency<SoundsPlayer>
 {
     [SerializeField] private GameObject endLevelPanel;
     [SerializeField] private GameObject background;
@@ -20,14 +20,20 @@ public class UIEndLevelPanel : MonoBehaviour,
     [SerializeField] private TextMeshProUGUI bricksText;
     [SerializeField] private TextMeshProUGUI nailsText;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private AudioClip loseSound;
+
     private Match3Level level;
     private Match3LevelManager levelManager;
     private ValueManager valueManager;
+    private SoundsPlayer soundPlayer;
 
     #region Constructs
     public void Construct(Match3Level level) => this.level = level;
     public void Construct(Match3LevelManager levelManager) => this.levelManager = levelManager;
     public void Construct(ValueManager valueManager) => this.valueManager = valueManager;
+    public void Construct(SoundsPlayer soundPlayer) => this.soundPlayer = soundPlayer;
     #endregion
 
     private void Awake()
@@ -83,10 +89,13 @@ public class UIEndLevelPanel : MonoBehaviour,
         if (result)
         {
             winPanel.SetActive(true);
+            soundPlayer.LaunchSound(winSound);
         }
         else
         {
             losePanel.SetActive(true);
+            soundPlayer.LaunchSound(loseSound);
+
             if (valueManager.EnergyCount < levelManager.CurrentLevelInfo.CostInEnergy)
                 retryButton.interactable = false;
             else

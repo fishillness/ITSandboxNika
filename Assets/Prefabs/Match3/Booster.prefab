@@ -249,6 +249,9 @@ MonoBehaviour:
   timeForDestroyingPiecesForBomb: 0.05
   timeForDestroyingPiecesForRaindow: 0.1
   spriteRenderer: {fileID: 338531185635490787}
+  bombSound: {fileID: 8300000, guid: ec6ed07ee220deb44892955d56550ba2, type: 3}
+  rocketSound: {fileID: 8300000, guid: 3369686c61888d74badf2c80d30ebfc8, type: 3}
+  rainbowSound: {fileID: 8300000, guid: 5e393363636f91b42b92d6fff488f58a, type: 3}
 --- !u!114 &3308527165835126541
 MonoBehaviour:
   m_ObjectHideFlags: 0
