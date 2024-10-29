@@ -1996,6 +1996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29af03c21196f30408cee57c6b9e392a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  specifierRequiredColorPieces: {fileID: 0}
 --- !u!1 &8113111408829452348
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,7 +2137,7 @@ MonoBehaviour:
   OnLevelResult:
     m_PersistentCalls:
       m_Calls: []
-  moves: 40
+  moves: 15
   taskInfos:
   - taskType: 0
     sprite: {fileID: -1669076607, guid: e0df2e191ca72824280d862d2a536702, type: 3}
