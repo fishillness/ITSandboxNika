@@ -70,7 +70,7 @@ public class PlotController : MonoBehaviour
             currentAction = 0;
             if (plotList.PlotActions[currentAction].ActionType == PlotActionType.Dialog)
             {
-
+                ActivateDialog();
             }
             else if (plotList.PlotActions[currentAction].ActionType == PlotActionType.Mission)
             {

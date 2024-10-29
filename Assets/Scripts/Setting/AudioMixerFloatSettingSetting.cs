@@ -87,7 +87,7 @@ public class AudioMixerFloatSettingSetting : Setting
             }
             else
             {
-                currentValue = maxVirtualValue;
+                SetMaxValue(); ;
             }
         }
         else if (nameParameter == "Music Volume")
@@ -100,7 +100,7 @@ public class AudioMixerFloatSettingSetting : Setting
             }
             else
             {
-                currentValue = maxVirtualValue;
+                SetMaxValue();
             }
         }
     }
