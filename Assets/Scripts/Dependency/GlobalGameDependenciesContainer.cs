@@ -9,6 +9,8 @@ public class GlobalGameDependenciesContainer : Dependency
     [SerializeField] private ValueManager valueManager;
     [SerializeField] private InputController inputController;
     [SerializeField] private MissionController missionController;
+    [SerializeField] private MusicPlayer musicPlayer;
+    [SerializeField] private SoundsPlayer soundsPlayer;
 
     public static GlobalGameDependenciesContainer Instance => instance;
 
@@ -42,6 +44,8 @@ public class GlobalGameDependenciesContainer : Dependency
         Bind<ValueManager>(valueManager, monoBehaviourInScene);
         Bind<InputController>(inputController, monoBehaviourInScene);
         Bind<MissionController>(missionController, monoBehaviourInScene);
+        Bind<MusicPlayer>(musicPlayer, monoBehaviourInScene);
+        Bind<SoundsPlayer>(soundsPlayer, monoBehaviourInScene);
     }
 
     public void Rebind(MonoBehaviour monoBehaviour)

@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 775951821
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8205c6be9270e11b6a46f31c6717d4c5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 8205c6be9270e11b6a46f31c6717d4c5
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sounds/186956__readeonly__woosh.wav
+- Assets/Sounds/_Gentle swipe sound, airy and quick. 0.5 sec._.mp3
+- Assets/Sounds/424997__gregorquendel__rocks-effects-source-recordings-05.wav
+- Assets/Sounds/215595__taira-komori__bomb.mp3
+- Assets/Sounds/389676__shamewap__click.wav
+- Assets/Sounds/170523__alexkandrell__royal-sparkle-whoosh-centre.wav
+- Assets/Sounds/523089__magnuswaker__explosion-1.wav
+- Assets/Sounds/Lose_1.mp3
+- Assets/Sounds/Win_1.mp3
+Dependencies: []

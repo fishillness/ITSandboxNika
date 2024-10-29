@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Sounds : MonoBehaviour
+public class SoundsPlayer : MonoBehaviour
 {
-    [SerializeField] private AudioSource m_AudioSource;
-    // Start is called before the first frame update
+    [SerializeField] private AudioSource m_AudioSource; 
+
     public void LaunchSound(AudioClip audioClip)
     {
         m_AudioSource.clip = audioClip;

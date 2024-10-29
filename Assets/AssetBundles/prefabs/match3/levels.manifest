@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 3944429718
+CRC: 1551959000
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 45430fcebd535b0376290d69eb7f3fc2
+    Hash: ae9bbfae40eb5782eb352469b03c33e3
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4cccc226cf4e82400a2162d92517a520
+    Hash: 2f8f52b5c24ecff8c308703cd81d0d0a
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 45430fcebd535b0376290d69eb7f3fc2
+    Hash: ae9bbfae40eb5782eb352469b03c33e3
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -37,11 +37,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 44a9bcdaf617a794ca3372ccf9f431a2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a38d4f26082b926429f928e397745e23, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
@@ -63,7 +63,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 966f670451906c44ebad0d60d534a1ea, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 81ea447494cd71543adb736443199f42, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
@@ -74,6 +78,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 043f4e5e5e6178c49b3fd68023683272, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1bc89adfb875ce94c8fc089ef235e035, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 222d36acc9a7bf043867c2b03b78ba33, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
@@ -100,8 +106,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 48ead449ba8932a428c53a2156adcf13, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: ed16d8e058f8004488bee2bae94eb555, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 222d36acc9a7bf043867c2b03b78ba33, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 210
@@ -138,7 +142,11 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.VertexGradient
 - AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.UnityEvent
 - AssemblyName: UnityEngine.CoreModule
@@ -159,6 +167,8 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.Navigation
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Toggle/ToggleEvent
 Assets:
 - Assets/Prefabs/Match3/Levels/Levels/Lvl_009.prefab
 - Assets/Prefabs/Match3/Levels/Levels/Lvl_007.prefab

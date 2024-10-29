@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 4186181918
+CRC: 3220881179
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 91430112dfa6f114845a802c38228021
+    Hash: e356c711b155ec78732e18efedd3f881
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 91430112dfa6f114845a802c38228021
+    Hash: e356c711b155ec78732e18efedd3f881
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -20,7 +20,7 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Sprites/free-icon-rocket-16116383.png
 - Assets/Sprites/Match 3/Booster/free-icon-rocket-16116383 (1).png
-- Assets/Sprites/Match 3/Booster/1 820.png
 - Assets/Sprites/Match 3/Booster/free-icon-rocket-16116383 (2).png
 - Assets/Sprites/Match 3/Booster/image 848.png
+- Assets/Sprites/Match 3/Booster/1 821.png
 Dependencies: []

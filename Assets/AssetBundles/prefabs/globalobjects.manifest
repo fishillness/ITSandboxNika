@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 595088010
+CRC: 4131316425
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3c5e085bb95be90bb756ada042b83846
+    Hash: 1f383edabb645a6419dc51ceac7bbf32
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 5a013ef00ae9fe92b0562f1448111a30
+    Hash: 2f19df302e6be863c4c3e246fbda7092
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 3c5e085bb95be90bb756ada042b83846
+    Hash: 1f383edabb645a6419dc51ceac7bbf32
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -19,6 +19,8 @@ ClassTypes:
 - Class: 21
   Script: {instanceID: 0}
 - Class: 28
+  Script: {instanceID: 0}
+- Class: 82
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
@@ -30,6 +32,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 3c1a1a120ec8ba84c91b53a3de67b257, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a6c210c3ebc919a4ab77db4f2451f76d, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 55a27e47e5648c442845e90c05aab017, type: 3}
 - Class: 114
@@ -44,6 +48,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 4114794ad7e96ea4c82241efdb95d3a4, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: ca398c00586f4bb40857163ff9912d8d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0e9dd51895fc55a4c80dc5d0801cdc8a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 8e1eb7f115c44904fa8db1b9a226dddf, type: 3}
 - Class: 114
@@ -68,6 +74,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 05cb181844a15d34d84658e405ec5b80, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 000ba3ba33c284843b2f351b0f4ab8a9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fde826cf68004c44faf96e34480066ff, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 213
@@ -77,6 +85,12 @@ ClassTypes:
 - Class: 223
   Script: {instanceID: 0}
 - Class: 224
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
@@ -91,11 +105,14 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.Events.UnityEvent`1[Mission]
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.UnityEvent`1[System.Int32]
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent`1[System.String]
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
 Assets:
 - Assets/Prefabs/GlobalObjects/ValueManager.prefab
 - Assets/Prefabs/GlobalObjects/GlobalGameDependenciesContainer.prefab
 Dependencies:
+- C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/build
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/scriptableobjects/levels
 - C:/Users/fishi/Unity project/ITSandboxNika/Assets/AssetBundles/textmeshpro/fonts

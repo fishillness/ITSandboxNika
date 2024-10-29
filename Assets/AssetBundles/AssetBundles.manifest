@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3190135102
+CRC: 2901750592
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -97,8 +97,9 @@ AssetBundleManifest:
     Info_18:
       Name: prefabs/globalobjects
       Dependencies:
-        Dependency_0: scriptableobjects/levels
-        Dependency_1: textmeshpro/fonts
+        Dependency_0: scriptableobjects/build
+        Dependency_1: scriptableobjects/levels
+        Dependency_2: textmeshpro/fonts
     Info_19:
       Name: prefabs/match3/levels
       Dependencies:
@@ -206,3 +207,6 @@ AssetBundleManifest:
       Name: scriptableobjects/resourceshopinfo
       Dependencies:
         Dependency_0: sprites/match3/resources
+    Info_39:
+      Name: sound
+      Dependencies: {}

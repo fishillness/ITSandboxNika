@@ -1,17 +1,16 @@
 using UnityEngine;
 
-public class Music : MonoBehaviour
+public class MusicPlayer : MonoBehaviour
 {
     [SerializeField] private AudioClip[] clips;
-    [SerializeField] private AudioSource audioSource;
-    // Start is called before the first frame update
+    [SerializeField] private AudioSource audioSource; 
+
     void Start()
     {
-       // audioSource.clip = clips[0];
-       // audioSource.Play();
+       audioSource.clip = clips[0];
+       audioSource.Play();
     }
 
-    // Update is called once per frame
     void Update()
     {
         //CheckEnd();
