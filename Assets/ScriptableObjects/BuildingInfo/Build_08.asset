@@ -16,10 +16,10 @@ MonoBehaviour:
   m_StoreCellImage: {fileID: 21300000, guid: e25d700217dea704aa65cc51c31a3ca3, type: 3}
   nameBuilding: "\u0414\u0435\u0440\u0435\u0432\u043E"
   m_NeededCoins: 30
-  m_NeededBoards: 15
+  m_NeededBoards: 5
   m_NeededBricks: 5
-  m_NeededNails: 25
-  m_Advancement: 34
-  m_Cosiness: 22
-  m_Health: 12
-  m_Joy: 32
+  m_NeededNails: 5
+  m_Advancement: 5
+  m_Cosiness: 5
+  m_Health: 5
+  m_Joy: 5

@@ -1890,10 +1890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab7ac332f7cce74784cdb4a81d5c680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energy_Recovering: 1
+  energy_Recovering: 5
   time_Restoration: 1
   valueManager: {fileID: 6504860258764647850}
-  textMeshProUGUI: {fileID: 0}
 --- !u!1 &8463707761101354881
 GameObject:
   m_ObjectHideFlags: 0

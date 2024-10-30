@@ -16,6 +16,6 @@ MonoBehaviour:
   type: 1
   text: "\u0421\u043E\u0431\u0435\u0440\u0438\u0442\u0435 \u0434\u0435\u0440\u0435\u0432\u043E"
   valueType: 1
-  value: 25
+  value: 10
   anyBuilding: 1
   buildingInfo: {fileID: 0}

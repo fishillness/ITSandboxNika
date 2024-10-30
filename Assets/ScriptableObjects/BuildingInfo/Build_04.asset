@@ -17,9 +17,9 @@ MonoBehaviour:
   nameBuilding: "\u0412\u043E\u043B\u044C\u0435\u0440"
   m_NeededCoins: 30
   m_NeededBoards: 15
-  m_NeededBricks: 5
-  m_NeededNails: 25
-  m_Advancement: 34
-  m_Cosiness: 22
-  m_Health: 12
-  m_Joy: 32
+  m_NeededBricks: 20
+  m_NeededNails: 10
+  m_Advancement: 8
+  m_Cosiness: 8
+  m_Health: 8
+  m_Joy: 8

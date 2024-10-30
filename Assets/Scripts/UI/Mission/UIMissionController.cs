@@ -11,6 +11,7 @@ public class UIMissionController : MonoBehaviour,
     [SerializeField] private Button openButton;
     [SerializeField] private Button closeButton;
     [SerializeField] private UICityPanels cityPanels;
+    [SerializeField] private GameObject warningOnOpenPanelButton;
 
     private List<UIMissionInfo> missionInfos = new List<UIMissionInfo>();
     private InputController inputController;
@@ -26,6 +27,7 @@ public class UIMissionController : MonoBehaviour,
     private void Start()
     {
         missionPanel.SetActive(false);
+        warningOnOpenPanelButton.SetActive(false);
         CreateAllCurrentMission();
 
         openButton.onClick.AddListener(OpenPanel);
@@ -76,11 +78,16 @@ public class UIMissionController : MonoBehaviour,
 
     private void MissionUpdate(Mission mission)
     {
-        foreach(var missionInfo in missionInfos)
+        warningOnOpenPanelButton.SetActive(false);
+
+        foreach (var missionInfo in missionInfos)
         {
             if (missionInfo.Id == mission.missionInfo.Id)
             {
                 missionInfo.UpdateTexts(mission.missionInfo.NeedGetValue, mission.value, mission.isFinish);
+
+                if (mission.isFinish)
+                    warningOnOpenPanelButton.SetActive(true);
 
                 return;
             }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelPrefabs: {fileID: 1249333339977866857, guid: 8ef9e7dbc8b69664cbcad4f56e5bc11c, type: 3}
   costInEnergy: 5
-  coins: 5
+  coins: 10
   boards: 7
   bricks: 8
   nails: 10
