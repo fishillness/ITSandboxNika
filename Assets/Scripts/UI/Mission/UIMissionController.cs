@@ -74,6 +74,9 @@ public class UIMissionController : MonoBehaviour,
         uiMissionInfo.SetProperties(mission.missionInfo.Id, mission.missionInfo.Type, mission.missionInfo.Text, mission.missionInfo.NeedGetValue, mission.value, mission.isFinish, this);
 
         missionInfos.Add(uiMissionInfo);
+
+        if (mission.isFinish)
+            warningOnOpenPanelButton.SetActive(true);
     }
 
     private void MissionUpdate(Mission mission)
@@ -98,5 +101,6 @@ public class UIMissionController : MonoBehaviour,
     {
         missionController.OnMissionFinishClick(id);
         Destroy(uiMissionInfo);
+        warningOnOpenPanelButton.SetActive(false);
     }
 }

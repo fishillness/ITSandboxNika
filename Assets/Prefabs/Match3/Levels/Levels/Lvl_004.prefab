@@ -1977,8 +1977,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 9f346c0c0ccca9846b101c9675c58962, type: 3}
   - type: 5
     sprite: {fileID: 21300000, guid: 7804e119f46713945b82ddbbe36701d7, type: 3}
-  - type: 1
-    sprite: {fileID: 21300000, guid: 3673aada02e653e47bb0046f6bbb74a6, type: 3}
   - type: 4
     sprite: {fileID: 21300000, guid: 3af6353f9c129184fa039f2a76da0c85, type: 3}
 --- !u!1 &7729603932582014315
