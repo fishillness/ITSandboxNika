@@ -2853,7 +2853,7 @@ GameObject:
   - component: {fileID: 8244165019729580856}
   - component: {fileID: 955220162838113505}
   m_Layer: 5
-  m_Name: HelpNikaButton
+  m_Name: shopButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3904,7 +3904,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 6495286792399364289}
   m_OnClick:
     m_PersistentCalls:
@@ -4644,7 +4644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u043E\u043C\u043E\u0447\u044C \u041D\u0438\u043A\u0435"
+  m_text: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5436,7 +5436,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8879675165423366664}
   m_OnClick:
     m_PersistentCalls:
@@ -5963,6 +5963,58 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.099998474
       objectReference: {fileID: 0}
+    - target: {fileID: 1510114553631262734, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 5988345668135283972}
+    - target: {fileID: 6378503158138745540, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378503158138745540, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378503158138745540, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378503158138745540, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552513730394134492, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552513730394134492, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552513730394134492, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552513730394134492, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919439032524451875, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919439032524451875, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919439032524451875, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919439032524451875, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7598012833035368001, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6061,6 +6113,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5988345668135283972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5713644585353362122, guid: bd1a95af282c32a428b55bc3f366c430, type: 3}
+  m_PrefabInstance: {fileID: 2040150225907210190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8440169805424583055 stripped
