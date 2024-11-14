@@ -80,7 +80,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fd524d5529bfa4ba5821376d1c9c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredBoosters: []
+  requiredBoosters:
+  - type: 4
+    position: {x: 0, y: 0}
+  - type: 5
+    position: {x: 1, y: 1}
 --- !u!1 &1808829790052135332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,7 +1758,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5981537469093681302}
   m_Enabled: 1
-  m_CellSize: {x: 0.6, y: 0.6, z: 0}
+  m_CellSize: {x: 0.5, y: 0.5, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -2016,6 +2020,8 @@ MonoBehaviour:
     position: {x: 4, y: 6}
   - type: 4
     position: {x: 6, y: 7}
+  - type: 5
+    position: {x: 8, y: 8}
 --- !u!1 &8602365380812836937
 GameObject:
   m_ObjectHideFlags: 0
