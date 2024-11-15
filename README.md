@@ -7,7 +7,7 @@ The game was created during the IT sandbox from Skillfactory.
 [Trailer](https://drive.google.com/drive/folders/1tA4wPlI2C5jl6uu3jqNVHL0-f65DbfyO?usp=sharing)
 
 ## Team
-Team lead:
+Team lead:  
 Lesya Pedchenko
 
 Project:
